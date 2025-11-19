@@ -822,48 +822,63 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             const button = document.getElementById('menu-button');
-            if (menu.classList.contains('hidden')) {
+            if (menu && menu.classList.contains('hidden')) {
                 menu.classList.remove('hidden');
                 // 아이콘 변경 (선택 사항)
-            } else {
+            } else if (menu) {
                 menu.classList.add('hidden');
             }
         }
 
-        document.getElementById('menu-button').addEventListener('click', toggleMenu);
-
         // 커스텀 모달 제어 함수
         function showMessage(message) {
-            document.getElementById('modal-text').textContent = message;
-            document.getElementById('custom-modal').classList.remove('hidden');
-            document.getElementById('custom-modal').classList.add('flex');
+            const modalText = document.getElementById('modal-text');
+            const modal = document.getElementById('custom-modal');
+            if (modalText && modal) {
+                modalText.textContent = message;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
         }
 
         function closeModal() {
-            document.getElementById('custom-modal').classList.add('hidden');
-            document.getElementById('custom-modal').classList.remove('flex');
+            const modal = document.getElementById('custom-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
         }
 
-        // 연락처 폼 제출 처리
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const messageEl = document.getElementById('form-message');
+        // DOM이 로드된 후 이벤트 리스너 등록
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.getElementById('menu-button');
+            if (menuButton) {
+                menuButton.addEventListener('click', toggleMenu);
+            }
 
-            // 실제로는 여기에 서버로 데이터를 전송하는 로직이 들어갑니다.
-            // 여기서는 시뮬레이션만 합니다.
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('name').value;
+                    const messageEl = document.getElementById('form-message');
 
-            showMessage(`${name} 님, 메시지를 성공적으로 받았습니다! 곧 연락드리겠습니다.`);
+                    // 실제로는 여기에 서버로 데이터를 전송하는 로직이 들어갑니다.
+                    // 여기서는 시뮬레이션만 합니다.
 
-            // 폼 초기화 (성공 후)
-            document.getElementById('contact-form').reset();
-            
-            // 성공 메시지 표시 (필요하다면)
-            // messageEl.textContent = '메시지가 성공적으로 전송되었습니다!';
-            // messageEl.classList.remove('hidden', 'text-red-500');
-            // messageEl.classList.add('text-green-500');
+                    showMessage(`${name} 님, 메시지를 성공적으로 받았습니다! 곧 연락드리겠습니다.`);
 
+                    // 폼 초기화 (성공 후)
+                    contactForm.reset();
+                    
+                    // 성공 메시지 표시 (필요하다면)
+                    // messageEl.textContent = '메시지가 성공적으로 전송되었습니다!';
+                    // messageEl.classList.remove('hidden', 'text-red-500');
+                    // messageEl.classList.add('text-green-500');
+
+                });
+            }
         });
     </script>
 
