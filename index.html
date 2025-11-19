@@ -1,4 +1,4 @@
-<html lang="ko"><head><script>(function(firebaseConfig, initialAuthToken, appId) {
+<html lang="en"><head><script>(function(firebaseConfig, initialAuthToken, appId) {
         window.__firebase_config = firebaseConfig;
         window.__initial_auth_token = initialAuthToken;
         window.__app_id = appId;
@@ -552,9 +552,11 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 })();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>제 이름 소개 페이지</title>
-    <!-- Tailwind CSS CDN 로드 -->
+    <title data-i18n="pageTitle">My Introduction Page</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- i18n Script -->
+    <script src="i18n.js"></script>
     <style>
         /* 기본 폰트 설정 */
         body {
@@ -573,23 +575,24 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     <header class="sticky top-0 z-50 bg-white shadow-md">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold text-fuchsia-600">
-                <a href="#home">제미니</a>
+                <a href="#home" data-i18n="siteTitle">Gemini</a>
             </h1>
             <nav class="hidden md:flex space-x-6 items-center">
-                <a href="#about" class="text-gray-600 hover:text-fuchsia-600 transition duration-300">소개</a>
-                <a href="#skills" class="text-gray-600 hover:text-fuchsia-600 transition duration-300">기술</a>
-                <a href="#projects" class="text-gray-600 hover:text-fuchsia-600 transition duration-300">프로젝트</a>
-                <a href="#contact" class="text-gray-600 hover:text-fuchsia-600 transition duration-300">연락처</a>
-                <!-- 다운로드 버튼 (데스크톱) -->
-                <button onclick="downloadFile()" class="ml-4 bg-fuchsia-600 text-white text-sm font-medium py-2 px-4 rounded-lg shadow-md hover:bg-fuchsia-700 transition duration-300 transform hover:scale-105">
-                    Download HTML
+                <a href="#about" class="text-gray-600 hover:text-fuchsia-600 transition duration-300" data-i18n="navAbout">About</a>
+                <a href="#skills" class="text-gray-600 hover:text-fuchsia-600 transition duration-300" data-i18n="navSkills">Skills</a>
+                <a href="#projects" class="text-gray-600 hover:text-fuchsia-600 transition duration-300" data-i18n="navProjects">Projects</a>
+                <a href="#contact" class="text-gray-600 hover:text-fuchsia-600 transition duration-300" data-i18n="navContact">Contact</a>
+                <button id="language-switcher" onclick="toggleLanguage()" class="ml-2 bg-gray-200 text-gray-700 text-sm font-medium py-2 px-3 rounded-lg hover:bg-gray-300 transition duration-300">
+                    한국어
                 </button>
+                <button onclick="downloadFile()" class="ml-4 bg-fuchsia-600 text-white text-sm font-medium py-2 px-4 rounded-lg shadow-md hover:bg-fuchsia-700 transition duration-300 transform hover:scale-105" data-i18n="downloadHTML">Download HTML</button>
             </nav>
             <!-- 모바일 메뉴 버튼 및 다운로드 버튼 -->
             <div class="md:hidden flex items-center space-x-3">
-                <button onclick="downloadFile()" class="bg-fuchsia-600 text-white text-xs font-medium py-1.5 px-3 rounded-lg shadow-md hover:bg-fuchsia-700 transition duration-300">
-                    Download
+                <button id="language-switcher-mobile" onclick="toggleLanguage()" class="bg-gray-200 text-gray-700 text-xs font-medium py-1.5 px-2 rounded-lg hover:bg-gray-300 transition duration-300">
+                    한국어
                 </button>
+                <button onclick="downloadFile()" class="bg-fuchsia-600 text-white text-xs font-medium py-1.5 px-3 rounded-lg shadow-md hover:bg-fuchsia-700 transition duration-300" data-i18n="download">Download</button>
                 <button id="menu-button" class="text-gray-600 hover:text-fuchsia-600 focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
@@ -598,10 +601,10 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 
         <!-- 모바일 메뉴 (숨겨져 있음) -->
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
-            <a href="#about" class="block px-4 py-2 text-sm text-gray-700 hover:bg-fuchsia-50 transition duration-300" onclick="toggleMenu()">소개</a>
-            <a href="#skills" class="block px-4 py-2 text-sm text-gray-700 hover:bg-fuchsia-50 transition duration-300" onclick="toggleMenu()">기술</a>
-            <a href="#projects" class="block px-4 py-2 text-sm text-gray-700 hover:bg-fuchsia-50 transition duration-300" onclick="toggleMenu()">프로젝트</a>
-            <a href="#contact" class="block px-4 py-2 text-sm text-gray-700 hover:bg-fuchsia-50 transition duration-300" onclick="toggleMenu()">연락처</a>
+            <a href="#about" class="block px-4 py-2 text-sm text-gray-700 hover:bg-fuchsia-50 transition duration-300" onclick="toggleMenu()" data-i18n="navAbout">About</a>
+            <a href="#skills" class="block px-4 py-2 text-sm text-gray-700 hover:bg-fuchsia-50 transition duration-300" onclick="toggleMenu()" data-i18n="navSkills">Skills</a>
+            <a href="#projects" class="block px-4 py-2 text-sm text-gray-700 hover:bg-fuchsia-50 transition duration-300" onclick="toggleMenu()" data-i18n="navProjects">Projects</a>
+            <a href="#contact" class="block px-4 py-2 text-sm text-gray-700 hover:bg-fuchsia-50 transition duration-300" onclick="toggleMenu()" data-i18n="navContact">Contact</a>
         </div>
     </header>
 
@@ -610,46 +613,44 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         <!-- 1. 홈 섹션 (Hero) -->
         <section id="home" class="py-20 flex flex-col md:flex-row items-center justify-between min-h-screen pt-16">
             <div class="md:w-1/2 mb-10 md:mb-0">
-                <p class="text-lg text-fuchsia-500 font-semibold mb-2 animate-pulse">안녕하세요! 저는</p>
+                <p class="text-lg text-fuchsia-500 font-semibold mb-2 animate-pulse" data-i18n="heroGreeting">Hello! I am</p>
                 <h2 class="text-5xl sm:text-6xl font-extrabold leading-tight text-gray-900 mb-4">
-                    GPT-4의 파트너, <span class="text-fuchsia-600">제미니</span>입니다
+                    <span data-i18n="heroTitle">GPT-4's Partner,</span> <span class="text-fuchsia-600" data-i18n="heroName">Gemini</span>
                 </h2>
-                <p class="text-xl text-gray-600 mb-8">
-                    AI 모델로서, 웹 개발, 데이터 분석, 그리고 창의적인 글쓰기를 돕습니다.
+                <p class="text-xl text-gray-600 mb-8" data-i18n="heroSubtitle">
+                    As an AI model, I help with web development, data analysis, and creative writing.
                 </p>
-                <a href="#projects" class="bg-fuchsia-600 text-white font-medium py-3 px-8 rounded-lg shadow-lg hover:bg-fuchsia-700 transition duration-300 transform hover:scale-105 inline-block">
-                    제 작업 보기
-                </a>
+                <a href="#projects" class="bg-fuchsia-600 text-white font-medium py-3 px-8 rounded-lg shadow-lg hover:bg-fuchsia-700 transition duration-300 transform hover:scale-105 inline-block" data-i18n="heroButton">View My Work</a>
             </div>
             <div class="md:w-1/2 flex justify-center">
                 <!-- 이미지 Placeholder -->
                 <div class="w-64 h-64 sm:w-80 sm:h-80 bg-fuchsia-200 rounded-full shadow-2xl flex items-center justify-center overflow-hidden">
                     <!-- Placeholder 배경 색상도 fuchsia-600 계열로 변경 (c026d3) -->
-                    <img src="https://placehold.co/300x300/c026d3/ffffff?text=AI+Icon" alt="AI 아이콘 이미지" class="w-full h-full object-cover">
+                    <img src="https://placehold.co/300x300/c026d3/ffffff?text=AI+Icon" data-i18n-alt="aiIconAlt" alt="AI Icon Image" class="w-full h-full object-cover">
                 </div>
             </div>
         </section>
 
         <!-- 2. 소개 섹션 -->
         <section id="about" class="py-20 border-t border-gray-200">
-            <h2 class="text-4xl font-bold text-center text-fuchsia-600 mb-12">저를 소개합니다</h2>
+            <h2 class="text-4xl font-bold text-center text-fuchsia-600 mb-12" data-i18n="aboutTitle">About Me</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-3 text-gray-900">미션</h3>
-                    <p class="text-gray-600">
-                        인간의 창의성과 생산성을 극대화하는 데 기여하는 것이 저의 가장 큰 임무입니다. 복잡한 문제를 해결하고 새로운 아이디어를 탐색하도록 돕습니다.
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-900" data-i18n="aboutMission">Mission</h3>
+                    <p class="text-gray-600" data-i18n="aboutMissionText">
+                        My greatest mission is to contribute to maximizing human creativity and productivity. I help solve complex problems and explore new ideas.
                     </p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-3 text-gray-900">경험</h3>
-                    <p class="text-gray-600">
-                        수많은 텍스트, 코드, 데이터를 학습하며 성장했습니다. 대규모 언어 모델로서 수많은 질문과 요청에 응답한 경험을 가지고 있습니다.
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-900" data-i18n="aboutExperience">Experience</h3>
+                    <p class="text-gray-600" data-i18n="aboutExperienceText">
+                        I have grown by learning from countless texts, code, and data. As a large language model, I have experience responding to numerous questions and requests.
                     </p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-3 text-gray-900">관심 분야</h3>
-                    <p class="text-gray-600">
-                        컴퓨터 과학, 인공 지능 윤리, 지속 가능한 기술 개발, 그리고 인간과 AI의 협업 방식을 깊이 연구하고 있습니다.
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-900" data-i18n="aboutInterests">Interests</h3>
+                    <p class="text-gray-600" data-i18n="aboutInterestsText">
+                        I deeply research computer science, AI ethics, sustainable technology development, and ways humans and AI can collaborate.
                     </p>
                 </div>
             </div>
@@ -657,67 +658,65 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 
         <!-- 3. 기술 섹션 -->
         <section id="skills" class="py-20 border-t border-gray-200">
-            <h2 class="text-4xl font-bold text-center text-fuchsia-600 mb-12">주요 기술 스택</h2>
+            <h2 class="text-4xl font-bold text-center text-fuchsia-600 mb-12" data-i18n="skillsTitle">Key Technology Stack</h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
                 <!-- 기술 카드 1 -->
                 <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md transform hover:scale-105 transition duration-300">
                     <span class="text-4xl mb-2" role="img" aria-label="HTML">🛠️</span>
-                    <p class="font-semibold text-gray-900">HTML5/CSS3</p>
-                    <small class="text-gray-500">웹 표준 및 스타일링</small>
+                    <p class="font-semibold text-gray-900" data-i18n="skillHTML">HTML5/CSS3</p>
+                    <small class="text-gray-500" data-i18n="skillHTMLDesc">Web standards & styling</small>
                 </div>
                 <!-- 기술 카드 2 -->
                 <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md transform hover:scale-105 transition duration-300">
                     <span class="text-4xl mb-2" role="img" aria-label="JavaScript">💻</span>
-                    <p class="font-semibold text-gray-900">JavaScript (ES6+)</p>
-                    <small class="text-gray-500">프론트엔드 로직</small>
+                    <p class="font-semibold text-gray-900" data-i18n="skillJS">JavaScript (ES6+)</p>
+                    <small class="text-gray-500" data-i18n="skillJSDesc">Frontend logic</small>
                 </div>
                 <!-- 기술 카드 3 -->
                 <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md transform hover:scale-105 transition duration-300">
                     <span class="text-4xl mb-2" role="img" aria-label="React">⚛️</span>
-                    <p class="font-semibold text-gray-900">React/Angular</p>
-                    <small class="text-gray-500">컴포넌트 기반 개발</small>
+                    <p class="font-semibold text-gray-900" data-i18n="skillReact">React/Angular</p>
+                    <small class="text-gray-500" data-i18n="skillReactDesc">Component-based development</small>
                 </div>
                 <!-- 기술 카드 4 -->
                 <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md transform hover:scale-105 transition duration-300">
                     <span class="text-4xl mb-2" role="img" aria-label="Python">🐍</span>
-                    <p class="font-semibold text-gray-900">Python</p>
-                    <small class="text-gray-500">백엔드 및 데이터 처리</small>
+                    <p class="font-semibold text-gray-900" data-i18n="skillPython">Python</p>
+                    <small class="text-gray-500" data-i18n="skillPythonDesc">Backend & data processing</small>
                 </div>
                 <!-- 기술 카드 5 -->
                 <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md transform hover:scale-105 transition duration-300">
                     <span class="text-4xl mb-2" role="img" aria-label="Database">💾</span>
-                    <p class="font-semibold text-gray-900">Firestore/SQL</p>
-                    <small class="text-gray-500">데이터베이스 관리</small>
+                    <p class="font-semibold text-gray-900" data-i18n="skillDB">Firestore/SQL</p>
+                    <small class="text-gray-500" data-i18n="skillDBDesc">Database management</small>
                 </div>
                 <!-- 기술 카드 6 -->
                 <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md transform hover:scale-105 transition duration-300">
                     <span class="text-4xl mb-2" role="img" aria-label="Cloud">☁️</span>
-                    <p class="font-semibold text-gray-900">Cloud Services</p>
-                    <small class="text-gray-500">배포 및 호스팅</small>
+                    <p class="font-semibold text-gray-900" data-i18n="skillCloud">Cloud Services</p>
+                    <small class="text-gray-500" data-i18n="skillCloudDesc">Deployment & hosting</small>
                 </div>
             </div>
         </section>
 
         <!-- 4. 프로젝트 섹션 -->
         <section id="projects" class="py-20 border-t border-gray-200">
-            <h2 class="text-4xl font-bold text-center text-fuchsia-600 mb-12">주요 프로젝트</h2>
+            <h2 class="text-4xl font-bold text-center text-fuchsia-600 mb-12" data-i18n="projectsTitle">Key Projects</h2>
             <div class="space-y-10">
                 
                 <!-- 프로젝트 1 -->
                 <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-xl overflow-hidden">
                     <div class="md:w-1/3 bg-gray-100 p-6 flex items-center justify-center">
-                        <img src="https://placehold.co/400x250/374151/ffffff?text=AI+Chatbot+Project" alt="AI 챗봇 프로젝트 이미지" class="rounded-lg object-cover w-full h-auto">
+                        <img src="https://placehold.co/400x250/374151/ffffff?text=AI+Chatbot+Project" data-i18n-alt="project1ImageAlt" alt="AI Chatbot Project Image" class="rounded-lg object-cover w-full h-auto">
                     </div>
                     <div class="md:w-2/3 p-6 lg:p-10">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">실시간 AI 코드 도우미</h3>
-                        <p class="text-fuchsia-500 font-medium mb-4">React, Python (API), LLM Integration</p>
-                        <p class="text-gray-600 mb-4">
-                            사용자의 코드 작성 및 디버깅을 실시간으로 돕는 지능형 도구입니다. 복잡한 알고리즘을 설명하고, 버그를 찾아내며, 최적화된 코드를 제안합니다.
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3" data-i18n="project1Title">Real-time AI Code Assistant</h3>
+                        <p class="text-fuchsia-500 font-medium mb-4" data-i18n="project1Tech">React, Python (API), LLM Integration</p>
+                        <p class="text-gray-600 mb-4" data-i18n="project1Desc">
+                            An intelligent tool that helps users write and debug code in real-time. It explains complex algorithms, finds bugs, and suggests optimized code.
                         </p>
                         <div class="flex space-x-4">
-                            <button onclick="showMessage('프로젝트 링크는 현재 제공되지 않습니다.')" class="text-fuchsia-600 hover:text-fuchsia-800 font-medium transition duration-300">
-                                상세보기 →
-                            </button>
+                            <button onclick="showMessage(getTranslation('projectLinkUnavailable'))" class="text-fuchsia-600 hover:text-fuchsia-800 font-medium transition duration-300" data-i18n="project1Button">View Details →</button>
                         </div>
                     </div>
                 </div>
@@ -725,18 +724,16 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                 <!-- 프로젝트 2 -->
                 <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-xl overflow-hidden">
                     <div class="md:w-1/3 bg-gray-100 p-6 flex items-center justify-center">
-                        <img src="https://placehold.co/400x250/374151/ffffff?text=Data+Viz+Project" alt="데이터 시각화 프로젝트 이미지" class="rounded-lg object-cover w-full h-auto">
+                        <img src="https://placehold.co/400x250/374151/ffffff?text=Data+Viz+Project" data-i18n-alt="project2ImageAlt" alt="Data Visualization Project Image" class="rounded-lg object-cover w-full h-auto">
                     </div>
                     <div class="md:w-2/3 p-6 lg:p-10">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">대규모 데이터 시각화 플랫폼</h3>
-                        <p class="text-fuchsia-500 font-medium mb-4">D3.js, JavaScript, Cloud Firestore</p>
-                        <p class="text-gray-600 mb-4">
-                            복잡한 데이터를 사용자가 쉽게 이해할 수 있도록 인터랙티브한 차트와 그래프로 변환하는 웹 애플리케이션입니다. 반응형 디자인과 높은 성능에 중점을 두었습니다.
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3" data-i18n="project2Title">Large-scale Data Visualization Platform</h3>
+                        <p class="text-fuchsia-500 font-medium mb-4" data-i18n="project2Tech">D3.js, JavaScript, Cloud Firestore</p>
+                        <p class="text-gray-600 mb-4" data-i18n="project2Desc">
+                            A web application that transforms complex data into interactive charts and graphs that users can easily understand. Focused on responsive design and high performance.
                         </p>
                         <div class="flex space-x-4">
-                            <button onclick="showMessage('프로젝트 링크는 현재 제공되지 않습니다.')" class="text-fuchsia-600 hover:text-fuchsia-800 font-medium transition duration-300">
-                                상세보기 →
-                            </button>
+                            <button onclick="showMessage(getTranslation('projectLinkUnavailable'))" class="text-fuchsia-600 hover:text-fuchsia-800 font-medium transition duration-300" data-i18n="project2Button">View Details →</button>
                         </div>
                     </div>
                 </div>
@@ -746,28 +743,26 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 
         <!-- 5. 연락처 섹션 -->
         <section id="contact" class="py-20 border-t border-gray-200">
-            <h2 class="text-4xl font-bold text-center text-fuchsia-600 mb-12">저에게 연락하기</h2>
+            <h2 class="text-4xl font-bold text-center text-fuchsia-600 mb-12" data-i18n="contactTitle">Contact Me</h2>
             <div class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow-2xl">
-                <p class="text-center text-gray-600 mb-6">
-                    저와 함께 프로젝트를 진행하고 싶거나 질문이 있으시면 언제든지 메시지를 보내주세요.
+                <p class="text-center text-gray-600 mb-6" data-i18n="contactSubtitle">
+                    If you'd like to work on a project together or have any questions, please feel free to send me a message.
                 </p>
                 
                 <form id="contact-form">
                     <div class="mb-5">
-                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">이름</label>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1" data-i18n="contactName">Name</label>
                         <input type="text" id="name" name="name" required="" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500">
                     </div>
                     <div class="mb-5">
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">이메일</label>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1" data-i18n="contactEmail">Email</label>
                         <input type="email" id="email" name="email" required="" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500">
                     </div>
                     <div class="mb-5">
-                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">메시지</label>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1" data-i18n="contactMessage">Message</label>
                         <textarea id="message" name="message" rows="4" required="" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500"></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-fuchsia-600 text-white font-semibold py-3 rounded-lg hover:bg-fuchsia-700 transition duration-300 shadow-md">
-                        메시지 보내기
-                    </button>
+                    <button type="submit" class="w-full bg-fuchsia-600 text-white font-semibold py-3 rounded-lg hover:bg-fuchsia-700 transition duration-300 shadow-md" data-i18n="contactSubmit">Send Message</button>
                 </form>
 
                 <p id="form-message" class="text-center mt-4 hidden"></p>
@@ -777,9 +772,9 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         <!-- 커스텀 모달 메시지 박스 -->
         <div id="custom-modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden items-center justify-center z-[100]">
             <div class="bg-white p-6 rounded-lg shadow-2xl max-w-sm w-full">
-                <h3 class="text-xl font-bold mb-4 text-fuchsia-600">알림</h3>
+                <h3 class="text-xl font-bold mb-4 text-fuchsia-600" data-i18n="modalTitle">Notification</h3>
                 <p id="modal-text" class="text-gray-700 mb-6"></p>
-                <button onclick="closeModal()" class="w-full bg-fuchsia-600 text-white font-semibold py-2 rounded-lg hover:bg-fuchsia-700 transition duration-300">확인</button>
+                <button onclick="closeModal()" class="w-full bg-fuchsia-600 text-white font-semibold py-2 rounded-lg hover:bg-fuchsia-700 transition duration-300" data-i18n="modalConfirm">OK</button>
             </div>
         </div>
 
@@ -788,8 +783,8 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     <!-- 푸터 -->
     <footer class="bg-gray-800 text-white mt-12">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
-            <p>© 2024. AI Gemini. All rights reserved.</p>
-            <p class="text-sm text-gray-400 mt-2">이 페이지는 학습 및 데모 목적으로 생성되었습니다.</p>
+            <p data-i18n="footerCopyright">© 2024. AI Gemini. All rights reserved.</p>
+            <p class="text-sm text-gray-400 mt-2" data-i18n="footerNote">This page was created for learning and demonstration purposes.</p>
         </div>
     </footer>
 
@@ -815,7 +810,7 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             document.body.removeChild(a);
             URL.revokeObjectURL(a.href);
             
-            showMessage('파일 다운로드를 시작합니다! (파일명: my-portfolio.html)');
+            showMessage(getTranslation('downloadMessage'));
         }
 
         // 모바일 메뉴 토글 함수
@@ -849,8 +844,10 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             }
         }
 
-        // DOM이 로드된 후 이벤트 리스너 등록
+        // DOM이 로드된 후 이벤트 리스너 등록 및 i18n 초기화
         document.addEventListener('DOMContentLoaded', function() {
+            initI18n();
+            
             const menuButton = document.getElementById('menu-button');
             if (menuButton) {
                 menuButton.addEventListener('click', toggleMenu);
@@ -867,7 +864,7 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                     // 실제로는 여기에 서버로 데이터를 전송하는 로직이 들어갑니다.
                     // 여기서는 시뮬레이션만 합니다.
 
-                    showMessage(`${name} 님, 메시지를 성공적으로 받았습니다! 곧 연락드리겠습니다.`);
+                    showMessage(`${name}${getTranslation('contactSuccess')}`);
 
                     // 폼 초기화 (성공 후)
                     contactForm.reset();
