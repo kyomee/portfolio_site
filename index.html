@@ -558,182 +558,297 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     <!-- i18n Script -->
     <script src="i18n.js"></script>
     <style>
-        /* 기본 폰트 설정 */
+        /* Premium SaaS Design System */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7f9fc;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.6;
         }
-        /* 섹션 간 부드러운 스크롤 */
+
         html {
             scroll-behavior: smooth;
         }
+
+        /* Premium Gradient Backgrounds */
+        .hero-gradient {
+            background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+        }
+
+        .card-dark {
+            background: linear-gradient(135deg, #111111 0%, #0a0a0a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Glow Effects */
+        .glow-accent {
+            box-shadow: 0 0 40px rgba(217, 70, 239, 0.3);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 30px rgba(217, 70, 239, 0.5);
+        }
+
+        /* Premium Button Styles */
+        .btn-premium {
+            background: linear-gradient(135deg, #d946ef 0%, #c026d3 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-premium:hover::before {
+            left: 100%;
+        }
+
+        /* Animated Gradient Border */
+        .gradient-border {
+            position: relative;
+            background: #0a0a0a;
+            border-radius: 1rem;
+            padding: 2px;
+        }
+
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            padding: 2px;
+            background: linear-gradient(135deg, #d946ef, #c026d3, #a21caf);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        /* Premium Card Hover */
+        .premium-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .premium-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(217, 70, 239, 0.3);
+        }
+
+        /* Glass Morphism Effect */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Pulse Glow Animation */
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(217, 70, 239, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(217, 70, 239, 0.6); }
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
     </style>
 <style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.sticky{position:sticky}.inset-0{inset:0px}.top-0{top:0px}.z-50{z-index:50}.z-\[100\]{z-index:100}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-10{margin-bottom:2.5rem}.mb-12{margin-bottom:3rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-4{margin-left:1rem}.mt-12{margin-top:3rem}.mt-2{margin-top:0.5rem}.mt-4{margin-top:1rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-6{height:1.5rem}.h-64{height:16rem}.h-auto{height:auto}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-6{width:1.5rem}.w-64{width:16rem}.w-full{width:100%}.max-w-6xl{max-width:72rem}.max-w-sm{max-width:24rem}.max-w-xl{max-width:36rem}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-6 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem * var(--tw-space-x-reverse));margin-left:calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-10 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-t{border-top-width:1px}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.bg-fuchsia-200{--tw-bg-opacity:1;background-color:rgb(245 208 254 / var(--tw-bg-opacity, 1))}.bg-fuchsia-600{--tw-bg-opacity:1;background-color:rgb(192 38 211 / var(--tw-bg-opacity, 1))}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity, 1))}.bg-gray-800{--tw-bg-opacity:1;background-color:rgb(31 41 55 / var(--tw-bg-opacity, 1))}.bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-opacity-50{--tw-bg-opacity:0.5}.object-cover{object-fit:cover}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-8{padding-left:2rem;padding-right:2rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pt-16{padding-top:4rem}.pt-8{padding-top:2rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-5xl{font-size:3rem;line-height:1}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.leading-tight{line-height:1.25}.text-fuchsia-500{--tw-text-opacity:1;color:rgb(217 70 239 / var(--tw-text-opacity, 1))}.text-fuchsia-600{--tw-text-opacity:1;color:rgb(192 38 211 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-fuchsia-50:hover{--tw-bg-opacity:1;background-color:rgb(253 244 255 / var(--tw-bg-opacity, 1))}.hover\:bg-fuchsia-700:hover{--tw-bg-opacity:1;background-color:rgb(162 28 175 / var(--tw-bg-opacity, 1))}.hover\:text-fuchsia-600:hover{--tw-text-opacity:1;color:rgb(192 38 211 / var(--tw-text-opacity, 1))}.hover\:text-fuchsia-800:hover{--tw-text-opacity:1;color:rgb(134 25 143 / var(--tw-text-opacity, 1))}.hover\:shadow-xl:hover{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.focus\:border-fuchsia-500:focus{--tw-border-opacity:1;border-color:rgb(217 70 239 / var(--tw-border-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-fuchsia-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(217 70 239 / var(--tw-ring-opacity, 1))}@media (min-width: 640px){.sm\:h-80{height:20rem}.sm\:w-80{width:20rem}.sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-6xl{font-size:3.75rem;line-height:1}}@media (min-width: 768px){.md\:mb-0{margin-bottom:0px}.md\:flex{display:flex}.md\:hidden{display:none}.md\:w-1\/2{width:50%}.md\:w-1\/3{width:33.333333%}.md\:w-2\/3{width:66.666667%}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}}@media (min-width: 1024px){.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.lg\:p-10{padding:2.5rem}.lg\:px-8{padding-left:2rem;padding-right:2rem}}</style></head>
-<body class="text-gray-800">
+<body class="bg-black text-white">
 
-    <!-- 헤더 / 네비게이션 바 -->
-    <header class="sticky top-0 z-50 bg-white shadow-md">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-fuchsia-600">
-                <a href="#home" data-i18n="siteTitle">Gemini</a>
+    <!-- Premium Header / Navigation -->
+    <header class="sticky top-0 z-50 glass-effect border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-white">
+                <a href="#home" class="text-glow" data-i18n="siteTitle">Gemini</a>
             </h1>
-            <nav class="hidden md:flex space-x-6 items-center">
-                <a href="#about" class="text-gray-600 hover:text-fuchsia-600 transition duration-300" data-i18n="navAbout">About</a>
-                <a href="#skills" class="text-gray-600 hover:text-fuchsia-600 transition duration-300" data-i18n="navSkills">Skills</a>
-                <a href="#projects" class="text-gray-600 hover:text-fuchsia-600 transition duration-300" data-i18n="navProjects">Projects</a>
-                <a href="#contact" class="text-gray-600 hover:text-fuchsia-600 transition duration-300" data-i18n="navContact">Contact</a>
-                <button id="language-switcher" onclick="toggleLanguage()" class="ml-2 bg-gray-200 text-gray-700 text-sm font-medium py-2 px-3 rounded-lg hover:bg-gray-300 transition duration-300">
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-gray-300 hover:text-white transition duration-300 font-medium" data-i18n="navAbout">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-white transition duration-300 font-medium" data-i18n="navSkills">Skills</a>
+                <a href="#projects" class="text-gray-300 hover:text-white transition duration-300 font-medium" data-i18n="navProjects">Projects</a>
+                <a href="#contact" class="text-gray-300 hover:text-white transition duration-300 font-medium" data-i18n="navContact">Contact</a>
+                <button id="language-switcher" onclick="toggleLanguage()" class="ml-2 glass-effect text-white text-sm font-medium py-2 px-4 rounded-lg hover:bg-white/10 transition duration-300">
                     한국어
                 </button>
-                <button onclick="downloadFile()" class="ml-4 bg-fuchsia-600 text-white text-sm font-medium py-2 px-4 rounded-lg shadow-md hover:bg-fuchsia-700 transition duration-300 transform hover:scale-105" data-i18n="downloadHTML">Download HTML</button>
+                <button onclick="downloadFile()" class="ml-4 btn-premium text-white text-sm font-semibold py-2.5 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105" data-i18n="downloadHTML">Download HTML</button>
             </nav>
-            <!-- 모바일 메뉴 버튼 및 다운로드 버튼 -->
+            <!-- Mobile menu button -->
             <div class="md:hidden flex items-center space-x-3">
-                <button id="language-switcher-mobile" onclick="toggleLanguage()" class="bg-gray-200 text-gray-700 text-xs font-medium py-1.5 px-2 rounded-lg hover:bg-gray-300 transition duration-300">
+                <button id="language-switcher-mobile" onclick="toggleLanguage()" class="glass-effect text-white text-xs font-medium py-2 px-3 rounded-lg hover:bg-white/10 transition duration-300">
                     한국어
                 </button>
-                <button onclick="downloadFile()" class="bg-fuchsia-600 text-white text-xs font-medium py-1.5 px-3 rounded-lg shadow-md hover:bg-fuchsia-700 transition duration-300" data-i18n="download">Download</button>
-                <button id="menu-button" class="text-gray-600 hover:text-fuchsia-600 focus:outline-none">
+                <button onclick="downloadFile()" class="btn-premium text-white text-xs font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300" data-i18n="download">Download</button>
+                <button id="menu-button" class="text-gray-300 hover:text-white focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
         </div>
 
-        <!-- 모바일 메뉴 (숨겨져 있음) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
-            <a href="#about" class="block px-4 py-2 text-sm text-gray-700 hover:bg-fuchsia-50 transition duration-300" onclick="toggleMenu()" data-i18n="navAbout">About</a>
-            <a href="#skills" class="block px-4 py-2 text-sm text-gray-700 hover:bg-fuchsia-50 transition duration-300" onclick="toggleMenu()" data-i18n="navSkills">Skills</a>
-            <a href="#projects" class="block px-4 py-2 text-sm text-gray-700 hover:bg-fuchsia-50 transition duration-300" onclick="toggleMenu()" data-i18n="navProjects">Projects</a>
-            <a href="#contact" class="block px-4 py-2 text-sm text-gray-700 hover:bg-fuchsia-50 transition duration-300" onclick="toggleMenu()" data-i18n="navContact">Contact</a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-effect border-t border-white/10">
+            <a href="#about" class="block px-4 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-white transition duration-300" onclick="toggleMenu()" data-i18n="navAbout">About</a>
+            <a href="#skills" class="block px-4 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-white transition duration-300" onclick="toggleMenu()" data-i18n="navSkills">Skills</a>
+            <a href="#projects" class="block px-4 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-white transition duration-300" onclick="toggleMenu()" data-i18n="navProjects">Projects</a>
+            <a href="#contact" class="block px-4 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-white transition duration-300" onclick="toggleMenu()" data-i18n="navContact">Contact</a>
         </div>
     </header>
 
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
 
-        <!-- 1. 홈 섹션 (Hero) -->
+        <!-- Hero Section -->
         <section id="home" class="py-20 flex flex-col md:flex-row items-center justify-between min-h-screen pt-16">
             <div class="md:w-1/2 mb-10 md:mb-0">
-                <p class="text-lg text-fuchsia-500 font-semibold mb-2 animate-pulse" data-i18n="heroGreeting">Hello! I am</p>
-                <h2 class="text-5xl sm:text-6xl font-extrabold leading-tight text-gray-900 mb-4">
-                    <span data-i18n="heroTitle">GPT-4's Partner,</span> <span class="text-fuchsia-600" data-i18n="heroName">Gemini</span>
+                <p class="text-lg text-fuchsia-400 font-semibold mb-3 tracking-wide uppercase animate-pulse" data-i18n="heroGreeting">Hello! I am</p>
+                <h2 class="text-5xl sm:text-7xl font-extrabold leading-tight text-white mb-6">
+                    <span data-i18n="heroTitle">GPT-4's Partner,</span><br>
+                    <span class="text-glow bg-gradient-to-r from-fuchsia-400 to-purple-600 bg-clip-text text-transparent" data-i18n="heroName">Gemini</span>
                 </h2>
-                <p class="text-xl text-gray-600 mb-8" data-i18n="heroSubtitle">
+                <p class="text-xl text-gray-300 mb-10 leading-relaxed" data-i18n="heroSubtitle">
                     As an AI model, I help with web development, data analysis, and creative writing.
                 </p>
-                <a href="#projects" class="bg-fuchsia-600 text-white font-medium py-3 px-8 rounded-lg shadow-lg hover:bg-fuchsia-700 transition duration-300 transform hover:scale-105 inline-block" data-i18n="heroButton">View My Work</a>
+                <a href="#projects" class="btn-premium text-white font-semibold py-4 px-10 rounded-lg shadow-lg transition duration-300 transform hover:scale-105 inline-block text-lg" data-i18n="heroButton">View My Work</a>
             </div>
             <div class="md:w-1/2 flex justify-center">
-                <!-- 이미지 Placeholder -->
-                <div class="w-64 h-64 sm:w-80 sm:h-80 bg-fuchsia-200 rounded-full shadow-2xl flex items-center justify-center overflow-hidden">
-                    <!-- Placeholder 배경 색상도 fuchsia-600 계열로 변경 (c026d3) -->
-                    <img src="https://placehold.co/300x300/c026d3/ffffff?text=AI+Icon" data-i18n-alt="aiIconAlt" alt="AI Icon Image" class="w-full h-full object-cover">
+                <!-- Premium AI Icon with glow effect -->
+                <div class="w-72 h-72 sm:w-96 sm:h-96 rounded-full pulse-glow float-animation flex items-center justify-center overflow-hidden relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-fuchsia-600 to-purple-800 rounded-full opacity-80"></div>
+                    <img src="https://placehold.co/400x400/0a0a0a/d946ef?text=AI" data-i18n-alt="aiIconAlt" alt="AI Icon Image" class="w-full h-full object-cover rounded-full relative z-10 mix-blend-lighten">
                 </div>
             </div>
         </section>
 
-        <!-- 2. 소개 섹션 -->
-        <section id="about" class="py-20 border-t border-gray-200">
-            <h2 class="text-4xl font-bold text-center text-fuchsia-600 mb-12" data-i18n="aboutTitle">About Me</h2>
+        <!-- About Section -->
+        <section id="about" class="py-20 border-t border-white/10">
+            <h2 class="text-5xl font-bold text-center text-white mb-4" data-i18n="aboutTitle">About Me</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-fuchsia-600 to-purple-600 mx-auto mb-16"></div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-3 text-gray-900" data-i18n="aboutMission">Mission</h3>
-                    <p class="text-gray-600" data-i18n="aboutMissionText">
+                <div class="card-dark p-8 rounded-2xl premium-card">
+                    <div class="w-12 h-12 bg-gradient-to-br from-fuchsia-600 to-purple-600 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">🎯</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white" data-i18n="aboutMission">Mission</h3>
+                    <p class="text-gray-300 leading-relaxed" data-i18n="aboutMissionText">
                         My greatest mission is to contribute to maximizing human creativity and productivity. I help solve complex problems and explore new ideas.
                     </p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-3 text-gray-900" data-i18n="aboutExperience">Experience</h3>
-                    <p class="text-gray-600" data-i18n="aboutExperienceText">
+                <div class="card-dark p-8 rounded-2xl premium-card">
+                    <div class="w-12 h-12 bg-gradient-to-br from-fuchsia-600 to-purple-600 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">💼</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white" data-i18n="aboutExperience">Experience</h3>
+                    <p class="text-gray-300 leading-relaxed" data-i18n="aboutExperienceText">
                         I have grown by learning from countless texts, code, and data. As a large language model, I have experience responding to numerous questions and requests.
                     </p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
-                    <h3 class="text-2xl font-semibold mb-3 text-gray-900" data-i18n="aboutInterests">Interests</h3>
-                    <p class="text-gray-600" data-i18n="aboutInterestsText">
+                <div class="card-dark p-8 rounded-2xl premium-card">
+                    <div class="w-12 h-12 bg-gradient-to-br from-fuchsia-600 to-purple-600 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">🚀</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white" data-i18n="aboutInterests">Interests</h3>
+                    <p class="text-gray-300 leading-relaxed" data-i18n="aboutInterestsText">
                         I deeply research computer science, AI ethics, sustainable technology development, and ways humans and AI can collaborate.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- 3. 기술 섹션 -->
-        <section id="skills" class="py-20 border-t border-gray-200">
-            <h2 class="text-4xl font-bold text-center text-fuchsia-600 mb-12" data-i18n="skillsTitle">Key Technology Stack</h2>
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 border-t border-white/10">
+            <h2 class="text-5xl font-bold text-center text-white mb-4" data-i18n="skillsTitle">Key Technology Stack</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-fuchsia-600 to-purple-600 mx-auto mb-16"></div>
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- 기술 카드 1 -->
-                <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md transform hover:scale-105 transition duration-300">
-                    <span class="text-4xl mb-2" role="img" aria-label="HTML">🛠️</span>
-                    <p class="font-semibold text-gray-900" data-i18n="skillHTML">HTML5/CSS3</p>
-                    <small class="text-gray-500" data-i18n="skillHTMLDesc">Web standards & styling</small>
+                <!-- Skill Card 1 -->
+                <div class="flex flex-col items-center p-6 card-dark rounded-2xl premium-card">
+                    <span class="text-5xl mb-4" role="img" aria-label="HTML">🛠️</span>
+                    <p class="font-bold text-white text-lg mb-2" data-i18n="skillHTML">HTML5/CSS3</p>
+                    <small class="text-gray-400 text-center" data-i18n="skillHTMLDesc">Web standards & styling</small>
                 </div>
-                <!-- 기술 카드 2 -->
-                <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md transform hover:scale-105 transition duration-300">
-                    <span class="text-4xl mb-2" role="img" aria-label="JavaScript">💻</span>
-                    <p class="font-semibold text-gray-900" data-i18n="skillJS">JavaScript (ES6+)</p>
-                    <small class="text-gray-500" data-i18n="skillJSDesc">Frontend logic</small>
+                <!-- Skill Card 2 -->
+                <div class="flex flex-col items-center p-6 card-dark rounded-2xl premium-card">
+                    <span class="text-5xl mb-4" role="img" aria-label="JavaScript">💻</span>
+                    <p class="font-bold text-white text-lg mb-2" data-i18n="skillJS">JavaScript (ES6+)</p>
+                    <small class="text-gray-400 text-center" data-i18n="skillJSDesc">Frontend logic</small>
                 </div>
-                <!-- 기술 카드 3 -->
-                <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md transform hover:scale-105 transition duration-300">
-                    <span class="text-4xl mb-2" role="img" aria-label="React">⚛️</span>
-                    <p class="font-semibold text-gray-900" data-i18n="skillReact">React/Angular</p>
-                    <small class="text-gray-500" data-i18n="skillReactDesc">Component-based development</small>
+                <!-- Skill Card 3 -->
+                <div class="flex flex-col items-center p-6 card-dark rounded-2xl premium-card">
+                    <span class="text-5xl mb-4" role="img" aria-label="React">⚛️</span>
+                    <p class="font-bold text-white text-lg mb-2" data-i18n="skillReact">React/Angular</p>
+                    <small class="text-gray-400 text-center" data-i18n="skillReactDesc">Component-based development</small>
                 </div>
-                <!-- 기술 카드 4 -->
-                <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md transform hover:scale-105 transition duration-300">
-                    <span class="text-4xl mb-2" role="img" aria-label="Python">🐍</span>
-                    <p class="font-semibold text-gray-900" data-i18n="skillPython">Python</p>
-                    <small class="text-gray-500" data-i18n="skillPythonDesc">Backend & data processing</small>
+                <!-- Skill Card 4 -->
+                <div class="flex flex-col items-center p-6 card-dark rounded-2xl premium-card">
+                    <span class="text-5xl mb-4" role="img" aria-label="Python">🐍</span>
+                    <p class="font-bold text-white text-lg mb-2" data-i18n="skillPython">Python</p>
+                    <small class="text-gray-400 text-center" data-i18n="skillPythonDesc">Backend & data processing</small>
                 </div>
-                <!-- 기술 카드 5 -->
-                <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md transform hover:scale-105 transition duration-300">
-                    <span class="text-4xl mb-2" role="img" aria-label="Database">💾</span>
-                    <p class="font-semibold text-gray-900" data-i18n="skillDB">Firestore/SQL</p>
-                    <small class="text-gray-500" data-i18n="skillDBDesc">Database management</small>
+                <!-- Skill Card 5 -->
+                <div class="flex flex-col items-center p-6 card-dark rounded-2xl premium-card">
+                    <span class="text-5xl mb-4" role="img" aria-label="Database">💾</span>
+                    <p class="font-bold text-white text-lg mb-2" data-i18n="skillDB">Firestore/SQL</p>
+                    <small class="text-gray-400 text-center" data-i18n="skillDBDesc">Database management</small>
                 </div>
-                <!-- 기술 카드 6 -->
-                <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-md transform hover:scale-105 transition duration-300">
-                    <span class="text-4xl mb-2" role="img" aria-label="Cloud">☁️</span>
-                    <p class="font-semibold text-gray-900" data-i18n="skillCloud">Cloud Services</p>
-                    <small class="text-gray-500" data-i18n="skillCloudDesc">Deployment & hosting</small>
+                <!-- Skill Card 6 -->
+                <div class="flex flex-col items-center p-6 card-dark rounded-2xl premium-card">
+                    <span class="text-5xl mb-4" role="img" aria-label="Cloud">☁️</span>
+                    <p class="font-bold text-white text-lg mb-2" data-i18n="skillCloud">Cloud Services</p>
+                    <small class="text-gray-400 text-center" data-i18n="skillCloudDesc">Deployment & hosting</small>
                 </div>
             </div>
         </section>
 
-        <!-- 4. 프로젝트 섹션 -->
-        <section id="projects" class="py-20 border-t border-gray-200">
-            <h2 class="text-4xl font-bold text-center text-fuchsia-600 mb-12" data-i18n="projectsTitle">Key Projects</h2>
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 border-t border-white/10">
+            <h2 class="text-5xl font-bold text-center text-white mb-4" data-i18n="projectsTitle">Key Projects</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-fuchsia-600 to-purple-600 mx-auto mb-16"></div>
             <div class="space-y-10">
-                
-                <!-- 프로젝트 1 -->
-                <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-xl overflow-hidden">
-                    <div class="md:w-1/3 bg-gray-100 p-6 flex items-center justify-center">
-                        <img src="https://placehold.co/400x250/374151/ffffff?text=AI+Chatbot+Project" data-i18n-alt="project1ImageAlt" alt="AI Chatbot Project Image" class="rounded-lg object-cover w-full h-auto">
+
+                <!-- Project 1 -->
+                <div class="flex flex-col md:flex-row card-dark rounded-2xl overflow-hidden premium-card">
+                    <div class="md:w-1/3 bg-gradient-to-br from-fuchsia-900/20 to-purple-900/20 p-8 flex items-center justify-center">
+                        <img src="https://placehold.co/400x250/0a0a0a/d946ef?text=AI+Code+Assistant" data-i18n-alt="project1ImageAlt" alt="AI Chatbot Project Image" class="rounded-xl object-cover w-full h-auto shadow-lg">
                     </div>
-                    <div class="md:w-2/3 p-6 lg:p-10">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3" data-i18n="project1Title">Real-time AI Code Assistant</h3>
-                        <p class="text-fuchsia-500 font-medium mb-4" data-i18n="project1Tech">React, Python (API), LLM Integration</p>
-                        <p class="text-gray-600 mb-4" data-i18n="project1Desc">
+                    <div class="md:w-2/3 p-8 lg:p-12">
+                        <h3 class="text-3xl font-bold text-white mb-4" data-i18n="project1Title">Real-time AI Code Assistant</h3>
+                        <p class="text-fuchsia-400 font-semibold mb-6 tracking-wide" data-i18n="project1Tech">React, Python (API), LLM Integration</p>
+                        <p class="text-gray-300 mb-8 leading-relaxed text-lg" data-i18n="project1Desc">
                             An intelligent tool that helps users write and debug code in real-time. It explains complex algorithms, finds bugs, and suggests optimized code.
                         </p>
                         <div class="flex space-x-4">
-                            <button onclick="showMessage(getTranslation('projectLinkUnavailable'))" class="text-fuchsia-600 hover:text-fuchsia-800 font-medium transition duration-300" data-i18n="project1Button">View Details →</button>
+                            <button onclick="showMessage(getTranslation('projectLinkUnavailable'))" class="text-fuchsia-400 hover:text-fuchsia-300 font-semibold transition duration-300 flex items-center gap-2" data-i18n="project1Button">View Details <span>→</span></button>
                         </div>
                     </div>
                 </div>
 
-                <!-- 프로젝트 2 -->
-                <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-xl overflow-hidden">
-                    <div class="md:w-1/3 bg-gray-100 p-6 flex items-center justify-center">
-                        <img src="https://placehold.co/400x250/374151/ffffff?text=Data+Viz+Project" data-i18n-alt="project2ImageAlt" alt="Data Visualization Project Image" class="rounded-lg object-cover w-full h-auto">
+                <!-- Project 2 -->
+                <div class="flex flex-col md:flex-row card-dark rounded-2xl overflow-hidden premium-card">
+                    <div class="md:w-1/3 bg-gradient-to-br from-fuchsia-900/20 to-purple-900/20 p-8 flex items-center justify-center">
+                        <img src="https://placehold.co/400x250/0a0a0a/d946ef?text=Data+Viz" data-i18n-alt="project2ImageAlt" alt="Data Visualization Project Image" class="rounded-xl object-cover w-full h-auto shadow-lg">
                     </div>
-                    <div class="md:w-2/3 p-6 lg:p-10">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3" data-i18n="project2Title">Large-scale Data Visualization Platform</h3>
-                        <p class="text-fuchsia-500 font-medium mb-4" data-i18n="project2Tech">D3.js, JavaScript, Cloud Firestore</p>
-                        <p class="text-gray-600 mb-4" data-i18n="project2Desc">
+                    <div class="md:w-2/3 p-8 lg:p-12">
+                        <h3 class="text-3xl font-bold text-white mb-4" data-i18n="project2Title">Large-scale Data Visualization Platform</h3>
+                        <p class="text-fuchsia-400 font-semibold mb-6 tracking-wide" data-i18n="project2Tech">D3.js, JavaScript, Cloud Firestore</p>
+                        <p class="text-gray-300 mb-8 leading-relaxed text-lg" data-i18n="project2Desc">
                             A web application that transforms complex data into interactive charts and graphs that users can easily understand. Focused on responsive design and high performance.
                         </p>
                         <div class="flex space-x-4">
-                            <button onclick="showMessage(getTranslation('projectLinkUnavailable'))" class="text-fuchsia-600 hover:text-fuchsia-800 font-medium transition duration-300" data-i18n="project2Button">View Details →</button>
+                            <button onclick="showMessage(getTranslation('projectLinkUnavailable'))" class="text-fuchsia-400 hover:text-fuchsia-300 font-semibold transition duration-300 flex items-center gap-2" data-i18n="project2Button">View Details <span>→</span></button>
                         </div>
                     </div>
                 </div>
@@ -741,50 +856,54 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             </div>
         </section>
 
-        <!-- 5. 연락처 섹션 -->
-        <section id="contact" class="py-20 border-t border-gray-200">
-            <h2 class="text-4xl font-bold text-center text-fuchsia-600 mb-12" data-i18n="contactTitle">Contact Me</h2>
-            <div class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow-2xl">
-                <p class="text-center text-gray-600 mb-6" data-i18n="contactSubtitle">
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 border-t border-white/10">
+            <h2 class="text-5xl font-bold text-center text-white mb-4" data-i18n="contactTitle">Contact Me</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-fuchsia-600 to-purple-600 mx-auto mb-16"></div>
+            <div class="max-w-xl mx-auto card-dark p-10 rounded-2xl shadow-2xl">
+                <p class="text-center text-gray-300 mb-8 text-lg" data-i18n="contactSubtitle">
                     If you'd like to work on a project together or have any questions, please feel free to send me a message.
                 </p>
-                
+
                 <form id="contact-form">
-                    <div class="mb-5">
-                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1" data-i18n="contactName">Name</label>
-                        <input type="text" id="name" name="name" required="" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500">
+                    <div class="mb-6">
+                        <label for="name" class="block text-sm font-semibold text-gray-200 mb-2" data-i18n="contactName">Name</label>
+                        <input type="text" id="name" name="name" required="" class="w-full p-4 bg-black/50 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-fuchsia-500 focus:border-transparent transition duration-300">
                     </div>
-                    <div class="mb-5">
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1" data-i18n="contactEmail">Email</label>
-                        <input type="email" id="email" name="email" required="" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500">
+                    <div class="mb-6">
+                        <label for="email" class="block text-sm font-semibold text-gray-200 mb-2" data-i18n="contactEmail">Email</label>
+                        <input type="email" id="email" name="email" required="" class="w-full p-4 bg-black/50 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-fuchsia-500 focus:border-transparent transition duration-300">
                     </div>
-                    <div class="mb-5">
-                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1" data-i18n="contactMessage">Message</label>
-                        <textarea id="message" name="message" rows="4" required="" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500"></textarea>
+                    <div class="mb-6">
+                        <label for="message" class="block text-sm font-semibold text-gray-200 mb-2" data-i18n="contactMessage">Message</label>
+                        <textarea id="message" name="message" rows="5" required="" class="w-full p-4 bg-black/50 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-fuchsia-500 focus:border-transparent transition duration-300 resize-none"></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-fuchsia-600 text-white font-semibold py-3 rounded-lg hover:bg-fuchsia-700 transition duration-300 shadow-md" data-i18n="contactSubmit">Send Message</button>
+                    <button type="submit" class="w-full btn-premium text-white font-bold py-4 rounded-lg transition duration-300 shadow-lg transform hover:scale-105 text-lg" data-i18n="contactSubmit">Send Message</button>
                 </form>
 
                 <p id="form-message" class="text-center mt-4 hidden"></p>
             </div>
         </section>
 
-        <!-- 커스텀 모달 메시지 박스 -->
-        <div id="custom-modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden items-center justify-center z-[100]">
-            <div class="bg-white p-6 rounded-lg shadow-2xl max-w-sm w-full">
-                <h3 class="text-xl font-bold mb-4 text-fuchsia-600" data-i18n="modalTitle">Notification</h3>
-                <p id="modal-text" class="text-gray-700 mb-6"></p>
-                <button onclick="closeModal()" class="w-full bg-fuchsia-600 text-white font-semibold py-2 rounded-lg hover:bg-fuchsia-700 transition duration-300" data-i18n="modalConfirm">OK</button>
+        <!-- Premium Modal -->
+        <div id="custom-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-[100]">
+            <div class="card-dark p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 border border-white/10">
+                <h3 class="text-2xl font-bold mb-4 text-fuchsia-400" data-i18n="modalTitle">Notification</h3>
+                <p id="modal-text" class="text-gray-300 mb-8 text-lg"></p>
+                <button onclick="closeModal()" class="w-full btn-premium text-white font-semibold py-3 rounded-lg transition duration-300" data-i18n="modalConfirm">OK</button>
             </div>
         </div>
 
     </main>
 
-    <!-- 푸터 -->
-    <footer class="bg-gray-800 text-white mt-12">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
-            <p data-i18n="footerCopyright">© 2024. AI Gemini. All rights reserved.</p>
-            <p class="text-sm text-gray-400 mt-2" data-i18n="footerNote">This page was created for learning and demonstration purposes.</p>
+    <!-- Premium Footer -->
+    <footer class="bg-black border-t border-white/10 mt-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+            <div class="mb-4">
+                <div class="w-16 h-1 bg-gradient-to-r from-fuchsia-600 to-purple-600 mx-auto mb-6"></div>
+            </div>
+            <p class="text-white font-semibold text-lg mb-2" data-i18n="footerCopyright">© 2024. AI Gemini. All rights reserved.</p>
+            <p class="text-sm text-gray-400" data-i18n="footerNote">This page was created for learning and demonstration purposes.</p>
         </div>
     </footer>
 
