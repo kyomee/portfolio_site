@@ -9,12 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
         :root {
-            color-scheme: dark;
-            --accent: #f97316;
-            --accent-dark: #b45309;
-            --bg: #050505;
-            --bg-alt: #111113;
-            --text-muted: rgba(255, 255, 255, 0.65);
+            color-scheme: light;
+            --accent: #0a0a0a;
+            --accent-dark: #1f1f1f;
+            --bg: #fafafa;
+            --bg-alt: #f2f2f2;
+            --text-muted: rgba(17, 17, 17, 0.6);
         }
 
         * {
@@ -25,10 +25,8 @@
 
         body {
             font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: radial-gradient(circle at top, rgba(249, 115, 22, 0.25), transparent 45%),
-                radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.18), transparent 35%),
-                var(--bg);
-            color: #fff;
+            background: var(--bg);
+            color: #0f0f0f;
             min-height: 100vh;
             line-height: 1.6;
         }
@@ -53,9 +51,9 @@
             position: sticky;
             top: 0;
             z-index: 20;
-            background: rgba(5, 5, 5, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         nav {
@@ -70,6 +68,7 @@
             letter-spacing: 0.12em;
             text-transform: uppercase;
             font-weight: 600;
+            color: var(--accent);
         }
 
         nav ul {
@@ -82,42 +81,95 @@
         }
 
         nav ul li a {
-            color: var(--text-muted);
+            color: rgba(15, 15, 15, 0.7);
             transition: color 0.2s ease;
         }
 
         nav ul li a:hover,
         nav ul li a:focus {
-            color: #fff;
+            color: var(--accent);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .nav-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            color: var(--accent);
         }
 
         .cta-link {
-            border: 1px solid rgba(255, 255, 255, 0.35);
+            border: 1px solid rgba(15, 15, 15, 0.15);
             padding: 0.65rem 1.35rem;
             border-radius: 999px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.18em;
             transition: background 0.25s ease, border-color 0.25s ease;
+            color: var(--accent);
         }
 
         .cta-link:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #fff;
+            background: rgba(0, 0, 0, 0.06);
+            border-color: var(--accent);
         }
 
         .hero {
+            padding: 4.5rem 0 3rem;
+        }
+
+        .hero-marquee {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            overflow: hidden;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 1.2rem 0;
+            color: rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        .hero-marquee-inner {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 18s linear infinite;
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .hero-body {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 2rem;
-            padding: 6rem 0 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 3rem;
+            padding-top: 3rem;
             align-items: center;
         }
 
         .hero h1 {
-            font-size: clamp(2.8rem, 6vw, 4.5rem);
-            line-height: 1.05;
+            font-size: clamp(2.7rem, 5vw, 4rem);
+            line-height: 1.1;
             text-transform: uppercase;
+            letter-spacing: 0.12em;
         }
 
         .hero span {
@@ -125,38 +177,59 @@
         }
 
         .hero p {
+            color: var(--accent-dark);
+            margin: 1.3rem 0 2rem;
+            font-size: 1.05rem;
+        }
+
+        .eyebrow {
+            font-size: 0.9rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
             color: var(--text-muted);
-            margin: 1.5rem 0 2rem;
-            font-size: 1.1rem;
         }
 
         .hero-cta {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            color: var(--accent);
         }
 
         .btn {
-            border: none;
             border-radius: 999px;
             padding: 0.85rem 2rem;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.18em;
             cursor: pointer;
-            transition: transform 0.2s ease, opacity 0.2s ease;
+            transition: transform 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
         }
 
         .btn-primary {
-            background: linear-gradient(120deg, var(--accent), #facc15);
-            color: #050505;
-            font-weight: 600;
+            border: none;
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25);
         }
 
         .btn-outline {
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: #fff;
             background: transparent;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            color: var(--accent);
         }
 
         .btn:hover {
@@ -164,26 +237,23 @@
             opacity: 0.9;
         }
 
-        .hero-media {
-            position: relative;
-            border-radius: 36px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: #000;
+        .hero-portrait {
+            display: flex;
+            justify-content: center;
         }
 
-        .hero-media img {
-            width: 100%;
-            height: 100%;
+        .hero-portrait img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
             object-fit: cover;
+            border: 8px solid #fff;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
         }
 
-        .hero-media::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 30% 20%, rgba(249, 115, 22, 0.35), transparent 50%);
-            mix-blend-mode: screen;
+        .hero-portrait img,
+        .gallery-card img {
+            filter: grayscale(100%);
         }
 
         section {
@@ -192,8 +262,8 @@
 
         .section-title {
             text-transform: uppercase;
-            letter-spacing: 0.4em;
-            font-size: 0.85rem;
+            letter-spacing: 0.3em;
+            font-size: 0.8rem;
             color: var(--text-muted);
             margin-bottom: 0.75rem;
         }
@@ -212,9 +282,9 @@
         .about-card {
             padding: 2.25rem;
             border-radius: 28px;
-            background: rgba(17, 17, 19, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 50px 120px rgba(0, 0, 0, 0.35);
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.08);
         }
 
         .about-card h3 {
@@ -243,7 +313,7 @@
         .stat strong {
             display: block;
             font-size: 2rem;
-            color: #fff;
+            color: var(--accent);
         }
 
         .stat span {
@@ -262,9 +332,9 @@
         }
 
         .card {
-            background: rgba(17, 17, 19, 0.92);
+            background: #fff;
             border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             padding: 1.8rem;
             display: flex;
             flex-direction: column;
@@ -279,6 +349,54 @@
         .card p {
             color: var(--text-muted);
             font-size: 0.95rem;
+        }
+
+        .experience-accordion {
+            margin-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .experience-row {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+            font-size: 1.1rem;
+            text-align: left;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+        }
+
+        .experience-row span:first-child {
+            font-weight: 600;
+        }
+
+        .toggle-icon {
+            font-size: 1.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .experience-row.active .toggle-icon {
+            transform: rotate(45deg);
+        }
+
+        .experience-panel {
+            display: none;
+            padding: 1rem 0 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .experience-panel ul {
+            margin: 1rem 0 0;
+            padding-left: 1.5rem;
+        }
+
+        .experience-panel li {
+            margin-bottom: 0.5rem;
         }
         .text-sm {
             font-size: 0.85rem;
@@ -335,8 +453,8 @@
             margin-top: 2rem;
             padding: 2rem;
             border-radius: 28px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: linear-gradient(120deg, rgba(249, 115, 22, 0.15), rgba(14, 165, 233, 0.08));
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: #fff;
         }
 
         .press h3 {
@@ -354,8 +472,8 @@
             margin-top: 5rem;
             padding: 3rem;
             border-radius: 32px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(17, 17, 19, 0.95);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: #fff;
             text-align: center;
         }
 
@@ -374,13 +492,13 @@
             align-items: center;
             gap: 0.5rem;
             font-size: 1.1rem;
-            color: #fff;
+            color: var(--accent);
         }
 
         footer {
             margin-top: 4rem;
             padding: 2rem 0 4rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
             text-align: center;
             color: var(--text-muted);
             font-size: 0.9rem;
@@ -422,252 +540,202 @@
             <nav>
                 <div class="brand">Nakyum Song</div>
                 <ul>
-                    <li><a href="#about">Profile</a></li>
-                    <li><a href="#spotlight">Case Studies</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#gallery">Campaigns</a></li>
-                    <li><a href="#tour">Advisory</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#gallery">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <a class="cta-link" href="#contact">Schedule Call</a>
+                <div class="nav-actions">
+                    <a class="nav-icon" href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noreferrer">in</a>
+                    <a class="cta-link" href="#contact">Schedule Call</a>
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="page-shell">
         <section class="hero" id="home">
-            <div>
-                <p class="section-title">Brand Leadership · Product Storytelling</p>
-                <h1>Nakyum Song<br /><span>Global Brand Manager</span></h1>
-                <p>
-                    Currently leading worldwide esports and lifestyle narratives at Razer Singapore.
-                    I partner with venture-backed founders and public companies to orchestrate positioning,
-                    launches, and reputation programs that convert product conviction into market share.
-                    12+ years across gaming, consumer tech, and enterprise services shaped this operating playbook.
-                </p>
-                <div class="hero-cta">
-                    <button class="btn btn-primary" onclick="document.getElementById('spotlight').scrollIntoView({ behavior: 'smooth' });">
-                        View Case Studies
-                    </button>
-                    <button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">
-                        Book a Strategy Call
-                    </button>
+            <div class="hero-marquee">
+                <div class="hero-marquee-inner">
+                    <span>NAKYUM SONG</span> &nbsp; <span>NAKYUM SONG</span> &nbsp; <span>NAKYUM SONG</span> &nbsp; <span>NAKYUM SONG</span> &nbsp;
+                    <span>NAKYUM SONG</span> &nbsp; <span>NAKYUM SONG</span> &nbsp; <span>NAKYUM SONG</span> &nbsp; <span>NAKYUM SONG</span>
                 </div>
             </div>
-            <div class="hero-media">
-                <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=900&q=80"
-                    alt="Nakyum Song leading a brand operating workshop" />
+            <div class="hero-body">
+                <div>
+                    <p class="eyebrow">Global Brand &amp; Marketing Manager</p>
+                    <h1>Nakyum Song</h1>
+                    <p>
+                        I’m a creative brand architect with <strong>8 years of experience</strong> across gaming, tech, and entertainment.
+                        I help brands craft powerful stories, execute integrated campaigns, and build global communities that drive real impact.
+                    </p>
+                    <div class="hero-cta">
+                        <a class="btn btn-primary" href="resume.pdf" target="_blank" rel="noreferrer">View Resume</a>
+                        <button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">
+                            Contact
+                        </button>
+                        <a class="btn-icon" href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noreferrer">in</a>
+                    </div>
+                </div>
+                <div class="hero-portrait">
+                    <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6d?auto=format&fit=crop&w=600&q=80" alt="Portrait of Nakyum Song">
+                </div>
             </div>
         </section>
 
         <section class="about" id="about">
             <div class="about-card">
                 <span class="section-title">Profile</span>
-                <h3>Architecting brands for the most ambitious teams in tech</h3>
+                <h3>Minimal foundations with a creative, human finish</h3>
                 <p>
-                    Based in Seoul and San Francisco, I translate complex platform stories into simple, repeatable narratives,
-                    align GTM, product, and communications orgs, and scale trust across every surface area of a company.
-                    From virtual humans to esports championships, every brief blends rigor, creativity, and cultural fluency.
+                    I split my time between Seoul, Singapore, and San Francisco to translate platform stories into tactile expressions.
+                    The through line: sharp positioning, artful restraint, and collaboration with product, GTM, and creative partners so the brand system feels crafted yet scalable.
                 </p>
                 <div class="stat-grid">
                     <div class="stat">
                         <strong>5M+</strong>
-                        <span>campaign views</span>
+                        <span>organic views</span>
                     </div>
                     <div class="stat">
-                        <strong>30%</strong>
-                        <span>efficiency gains</span>
+                        <strong>30</strong>
+                        <span>global launches</span>
                     </div>
                     <div class="stat">
                         <strong>17%</strong>
-                        <span>ops lift</span>
+                        <span>workflow lift</span>
                     </div>
                 </div>
             </div>
             <div class="about-card">
                 <h3>Focus Areas</h3>
                 <p>
-                    • Global brand systems + product storytelling<br />
-                    • Multi-region launch orchestration + lifecycle marketing<br />
-                    • Executive communications + cross-functional enablement<br />
-                    • Community, creator, and esports ecosystem design
+                    • Creative direction + brand systems for tech<br />
+                    • Multi-region launch architecture + lifecycle orchestration<br />
+                    • Narrative design for executives, creators, and communities<br />
+                    • Esports, virtual humans, and culture-building initiatives
                 </p>
                 <p style="margin-top: 1rem;">
-                    Operating at the intersection of brand, revenue, and culture ensures every launch creates measurable lift for pipeline and loyalty.
+                    Every deliverable is meant to feel collectible: disciplined structure, selective texture, and measurable lift for the business.
                 </p>
             </div>
         </section>
 
         <section id="experience">
             <p class="section-title">Experience</p>
-            <h2 class="section-headline">Teams and missions that shaped the craft</h2>
-            <div class="spotlight-grid">
-                <article class="card">
-                    <h4>Global Brand Manager · Razer — Singapore</h4>
-                    <p class="text-sm">
-                        May 2024 – Present
-                    </p>
-                    <p>
-                        Spearheading 2024/2025 Esports Campaign programs, guiding strategic positioning and consistency across product, digital, and creative squads.
-                        Built the 20th Anniversary guideline system and manage creators, vendors, and content studios to ship premium experiences at scale.
-                    </p>
-                </article>
-                <article class="card">
-                    <h4>Creative Marketing Manager · KRAFTON — Korea</h4>
-                    <p class="text-sm">
-                        Feb 2021 – May 2024
-                    </p>
-                    <p>
-                        Launched KRAFTON’s first virtual artist, ANA, including narrative, visual identity, and tone of voice—growing to 5M+ views and 20K+ followers in 50 days.
-                        Directed cross-platform content for virtual human, PUBG Mobile, and PUBG NEW STATE while orchestrating live/digital community activations.
-                    </p>
-                </article>
-                <article class="card">
-                    <h4>Account Manager · Hill &amp; Knowlton Strategies — Korea</h4>
-                    <p class="text-sm">
-                        Aug 2019 – Feb 2021
-                    </p>
-                    <p>
-                        Crafted influence programs for LG Mobile across 21 markets, including the brand’s first global virtual unveiling, lifting campaign efficiency by 30%.
-                        Managed flagship partnerships and aligned culture-led storytelling to product launches.
-                    </p>
-                </article>
-                <article class="card">
-                    <h4>Marketing Associate · Rotageek — United Kingdom</h4>
-                    <p class="text-sm">
-                        May 2018 – Oct 2018
-                    </p>
-                    <p>
-                        Developed the Korean go-to-market blueprint via competitive analysis, consumer insight work, and positioning studies for workforce tech adoption.
-                    </p>
-                </article>
-                <article class="card">
-                    <h4>Marketing Associate · University of Leeds — United Kingdom</h4>
-                    <p class="text-sm">
-                        Nov 2017 – May 2018
-                    </p>
-                    <p>
-                        Executed BTL campaigns for Leeds University Business School and IABC, owning event promotion and digital engagement programs.
-                    </p>
-                </article>
-                <article class="card">
-                    <h4>Junior Consultant · SK Corporation — Korea</h4>
-                    <p class="text-sm">
-                        Jan 2013 – Dec 2015
-                    </p>
-                    <p>
-                        Supported six affiliates in modernizing SAP HR systems, delivering a 17% efficiency lift through automation, hands-on training, and issue resolution.
-                    </p>
-                </article>
-            </div>
-        </section>
+            <h2 class="section-headline">Global Brand &amp; Marketing Strategist with 8 years of experience in gaming, tech, and entertainment</h2>
+            <div class="experience-accordion">
+                <button class="experience-row" data-target="exp-razer">
+                    <span>RAZER · Global Brand Manager (Singapore)</span>
+                    <span class="toggle-icon">+</span>
+                </button>
+                <div id="exp-razer" class="experience-panel">
+                    <p class="text-sm">May 2024 – Present</p>
+                    <ul>
+                        <li>Spearheading global esports and lifestyle campaigns, ensuring consistent positioning across product, digital, and creative teams.</li>
+                        <li>Developed and enforced Razer’s 20th Anniversary brand system, balancing global strategy with local nuance.</li>
+                        <li>Manage creative partners and studios to deliver premium assets and experiences at scale.</li>
+                        <li>Mentor a distributed studio network so every touchpoint—from hardware drops to live broadcasts—feels cohesive.</li>
+                    </ul>
+                </div>
 
-        <section id="spotlight">
-            <p class="section-title">Case Studies</p>
-            <h2 class="section-headline">Go-to-market systems built for category leaders</h2>
-            <div class="spotlight-grid">
-                <article class="card">
-                    <h4>Northstar Platform</h4>
-                    <p>
-                        Repositioned a data-observability startup as an enterprise operating layer,
-                        increasing SQL trial conversions 3.1x and inspiring a $220M Series C.
-                    </p>
-                </article>
-                <article class="card">
-                    <h4>Synapse Identity System</h4>
-                    <p>
-                        Shaped the unified messaging, product visuals, and playbook for a Fortune 100 cloud spin-out
-                        across 12 countries within eight weeks of acquisition close.
-                    </p>
-                </article>
-                <article class="card">
-                    <h4>Aurora Merge</h4>
-                    <p>
-                        Led the integration brand workstream for a hardware + software merger, harmonizing developer relations,
-                        PR, and partner programs under a shared, data-backed promise.
-                    </p>
-                </article>
-                <article class="card">
-                    <h4>Pulse Collective</h4>
-                    <p>
-                        Built a member-led operator community with research salons and benchmark reports, delivering 68% MoM engagement
-                        and surfacing net-new $14M ARR opportunities.
-                    </p>
-                </article>
+                <button class="experience-row" data-target="exp-krafton">
+                    <span>KRAFTON · Creative Marketing Manager (Korea)</span>
+                    <span class="toggle-icon">+</span>
+                </button>
+                <div id="exp-krafton" class="experience-panel">
+                    <p class="text-sm">Feb 2021 – May 2024</p>
+                    <ul>
+                        <li>Launched ANA, KRAFTON’s first virtual artist, crafting narrative, visual identity, and tone of voice.</li>
+                        <li>Achieved 5M+ views and 20K+ followers in 50 days through cross-platform content strategy.</li>
+                        <li>Oversaw production for virtual human, PUBG Mobile, and PUBG NEW STATE across social, video, and live activations.</li>
+                        <li>Partnered with internal artist teams to ensure asset quality and alignment with the brand story.</li>
+                    </ul>
+                </div>
+
+                <button class="experience-row" data-target="exp-hk">
+                    <span>Hill &amp; Knowlton Strategies · Account Manager (Korea)</span>
+                    <span class="toggle-icon">+</span>
+                </button>
+                <div id="exp-hk" class="experience-panel">
+                    <p class="text-sm">Aug 2019 – Feb 2021</p>
+                    <ul>
+                        <li>Designed global influencer marketing strategies for LG Mobile across 21 markets with cultural insight.</li>
+                        <li>Produced LG Mobile’s first virtual unveiling event, setting new launch benchmarks.</li>
+                        <li>Negotiated and managed influencer partnerships, driving 30% gains in campaign efficiency.</li>
+                    </ul>
+                </div>
+
+                <button class="experience-row" data-target="exp-rota">
+                    <span>Rotageek · Marketing Associate (United Kingdom)</span>
+                    <span class="toggle-icon">+</span>
+                </button>
+                <div id="exp-rota" class="experience-panel">
+                    <p class="text-sm">May 2018 – Oct 2018</p>
+                    <ul>
+                        <li>Developed the Korean go-to-market strategy through competitive analysis and market research.</li>
+                        <li>Produced strategic reports analyzing consumer behavior and positioning.</li>
+                    </ul>
+                </div>
+
+                <button class="experience-row" data-target="exp-leeds">
+                    <span>University of Leeds · Marketing Associate (United Kingdom)</span>
+                    <span class="toggle-icon">+</span>
+                </button>
+                <div id="exp-leeds" class="experience-panel">
+                    <p class="text-sm">Nov 2017 – May 2018</p>
+                    <ul>
+                        <li>Executed BTL marketing strategies for Leeds University Business School and IABC.</li>
+                        <li>Led event promotions and digital marketing initiatives.</li>
+                    </ul>
+                </div>
+
+                <button class="experience-row" data-target="exp-sk">
+                    <span>SK Corporation · Junior Consultant (Korea)</span>
+                    <span class="toggle-icon">+</span>
+                </button>
+                <div id="exp-sk" class="experience-panel">
+                    <p class="text-sm">Jan 2013 – Dec 2015</p>
+                    <ul>
+                        <li>Supported six affiliate companies in optimizing SAP HR systems for a 17% efficiency lift.</li>
+                        <li>Delivered trainings, troubleshooting, and alignment across stakeholder teams.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <section id="gallery">
-            <p class="section-title">Campaign Library</p>
-            <h2 class="section-headline">Scenes from integrated launches</h2>
+            <p class="section-title">Campaign Capsules</p>
+            <h2 class="section-headline">Snapshots from recent creative direction</h2>
             <div class="gallery-grid">
                 <article class="card gallery-card">
                     <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=900&q=80" alt="Workshop with founders" />
                     <div>
                         <h4>Launch Room · San Francisco</h4>
-                        <p>Aligning product, revenue, and creative teams around the new customer promise.</p>
+                        <p>A monochrome war-room where product, revenue, and creative leaders align on the promise and palette pre-launch.</p>
                     </div>
                 </article>
                 <article class="card gallery-card">
                     <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80" alt="Team reviewing dashboards" />
                     <div>
                         <h4>Leadership Offsite · Berlin</h4>
-                        <p>Instrumenting shared metrics for PLG acquisition and enterprise expansion.</p>
+                        <p>Designing a minimalist measurement room for PLG + enterprise dashboards so creative choices tie back to shared KPIs.</p>
                     </div>
                 </article>
                 <article class="card gallery-card">
                     <img src="https://images.unsplash.com/photo-1481886756534-1e3b0c5cc6d6?auto=format&fit=crop&w=900&q=80" alt="Creative direction mood board" />
                     <div>
                         <h4>Creator Lab · Singapore</h4>
-                        <p>Co-developing visual language systems with product design and partner studios.</p>
+                        <p>Co-developing a tactile visual language with product design, makers, and partner studios for virtual humans.</p>
                     </div>
                 </article>
             </div>
         </section>
 
-        <section id="tour">
-            <p class="section-title">Advisory Calendar</p>
-            <h2 class="section-headline">Fractional brand leadership engagements · 2025</h2>
-            <div class="tour-grid">
-                <article class="card tour-card">
-                    <div class="date">Q1 2025</div>
-                    <div class="city">San Francisco</div>
-                    <div class="venue">AI infra scale-up</div>
-                    <a href="#">Request Brief →</a>
-                </article>
-                <article class="card tour-card">
-                    <div class="date">Q2 2025</div>
-                    <div class="city">Berlin</div>
-                    <div class="venue">Climate fintech portfolio</div>
-                    <a href="#">See Scope →</a>
-                </article>
-                <article class="card tour-card">
-                    <div class="date">Q3 2025</div>
-                    <div class="city">Singapore</div>
-                    <div class="venue">APAC commerce platform</div>
-                    <a href="#">Book Workshop →</a>
-                </article>
-                <article class="card tour-card">
-                    <div class="date">Q4 2025</div>
-                    <div class="city">Toronto</div>
-                    <div class="venue">Health tech consortium</div>
-                    <a href="#">Partner Inquiry →</a>
-                </article>
-            </div>
-            <div class="press">
-                <h3>Press</h3>
-                <p>
-                    "No one orchestrates product, story, and GTM quite like Nakyum—the impact looks like a category launch,
-                    the experience feels like a founder's best ally." — TechCrunch
-                </p>
-            </div>
-        </section>
-
         <section class="contact" id="contact">
-            <h2>Advisory &amp; Collaborations</h2>
+            <h2>Open collaborations</h2>
             <p>
-                Available for fractional CBO, new platform introductions, and interim brand leadership across North America, Europe, and APAC.
-                Send context to start a working session.
+                Available for global brand leadership, creative direction for launches, and bespoke studio partnerships across North America, Europe, and APAC.
+                Send context—mood boards welcome.
             </p>
             <a href="mailto:partner@nakyumsong.com">partner@nakyumsong.com</a>
         </section>
@@ -680,8 +748,23 @@
                 <a href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noreferrer">LinkedIn</a>
                 <a href="https://www.substack.com" target="_blank" rel="noreferrer">Substack</a>
             </div>
-            <div>Operating at the intersection of product, brand, and revenue.</div>
+            <div>Minimal creative systems for bold tech brands.</div>
         </div>
-    </footer>
+</footer>
+<script>
+    document.querySelectorAll('.experience-row').forEach(button => {
+        button.addEventListener('click', () => {
+            const targetId = button.getAttribute('data-target');
+            const panel = document.getElementById(targetId);
+            const isOpen = panel.style.display === 'block';
+            document.querySelectorAll('.experience-panel').forEach(p => p.style.display = 'none');
+            document.querySelectorAll('.experience-row').forEach(btn => btn.classList.remove('active'));
+            if (!isOpen) {
+                panel.style.display = 'block';
+                button.classList.add('active');
+            }
+        });
+    });
+</script>
 </body>
 </html>
