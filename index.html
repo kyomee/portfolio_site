@@ -96,6 +96,18 @@
             gap: 0.85rem;
         }
 
+        .nav-toggle {
+            display: none;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            background: transparent;
+            border-radius: 999px;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+        }
+
         .nav-icon {
             display: inline-flex;
             align-items: center;
@@ -143,9 +155,16 @@
         }
 
         .hero-marquee-inner {
-            display: inline-block;
+            display: flex;
+            width: max-content;
             white-space: nowrap;
             animation: marquee 18s linear infinite;
+        }
+
+        .hero-marquee-group {
+            display: flex;
+            gap: 2rem;
+            padding-right: 2rem;
         }
 
         @keyframes marquee {
@@ -196,6 +215,14 @@
             align-items: center;
         }
 
+        .hero-cta .btn,
+        .hero-cta .btn-icon {
+            min-height: 52.22px;
+            line-height: 1;
+            font-size: 0.9rem;
+            letter-spacing: 0.18em;
+        }
+
         .btn-icon {
             width: 48px;
             height: 48px;
@@ -217,6 +244,9 @@
             letter-spacing: 0.18em;
             cursor: pointer;
             transition: transform 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn-primary {
@@ -258,6 +288,7 @@
 
         section {
             margin-top: 4rem;
+            scroll-margin-top: 96px;
         }
 
         .section-title {
@@ -436,10 +467,15 @@
             scroll-snap-align: start;
         }
 
+        .carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.75rem;
+        }
+
         .carousel button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+            position: static;
+            transform: none;
             border: none;
             background: rgba(0, 0, 0, 0.7);
             color: #fff;
@@ -454,14 +490,6 @@
 
         .carousel button:hover {
             opacity: 0.85;
-        }
-
-        .carousel .prev {
-            left: 6px;
-        }
-
-        .carousel .next {
-            right: 6px;
         }
 
         .project-toggle {
@@ -681,8 +709,36 @@
         }
 
         @media (max-width: 720px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
             nav ul {
                 display: none;
+                width: 100%;
+                order: 3;
+            }
+
+            nav.nav-open ul {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                padding: 1.5rem 0;
+            }
+
+            .nav-toggle {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                order: 2;
+            }
+
+            .nav-actions {
+                width: 100%;
+                justify-content: flex-start;
+                order: 4;
             }
 
             header {
@@ -694,9 +750,36 @@
                 align-items: stretch;
             }
 
+            .hero-cta .btn {
+                width: 100%;
+            }
+
+            .hero-cta .btn-icon {
+                width: 100%;
+                height: auto;
+                border-radius: 999px;
+                padding: 0.85rem 2rem;
+            }
+
             .card,
             .about-card {
                 padding: 1.4rem;
+            }
+
+            section {
+                scroll-margin-top: 24px;
+            }
+
+            .carousel-controls {
+                justify-content: center;
+                gap: 1rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-marquee-inner {
+                animation: none;
+                transform: none;
             }
         }
     </style>
@@ -706,7 +789,8 @@
         <div class="page-shell">
             <nav>
                 <a class="brand" href="#home">Nakyum Song</a>
-                <ul>
+                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+                <ul class="nav-links" id="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#experience">Experience</a></li>
@@ -715,7 +799,7 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="nav-actions">
-                    <a class="nav-icon" href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noreferrer">in</a>
+                    <a class="nav-icon" href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noopener noreferrer">in</a>
                     <a class="cta-link" href="#contact">Schedule Call</a>
                 </div>
             </nav>
@@ -726,8 +810,26 @@
         <section class="hero" id="home">
             <div class="hero-marquee">
                 <div class="hero-marquee-inner">
-                    <span>NAKYUM SONG</span> &nbsp; <span>NAKYUM SONG</span> &nbsp; <span>NAKYUM SONG</span> &nbsp; <span>NAKYUM SONG</span> &nbsp;
-                    <span>NAKYUM SONG</span> &nbsp; <span>NAKYUM SONG</span> &nbsp; <span>NAKYUM SONG</span> &nbsp; <span>NAKYUM SONG</span>
+                    <div class="hero-marquee-group">
+                        <span>NAKYUM SONG</span>
+                        <span>NAKYUM SONG</span>
+                        <span>NAKYUM SONG</span>
+                        <span>NAKYUM SONG</span>
+                        <span>NAKYUM SONG</span>
+                        <span>NAKYUM SONG</span>
+                        <span>NAKYUM SONG</span>
+                        <span>NAKYUM SONG</span>
+                    </div>
+                    <div class="hero-marquee-group" aria-hidden="true">
+                        <span>NAKYUM SONG</span>
+                        <span>NAKYUM SONG</span>
+                        <span>NAKYUM SONG</span>
+                        <span>NAKYUM SONG</span>
+                        <span>NAKYUM SONG</span>
+                        <span>NAKYUM SONG</span>
+                        <span>NAKYUM SONG</span>
+                        <span>NAKYUM SONG</span>
+                    </div>
                 </div>
             </div>
             <div class="hero-body">
@@ -738,11 +840,11 @@
                         I help tech, gaming, and lifestyle brands build clear identity, content that performs, and marketing systems that scale.
                     </p>
                     <div class="hero-cta">
-                        <a class="btn btn-primary" href="resume.pdf" target="_blank" rel="noreferrer">View Resume</a>
-                        <button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">
+                        <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">
                             Contact
                         </button>
-                        <a class="btn-icon" href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noreferrer">in</a>
+                        <a class="btn btn-outline" href="mailto:nakyumsong@gmail.com?subject=Resume%20Request">Request Resume</a>
+                        <a class="btn-icon" href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noopener noreferrer">in</a>
                     </div>
                 </div>
                 <div class="hero-portrait">
@@ -908,7 +1010,7 @@
                                 <li>Improved production efficiency and cross-functional alignment.</li>
                             </ul>
                             <div class="project-links">
-                                <a href="https://www.youtube.com/watch?v=yRw2bimzDzY" target="_blank" rel="noreferrer">Watch video</a>
+                                <a href="https://www.youtube.com/watch?v=yRw2bimzDzY" target="_blank" rel="noopener noreferrer">Watch video</a>
                             </div>
                         </div>
                     </article>
@@ -946,7 +1048,7 @@
                                 <li>Expanded from music to gaming creator formats.</li>
                             </ul>
                             <div class="project-links">
-                                <a href="https://www.youtube.com/watch?v=a01joCdGQWU" target="_blank" rel="noreferrer">Watch debut video</a>
+                                <a href="https://www.youtube.com/watch?v=a01joCdGQWU" target="_blank" rel="noopener noreferrer">Watch debut video</a>
                             </div>
                         </div>
                     </article>
@@ -984,7 +1086,7 @@
                                 <li>Strengthened content consistency across dev and marketing.</li>
                             </ul>
                             <div class="project-links">
-                                <a href="https://www.youtube.com/watch?v=46adWxO8a9Q" target="_blank" rel="noreferrer">Watch launch trailer</a>
+                                <a href="https://www.youtube.com/watch?v=46adWxO8a9Q" target="_blank" rel="noopener noreferrer">Watch launch trailer</a>
                             </div>
                         </div>
                     </article>
@@ -1021,7 +1123,7 @@
                                 <li>Improved workflow efficiency by 20% while increasing output.</li>
                             </ul>
                             <div class="project-links">
-                                <a href="https://www.youtube.com/watch?v=eYl7BnEa3kc" target="_blank" rel="noreferrer">Watch update feature</a>
+                                <a href="https://www.youtube.com/watch?v=eYl7BnEa3kc" target="_blank" rel="noopener noreferrer">Watch update feature</a>
                             </div>
                         </div>
                     </article>
@@ -1057,14 +1159,16 @@
                                 <li>Repositioned LG WING as practical and creator-friendly.</li>
                             </ul>
                             <div class="project-links">
-                                <a href="https://www.youtube.com/watch?v=aPXTqZdQ8js" target="_blank" rel="noreferrer">Campaign video 1</a>
-                                <a href="https://www.youtube.com/watch?v=Ak7IQhXnot4" target="_blank" rel="noreferrer">Campaign video 2</a>
+                                <a href="https://www.youtube.com/watch?v=aPXTqZdQ8js" target="_blank" rel="noopener noreferrer">Campaign video 1</a>
+                                <a href="https://www.youtube.com/watch?v=Ak7IQhXnot4" target="_blank" rel="noopener noreferrer">Campaign video 2</a>
                             </div>
                         </div>
                     </article>
                 </div>
-                <button class="prev" aria-label="Previous project">‹</button>
-                <button class="next" aria-label="Next project">›</button>
+                <div class="carousel-controls">
+                    <button class="prev" aria-label="Previous project">‹</button>
+                    <button class="next" aria-label="Next project">›</button>
+                </div>
             </div>
 
             <div class="about-card" style="margin-top: 2rem;">
@@ -1123,13 +1227,31 @@
         <div class="page-shell">
             <div>© 2025 Nakyum Song. All rights reserved.</div>
             <div class="socials">
-                <a href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noreferrer">LinkedIn</a>
-                <a href="https://www.substack.com" target="_blank" rel="noreferrer">Substack</a>
+                <a href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://www.substack.com" target="_blank" rel="noopener noreferrer">Substack</a>
             </div>
             <div>Minimal creative systems for bold tech brands.</div>
         </div>
 </footer>
 <script>
+    // Mobile nav toggle
+    const nav = document.querySelector('nav');
+    const navToggle = document.querySelector('.nav-toggle');
+    if (nav && navToggle) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = nav.classList.toggle('nav-open');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        nav.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', () => {
+                if (!nav.classList.contains('nav-open')) return;
+                nav.classList.remove('nav-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
     // Experience accordion
     document.querySelectorAll('.experience-row').forEach(button => {
         button.addEventListener('click', () => {
