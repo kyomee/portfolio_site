@@ -1,0 +1,79 @@
+---
+/**
+ * Blog Preview Section
+ * Placeholder with "Coming Soon" state
+ */
+---
+
+<section id="blog" class="blog-preview section">
+  <div class="container">
+    <span class="section-label">Blog</span>
+    <h2 class="blog-headline">Thoughts & Insights</h2>
+    <p class="blog-subtitle">
+      Articles on brand strategy, marketing, and creative leadership
+    </p>
+
+    <div class="coming-soon">
+      <div class="coming-soon-icon">✍</div>
+      <h3>Coming Soon</h3>
+      <p>
+        I'm working on sharing insights from my experience in brand strategy and creative marketing. Check back soon for articles on building memorable brands.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .blog-preview {
+    background-color: var(--color-bg-secondary);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .blog-headline {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .blog-subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-12);
+  }
+
+  .coming-soon {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: var(--space-12);
+    background: var(--color-bg-tertiary);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-2xl);
+    text-align: center;
+  }
+
+  .coming-soon-icon {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .coming-soon h3 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-4);
+    color: var(--color-accent);
+  }
+
+  .coming-soon p {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+  }
+</style>

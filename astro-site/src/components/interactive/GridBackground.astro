@@ -1,0 +1,103 @@
+---
+/**
+ * Interactive grid background with cursor glow effect
+ * Creates a subtle grid pattern that responds to mouse movement
+ */
+---
+
+<div class="grid-background" id="grid-background">
+  <div class="grid-pattern"></div>
+  <div class="cursor-glow" id="cursor-glow"></div>
+</div>
+
+<style>
+  .grid-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .grid-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, var(--color-border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.3;
+    mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+  }
+
+  .cursor-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      var(--color-accent-glow) 0%,
+      rgba(99, 102, 241, 0.1) 30%,
+      transparent 70%
+    );
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    will-change: transform;
+  }
+
+  .cursor-glow.visible {
+    opacity: 1;
+  }
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    .cursor-glow {
+      display: none;
+    }
+  }
+
+  /* Hide on touch devices */
+  @media (hover: none) {
+    .cursor-glow {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const gridBackground = document.getElementById('grid-background');
+  const cursorGlow = document.getElementById('cursor-glow');
+
+  if (gridBackground && cursorGlow) {
+    let rafId: number | null = null;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    gridBackground.addEventListener('mouseenter', () => {
+      cursorGlow.classList.add('visible');
+    });
+
+    gridBackground.addEventListener('mouseleave', () => {
+      cursorGlow.classList.remove('visible');
+    });
+
+    gridBackground.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (!rafId) {
+        rafId = requestAnimationFrame(() => {
+          const rect = gridBackground.getBoundingClientRect();
+          const x = mouseX - rect.left;
+          const y = mouseY - rect.top;
+          cursorGlow.style.left = `${x}px`;
+          cursorGlow.style.top = `${y}px`;
+          rafId = null;
+        });
+      }
+    });
+  }
+</script>

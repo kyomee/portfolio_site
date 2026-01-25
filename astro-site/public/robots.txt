@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nakyumsong.com/sitemap-index.xml

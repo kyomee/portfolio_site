@@ -1,0 +1,302 @@
+---
+/**
+ * Contact Section
+ * Form + direct contact sidebar
+ */
+---
+
+<section id="contact" class="contact section">
+  <div class="container">
+    <span class="section-label">Contact</span>
+    <h2 class="contact-headline">Let's Work Together</h2>
+    <p class="contact-subtitle">
+      Have a project in mind? I'd love to hear about it.
+    </p>
+
+    <div class="contact-grid">
+      <!-- Contact Form -->
+      <form
+        class="contact-form"
+        action="https://formsubmit.co/nakyumsong@gmail.com"
+        method="POST"
+      >
+        <input type="hidden" name="_subject" value="New Contact from Portfolio" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="_honey" style="display:none" />
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder="Your name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="your@email.com"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            placeholder="Tell me about your project..."
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+          Send Message
+          <span class="btn-arrow">&rarr;</span>
+        </button>
+      </form>
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <div class="info-card">
+          <h3>Connect</h3>
+          <div class="social-links">
+            <a
+              href="https://linkedin.com/in/nakyumsong"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/nakyumsong"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://twitter.com/nakyumsong"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link"
+            >
+              Twitter
+            </a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h3>Location</h3>
+          <p class="info-text">Based in Singapore</p>
+          <p class="info-subtext">Available for remote & global projects</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background-color: var(--color-bg-primary);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .contact-headline {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .contact-subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-12);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: var(--space-12);
+    align-items: start;
+  }
+
+  /* Form */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .form-group label {
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text-secondary);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: var(--space-4);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    font-family: inherit;
+    font-size: var(--text-base);
+    color: var(--color-text-primary);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--color-text-tertiary);
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-glow);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--gradient-accent);
+    color: var(--color-text-primary);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-arrow {
+    transition: transform var(--transition-base);
+  }
+
+  .btn-primary:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+
+  /* Info Cards */
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .info-card {
+    padding: var(--space-6);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+  }
+
+  .info-card h3 {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .info-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-base);
+    color: var(--color-text-primary);
+    transition: color var(--transition-fast);
+  }
+
+  .info-link:hover {
+    color: var(--color-accent);
+  }
+
+  .info-icon {
+    font-size: var(--text-lg);
+  }
+
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .social-link {
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+  }
+
+  .social-link:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .info-text {
+    font-size: var(--text-base);
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  .info-subtext {
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+    margin-top: var(--space-1);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+  }
+</style>

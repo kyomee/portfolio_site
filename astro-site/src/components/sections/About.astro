@@ -1,0 +1,374 @@
+---
+/**
+ * About Section
+ * Photo + bio layout with stats bar and skills grid
+ */
+
+const stats = [
+  { value: "5M+", label: "Organic Views" },
+  { value: "30", label: "Global Launches" },
+  { value: "10+", label: "Years Experience" },
+];
+
+const skills = [
+  "Brand Strategy",
+  "Content Marketing",
+  "Creative Direction",
+  "Campaign Management",
+  "Influencer Marketing",
+  "Social Media",
+  "Esports",
+  "Virtual Artists",
+  "Product Launches",
+  "Narrative Design",
+];
+
+const languages = [
+  { name: "Korean", level: "Native" },
+  { name: "English", level: "Fluent" },
+];
+---
+
+<section id="about" class="about section">
+  <div class="container">
+    <div class="about-grid">
+      <!-- Photo Column -->
+      <div class="about-photo">
+        <div class="photo-wrapper">
+          <img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
+            alt="Nakyum Song"
+            loading="lazy"
+          />
+          <div class="photo-glow"></div>
+        </div>
+      </div>
+
+      <!-- Content Column -->
+      <div class="about-content">
+        <span class="section-label">About Me</span>
+        <h2 class="about-title">Brand & Content Strategist</h2>
+
+        <div class="about-bio">
+          <p>
+            I'm a Brand & Content Strategist with 10+ years of experience in gaming, tech, and lifestyle brands. I help companies build a clear brand foundation, craft high-performing content strategies, and create marketing systems that drive real business growth.
+          </p>
+          <p>
+            My work combines brand storytelling, creative direction, and data-backed decisions — every deliverable is meant to feel collectible: disciplined structure, selective texture, and measurable lift for the business.
+          </p>
+        </div>
+
+        <div class="about-focus">
+          <h3>Focus Areas</h3>
+          <ul>
+            <li>Creative direction + brand systems for tech</li>
+            <li>Multi-region launch architecture + lifecycle orchestration</li>
+            <li>Narrative design for executives, creators, and communities</li>
+            <li>Esports, virtual humans, and culture-building initiatives</li>
+          </ul>
+        </div>
+
+        <a href="/resume.pdf" class="btn btn-secondary" target="_blank" rel="noopener">
+          View Resume
+          <span class="btn-icon">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+      {stats.map((stat) => (
+        <div class="stat-item">
+          <span class="stat-value">{stat.value}</span>
+          <span class="stat-label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="skills-section">
+      <h3 class="skills-title">Skills & Expertise</h3>
+      <div class="skills-grid">
+        {skills.map((skill) => (
+          <span class="skill-tag">{skill}</span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Languages -->
+    <div class="languages-section">
+      <h3 class="languages-title">Languages</h3>
+      <div class="languages-grid">
+        {languages.map((lang) => (
+          <div class="language-item">
+            <span class="language-name">{lang.name}</span>
+            <span class="language-level">{lang.level}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background-color: var(--color-bg-secondary);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+
+  /* Photo */
+  .about-photo {
+    position: sticky;
+    top: calc(4rem + var(--space-8));
+  }
+
+  .photo-wrapper {
+    position: relative;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+  }
+
+  .photo-wrapper img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+  }
+
+  .photo-glow {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      var(--color-bg-secondary) 0%,
+      transparent 30%
+    );
+  }
+
+  /* Content */
+  .section-label {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .about-title {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-6);
+  }
+
+  .about-bio {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+  }
+
+  .about-bio p {
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .about-focus {
+    margin-bottom: var(--space-8);
+    padding: var(--space-6);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+
+  .about-focus h3 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-4);
+  }
+
+  .about-focus ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .about-focus li {
+    color: var(--color-text-secondary);
+    padding-left: var(--space-4);
+    position: relative;
+  }
+
+  .about-focus li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+  }
+
+  /* Button */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .btn-icon {
+    font-size: 1.1em;
+  }
+
+  /* Stats Bar */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-16);
+    padding: var(--space-8);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: var(--space-2);
+  }
+
+  .stat-label {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  /* Skills */
+  .skills-section {
+    margin-top: var(--space-12);
+  }
+
+  .skills-title {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-6);
+    text-align: center;
+  }
+
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  .skill-tag {
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+  }
+
+  .skill-tag:hover {
+    border-color: var(--color-accent);
+    color: var(--color-text-primary);
+  }
+
+  /* Languages */
+  .languages-section {
+    margin-top: var(--space-12);
+  }
+
+  .languages-title {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-6);
+    text-align: center;
+  }
+
+  .languages-grid {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-8);
+  }
+
+  .language-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-4) var(--space-6);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .language-name {
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    color: var(--color-text-primary);
+  }
+
+  .language-level {
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+
+    .about-photo {
+      position: static;
+      max-width: 250px;
+      margin: 0 auto;
+    }
+
+    .stats-bar {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+
+    .stat-item {
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .stat-item:last-child {
+      border-bottom: none;
+    }
+  }
+</style>

@@ -1,0 +1,121 @@
+---
+/**
+ * Custom Cursor
+ * Dot + follower circle effect (desktop only)
+ * Respects prefers-reduced-motion
+ */
+---
+
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-follower" aria-hidden="true"></div>
+
+<style>
+  .cursor-dot,
+  .cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .cursor-follower {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-accent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease;
+  }
+
+  /* Hide on touch devices and when reduced motion preferred */
+  @media (pointer: coarse), (prefers-reduced-motion: reduce) {
+    .cursor-dot,
+    .cursor-follower {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+  // Only run on desktop with fine pointer
+  if (window.matchMedia('(pointer: fine)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+
+    const dot = document.querySelector('.cursor-dot') as HTMLElement;
+    const follower = document.querySelector('.cursor-follower') as HTMLElement;
+
+    if (dot && follower) {
+      let mouseX = 0;
+      let mouseY = 0;
+      let followerX = 0;
+      let followerY = 0;
+
+      // Show cursor elements
+      dot.style.opacity = '1';
+      follower.style.opacity = '1';
+
+      // Hide default cursor
+      document.body.style.cursor = 'none';
+
+      // Track mouse position
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        // Dot follows immediately
+        dot.style.left = `${mouseX}px`;
+        dot.style.top = `${mouseY}px`;
+      });
+
+      // Follower with lag effect
+      function animateFollower() {
+        followerX += (mouseX - followerX) * 0.15;
+        followerY += (mouseY - followerY) * 0.15;
+
+        follower.style.left = `${followerX}px`;
+        follower.style.top = `${followerY}px`;
+
+        requestAnimationFrame(animateFollower);
+      }
+      animateFollower();
+
+      // Hover effects on interactive elements
+      const interactiveElements = document.querySelectorAll('a, button, [data-tilt], input, textarea');
+
+      interactiveElements.forEach((el) => {
+        el.addEventListener('mouseenter', () => {
+          follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
+          follower.style.borderColor = 'var(--color-accent)';
+          follower.style.background = 'rgba(99, 102, 241, 0.1)';
+        });
+
+        el.addEventListener('mouseleave', () => {
+          follower.style.transform = 'translate(-50%, -50%) scale(1)';
+          follower.style.background = 'transparent';
+        });
+      });
+
+      // Hide when mouse leaves window
+      document.addEventListener('mouseleave', () => {
+        dot.style.opacity = '0';
+        follower.style.opacity = '0';
+      });
+
+      document.addEventListener('mouseenter', () => {
+        dot.style.opacity = '1';
+        follower.style.opacity = '1';
+      });
+    }
+  }
+</script>

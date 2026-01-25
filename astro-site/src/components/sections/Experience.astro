@@ -1,0 +1,286 @@
+---
+/**
+ * Experience Section
+ * Accordion with exclusive-open behavior for work history
+ */
+
+const experiences = [
+  {
+    id: "razer",
+    company: "RAZER",
+    role: "Global Brand Manager",
+    location: "Singapore",
+    period: "May 2024 – Present",
+    teaser: "Global esports and lifestyle campaigns with a unified anniversary brand system.",
+    details: [
+      "Spearheading global esports and lifestyle campaigns, ensuring consistent positioning across product, digital, and creative teams.",
+      "Developed and enforced Razer's 20th Anniversary brand system, balancing global strategy with local nuance.",
+      "Manage creative partners and studios to deliver premium assets and experiences at scale.",
+      "Mentor a distributed studio network so every touchpoint—from hardware drops to live broadcasts—feels cohesive.",
+    ],
+  },
+  {
+    id: "krafton",
+    company: "KRAFTON",
+    role: "Creative Marketing Manager",
+    location: "Korea",
+    period: "Feb 2021 – May 2024",
+    teaser: "Built ANA from concept to 5M+ views in 50 days with a creator-first narrative.",
+    details: [
+      "Launched ANA, KRAFTON's first virtual artist, crafting narrative, visual identity, and tone of voice.",
+      "Achieved 5M+ views and 20K+ followers in 50 days through cross-platform content strategy.",
+      "Oversaw production for virtual human, PUBG Mobile, and PUBG NEW STATE across social, video, and live activations.",
+      "Partnered with internal artist teams to ensure asset quality and alignment with the brand story.",
+    ],
+  },
+  {
+    id: "hk",
+    company: "Hill & Knowlton Strategies",
+    role: "Account Manager",
+    location: "Korea",
+    period: "Aug 2019 – Feb 2021",
+    teaser: "Led LG Mobile influencer strategy across 21 markets and new launch formats.",
+    details: [
+      "Designed global influencer marketing strategies for LG Mobile across 21 markets with cultural insight.",
+      "Produced LG Mobile's first virtual unveiling event, setting new launch benchmarks.",
+      "Coordinated cross-functional teams to deliver integrated campaigns on time and on budget.",
+      "Built measurement frameworks to track influencer ROI and optimize future campaigns.",
+    ],
+  },
+  {
+    id: "rotageek",
+    company: "Rotageek",
+    role: "Marketing Manager",
+    location: "UK",
+    period: "Jun 2018 – Aug 2019",
+    teaser: "Drove 17% workflow efficiency lift through content-led demand generation.",
+    details: [
+      "Led content marketing strategy for B2B SaaS platform serving enterprise retail clients.",
+      "Developed case studies and thought leadership content that drove qualified lead generation.",
+      "Managed digital advertising campaigns across LinkedIn and Google Ads.",
+      "Collaborated with product team to align messaging with feature releases.",
+    ],
+  },
+];
+---
+
+<section id="experience" class="experience section">
+  <div class="container">
+    <span class="section-label">Experience</span>
+    <h2 class="experience-headline">
+      Global brand & marketing strategist with 8+ years across gaming, tech, and entertainment
+    </h2>
+
+    <div class="accordion">
+      {experiences.map((exp, index) => (
+        <div class="accordion-item" data-accordion-item>
+          <button
+            class:list={["accordion-trigger", { active: index === 0 }]}
+            data-accordion-trigger={exp.id}
+            aria-expanded={index === 0 ? "true" : "false"}
+          >
+            <span class="accordion-title">
+              <span class="company">{exp.company}</span>
+              <span class="role">{exp.role} ({exp.location})</span>
+            </span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <p class="accordion-teaser">{exp.teaser}</p>
+          <div
+            class:list={["accordion-panel", { open: index === 0 }]}
+            id={`panel-${exp.id}`}
+            data-accordion-panel={exp.id}
+          >
+            <p class="accordion-period">{exp.period}</p>
+            <ul class="accordion-details">
+              {exp.details.map((detail) => (
+                <li>{detail}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience {
+    background-color: var(--color-bg-primary);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .experience-headline {
+    font-size: var(--text-2xl);
+    max-width: 700px;
+    margin-bottom: var(--space-12);
+    line-height: var(--leading-snug);
+  }
+
+  .accordion {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .accordion-item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: border-color var(--transition-base);
+  }
+
+  .accordion-item:has(.accordion-trigger.active) {
+    border-color: var(--color-accent);
+  }
+
+  .accordion-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-5) var(--space-6);
+    background: var(--color-bg-secondary);
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background var(--transition-fast);
+  }
+
+  .accordion-trigger:hover {
+    background: var(--color-bg-tertiary);
+  }
+
+  .accordion-title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .company {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--color-text-primary);
+  }
+
+  .role {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .accordion-icon {
+    font-size: var(--text-2xl);
+    color: var(--color-text-tertiary);
+    transition: transform var(--transition-base), color var(--transition-base);
+    line-height: 1;
+  }
+
+  .accordion-trigger.active .accordion-icon {
+    transform: rotate(45deg);
+    color: var(--color-accent);
+  }
+
+  .accordion-teaser {
+    padding: 0 var(--space-6) var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+    background: var(--color-bg-secondary);
+    margin: 0;
+  }
+
+  .accordion-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-slow);
+  }
+
+  .accordion-panel.open {
+    max-height: 500px;
+  }
+
+  .accordion-period {
+    padding: var(--space-4) var(--space-6) var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+    font-weight: var(--font-medium);
+    margin: 0;
+  }
+
+  .accordion-details {
+    padding: 0 var(--space-6) var(--space-6);
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .accordion-details li {
+    position: relative;
+    padding-left: var(--space-5);
+    color: var(--color-text-secondary);
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+  }
+
+  .accordion-details li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 6px;
+    height: 6px;
+    background: var(--color-accent);
+    border-radius: 50%;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .accordion-trigger {
+      padding: var(--space-4);
+    }
+
+    .accordion-teaser,
+    .accordion-period,
+    .accordion-details {
+      padding-left: var(--space-4);
+      padding-right: var(--space-4);
+    }
+  }
+</style>
+
+<script>
+  const accordionTriggers = document.querySelectorAll('[data-accordion-trigger]');
+
+  accordionTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const targetId = trigger.getAttribute('data-accordion-trigger');
+      const panel = document.querySelector(`[data-accordion-panel="${targetId}"]`);
+      const isActive = trigger.classList.contains('active');
+
+      // Close all panels
+      accordionTriggers.forEach((t) => {
+        t.classList.remove('active');
+        t.setAttribute('aria-expanded', 'false');
+      });
+      document.querySelectorAll('[data-accordion-panel]').forEach((p) => {
+        p.classList.remove('open');
+      });
+
+      // Open clicked panel if it wasn't already open
+      if (!isActive && panel) {
+        trigger.classList.add('active');
+        trigger.setAttribute('aria-expanded', 'true');
+        panel.classList.add('open');
+      }
+    });
+  });
+</script>

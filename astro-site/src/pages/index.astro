@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/layout/Navigation.astro';
+import Footer from '../components/layout/Footer.astro';
+import GridBackground from '../components/interactive/GridBackground.astro';
+import About from '../components/sections/About.astro';
+import Experience from '../components/sections/Experience.astro';
+import Portfolio from '../components/sections/Portfolio.astro';
+import BlogPreview from '../components/sections/BlogPreview.astro';
+import Contact from '../components/sections/Contact.astro';
+---
+
+<BaseLayout>
+  <Navigation />
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+      <GridBackground />
+      <div class="container hero-content">
+        <p class="hero-greeting">Hi, I'm</p>
+        <h1 class="hero-title">Nakyum Song</h1>
+        <p class="hero-role">Creative Marketer & Brand Strategist</p>
+        <p class="hero-tagline">Crafting brand stories that resonate and drive results</p>
+
+        <div class="hero-ctas">
+          <a href="#portfolio" class="btn btn-primary">
+            View My Work
+            <span class="btn-arrow">&rarr;</span>
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            Get in Touch
+          </a>
+        </div>
+
+        <div class="scroll-indicator">
+          <span class="scroll-text">Scroll</span>
+          <span class="scroll-line"></span>
+        </div>
+      </div>
+    </section>
+
+    <About />
+
+    <Experience />
+
+    <Portfolio />
+
+    <BlogPreview />
+
+    <Contact />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .hero-greeting {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .hero-title {
+    font-size: var(--text-5xl);
+    margin: 0;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-role {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-medium);
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  .hero-tagline {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    max-width: 500px;
+    margin: 0;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--gradient-accent);
+    color: var(--color-text-primary);
+    border: none;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-arrow {
+    transition: transform var(--transition-base);
+  }
+
+  .btn-primary:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  /* Scroll Indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: var(--space-8);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .scroll-text {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--color-accent), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scaleY(0.8);
+    }
+  }
+
+  /* Text utilities */
+  .text-secondary {
+    color: var(--color-text-secondary);
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .hero-ctas {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
