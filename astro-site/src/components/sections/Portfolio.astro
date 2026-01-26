@@ -6,52 +6,49 @@
 
 const projects = [
   {
-    id: "ana-virtual-artist",
-    title: "ANA Virtual Artist",
-    description: "Launched KRAFTON's first virtual artist with narrative-driven content strategy",
-    tags: ["Virtual Human", "Content Strategy", "Brand Launch"],
-    image: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=800&q=80",
-    results: "5M+ views in 50 days",
-  },
-  {
     id: "razer-anniversary",
     title: "Razer 20th Anniversary",
     description: "Global brand system unifying esports, lifestyle, and hardware campaigns",
     tags: ["Brand Systems", "Global Campaign", "Creative Direction"],
     image: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?auto=format&fit=crop&w=800&q=80",
-    results: "Unified 20+ markets",
+    results: "Unified 15+ markets",
+    slug: "/projects/razer-anniversary",
   },
   {
-    id: "pubg-mobile",
-    title: "PUBG Mobile Campaigns",
-    description: "Multi-platform content production for game launches and live events",
-    tags: ["Gaming", "Social Media", "Video Production"],
+    id: "ana-virtual-artist",
+    title: "ANA Virtual Artist",
+    description: "Launched KRAFTON's first AI-powered virtual artist with narrative-driven content",
+    tags: ["Virtual Human", "Content Strategy", "Brand Launch"],
+    image: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=800&q=80",
+    results: "5.4M+ views in 50 days",
+    slug: "/projects/ana-virtual-artist",
+  },
+  {
+    id: "pubg-new-state",
+    title: "PUBG: NEW STATE Launch",
+    description: "Global launch of AAA next-gen mobile title with full-funnel strategy",
+    tags: ["Gaming", "Global Launch", "Content Marketing"],
     image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80",
-    results: "Cross-platform reach",
+    results: "50M+ pre-registrations",
+    slug: "/projects/pubg-new-state",
   },
   {
-    id: "lg-mobile-launch",
-    title: "LG Mobile Virtual Launch",
-    description: "First-ever virtual unveiling event with global influencer strategy",
-    tags: ["Product Launch", "Influencer Marketing", "Events"],
+    id: "pubg-mobile-korea",
+    title: "PUBG Mobile Korea",
+    description: "Content strategy for retention and onboarding in mature live game",
+    tags: ["Gaming", "Retention", "Content Strategy"],
+    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80",
+    results: "20% workflow efficiency",
+    slug: "/projects/pubg-mobile-korea",
+  },
+  {
+    id: "lg-wing",
+    title: "LG WING Launch Campaign",
+    description: "Use-case driven launch for innovative swivel-screen smartphone",
+    tags: ["Product Launch", "Influencer Marketing", "Tech"],
     image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
-    results: "21 market rollout",
-  },
-  {
-    id: "esports-activations",
-    title: "Esports Activations",
-    description: "Live broadcast branding and tournament marketing campaigns",
-    tags: ["Esports", "Live Events", "Sponsorship"],
-    image: "https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=800&q=80",
-    results: "Global tournament coverage",
-  },
-  {
-    id: "content-systems",
-    title: "Content Systems",
-    description: "Scalable content frameworks for tech and lifestyle brands",
-    tags: ["Content Architecture", "Process Design", "B2B"],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-    results: "17% workflow efficiency",
+    results: "12M+ views, 4.5x engagement",
+    slug: "/projects/lg-wing",
   },
 ];
 ---
@@ -66,23 +63,46 @@ const projects = [
 
     <div class="projects-grid">
       {projects.map((project) => (
-        <article class="project-card" data-tilt>
-          <div class="card-image">
-            <img src={project.image} alt={project.title} loading="lazy" />
-            <div class="card-overlay">
-              <span class="card-results">{project.results}</span>
+        project.slug ? (
+          <a href={project.slug} class="project-card-link">
+            <article class="project-card" data-tilt>
+              <div class="card-image">
+                <img src={project.image} alt={project.title} loading="lazy" />
+                <div class="card-overlay">
+                  <span class="card-results">{project.results}</span>
+                </div>
+              </div>
+              <div class="card-content">
+                <h3 class="card-title">{project.title}</h3>
+                <p class="card-description">{project.description}</p>
+                <div class="card-tags">
+                  {project.tags.map((tag) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+                <span class="view-case-study">View Case Study &rarr;</span>
+              </div>
+            </article>
+          </a>
+        ) : (
+          <article class="project-card" data-tilt>
+            <div class="card-image">
+              <img src={project.image} alt={project.title} loading="lazy" />
+              <div class="card-overlay">
+                <span class="card-results">{project.results}</span>
+              </div>
             </div>
-          </div>
-          <div class="card-content">
-            <h3 class="card-title">{project.title}</h3>
-            <p class="card-description">{project.description}</p>
-            <div class="card-tags">
-              {project.tags.map((tag) => (
-                <span class="tag">{tag}</span>
-              ))}
+            <div class="card-content">
+              <h3 class="card-title">{project.title}</h3>
+              <p class="card-description">{project.description}</p>
+              <div class="card-tags">
+                {project.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
+        )
       ))}
     </div>
   </div>
@@ -207,6 +227,28 @@ const projects = [
     border-radius: var(--radius-full);
     font-size: var(--text-xs);
     color: var(--color-text-tertiary);
+  }
+
+  .project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .view-case-study {
+    display: block;
+    margin-top: var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+  }
+
+  .project-card-link:hover .view-case-study {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   /* Responsive */
