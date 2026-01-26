@@ -1,0 +1,453 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Navigation from '../components/layout/Navigation.astro';
+import Footer from '../components/layout/Footer.astro';
+
+interface Props {
+  title: string;
+  company: string;
+  role: string;
+  period: string;
+  description: string;
+  heroImage?: string;
+  results: string[];
+  objective: string;
+  strategy: {
+    title: string;
+    points: string[];
+  };
+  execution: string[];
+  videoUrl?: string;
+}
+
+const {
+  title,
+  company,
+  role,
+  period,
+  description,
+  heroImage,
+  results,
+  objective,
+  strategy,
+  execution,
+  videoUrl
+} = Astro.props;
+
+const pageTitle = `${title} | Nakyum Song`;
+const pageDescription = description;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Navigation />
+
+  <main class="case-study">
+    <!-- Back Link -->
+    <div class="container">
+      <a href="/#portfolio" class="back-link">
+        <span class="back-arrow">&larr;</span>
+        Back to Portfolio
+      </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="case-hero">
+      <div class="container">
+        <span class="case-company">{company}</span>
+        <h1 class="case-title">{title}</h1>
+        <p class="case-description">{description}</p>
+        <div class="case-meta">
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">{role}</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Period</span>
+            <span class="meta-value">{period}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {heroImage && (
+      <section class="case-image">
+        <div class="container">
+          <img src={heroImage} alt={title} loading="lazy" />
+        </div>
+      </section>
+    )}
+
+    <!-- Results Section -->
+    <section class="case-section">
+      <div class="container">
+        <div class="section-grid">
+          <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Results</h2>
+          </div>
+          <div class="section-content">
+            <ul class="results-list">
+              {results.map((result) => (
+                <li>{result}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Objective Section -->
+    <section class="case-section alt">
+      <div class="container">
+        <div class="section-grid">
+          <div class="section-header">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Objective</h2>
+          </div>
+          <div class="section-content">
+            <p class="objective-text">{objective}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strategy Section -->
+    <section class="case-section">
+      <div class="container">
+        <div class="section-grid">
+          <div class="section-header">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Strategy</h2>
+            <p class="strategy-subtitle">{strategy.title}</p>
+          </div>
+          <div class="section-content">
+            <ul class="strategy-list">
+              {strategy.points.map((point) => (
+                <li>{point}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Execution Section -->
+    <section class="case-section alt">
+      <div class="container">
+        <div class="section-grid">
+          <div class="section-header">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Execution</h2>
+          </div>
+          <div class="section-content">
+            <ul class="execution-list">
+              {execution.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {videoUrl && (
+      <section class="case-section video-section">
+        <div class="container">
+          <div class="section-grid">
+            <div class="section-header">
+              <span class="section-number">05</span>
+              <h2 class="section-title">Watch</h2>
+            </div>
+            <div class="section-content">
+              <a href={videoUrl} target="_blank" rel="noopener noreferrer" class="video-link">
+                Watch Campaign Video
+                <span class="link-arrow">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- CTA Section -->
+    <section class="case-cta">
+      <div class="container">
+        <h2>Interested in working together?</h2>
+        <a href="/#contact" class="btn btn-primary">
+          Let's Talk
+          <span class="btn-arrow">&rarr;</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .case-study {
+    padding-top: 6rem;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+  }
+
+  /* Back Link */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    text-decoration: none;
+    padding: var(--space-4) 0;
+    transition: color var(--transition-fast);
+  }
+
+  .back-link:hover {
+    color: var(--color-accent);
+  }
+
+  .back-arrow {
+    transition: transform var(--transition-fast);
+  }
+
+  .back-link:hover .back-arrow {
+    transform: translateX(-4px);
+  }
+
+  /* Hero */
+  .case-hero {
+    padding: var(--space-12) 0 var(--space-16);
+  }
+
+  .case-company {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .case-title {
+    font-size: var(--text-5xl);
+    line-height: var(--leading-tight);
+    margin-bottom: var(--space-6);
+    max-width: 800px;
+  }
+
+  .case-description {
+    font-size: var(--text-xl);
+    color: var(--color-text-secondary);
+    max-width: 700px;
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-8);
+  }
+
+  .case-meta {
+    display: flex;
+    gap: var(--space-8);
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .meta-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .meta-value {
+    font-size: var(--text-base);
+    color: var(--color-text-primary);
+  }
+
+  /* Hero Image */
+  .case-image {
+    padding-bottom: var(--space-16);
+  }
+
+  .case-image img {
+    width: 100%;
+    border-radius: var(--radius-xl);
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  /* Sections */
+  .case-section {
+    padding: var(--space-16) 0;
+  }
+
+  .case-section.alt {
+    background: var(--color-bg-secondary);
+  }
+
+  .section-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-12);
+  }
+
+  .section-header {
+    position: sticky;
+    top: 6rem;
+    align-self: start;
+  }
+
+  .section-number {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+    font-weight: var(--font-medium);
+    margin-bottom: var(--space-2);
+  }
+
+  .section-title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-2);
+  }
+
+  .strategy-subtitle {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin-top: var(--space-2);
+  }
+
+  /* Content Lists */
+  .results-list,
+  .strategy-list,
+  .execution-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .results-list li,
+  .strategy-list li,
+  .execution-list li {
+    position: relative;
+    padding-left: var(--space-6);
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .results-list li::before,
+  .strategy-list li::before,
+  .execution-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 8px;
+    height: 8px;
+    background: var(--color-accent);
+    border-radius: 50%;
+  }
+
+  .objective-text {
+    font-size: var(--text-xl);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* Video Link */
+  .video-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-lg);
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: gap var(--transition-fast);
+  }
+
+  .video-link:hover {
+    gap: var(--space-3);
+  }
+
+  /* CTA */
+  .case-cta {
+    padding: var(--space-20) 0;
+    text-align: center;
+  }
+
+  .case-cta h2 {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-8);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--gradient-accent);
+    color: var(--color-text-primary);
+    border: none;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-arrow {
+    transition: transform var(--transition-base);
+  }
+
+  .btn-primary:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .case-title {
+      font-size: var(--text-3xl);
+    }
+
+    .case-description {
+      font-size: var(--text-lg);
+    }
+
+    .section-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    .section-header {
+      position: static;
+    }
+
+    .results-list li,
+    .strategy-list li,
+    .execution-list li {
+      font-size: var(--text-base);
+    }
+
+    .objective-text {
+      font-size: var(--text-lg);
+    }
+  }
+</style>

@@ -1,0 +1,33 @@
+---
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+
+const caseStudy = {
+  title: "LG WING Product Use-Case Launch Campaign",
+  company: "Hill & Knowlton Strategies",
+  role: "Account Manager",
+  period: "Aug 2019 – Feb 2021",
+  description: "Launched LG's swivel-screen smartphone by showing daily dual-screen value, not just specs.",
+  heroImage: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1600&q=80",
+  results: [
+    "12M+ campaign views; 4.5x engagement vs. prior benchmarks.",
+    "30% higher watch-through vs. traditional launch videos.",
+    "Repositioned LG WING as practical and creator-friendly."
+  ],
+  objective: "Launch LG's swivel-screen smartphone by showing daily dual-screen value, not just specs.",
+  strategy: {
+    title: "Feature → Benefit → Use Case",
+    points: [
+      "Built use-case narrative: multitasking, creator tools, navigation, entertainment.",
+      "Partnered with mega influencers to translate UX benefits.",
+      "Shifted launch toward engagement-focused demonstrations."
+    ]
+  },
+  execution: [
+    "Story angles per influencer: recording/preview, navigation+media, creator mode, split-screen.",
+    "Delivered content across YouTube, Instagram, TikTok."
+  ],
+  videoUrl: "https://www.youtube.com/watch?v=aPXTqZdQ8js"
+};
+---
+
+<CaseStudyLayout {...caseStudy} />
