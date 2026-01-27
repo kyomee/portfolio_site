@@ -3,29 +3,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navigation from '../components/layout/Navigation.astro';
 import Footer from '../components/layout/Footer.astro';
 import GridBackground from '../components/interactive/GridBackground.astro';
-import About from '../components/sections/About.astro';
-import Experience from '../components/sections/Experience.astro';
+import ScrollReveal from '../components/interactive/ScrollReveal.astro';
 import Portfolio from '../components/sections/Portfolio.astro';
-import BlogPreview from '../components/sections/BlogPreview.astro';
-import Contact from '../components/sections/Contact.astro';
+import About from '../components/sections/About.astro';
+import Subscribe from '../components/sections/Subscribe.astro';
 ---
 
 <BaseLayout>
   <Navigation />
+  <ScrollReveal />
 
   <main>
     <!-- Hero Section -->
     <section id="hero" class="hero section">
       <GridBackground />
       <div class="container hero-content">
-        <p class="hero-greeting">Hi, I'm</p>
-        <h1 class="hero-title">Nakyum Song</h1>
-        <p class="hero-role">I Turn Complex Tech Into Brands People Remember</p>
-        <p class="hero-tagline">Open to full-time leadership, fractional roles, or project partnerships</p>
+        <div class="hero-narrative">
+          <p class="hero-intro" data-reveal="1">I'm documenting how my thinking changes as I work.</p>
 
-        <div class="hero-ctas">
-          <a href="#contact" class="btn btn-primary">
-            Let's Talk
+          <p class="hero-topics" data-reveal="2">
+            From building global brands,<br />
+            to using AI as part of my creative process,<br />
+            to navigating work and identity across countries.
+          </p>
+
+          <p class="hero-description" data-reveal="3">
+            This is a personal archive of ideas —<br />
+            some unfinished, some turning into products.
+          </p>
+        </div>
+
+        <div class="hero-ctas" data-reveal="4">
+          <a href="#subscribe" class="btn btn-primary">
+            Subscribe
             <span class="btn-arrow">&rarr;</span>
           </a>
           <a href="#portfolio" class="btn btn-secondary">
@@ -40,15 +50,17 @@ import Contact from '../components/sections/Contact.astro';
       </div>
     </section>
 
-    <About />
+    <div data-reveal>
+      <Portfolio />
+    </div>
 
-    <Experience />
+    <div data-reveal>
+      <About />
+    </div>
 
-    <Portfolio />
-
-    <BlogPreview />
-
-    <Contact />
+    <div data-reveal>
+      <Subscribe />
+    </div>
   </main>
 
   <Footer />
@@ -75,32 +87,31 @@ import Contact from '../components/sections/Contact.astro';
     gap: var(--space-4);
   }
 
-  .hero-greeting {
-    font-size: var(--text-lg);
-    color: var(--color-text-secondary);
-    margin: 0;
+  .hero-narrative {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    max-width: 600px;
   }
 
-  .hero-title {
-    font-size: var(--text-5xl);
-    margin: 0;
-    background: var(--gradient-accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .hero-role {
-    font-size: var(--text-2xl);
+  .hero-intro {
+    font-size: var(--text-xl);
     font-weight: var(--font-medium);
     color: var(--color-text-primary);
     margin: 0;
   }
 
-  .hero-tagline {
+  .hero-topics {
     font-size: var(--text-lg);
     color: var(--color-text-secondary);
-    max-width: 500px;
+    line-height: var(--leading-relaxed);
+    margin: 0;
+  }
+
+  .hero-description {
+    font-size: var(--text-lg);
+    color: var(--color-text-tertiary);
+    font-style: italic;
     margin: 0;
   }
 
@@ -126,7 +137,7 @@ import Contact from '../components/sections/Contact.astro';
 
   .btn-primary {
     background: var(--gradient-accent);
-    color: var(--color-text-primary);
+    color: #ffffff;
     border: none;
   }
 
