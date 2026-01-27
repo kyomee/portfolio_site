@@ -1,0 +1,189 @@
+---
+/**
+ * Subscribe Section
+ * Newsletter signup with secondary contact option
+ */
+---
+
+<section id="subscribe" class="subscribe section">
+  <div class="container">
+    <div class="subscribe-content">
+      <h2 class="subscribe-headline">Nakyum Song</h2>
+      <p class="subscribe-description">
+        I send notes when I figure something out worth keeping.
+      </p>
+
+      <!-- Email Form -->
+      <form
+        class="subscribe-form"
+        action="https://formsubmit.co/nakyumsong@gmail.com"
+        method="POST"
+      >
+        <input type="hidden" name="_subject" value="New Newsletter Subscriber" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="_honey" style="display:none" />
+
+        <div class="form-row">
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="your@email.com"
+            class="subscribe-input"
+          />
+          <button type="submit" class="btn btn-primary">
+            Subscribe
+            <span class="btn-arrow">&rarr;</span>
+          </button>
+        </div>
+      </form>
+
+      <p class="subscribe-note">
+        No spam. ~5 min reads. Unsubscribe anytime.
+      </p>
+
+      <!-- Contact Alternative -->
+      <div class="contact-alternative">
+        <p>
+          Working on something that needs help?
+          <a href="mailto:hello@nakyumsong.com">Reach out directly</a> or
+          <a href="https://linkedin.com/in/nakyumsong" target="_blank" rel="noopener">connect on LinkedIn</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .subscribe {
+    background-color: var(--color-bg-primary);
+  }
+
+  .subscribe-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .subscribe-headline {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subscribe-description {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* Form */
+  .subscribe-form {
+    margin-bottom: var(--space-4);
+  }
+
+  .form-row {
+    display: flex;
+    gap: var(--space-3);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .subscribe-input {
+    flex: 1;
+    padding: var(--space-4);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    font-family: inherit;
+    font-size: var(--text-base);
+    color: var(--color-text-primary);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .subscribe-input::placeholder {
+    color: var(--color-text-tertiary);
+  }
+
+  .subscribe-input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-glow);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background: var(--gradient-accent);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-arrow {
+    transition: transform var(--transition-base);
+  }
+
+  .btn-primary:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+
+  .subscribe-note {
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-12);
+  }
+
+  /* Contact Alternative */
+  .contact-alternative {
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .contact-alternative p {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .contact-alternative a {
+    color: var(--color-accent);
+    transition: color var(--transition-fast);
+  }
+
+  .contact-alternative a:hover {
+    color: var(--color-accent-hover);
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .form-row {
+      flex-direction: column;
+    }
+
+    .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
