@@ -1,4 +1,5 @@
 ---
+import '../styles/global.css';
 import CustomCursor from '../components/interactive/CustomCursor.astro';
 import EasterEggs from '../components/interactive/EasterEggs.astro';
 
@@ -48,18 +49,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(ogImage, Astro.site)} />
 
-    <!-- Fonts - Inter from Google Fonts -->
+    <!-- Fonts - Gruppo + Sora from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Gruppo&family=Sora:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Global Styles -->
-    <style is:global>
-      @import '../styles/global.css';
-    </style>
   </head>
   <body>
     <CustomCursor />
