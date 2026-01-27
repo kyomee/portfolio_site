@@ -6,11 +6,10 @@ interface Props {
 const { class: className } = Astro.props;
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
+  { href: "/", label: "Home" },
   { href: "#portfolio", label: "Portfolio" },
-  { href: "#blog", label: "Blog" },
-  { href: "#contact", label: "Contact" },
+  { href: "#about", label: "About" },
+  { href: "#", label: "Blog", external: true }, // Placeholder - update with Substack/Medium URL later
 ];
 ---
 
@@ -24,7 +23,11 @@ const navLinks = [
     <ul class="nav-links">
       {navLinks.map((link) => (
         <li>
-          <a href={link.href} class="nav-link">{link.label}</a>
+          <a
+            href={link.href}
+            class="nav-link"
+            {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          >{link.label}</a>
         </li>
       ))}
     </ul>
@@ -45,7 +48,11 @@ const navLinks = [
     <ul class="nav-mobile-links">
       {navLinks.map((link) => (
         <li>
-          <a href={link.href} class="nav-mobile-link">{link.label}</a>
+          <a
+            href={link.href}
+            class="nav-mobile-link"
+            {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          >{link.label}</a>
         </li>
       ))}
     </ul>
@@ -63,7 +70,7 @@ const navLinks = [
   }
 
   .nav-header.scrolled {
-    background-color: rgba(10, 10, 11, var(--opacity-80));
+    background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(var(--blur-md));
     border-bottom: 1px solid var(--color-border);
   }

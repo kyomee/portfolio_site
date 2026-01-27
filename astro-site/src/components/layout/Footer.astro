@@ -2,11 +2,10 @@
 const currentYear = new Date().getFullYear();
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
+  { href: "/", label: "Home" },
   { href: "#portfolio", label: "Portfolio" },
-  { href: "#blog", label: "Blog" },
-  { href: "#contact", label: "Contact" },
+  { href: "#about", label: "About" },
+  { href: "#", label: "Blog", external: true }, // Placeholder - update with Substack/Medium URL later
 ];
 
 const socialLinks = [
@@ -23,7 +22,11 @@ const socialLinks = [
         <ul class="footer-links">
           {navLinks.map((link) => (
             <li>
-              <a href={link.href} class="footer-link">{link.label}</a>
+              <a
+                href={link.href}
+                class="footer-link"
+                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              >{link.label}</a>
             </li>
           ))}
         </ul>
