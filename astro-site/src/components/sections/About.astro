@@ -1,50 +1,44 @@
 ---
 /**
  * About Section
- * Photo + bio layout
+ * Bio content layout
  */
 ---
 
 <section id="about" class="about section">
   <div class="container">
-    <div class="about-grid">
-      <!-- Photo Column -->
-      <div class="about-photo">
-        <div class="photo-wrapper">
-          <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
-            alt="Nakyum Song"
-            loading="lazy"
-          />
-          <div class="photo-glow"></div>
-        </div>
+    <div class="about-content">
+      <span class="section-label">About Me</span>
+
+      <div class="about-bio">
+        <p>
+          I've spent most of my career working inside brands, building campaigns, narratives, and systems across markets.
+        </p>
+        <p>
+          Along the way, I learned one thing clearly.<br />
+          <strong>Results come from execution, but repetition comes from structure.</strong>
+        </p>
+        <p>
+          That insight changed how I work.<br />
+          I stopped focusing on outputs and started focusing on how decisions are made, aligned, and repeated.
+        </p>
+        <p>
+          Working across gaming, tech, and global teams taught me that brands are not built by taste alone.<br />
+          They are built by thinking that scales.
+        </p>
+        <p class="about-highlight">
+          This site is where I organize that thinking.
+        </p>
+        <p>
+          I write about brand systems, marketing strategy, and how AI is reshaping the way marketers work.
+        </p>
+        <p>
+          Some ideas may become frameworks.<br />
+          Some may turn into products.<br />
+          Most start as questions I couldn't stop thinking about.
+        </p>
       </div>
 
-      <!-- Content Column -->
-      <div class="about-content">
-        <span class="section-label">About Me</span>
-        <h2 class="about-title">Brand & Content Strategist</h2>
-
-        <div class="about-bio">
-          <p>
-            I'm a Brand & Content Strategist with 10+ years scaling brands across 15+ markets. I help companies build a clear brand foundation, craft high-performing content strategies, and create marketing systems that drive real business growth.
-          </p>
-          <p>
-            <strong>How I work:</strong> Discovery → Audit → Strategy → Execution → Measurement. Every engagement starts with understanding your business context and ends with clear, measurable outcomes.
-          </p>
-        </div>
-
-        <div class="about-focus">
-          <h3>Focus Areas</h3>
-          <ul>
-            <li>Creative direction + brand systems for tech</li>
-            <li>Multi-region launch architecture + lifecycle orchestration</li>
-            <li>Narrative design for executives, creators, and communities</li>
-            <li>Esports, virtual humans, and culture-building initiatives</li>
-          </ul>
-        </div>
-
-      </div>
     </div>
   </div>
 </section>
@@ -54,42 +48,11 @@
     background-color: var(--color-bg-secondary);
   }
 
-  .about-grid {
-    display: grid;
-    grid-template-columns: var(--photo-width) 1fr;
-    gap: var(--space-12);
-    align-items: start;
+  .about-content {
+    max-width: 680px;
+    margin: 0 auto;
   }
 
-  /* Photo */
-  .about-photo {
-    position: sticky;
-    top: calc(var(--nav-height) + var(--space-8));
-  }
-
-  .photo-wrapper {
-    position: relative;
-    border-radius: var(--radius-2xl);
-    overflow: hidden;
-  }
-
-  .photo-wrapper img {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-  }
-
-  .photo-glow {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to top,
-      var(--color-bg-secondary) 0%,
-      transparent 30%
-    );
-  }
-
-  /* Content */
   .section-label {
     display: inline-block;
     font-size: var(--text-sm);
@@ -100,67 +63,29 @@
     margin-bottom: var(--space-4);
   }
 
-  .about-title {
-    font-size: var(--text-3xl);
-    margin-bottom: var(--space-6);
-  }
-
   .about-bio {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
-    margin-bottom: var(--space-8);
+    gap: var(--space-5);
   }
 
   .about-bio p {
     color: var(--color-text-secondary);
     line-height: var(--leading-relaxed);
+    margin: 0;
   }
 
-  .about-focus {
-    margin-bottom: var(--space-8);
-    padding: var(--space-6);
-    background: var(--color-bg-tertiary);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--color-border);
+  .about-bio strong {
+    color: var(--color-text-primary);
   }
 
-  .about-focus h3 {
+  .about-highlight {
     font-size: var(--text-lg);
-    margin-bottom: var(--space-4);
-  }
-
-  .about-focus ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-
-  .about-focus li {
-    color: var(--color-text-secondary);
-    padding-left: var(--space-4);
-    position: relative;
-  }
-
-  .about-focus li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--color-accent);
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .about-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-8);
-    }
-
-    .about-photo {
-      position: static;
-      max-width: 250px;
-      margin: 0 auto;
-    }
+    font-weight: var(--font-medium);
+    color: var(--color-text-primary);
+    padding: var(--space-4) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    margin: var(--space-2) 0;
   }
 </style>
