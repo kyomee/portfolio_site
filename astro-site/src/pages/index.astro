@@ -17,34 +17,43 @@ import Subscribe from '../components/sections/Subscribe.astro';
     <!-- Hero Section -->
     <section id="hero" class="hero section">
       <GridBackground />
+
+      <!-- Animated Gradient Blobs -->
+      <div class="hero-blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+      </div>
+
       <div class="container hero-content">
         <div class="hero-narrative">
-          <p class="hero-intro" data-reveal="1">I'm documenting how my thinking changes as I work.</p>
+          <p class="hero-greeting" data-reveal="1">Hello, there I'm</p>
+          <h1 class="hero-name" data-reveal="1">Nakyum Song</h1>
+          <p class="hero-intro" data-reveal="2">I'm documenting how my thinking changes as I work.</p>
 
-          <p class="hero-topics" data-reveal="2">
+          <p class="hero-topics" data-reveal="3">
             From building global brands,<br />
             to using AI as part of my creative process,<br />
             to navigating work and identity across countries.
           </p>
 
-          <p class="hero-description" data-reveal="3">
+          <p class="hero-description" data-reveal="4">
             This is a personal archive of ideas —<br />
             some unfinished, some turning into products.
           </p>
         </div>
 
-        <div class="hero-ctas" data-reveal="4">
-          <a href="#subscribe" class="btn btn-primary">
-            Subscribe
+        <div class="hero-ctas" data-reveal="5">
+          <a href="#portfolio" class="btn btn-primary">
+            View My Work
             <span class="btn-arrow">&rarr;</span>
           </a>
-          <a href="#portfolio" class="btn btn-secondary">
-            View My Work
+          <a href="#subscribe" class="btn btn-secondary">
+            Subscribe
           </a>
         </div>
 
-        <div class="scroll-indicator">
-          <span class="scroll-text">Scroll</span>
+        <div class="scroll-indicator" aria-hidden="true">
           <span class="scroll-line"></span>
         </div>
       </div>
@@ -77,6 +86,74 @@ import Subscribe from '../components/sections/Subscribe.astro';
     overflow: hidden;
   }
 
+  /* Animated Gradient Blobs */
+  .hero-blobs {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    animation: blobFloat 20s ease-in-out infinite;
+  }
+
+  .blob-1 {
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.4), rgba(255, 142, 83, 0.3));
+    top: -10%;
+    right: -10%;
+    animation-delay: 0s;
+  }
+
+  .blob-2 {
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(225deg, rgba(255, 142, 83, 0.35), rgba(255, 107, 107, 0.25));
+    bottom: -15%;
+    left: -5%;
+    animation-delay: -7s;
+    animation-duration: 25s;
+  }
+
+  .blob-3 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(255, 200, 150, 0.2));
+    top: 40%;
+    left: 30%;
+    animation-delay: -14s;
+    animation-duration: 22s;
+  }
+
+  @keyframes blobFloat {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      transform: translate(30px, -40px) scale(1.05);
+    }
+    50% {
+      transform: translate(-20px, 20px) scale(0.95);
+    }
+    75% {
+      transform: translate(40px, 30px) scale(1.02);
+    }
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .blob {
+      animation: none;
+    }
+  }
+
   .hero-content {
     position: relative;
     z-index: 1;
@@ -90,15 +167,31 @@ import Subscribe from '../components/sections/Subscribe.astro';
   .hero-narrative {
     display: flex;
     flex-direction: column;
-    gap: var(--space-6);
+    gap: var(--space-4);
     max-width: 600px;
   }
 
+  .hero-greeting {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .hero-name {
+    font-family: var(--font-heading);
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+    letter-spacing: var(--tracking-tight);
+  }
+
   .hero-intro {
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
     font-weight: var(--font-medium);
     color: var(--color-text-primary);
     margin: 0;
+    margin-top: var(--space-4);
   }
 
   .hero-topics {
@@ -171,23 +264,13 @@ import Subscribe from '../components/sections/Subscribe.astro';
     bottom: var(--space-8);
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-2);
-  }
-
-  .scroll-text {
-    font-size: var(--text-xs);
-    color: var(--color-text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wide);
   }
 
   .scroll-line {
-    width: 1px;
-    height: 40px;
+    width: 2px;
+    height: 32px;
     background: linear-gradient(to bottom, var(--color-accent), transparent);
+    border-radius: var(--radius-full);
     animation: scrollPulse 2s ease-in-out infinite;
   }
 
