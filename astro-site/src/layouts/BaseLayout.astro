@@ -57,6 +57,28 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       rel="stylesheet"
     />
 
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Nakyum Song",
+        "url": "https://nakyumsong.com",
+        "jobTitle": "Brand Strategist",
+        "sameAs": [
+          "https://linkedin.com/in/nakyumsong"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Nakyum Song",
+        "url": "https://nakyumsong.com"
+      }
+    </script>
+
   </head>
   <body>
     <CustomCursor />
