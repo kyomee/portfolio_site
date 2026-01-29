@@ -3,6 +3,10 @@
  * Portfolio Section
  * 3-column grid with project cards featuring 3D tilt hover effect
  */
+import { Image } from 'astro:assets';
+import razerImg from '../../assets/images/portfolio/razer-anniversary.png';
+import anaImg from '../../assets/images/portfolio/ana.png';
+import pubgImg from '../../assets/images/portfolio/NEWSTATE_MOBILE_220119.png';
 
 const projects = [
   {
@@ -10,7 +14,7 @@ const projects = [
     title: "Razer 20th Anniversary",
     description: "Global brand system unifying esports, lifestyle, and hardware campaigns",
     tags: ["Brand Systems", "Global Campaign", "Creative Direction"],
-    image: "/images/portfolio/razer-anniversary.png",
+    image: razerImg,
     results: "Unified 15+ markets",
     slug: "/projects/razer-anniversary",
   },
@@ -19,7 +23,7 @@ const projects = [
     title: "ANA Virtual Artist",
     description: "Launched KRAFTON's first AI-powered virtual artist with narrative-driven content",
     tags: ["Virtual Human", "Content Strategy", "Brand Launch"],
-    image: "/images/portfolio/ana.png",
+    image: anaImg,
     results: "5.4M+ views in 50 days",
     slug: "/projects/ana-virtual-artist",
   },
@@ -28,7 +32,7 @@ const projects = [
     title: "PUBG: NEW STATE Launch",
     description: "Global launch of AAA next-gen mobile title with full-funnel strategy",
     tags: ["Gaming", "Global Launch", "Content Marketing"],
-    image: "/images/portfolio/NEWSTATE_MOBILE_220119.png",
+    image: pubgImg,
     results: "50M+ pre-registrations",
     slug: "/projects/pubg-new-state",
   },
@@ -58,7 +62,19 @@ const projects = [
           <a href={project.slug} class="project-card-link">
             <article class="project-card" data-tilt>
               <div class="card-image">
-                <img src={project.image} alt={project.title} loading="lazy" />
+                {typeof project.image === 'string' ? (
+                  <img src={project.image} alt={project.title} loading="lazy" />
+                ) : (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={800}
+                    height={500}
+                    format="webp"
+                    quality={80}
+                    loading="lazy"
+                  />
+                )}
                 <div class="card-overlay">
                   <span class="card-results">{project.results}</span>
                 </div>
@@ -78,7 +94,19 @@ const projects = [
         ) : (
           <article class="project-card" data-tilt>
             <div class="card-image">
-              <img src={project.image} alt={project.title} loading="lazy" />
+              {typeof project.image === 'string' ? (
+                <img src={project.image} alt={project.title} loading="lazy" />
+              ) : (
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={800}
+                  height={500}
+                  format="webp"
+                  quality={80}
+                  loading="lazy"
+                />
+              )}
               <div class="card-overlay">
                 <span class="card-results">{project.results}</span>
               </div>
