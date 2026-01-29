@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navigation from '../components/layout/Navigation.astro';
 import Footer from '../components/layout/Footer.astro';
-import GridBackground from '../components/interactive/GridBackground.astro';
 import ScrollReveal from '../components/interactive/ScrollReveal.astro';
 import Portfolio from '../components/sections/Portfolio.astro';
 import About from '../components/sections/About.astro';
@@ -16,7 +15,6 @@ import Subscribe from '../components/sections/Subscribe.astro';
   <main>
     <!-- Hero Section -->
     <section id="hero" class="hero section">
-      <GridBackground />
 
       <!-- Animated Gradient Blobs -->
       <div class="hero-blobs" aria-hidden="true">
@@ -27,23 +25,29 @@ import Subscribe from '../components/sections/Subscribe.astro';
 
       <div class="container hero-content">
         <div class="hero-narrative">
-          <p class="hero-greeting" data-reveal="1">Hello, there I'm</p>
+          <p class="hero-greeting" data-reveal="1">Hi, I'm</p>
           <h1 class="hero-name" data-reveal="1">Nakyum Song</h1>
-          <p class="hero-intro" data-reveal="2">I'm documenting how my thinking changes as I work.</p>
+          <p class="hero-intro" data-reveal="2">
+            I've seen marketing from both sides, agencies and in-house teams.
+          </p>
 
           <p class="hero-topics" data-reveal="3">
-            From building global brands,<br />
-            to using AI as part of my creative process,<br />
-            to navigating work and identity across countries.
+            What I learned is simple.<br />
+            Markets can be captured.<br />
+            Brands have to be believed.
           </p>
 
           <p class="hero-description" data-reveal="4">
-            This is a personal archive of ideas —<br />
-            some unfinished, some turning into products.
+            That's why my work focuses on narrative, systems, and long-term fans, not just reach or clicks.
+          </p>
+
+          <p class="hero-role" data-reveal="5">
+            I'm a Global Brand Manager at Razer.<br />
+            Lately, I've been exploring how AI can help marketers design better campaigns by shaping thinking, not just speeding up execution.
           </p>
         </div>
 
-        <div class="hero-ctas" data-reveal="5">
+        <div class="hero-ctas" data-reveal="6">
           <a href="#portfolio" class="btn btn-primary">
             View My Work
             <span class="btn-arrow">&rarr;</span>
@@ -208,6 +212,13 @@ import Subscribe from '../components/sections/Subscribe.astro';
     margin: 0;
   }
 
+  .hero-role {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    margin: 0;
+    margin-top: var(--space-4);
+  }
+
   .hero-ctas {
     display: flex;
     gap: var(--space-4);
@@ -292,9 +303,24 @@ import Subscribe from '../components/sections/Subscribe.astro';
 
   /* Responsive */
   @media (max-width: 640px) {
+    .hero-narrative {
+      gap: var(--space-3);
+    }
+
+    .hero-intro,
+    .hero-topics,
+    .hero-description {
+      font-size: var(--text-base);
+    }
+
+    .hero-role {
+      font-size: var(--text-sm);
+    }
+
     .hero-ctas {
       flex-direction: column;
       width: 100%;
+      margin-top: var(--space-6);
     }
 
     .btn {
