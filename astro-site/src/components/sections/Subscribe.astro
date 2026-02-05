@@ -13,30 +13,15 @@
         I send notes when I figure something out worth keeping.
       </p>
 
-      <!-- Email Form -->
-      <form
-        class="subscribe-form"
-        action="https://formsubmit.co/nakyumsong@gmail.com"
-        method="POST"
+      <a
+        href="https://nakyumsong.substack.com/subscribe"
+        target="_blank"
+        rel="noopener"
+        class="btn btn-primary subscribe-btn"
       >
-        <input type="hidden" name="_subject" value="New Newsletter Subscriber" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="text" name="_honey" style="display:none" />
-
-        <div class="form-row">
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="your@email.com"
-            class="subscribe-input"
-          />
-          <button type="submit" class="btn btn-primary">
-            Subscribe
-            <span class="btn-arrow">&rarr;</span>
-          </button>
-        </div>
-      </form>
+        Subscribe on Substack
+        <span class="btn-arrow">&rarr;</span>
+      </a>
 
       <p class="subscribe-note">
         No spam. ~5 min reads. Unsubscribe anytime.
@@ -81,38 +66,8 @@
     line-height: var(--leading-relaxed);
   }
 
-  /* Form */
-  .subscribe-form {
+  .subscribe-btn {
     margin-bottom: var(--space-4);
-  }
-
-  .form-row {
-    display: flex;
-    gap: var(--space-3);
-    max-width: 480px;
-    margin: 0 auto;
-  }
-
-  .subscribe-input {
-    flex: 1;
-    padding: var(--space-4);
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    font-family: inherit;
-    font-size: var(--text-base);
-    color: var(--color-text-primary);
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-  }
-
-  .subscribe-input::placeholder {
-    color: var(--color-text-tertiary);
-  }
-
-  .subscribe-input:focus {
-    outline: none;
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px var(--color-accent-glow);
   }
 
   .btn {
@@ -177,11 +132,7 @@
 
   /* Responsive */
   @media (max-width: 640px) {
-    .form-row {
-      flex-direction: column;
-    }
-
-    .btn {
+    .subscribe-btn {
       width: 100%;
       justify-content: center;
     }
