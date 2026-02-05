@@ -1,0 +1,221 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/layout/Navigation.astro';
+import Footer from '../components/layout/Footer.astro';
+---
+
+<BaseLayout
+  title="Contact | Nakyum Song"
+  description="Get in touch for brand strategy and consulting inquiries."
+>
+  <Navigation />
+
+  <main class="contact-page">
+    <section class="contact-hero">
+      <div class="container">
+        <span class="section-label">Contact</span>
+        <h1 class="page-title">Let's Talk</h1>
+        <p class="page-subtitle">
+          Have a project in mind or want to explore working together? I'd love to hear from you.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact-content">
+      <div class="container">
+        <div class="contact-centered">
+          <div class="email-cta">
+            <p class="email-intro">The best way to reach me is by email.</p>
+            <a href="mailto:hello@nakyumsong.com?subject=Hello%20from%20your%20website" class="btn btn-primary btn-large">
+              Email Me
+              <span class="btn-arrow">&rarr;</span>
+            </a>
+            <p class="email-address">hello@nakyumsong.com</p>
+          </div>
+
+          <div class="contact-links">
+            <a href="https://linkedin.com/in/nakyumsong" target="_blank" rel="noopener" class="contact-link">
+              <span class="link-label">LinkedIn</span>
+              <span class="link-value">linkedin.com/in/nakyumsong</span>
+            </a>
+
+            <a href="https://nakyumsong.substack.com" target="_blank" rel="noopener" class="contact-link">
+              <span class="link-label">Newsletter</span>
+              <span class="link-value">Subscribe on Substack</span>
+            </a>
+          </div>
+
+          <p class="response-note">I typically respond within 2-3 business days.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .contact-page {
+    padding-top: var(--nav-height);
+  }
+
+  .contact-hero {
+    padding: var(--space-16) 0 var(--space-8);
+    background-color: var(--color-bg-secondary);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-title {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-4);
+  }
+
+  .page-subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin: 0;
+    max-width: 500px;
+  }
+
+  .contact-content {
+    padding: var(--space-16) 0;
+  }
+
+  .contact-centered {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .email-cta {
+    margin-bottom: var(--space-12);
+  }
+
+  .email-intro {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--space-6);
+  }
+
+  .email-address {
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+    margin: var(--space-3) 0 0;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+  }
+
+  .btn-large {
+    padding: var(--space-5) var(--space-8);
+    font-size: var(--text-lg);
+  }
+
+  .btn-primary {
+    background: var(--gradient-accent);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-arrow {
+    transition: transform var(--transition-base);
+  }
+
+  .btn-primary:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+  }
+
+  .contact-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4) var(--space-6);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: border-color var(--transition-fast);
+  }
+
+  .contact-link:hover {
+    border-color: var(--color-accent);
+  }
+
+  .link-label {
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .link-value {
+    font-size: var(--text-base);
+    color: var(--color-text-primary);
+    transition: color var(--transition-fast);
+  }
+
+  .contact-link:hover .link-value {
+    color: var(--color-accent);
+  }
+
+  .response-note {
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .contact-hero {
+      padding: var(--space-12) 0 var(--space-6);
+    }
+
+    .page-title {
+      font-size: var(--text-3xl);
+    }
+
+    .btn-large {
+      width: 100%;
+    }
+
+    .contact-link {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-1);
+    }
+  }
+</style>

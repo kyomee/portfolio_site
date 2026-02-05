@@ -1,0 +1,280 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/layout/Navigation.astro';
+import Footer from '../../components/layout/Footer.astro';
+import { Image } from 'astro:assets';
+import razerImg from '../../assets/images/portfolio/razer-anniversary.png';
+import anaImg from '../../assets/images/portfolio/ana.png';
+import pubgImg from '../../assets/images/portfolio/NEWSTATE_MOBILE_220119.png';
+
+const projects = [
+  {
+    id: "razer-anniversary",
+    title: "Razer 20th Anniversary",
+    description: "Global brand system unifying esports, lifestyle, and hardware campaigns",
+    tags: ["Brand Systems", "Global Campaign", "Creative Direction"],
+    image: razerImg,
+    results: "Unified 15+ markets",
+    slug: "/projects/razer-anniversary",
+  },
+  {
+    id: "ana-virtual-artist",
+    title: "ANA Virtual Artist",
+    description: "Launched KRAFTON's first AI-powered virtual artist with narrative-driven content",
+    tags: ["Virtual Human", "Content Strategy", "Brand Launch"],
+    image: anaImg,
+    results: "5.4M+ views in 50 days",
+    slug: "/projects/ana-virtual-artist",
+  },
+  {
+    id: "pubg-new-state",
+    title: "PUBG: NEW STATE Launch",
+    description: "Global launch of AAA next-gen mobile title with full-funnel strategy",
+    tags: ["Gaming", "Global Launch", "Content Marketing"],
+    image: pubgImg,
+    results: "50M+ pre-registrations",
+    slug: "/projects/pubg-new-state",
+  },
+  {
+    id: "lg-wing",
+    title: "LG WING Campaign",
+    description: "Global influencer marketing repositioning a dual-screen device as creator-friendly",
+    tags: ["Influencer Marketing", "Product Launch", "Global Campaign"],
+    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
+    results: "12M+ views, 4.5x engagement",
+    slug: "/projects/lg-wing",
+  },
+];
+---
+
+<BaseLayout
+  title="Work | Nakyum Song"
+  description="Case studies from global brand campaigns in gaming, tech, and lifestyle."
+>
+  <Navigation />
+
+  <main class="work-page">
+    <section class="work-hero">
+      <div class="container">
+        <span class="section-label">Case Studies</span>
+        <h1 class="page-title">Selected Work</h1>
+        <p class="page-subtitle">
+          Case studies from gaming, tech, and lifestyle brands
+        </p>
+      </div>
+    </section>
+
+    <section class="work-content">
+      <div class="container">
+        <div class="projects-grid">
+          {projects.map((project) => (
+            <a href={project.slug} class="project-card-link">
+              <article class="project-card">
+                <div class="card-image">
+                  {typeof project.image === 'string' ? (
+                    <img src={project.image} alt={project.title} loading="lazy" />
+                  ) : (
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={800}
+                      height={500}
+                      format="webp"
+                      quality={80}
+                      loading="lazy"
+                    />
+                  )}
+                  <div class="card-overlay">
+                    <span class="card-results">{project.results}</span>
+                  </div>
+                </div>
+                <div class="card-content">
+                  <h3 class="card-title">{project.title}</h3>
+                  <p class="card-description">{project.description}</p>
+                  <div class="card-tags">
+                    {project.tags.map((tag) => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                  <span class="view-case-study">View Case Study &rarr;</span>
+                </div>
+              </article>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .work-page {
+    padding-top: var(--nav-height);
+  }
+
+  .work-hero {
+    padding: var(--space-16) 0 var(--space-8);
+    background-color: var(--color-bg-secondary);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-title {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-4);
+  }
+
+  .page-subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .work-content {
+    padding: var(--space-16) 0;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+
+  .project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .project-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    box-shadow: var(--shadow-card);
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--color-accent);
+  }
+
+  .card-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow), filter var(--transition-slow);
+  }
+
+  .project-card:hover .card-image img {
+    transform: scale(1.05);
+    filter: brightness(1.05);
+  }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(255, 255, 255, 0.95) 0%,
+      transparent 60%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-4);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  .project-card:hover .card-overlay {
+    opacity: 1;
+  }
+
+  .card-results {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-accent);
+  }
+
+  .card-content {
+    padding: var(--space-6);
+  }
+
+  .card-title {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    margin: 0 0 var(--space-2);
+  }
+
+  .card-description {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0 0 var(--space-4);
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .tag {
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+  }
+
+  .view-case-study {
+    display: block;
+    margin-top: var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+  }
+
+  .project-card-link:hover .view-case-study {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    .work-hero {
+      padding: var(--space-12) 0 var(--space-6);
+    }
+
+    .page-title {
+      font-size: var(--text-3xl);
+    }
+  }
+</style>

@@ -1,0 +1,317 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/layout/Navigation.astro';
+import Footer from '../components/layout/Footer.astro';
+
+const services = [
+  {
+    title: "Brand Strategy",
+    description: "Clarify who you are, what you stand for, and why it matters.",
+    details: [
+      "Brand positioning and differentiation",
+      "Narrative development and messaging frameworks",
+      "Brand architecture and system design",
+      "Market entry and expansion strategy",
+    ],
+    ideal: "For brands launching, repositioning, or expanding into new markets.",
+  },
+  {
+    title: "Advisory & Consulting",
+    description: "Strategic guidance for marketing leaders and teams.",
+    details: [
+      "Short-term strategic consulting",
+      "Workshop facilitation",
+      "Team coaching and capability building",
+      "Marketing operations review",
+    ],
+    ideal: "For leaders who need a thought partner, not a vendor.",
+  },
+];
+---
+
+<BaseLayout
+  title="Services | Nakyum Song"
+  description="Brand strategy and advisory services for tech and gaming brands."
+>
+  <Navigation />
+
+  <main class="services-page">
+    <section class="services-hero">
+      <div class="container">
+        <span class="section-label">Services</span>
+        <h1 class="page-title">How I Work</h1>
+        <p class="page-subtitle">
+          I help brands define their narrative and build systems that scale.
+        </p>
+      </div>
+    </section>
+
+    <section class="services-content">
+      <div class="container">
+        <div class="services-grid">
+          {services.map((service) => (
+            <article class="service-card">
+              <h2 class="service-title">{service.title}</h2>
+              <p class="service-description">{service.description}</p>
+              <ul class="service-details">
+                {service.details.map((detail) => (
+                  <li>{detail}</li>
+                ))}
+              </ul>
+              <p class="service-ideal">{service.ideal}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="process-section">
+          <h2 class="process-title">How Engagements Work</h2>
+          <div class="process-steps">
+            <div class="process-step">
+              <span class="step-number">01</span>
+              <h3>Discovery</h3>
+              <p>We start with a conversation to understand your context, challenges, and goals.</p>
+            </div>
+            <div class="process-step">
+              <span class="step-number">02</span>
+              <h3>Scope</h3>
+              <p>I'll propose a clear scope, timeline, and deliverables based on what you need.</p>
+            </div>
+            <div class="process-step">
+              <span class="step-number">03</span>
+              <h3>Execute</h3>
+              <p>We work together to build clarity, alignment, and actionable outputs.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="services-cta">
+          <h2>Ready to talk?</h2>
+          <p>I'm selective about the projects I take on. If you think we might be a fit, let's start a conversation.</p>
+          <a href="/contact" class="btn btn-primary">
+            Get in Touch
+            <span class="btn-arrow">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .services-page {
+    padding-top: var(--nav-height);
+  }
+
+  .services-hero {
+    padding: var(--space-16) 0 var(--space-8);
+    background-color: var(--color-bg-secondary);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-title {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-4);
+  }
+
+  .page-subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin: 0;
+    max-width: 500px;
+  }
+
+  .services-content {
+    padding: var(--space-16) 0;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+    margin-bottom: var(--space-20);
+  }
+
+  .service-card {
+    padding: var(--space-8);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    transition: border-color var(--transition-base);
+  }
+
+  .service-card:hover {
+    border-color: var(--color-accent);
+  }
+
+  .service-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-semibold);
+    margin: 0 0 var(--space-4);
+  }
+
+  .service-description {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--space-6);
+  }
+
+  .service-details {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-6);
+  }
+
+  .service-details li {
+    position: relative;
+    padding-left: var(--space-5);
+    margin-bottom: var(--space-2);
+    color: var(--color-text-secondary);
+  }
+
+  .service-details li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 6px;
+    height: 6px;
+    background: var(--color-accent);
+    border-radius: 50%;
+  }
+
+  .service-ideal {
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+    font-style: italic;
+    margin: 0;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .process-section {
+    margin-bottom: var(--space-20);
+  }
+
+  .process-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-semibold);
+    margin: 0 0 var(--space-8);
+    text-align: center;
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+
+  .process-step {
+    text-align: center;
+  }
+
+  .step-number {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-accent);
+    margin-bottom: var(--space-4);
+  }
+
+  .process-step h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    margin: 0 0 var(--space-2);
+  }
+
+  .process-step p {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .services-cta {
+    text-align: center;
+    padding: var(--space-12);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+  }
+
+  .services-cta h2 {
+    font-size: var(--text-2xl);
+    margin: 0 0 var(--space-4);
+  }
+
+  .services-cta p {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--space-8);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--gradient-accent);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-arrow {
+    transition: transform var(--transition-base);
+  }
+
+  .btn-primary:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .process-steps {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    .services-hero {
+      padding: var(--space-12) 0 var(--space-6);
+    }
+
+    .page-title {
+      font-size: var(--text-3xl);
+    }
+  }
+</style>

@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/layout/Navigation.astro';
+import Footer from '../components/layout/Footer.astro';
+---
+
+<BaseLayout
+  title="About | Nakyum Song"
+  description="Brand & Narrative Architect helping brands define narratives that scale globally."
+>
+  <Navigation />
+
+  <main class="about-page">
+    <section class="about-hero">
+      <div class="container">
+        <span class="section-label">About Me</span>
+        <h1 class="page-title">Brand & Narrative Architect</h1>
+      </div>
+    </section>
+
+    <section class="about-content">
+      <div class="container">
+        <div class="about-bio">
+          <p class="about-highlight">
+            Most brands don't fail because they lack creativity.<br />
+            They fail because, at some point, they lose clarity.
+          </p>
+          <p>
+            I've spent my career working inside global companies across brand, marketing, and strategy. Often, this meant being involved when brands were growing quickly, expanding into new markets, or trying to redefine themselves. What I saw repeatedly was that execution was rarely the real problem. Misalignment was.
+          </p>
+          <p>
+            Teams were busy and campaigns kept launching. Content was constantly being produced. Yet underneath all of that activity, the story of who the brand was, what it stood for, and why it mattered was often fragmented or unclear.
+          </p>
+          <p>
+            <strong>My work sits at the intersection of brand narrative and structure.</strong> I help brands articulate who they are so that every decision that follows, from messaging to campaigns to partnerships, has a clear foundation to build on.
+          </p>
+          <p>
+            Working inside global organizations showed me how easily brand narratives get diluted across regions, teams, and timelines. It also taught me the difference between storytelling as decoration and narrative as a strategic tool. One exists to fill space. The other exists to guide decisions.
+          </p>
+          <p>
+            As AI continues to accelerate execution and content creation, clarity has become even more critical. Tools can generate outputs, but they cannot define meaning. Understanding context, nuance, and long-term brand value still requires human judgment.
+          </p>
+          <p>
+            That is where I focus my work. Not on creating more noise, but on helping brands find their center and build from there.
+          </p>
+        </div>
+
+        <div class="about-cta">
+          <a href="/contact" class="btn btn-primary">
+            Let's Talk
+            <span class="btn-arrow">&rarr;</span>
+          </a>
+          <a href="/work" class="btn btn-secondary">
+            View My Work
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .about-page {
+    padding-top: var(--nav-height);
+  }
+
+  .about-hero {
+    padding: var(--space-16) 0 var(--space-8);
+    background-color: var(--color-bg-secondary);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-title {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  .about-content {
+    padding: var(--space-16) 0;
+  }
+
+  .about-bio {
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .about-bio p {
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+  }
+
+  .about-bio strong {
+    color: var(--color-text-primary);
+  }
+
+  .about-highlight {
+    font-size: var(--text-lg);
+    font-weight: var(--font-medium);
+    color: var(--color-text-primary);
+    padding: var(--space-4) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    margin: var(--space-2) 0;
+  }
+
+  .about-cta {
+    display: flex;
+    gap: var(--space-4);
+    margin-top: var(--space-12);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--gradient-accent);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-arrow {
+    transition: transform var(--transition-base);
+  }
+
+  .btn-primary:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 640px) {
+    .about-hero {
+      padding: var(--space-12) 0 var(--space-6);
+    }
+
+    .page-title {
+      font-size: var(--text-3xl);
+    }
+
+    .about-cta {
+      flex-direction: column;
+    }
+
+    .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

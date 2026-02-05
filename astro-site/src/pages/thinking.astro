@@ -1,0 +1,264 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/layout/Navigation.astro';
+import Footer from '../components/layout/Footer.astro';
+
+// Placeholder articles - replace with actual Substack content
+const articles = [
+  {
+    title: "Why Most Brand Launches Fail at Messaging",
+    excerpt: "Great launches don't announce features. They resolve tension. Here's the framework I use to build launch narratives that stick.",
+    category: "Brand Strategy",
+    date: "Coming Soon",
+    link: "https://nakyumsong.substack.com",
+  },
+  {
+    title: "Content That Compounds vs. Content That Depletes",
+    excerpt: "The difference between a content strategy that builds assets and one that creates dependency. One compounds, the other exhausts.",
+    category: "Content Strategy",
+    date: "Coming Soon",
+    link: "https://nakyumsong.substack.com",
+  },
+  {
+    title: "AI Won't Replace Marketers. Clarity Will.",
+    excerpt: "As AI accelerates execution, the bottleneck shifts to meaning. Tools can generate outputs, but they cannot define purpose.",
+    category: "AI & Marketing",
+    date: "Coming Soon",
+    link: "https://nakyumsong.substack.com",
+  },
+];
+---
+
+<BaseLayout
+  title="Thinking | Nakyum Song"
+  description="Essays on brand strategy, marketing, and AI for marketers."
+>
+  <Navigation />
+
+  <main class="thinking-page">
+    <section class="thinking-hero">
+      <div class="container">
+        <span class="section-label">Thinking</span>
+        <h1 class="page-title">Essays & Ideas</h1>
+        <p class="page-subtitle">
+          Notes on brand strategy, marketing systems, and how AI is reshaping the way marketers work.
+        </p>
+      </div>
+    </section>
+
+    <section class="thinking-content">
+      <div class="container">
+        <div class="articles-list">
+          {articles.map((article) => (
+            <a href={article.link} target="_blank" rel="noopener" class="article-card">
+              <div class="article-meta">
+                <span class="article-category">{article.category}</span>
+                <span class="article-date">{article.date}</span>
+              </div>
+              <h2 class="article-title">{article.title}</h2>
+              <p class="article-excerpt">{article.excerpt}</p>
+              <span class="read-more">Read on Substack &rarr;</span>
+            </a>
+          ))}
+        </div>
+
+        <div class="subscribe-cta">
+          <h2>Get these in your inbox</h2>
+          <p>I send notes when I figure something out worth keeping. No spam, unsubscribe anytime.</p>
+          <a
+            href="https://nakyumsong.substack.com/subscribe"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary"
+          >
+            Subscribe on Substack
+            <span class="btn-arrow">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .thinking-page {
+    padding-top: var(--nav-height);
+  }
+
+  .thinking-hero {
+    padding: var(--space-16) 0 var(--space-8);
+    background-color: var(--color-bg-secondary);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-title {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-4);
+  }
+
+  .page-subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin: 0;
+    max-width: 550px;
+  }
+
+  .thinking-content {
+    padding: var(--space-16) 0;
+  }
+
+  .articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    max-width: 700px;
+    margin-bottom: var(--space-16);
+  }
+
+  .article-card {
+    display: block;
+    padding: var(--space-8);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    text-decoration: none;
+    transition: border-color var(--transition-base), transform var(--transition-base);
+  }
+
+  .article-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+  }
+
+  .article-meta {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .article-category {
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .article-date {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+  }
+
+  .article-title {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-3);
+    line-height: var(--leading-snug);
+  }
+
+  .article-excerpt {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0 0 var(--space-4);
+  }
+
+  .read-more {
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+  }
+
+  .article-card:hover .read-more {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .subscribe-cta {
+    max-width: 500px;
+    text-align: center;
+    padding: var(--space-12);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    margin: 0 auto;
+  }
+
+  .subscribe-cta h2 {
+    font-size: var(--text-2xl);
+    margin: 0 0 var(--space-4);
+  }
+
+  .subscribe-cta p {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--space-8);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--gradient-accent);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-arrow {
+    transition: transform var(--transition-base);
+  }
+
+  .btn-primary:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 768px) {
+    .thinking-hero {
+      padding: var(--space-12) 0 var(--space-6);
+    }
+
+    .page-title {
+      font-size: var(--text-3xl);
+    }
+
+    .article-card {
+      padding: var(--space-6);
+    }
+
+    .article-title {
+      font-size: var(--text-lg);
+    }
+  }
+</style>
