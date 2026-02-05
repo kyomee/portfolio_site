@@ -3,8 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navigation from '../components/layout/Navigation.astro';
 import Footer from '../components/layout/Footer.astro';
 import ScrollReveal from '../components/interactive/ScrollReveal.astro';
-import Portfolio from '../components/sections/Portfolio.astro';
-import About from '../components/sections/About.astro';
 import Subscribe from '../components/sections/Subscribe.astro';
 ---
 
@@ -27,33 +25,19 @@ import Subscribe from '../components/sections/Subscribe.astro';
         <div class="hero-narrative">
           <p class="hero-greeting" data-reveal="1">Hi, I'm</p>
           <h1 class="hero-name" data-reveal="1">Nakyum Song</h1>
-          <p class="hero-intro" data-reveal="2">
-            I've seen marketing from both sides, agencies and in-house teams.
-          </p>
-
-          <p class="hero-topics" data-reveal="3">
-            What I learned is simple.<br />
-            Markets can be captured.<br />
-            Brands have to be believed.
-          </p>
-
-          <p class="hero-description" data-reveal="4">
-            That's why my work focuses on narrative, systems, and long-term fans, not just reach or clicks.
-          </p>
-
-          <p class="hero-role" data-reveal="5">
-            I'm a Global Brand Manager at Razer.<br />
-            Lately, I've been exploring how AI can help marketers design better campaigns by shaping thinking, not just speeding up execution.
+          <p class="hero-title" data-reveal="1">Brand & Narrative Architect</p>
+          <p class="hero-tagline" data-reveal="2">
+            I help brands define narratives that scale&nbsp;globally.
           </p>
         </div>
 
-        <div class="hero-ctas" data-reveal="6">
-          <a href="#portfolio" class="btn btn-primary">
+        <div class="hero-ctas" data-reveal="3">
+          <a href="/work" class="btn btn-primary">
             View My Work
             <span class="btn-arrow">&rarr;</span>
           </a>
-          <a href="#subscribe" class="btn btn-secondary">
-            Subscribe
+          <a href="/contact" class="btn btn-secondary">
+            Get in Touch
           </a>
         </div>
 
@@ -63,13 +47,37 @@ import Subscribe from '../components/sections/Subscribe.astro';
       </div>
     </section>
 
-    <div data-reveal>
-      <Portfolio />
-    </div>
+    <!-- About Preview -->
+    <section class="about-preview section" data-reveal>
+      <div class="container">
+        <div class="preview-content">
+          <p class="preview-highlight">
+            Most brands don't fail because they lack creativity.<br />
+            They fail because, at some point, they lose clarity.
+          </p>
+          <p class="preview-text">
+            My work sits at the intersection of brand narrative and structure. I help brands articulate who they are so that every decision that follows has a clear foundation to build on.
+          </p>
+          <a href="/about" class="preview-link">
+            Read more about me &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
 
-    <div data-reveal>
-      <About />
-    </div>
+    <!-- Featured Work Preview -->
+    <section class="work-preview section" data-reveal>
+      <div class="container">
+        <span class="section-label">Selected Work</span>
+        <h2 class="section-title">Case Studies</h2>
+        <p class="section-subtitle">
+          Case studies from gaming, tech, and lifestyle brands
+        </p>
+        <a href="/work" class="btn btn-secondary">
+          View All Work &rarr;
+        </a>
+      </div>
+    </section>
 
     <div data-reveal>
       <Subscribe />
@@ -190,6 +198,25 @@ import Subscribe from '../components/sections/Subscribe.astro';
     letter-spacing: var(--tracking-tight);
   }
 
+  .hero-title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin: 0;
+    margin-top: var(--space-2);
+  }
+
+  .hero-tagline {
+    font-size: var(--text-xl);
+    font-weight: var(--font-medium);
+    color: var(--color-text-primary);
+    margin: 0;
+    margin-top: var(--space-2);
+    line-height: var(--leading-snug);
+  }
+
   .hero-intro {
     font-size: var(--text-lg);
     font-weight: var(--font-medium);
@@ -301,10 +328,82 @@ import Subscribe from '../components/sections/Subscribe.astro';
     color: var(--color-text-secondary);
   }
 
+  /* About Preview */
+  .about-preview {
+    background-color: var(--color-bg-secondary);
+  }
+
+  .preview-content {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .preview-highlight {
+    font-size: var(--text-xl);
+    font-weight: var(--font-medium);
+    color: var(--color-text-primary);
+    line-height: var(--leading-snug);
+    margin: 0 0 var(--space-6);
+  }
+
+  .preview-text {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0 0 var(--space-6);
+  }
+
+  .preview-link {
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
+  }
+
+  .preview-link:hover {
+    opacity: 0.8;
+  }
+
+  /* Work Preview */
+  .work-preview {
+    text-align: center;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .section-title {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .section-subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+  }
+
   /* Responsive */
   @media (max-width: 640px) {
     .hero-narrative {
       gap: var(--space-3);
+    }
+
+    .hero-title {
+      font-size: var(--text-base);
+    }
+
+    .hero-tagline {
+      font-size: var(--text-lg);
     }
 
     .hero-intro,
