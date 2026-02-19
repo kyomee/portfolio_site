@@ -1,6 +1,7 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
+import { marked } from 'marked';
 
 export async function GET(context: APIContext) {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -18,6 +19,7 @@ export async function GET(context: APIContext) {
       link: `/posts/${post.slug}/`,
       categories: [post.data.category],
       author: post.data.author,
+      content: marked.parse(post.body ?? ''),
     })),
     customData: `<language>en-us</language>`,
   });
