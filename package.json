@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build": "cd astro-site && npm install && npm run build"
+  },
   "dependencies": {
     "wrangler": "^4.60.0"
   }
