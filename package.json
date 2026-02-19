@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "build": "cd astro-site && bun install && bun run build"
+    "build": "export PATH=$HOME/.bun/bin:$PATH && cd astro-site && bun install && bun run build",
+    "deploy": "export PATH=$HOME/.bun/bin:$PATH && cd astro-site && bun install && bun run build && cd .. && ./node_modules/.bin/wrangler pages deploy astro-site/dist --project-name portfolio-site --commit-dirty=true"
   },
   "dependencies": {
     "wrangler": "^4.60.0"
