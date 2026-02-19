@@ -1,50 +1,51 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Navigation from '../components/layout/Navigation.astro';
-import Footer from '../components/layout/Footer.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/layout/Navigation.astro';
+import Footer from '../../components/layout/Footer.astro';
 
-const allPosts = await getCollection('blog', ({ data }) => !data.draft);
-allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 ---
 
 <BaseLayout
-  title="Thinking | Nakyum Song"
-  description="Essays on brand strategy, marketing, and AI for marketers."
+  title="Posts | Nakyum Song"
+  description="Essays on brand strategy, market entry, and how AI is reshaping the way marketers work."
 >
   <Navigation />
 
-  <main class="thinking-page">
-    <section class="thinking-hero">
+  <main class="posts-page">
+    <section class="posts-hero">
       <div class="container">
-        <span class="section-label">Thinking</span>
+        <span class="section-label">Posts</span>
         <h1 class="page-title">Essays & Ideas</h1>
         <p class="page-subtitle">
-          Notes on brand strategy, marketing systems, and how AI is reshaping the way marketers work.
+          Notes on brand strategy, market entry, and how AI is reshaping the way marketers work.
         </p>
       </div>
     </section>
 
-    <section class="thinking-content">
+    <section class="posts-content">
       <div class="container">
-        <div class="articles-list">
-          {allPosts.length === 0 ? (
-            <p class="empty-state">Essays coming soon.</p>
-          ) : (
-            allPosts.map((post) => (
-              <a href={`/posts/${post.slug}/`} class="article-card">
-                <div class="article-meta">
-                  <span class="article-category">{post.data.category}</span>
-                  <span class="article-date">
-                    {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                  </span>
+        <div class="posts-list">
+          {posts.map((post) => {
+            const formattedDate = new Date(post.data.pubDate).toLocaleDateString('en-SG', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            });
+            return (
+              <a href={`/posts/${post.slug}`} class="post-card">
+                <div class="post-meta">
+                  <span class="post-category">{post.data.category}</span>
+                  <span class="post-date">{formattedDate}</span>
                 </div>
-                <h2 class="article-title">{post.data.title}</h2>
-                <p class="article-excerpt">{post.data.description}</p>
-                <span class="read-more">Read &rarr;</span>
+                <h2 class="post-title">{post.data.title}</h2>
+                <p class="post-excerpt">{post.data.description}</p>
+                <span class="read-more">Read post &rarr;</span>
               </a>
-            ))
-          )}
+            );
+          })}
         </div>
 
         <div class="subscribe-cta">
@@ -68,11 +69,11 @@ allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 </BaseLayout>
 
 <style>
-  .thinking-page {
+  .posts-page {
     padding-top: var(--nav-height);
   }
 
-  .thinking-hero {
+  .posts-hero {
     padding: var(--space-16) 0 var(--space-8);
     background-color: var(--color-bg-secondary);
   }
@@ -101,11 +102,11 @@ allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
     max-width: 550px;
   }
 
-  .thinking-content {
+  .posts-content {
     padding: var(--space-16) 0;
   }
 
-  .articles-list {
+  .posts-list {
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
@@ -114,7 +115,7 @@ allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
     margin-bottom: var(--space-16);
   }
 
-  .article-card {
+  .post-card {
     display: block;
     padding: var(--space-8);
     background: var(--color-bg-secondary);
@@ -124,18 +125,19 @@ allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
     transition: border-color var(--transition-base), transform var(--transition-base);
   }
 
-  .article-card:hover {
+  .post-card:hover {
     border-color: var(--color-accent);
     transform: translateY(-4px);
   }
 
-  .article-meta {
+  .post-meta {
     display: flex;
     gap: var(--space-4);
     margin-bottom: var(--space-4);
+    align-items: center;
   }
 
-  .article-category {
+  .post-category {
     font-size: var(--text-xs);
     font-weight: var(--font-medium);
     color: var(--color-accent);
@@ -143,12 +145,12 @@ allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
     letter-spacing: var(--tracking-wide);
   }
 
-  .article-date {
+  .post-date {
     font-size: var(--text-xs);
     color: var(--color-text-tertiary);
   }
 
-  .article-title {
+  .post-title {
     font-size: var(--text-xl);
     font-weight: var(--font-semibold);
     color: var(--color-text-primary);
@@ -156,7 +158,7 @@ allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
     line-height: var(--leading-snug);
   }
 
-  .article-excerpt {
+  .post-excerpt {
     font-size: var(--text-base);
     color: var(--color-text-secondary);
     line-height: var(--leading-relaxed);
@@ -172,16 +174,9 @@ allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
     transition: opacity var(--transition-base), transform var(--transition-base);
   }
 
-  .article-card:hover .read-more {
+  .post-card:hover .read-more {
     opacity: 1;
     transform: translateY(0);
-  }
-
-  .empty-state {
-    font-size: var(--text-base);
-    color: var(--color-text-tertiary);
-    text-align: center;
-    padding: var(--space-12) 0;
   }
 
   .subscribe-cta {
@@ -238,7 +233,7 @@ allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   }
 
   @media (max-width: 768px) {
-    .thinking-hero {
+    .posts-hero {
       padding: var(--space-12) 0 var(--space-6);
     }
 
@@ -246,11 +241,11 @@ allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
       font-size: var(--text-3xl);
     }
 
-    .article-card {
+    .post-card {
       padding: var(--space-6);
     }
 
-    .article-title {
+    .post-title {
       font-size: var(--text-lg);
     }
   }

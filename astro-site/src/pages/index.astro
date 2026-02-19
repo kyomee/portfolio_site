@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navigation from '../components/layout/Navigation.astro';
 import Footer from '../components/layout/Footer.astro';
 import ScrollReveal from '../components/interactive/ScrollReveal.astro';
+import HeroMotion from '../components/interactive/HeroMotion.astro';
 import Subscribe from '../components/sections/Subscribe.astro';
 ---
 
@@ -14,20 +15,18 @@ import Subscribe from '../components/sections/Subscribe.astro';
     <!-- Hero Section -->
     <section id="hero" class="hero section">
 
-      <!-- Animated Gradient Blobs -->
-      <div class="hero-blobs" aria-hidden="true">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-      </div>
+      <HeroMotion />
 
       <div class="container hero-content">
         <div class="hero-narrative">
           <p class="hero-greeting" data-reveal="1">Hi, I'm</p>
           <h1 class="hero-name" data-reveal="1">Nakyum Song</h1>
-          <p class="hero-title" data-reveal="1">Brand & Narrative Architect</p>
+          <p class="hero-title" data-reveal="1">Brand strategist exploring narrative clarity and global growth.</p>
           <p class="hero-tagline" data-reveal="2">
-            I help brands define narratives that scale&nbsp;globally.
+            Based in Singapore &amp; Korea.
+          </p>
+          <p class="hero-description" data-reveal="2">
+            I write about brand strategy, positioning, and building across markets.
           </p>
         </div>
 
@@ -98,77 +97,9 @@ import Subscribe from '../components/sections/Subscribe.astro';
     overflow: hidden;
   }
 
-  /* Animated Gradient Blobs */
-  .hero-blobs {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.5;
-    animation: blobFloat 20s ease-in-out infinite;
-  }
-
-  .blob-1 {
-    width: 600px;
-    height: 600px;
-    background: linear-gradient(135deg, rgba(255, 107, 107, 0.4), rgba(255, 142, 83, 0.3));
-    top: -10%;
-    right: -10%;
-    animation-delay: 0s;
-  }
-
-  .blob-2 {
-    width: 500px;
-    height: 500px;
-    background: linear-gradient(225deg, rgba(255, 142, 83, 0.35), rgba(255, 107, 107, 0.25));
-    bottom: -15%;
-    left: -5%;
-    animation-delay: -7s;
-    animation-duration: 25s;
-  }
-
-  .blob-3 {
-    width: 400px;
-    height: 400px;
-    background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(255, 200, 150, 0.2));
-    top: 40%;
-    left: 30%;
-    animation-delay: -14s;
-    animation-duration: 22s;
-  }
-
-  @keyframes blobFloat {
-    0%, 100% {
-      transform: translate(0, 0) scale(1);
-    }
-    25% {
-      transform: translate(30px, -40px) scale(1.05);
-    }
-    50% {
-      transform: translate(-20px, 20px) scale(0.95);
-    }
-    75% {
-      transform: translate(40px, 30px) scale(1.02);
-    }
-  }
-
-  /* Respect reduced motion preference */
-  @media (prefers-reduced-motion: reduce) {
-    .blob {
-      animation: none;
-    }
-  }
-
   .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     text-align: center;
     display: flex;
     flex-direction: column;

@@ -1,0 +1,146 @@
+---
+---
+
+<div class="hero-motion" aria-hidden="true">
+  <div class="layer layer-a" data-depth="0.18"></div>
+  <div class="layer layer-b" data-depth="0.28"></div>
+  <div class="layer layer-c" data-depth="0.36"></div>
+  <div class="layer layer-d" data-depth="0.48"></div>
+  <div class="layer layer-e" data-depth="0.62"></div>
+  <div class="grain"></div>
+</div>
+
+<script>
+  import gsap from 'gsap';
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (prefersReduced.matches) {
+    // Respect reduced motion preferences: no animation or pointer tracking.
+    document.documentElement.classList.add('reduced-motion');
+  } else {
+    const motionRoot = document.querySelector('.hero-motion');
+    const hero = document.querySelector('.hero');
+    const layers = Array.from(document.querySelectorAll('.hero-motion .layer'));
+
+    if (motionRoot && hero && layers.length) {
+      const quickSet = layers.map((layer) => {
+        return {
+          x: gsap.quickTo(layer, 'x', { duration: 0.6, ease: 'power3.out' }),
+          y: gsap.quickTo(layer, 'y', { duration: 0.6, ease: 'power3.out' })
+        };
+      });
+
+      let targetX = 0;
+      let targetY = 0;
+      let idlePhase = 0;
+      let pointerEnabled = window.innerWidth >= 768;
+
+      const updatePointer = (event) => {
+        if (!pointerEnabled) return;
+        const bounds = hero.getBoundingClientRect();
+        const relX = (event.clientX - bounds.left) / bounds.width;
+        const relY = (event.clientY - bounds.top) / bounds.height;
+        targetX = (relX - 0.5) * 2;
+        targetY = (relY - 0.5) * 2;
+      };
+
+      const handleResize = () => {
+        pointerEnabled = window.innerWidth >= 768;
+        if (!pointerEnabled) {
+          targetX = 0;
+          targetY = 0;
+        }
+      };
+
+      const animate = () => {
+        idlePhase += 0.002;
+        const idleX = Math.sin(idlePhase) * 0.4;
+        const idleY = Math.cos(idlePhase * 0.9) * 0.4;
+        const baseX = targetX + idleX;
+        const baseY = targetY + idleY;
+
+        layers.forEach((layer, index) => {
+          const depth = Number(layer.dataset.depth || 0.3);
+          const amplitude = 26;
+          const layerX = baseX * amplitude * depth;
+          const layerY = baseY * amplitude * depth;
+          quickSet[index].x(layerX);
+          quickSet[index].y(layerY);
+        });
+      };
+
+      window.addEventListener('pointermove', updatePointer, { passive: true });
+      window.addEventListener('resize', handleResize, { passive: true });
+      gsap.ticker.add(animate);
+    }
+  }
+</script>
+
+<style>
+  .hero-motion {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-motion .layer {
+    position: absolute;
+    inset: -20%;
+    border-radius: 999px;
+    filter: blur(60px);
+    opacity: 0.55;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .hero-motion .layer-a {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 107, 107, 0.35), transparent 60%);
+  }
+
+  .hero-motion .layer-b {
+    background: radial-gradient(circle at 70% 40%, rgba(255, 142, 83, 0.28), transparent 60%);
+    inset: -25% -10%;
+  }
+
+  .hero-motion .layer-c {
+    background: radial-gradient(circle at 50% 70%, rgba(255, 200, 150, 0.2), transparent 55%);
+    inset: -15% -30%;
+  }
+
+  .hero-motion .layer-d {
+    background: conic-gradient(from 180deg at 50% 50%, rgba(255, 107, 107, 0.16), rgba(255, 142, 83, 0.12), rgba(255, 200, 150, 0.1), rgba(255, 107, 107, 0.16));
+    filter: blur(90px);
+    opacity: 0.4;
+  }
+
+  .hero-motion .layer-e {
+    background: radial-gradient(circle at 60% 60%, rgba(255, 255, 255, 0.22), transparent 70%);
+    filter: blur(110px);
+    opacity: 0.25;
+  }
+
+  .hero-motion .grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.18;
+    background-image:
+      url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiNmZmYiLz48ZyBvcGFjaXR5PSIwLjE1Ij48Y2lyY2xlIGN4PSI0IiBjeT0iNSIgcj0iMS41IiBmaWxsPSIjMDAwIi8+PGNpcmNsZSBjeD0iMjMiIGN5PSIxOCIgcj0iMSIgc3R5bGU9ImZpbGw6I2ZmZiIvPjxjaXJjbGUgY3g9IjQ2IiBjeT0iMzUiIHI9IjEiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSI3MCIgY3k9IjE1IiByPSIxLjMiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSI5NyIgY3k9IjQ1IiByPSIxLjEiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSIxMTEiIGN5PSI2OCIgcj0iMS40IiBmaWxsPSIjMDAwIi8+PGNpcmNsZSBjeD0iMzQiIGN5PSI3NyIgcj0iMS4yIiBmaWxsPSIjMDAwIi8+PGNpcmNsZSBjeD0iNjIiIGN5PSI5NSIgcj0iMS4yIiBmaWxsPSIjMDAwIi8+PGNpcmNsZSBjeD0iODUiIGN5PSIxMDgiIHI9IjEiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjEwOCIgcj0iMSIgc3R5bGU9ImZpbGw6I2ZmZiIvPjxjaXJjbGUgY3g9IjExMCIgY3k9IjEwIiByPSIxIiBmaWxsPSIjMDAwIi8+PC9nPjwvc3ZnPg==");
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    .hero-motion .layer {
+      filter: blur(80px);
+      opacity: 0.45;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-motion .layer {
+      transform: none !important;
+    }
+  }
+</style>
