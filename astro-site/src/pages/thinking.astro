@@ -1,32 +1,11 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navigation from '../components/layout/Navigation.astro';
 import Footer from '../components/layout/Footer.astro';
 
-// Placeholder articles - replace with actual Substack content
-const articles = [
-  {
-    title: "Why Most Brand Launches Fail at Messaging",
-    excerpt: "Great launches don't announce features. They resolve tension. Here's the framework I use to build launch narratives that stick.",
-    category: "Brand Strategy",
-    date: "Coming Soon",
-    link: "https://nakyumsong.substack.com",
-  },
-  {
-    title: "Content That Compounds vs. Content That Depletes",
-    excerpt: "The difference between a content strategy that builds assets and one that creates dependency. One compounds, the other exhausts.",
-    category: "Content Strategy",
-    date: "Coming Soon",
-    link: "https://nakyumsong.substack.com",
-  },
-  {
-    title: "AI Won't Replace Marketers. Clarity Will.",
-    excerpt: "As AI accelerates execution, the bottleneck shifts to meaning. Tools can generate outputs, but they cannot define purpose.",
-    category: "AI & Marketing",
-    date: "Coming Soon",
-    link: "https://nakyumsong.substack.com",
-  },
-];
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <BaseLayout
@@ -49,17 +28,23 @@ const articles = [
     <section class="thinking-content">
       <div class="container">
         <div class="articles-list">
-          {articles.map((article) => (
-            <a href={article.link} target="_blank" rel="noopener" class="article-card">
-              <div class="article-meta">
-                <span class="article-category">{article.category}</span>
-                <span class="article-date">{article.date}</span>
-              </div>
-              <h2 class="article-title">{article.title}</h2>
-              <p class="article-excerpt">{article.excerpt}</p>
-              <span class="read-more">Read on Substack &rarr;</span>
-            </a>
-          ))}
+          {allPosts.length === 0 ? (
+            <p class="empty-state">Essays coming soon.</p>
+          ) : (
+            allPosts.map((post) => (
+              <a href={`/thinking/${post.id}/`} class="article-card">
+                <div class="article-meta">
+                  <span class="article-category">{post.data.category}</span>
+                  <span class="article-date">
+                    {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </span>
+                </div>
+                <h2 class="article-title">{post.data.title}</h2>
+                <p class="article-excerpt">{post.data.description}</p>
+                <span class="read-more">Read &rarr;</span>
+              </a>
+            ))
+          )}
         </div>
 
         <div class="subscribe-cta">
@@ -125,6 +110,7 @@ const articles = [
     flex-direction: column;
     gap: var(--space-6);
     max-width: 700px;
+    margin-inline: auto;
     margin-bottom: var(--space-16);
   }
 
@@ -189,6 +175,13 @@ const articles = [
   .article-card:hover .read-more {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  .empty-state {
+    font-size: var(--text-base);
+    color: var(--color-text-tertiary);
+    text-align: center;
+    padding: var(--space-12) 0;
   }
 
   .subscribe-cta {
