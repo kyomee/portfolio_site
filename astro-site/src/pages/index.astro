@@ -3,8 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navigation from '../components/layout/Navigation.astro';
 import Footer from '../components/layout/Footer.astro';
 import ScrollReveal from '../components/interactive/ScrollReveal.astro';
-import HeroMotion from '../components/interactive/HeroMotion.astro';
 import Subscribe from '../components/sections/Subscribe.astro';
+import { Image } from 'astro:assets';
+import profilePhoto from '../assets/images/nakyum-profile.jpeg';
 ---
 
 <BaseLayout>
@@ -15,29 +16,39 @@ import Subscribe from '../components/sections/Subscribe.astro';
     <!-- Hero Section -->
     <section id="hero" class="hero section">
 
-      <HeroMotion />
-
       <div class="container hero-content">
-        <div class="hero-narrative">
-          <p class="hero-greeting" data-reveal="1">Hi, I'm</p>
-          <h1 class="hero-name" data-reveal="1">Nakyum Song</h1>
-          <p class="hero-title" data-reveal="1">Brand strategist exploring narrative clarity and global growth.</p>
-          <p class="hero-tagline" data-reveal="2">
-            Based in Singapore &amp; Korea.
-          </p>
-          <p class="hero-description" data-reveal="2">
-            I write about brand strategy, positioning, and building across markets.
-          </p>
+        <div class="hero-right" data-reveal="1">
+          <div class="hero-photo">
+            <Image
+              src={profilePhoto}
+              alt="Nakyum Song"
+              width={600}
+              height={800}
+              format="webp"
+              quality={85}
+            />
+          </div>
         </div>
 
-        <div class="hero-ctas" data-reveal="3">
-          <a href="/work" class="btn btn-primary">
-            View My Work
-            <span class="btn-arrow">&rarr;</span>
-          </a>
-          <a href="/contact" class="btn btn-secondary">
-            Get in Touch
-          </a>
+        <div class="hero-left">
+          <div class="hero-narrative">
+            <p class="hero-greeting" data-reveal="1">Hi, I'm</p>
+            <h1 class="hero-name" data-reveal="1">Nakyum Song</h1>
+            <p class="hero-title" data-reveal="1">Global marketer and brand architect</p>
+            <p class="hero-tagline" data-reveal="2">
+              Based in Singapore &amp; Korea.
+            </p>
+          </div>
+
+          <div class="hero-ctas" data-reveal="3">
+            <a href="/work" class="btn btn-primary">
+              View My Work
+              <span class="btn-arrow">&rarr;</span>
+            </a>
+            <a href="/contact" class="btn btn-secondary">
+              Get in Touch
+            </a>
+          </div>
         </div>
 
         <div class="scroll-indicator" aria-hidden="true">
@@ -95,23 +106,61 @@ import Subscribe from '../components/sections/Subscribe.astro';
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background-color: var(--color-bg-primary);
   }
 
   .hero-content {
     position: relative;
     z-index: 2;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--space-16);
+    width: 100%;
+    text-align: left;
+  }
+
+  .hero-left {
     display: flex;
     flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .hero-right {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
-    gap: var(--space-4);
+  }
+
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    inset: -25% -35%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 107, 107, 0.22) 0%, rgba(255, 142, 83, 0.12) 40%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-photo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .hero-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    mask-image: radial-gradient(ellipse 88% 92% at 50% 44%, black 45%, rgba(0,0,0,0.6) 62%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 88% 92% at 50% 44%, black 45%, rgba(0,0,0,0.6) 62%, transparent 100%);
   }
 
   .hero-narrative {
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
-    max-width: 600px;
   }
 
   .hero-greeting {
@@ -180,7 +229,10 @@ import Subscribe from '../components/sections/Subscribe.astro';
   .hero-ctas {
     display: flex;
     gap: var(--space-4);
-    margin-top: var(--space-8);
+  }
+
+  .scroll-indicator {
+    grid-column: 1 / -1;
   }
 
   /* Buttons */
@@ -324,6 +376,26 @@ import Subscribe from '../components/sections/Subscribe.astro';
   }
 
   /* Responsive */
+  @media (max-width: 768px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .hero-right {
+      justify-content: center;
+    }
+
+    .hero-photo {
+      max-width: 240px;
+      margin-inline: auto;
+    }
+
+    .hero-ctas {
+      justify-content: center;
+    }
+  }
+
   @media (max-width: 640px) {
     .hero-narrative {
       gap: var(--space-3);
