@@ -25,6 +25,7 @@ const formattedDate = new Date(post.data.pubDate).toLocaleDateString('en-SG', {
 <BaseLayout
   title={`${post.data.title} | Nakyum Song`}
   description={post.data.description}
+  ogImage={post.data.ogImage}
 >
   <Navigation />
 
@@ -33,7 +34,7 @@ const formattedDate = new Date(post.data.pubDate).toLocaleDateString('en-SG', {
       <header class="post-header">
         <div class="container">
           <div class="post-meta">
-            <a href="/posts" class="back-link">&larr; All Posts</a>
+            <a href="/thinking" class="back-link">&larr; All Posts</a>
             <span class="post-category">{post.data.category}</span>
           </div>
           <h1 class="post-title">{post.data.title}</h1>
@@ -70,7 +71,7 @@ const formattedDate = new Date(post.data.pubDate).toLocaleDateString('en-SG', {
             <a href="https://nakyumsong.substack.com/subscribe" target="_blank" rel="noopener" class="btn btn-primary">
               Subscribe on Substack <span class="btn-arrow">&rarr;</span>
             </a>
-            <a href="/posts" class="btn btn-secondary">
+            <a href="/thinking" class="btn btn-secondary">
               Read more posts
             </a>
           </div>
@@ -260,19 +261,36 @@ const formattedDate = new Date(post.data.pubDate).toLocaleDateString('en-SG', {
     font-family: var(--font-mono);
     font-size: 0.9em;
     background: var(--color-bg-tertiary);
-    padding: 0.1em 0.4em;
-    border-radius: 3px;
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+
+  .prose :global(pre) {
+    padding: var(--space-5);
+    background: #111827;
+    color: #f9fafb;
+    border-radius: var(--radius-lg);
+    overflow-x: auto;
+    margin: var(--space-6) 0;
+  }
+
+  .prose :global(pre code) {
+    background: transparent;
+    padding: 0;
+    color: inherit;
   }
 
   .post-footer-cta {
-    padding: var(--space-16) 0;
-    background: var(--color-bg-secondary);
-    border-top: 1px solid var(--color-border);
+    padding-bottom: var(--space-20);
   }
 
   .cta-card {
-    max-width: 560px;
+    max-width: 720px;
     margin-inline: auto;
+    padding: var(--space-10);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
     text-align: center;
   }
 
@@ -282,16 +300,14 @@ const formattedDate = new Date(post.data.pubDate).toLocaleDateString('en-SG', {
   }
 
   .cta-card p {
-    font-size: var(--text-base);
     color: var(--color-text-secondary);
-    margin: 0 0 var(--space-8);
-    line-height: var(--leading-relaxed);
+    margin: 0 0 var(--space-6);
   }
 
   .cta-actions {
     display: flex;
-    gap: var(--space-4);
     justify-content: center;
+    gap: var(--space-4);
     flex-wrap: wrap;
   }
 
@@ -299,14 +315,14 @@ const formattedDate = new Date(post.data.pubDate).toLocaleDateString('en-SG', {
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    padding: var(--space-3) var(--space-6);
-    font-size: var(--text-sm);
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--text-base);
     font-weight: var(--font-medium);
     border-radius: var(--radius-lg);
     transition: all var(--transition-base);
-    text-decoration: none;
-    border: none;
     cursor: pointer;
+    text-decoration: none;
+    border: 1px solid transparent;
   }
 
   .btn-primary {
@@ -322,7 +338,7 @@ const formattedDate = new Date(post.data.pubDate).toLocaleDateString('en-SG', {
   .btn-secondary {
     background: transparent;
     color: var(--color-text-primary);
-    border: 1px solid var(--color-border);
+    border-color: var(--color-border);
   }
 
   .btn-secondary:hover {
@@ -340,19 +356,21 @@ const formattedDate = new Date(post.data.pubDate).toLocaleDateString('en-SG', {
 
   @media (max-width: 768px) {
     .post-header {
-      padding: var(--space-10) 0 var(--space-8);
+      padding: var(--space-12) 0 var(--space-8);
     }
 
     .post-title {
       font-size: var(--text-3xl);
     }
 
-    .post-description {
-      font-size: var(--text-base);
+    .post-byline {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-2);
     }
 
-    .prose :global(h2) {
-      font-size: var(--text-xl);
+    .cta-card {
+      padding: var(--space-8);
     }
   }
 </style>

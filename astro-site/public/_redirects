@@ -1,0 +1,2 @@
+/posts /thinking 301
+/posts/* /thinking/:splat 301
