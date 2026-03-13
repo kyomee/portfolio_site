@@ -1,11 +1,17 @@
 ---
+interface NavLink {
+  href: string;
+  label: string;
+  external?: boolean;
+}
+
 interface Props {
   class?: string;
 }
 
 const { class: className } = Astro.props;
 
-const navLinks = [
+const navLinks: NavLink[] = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/work", label: "Work" },

@@ -1,14 +1,20 @@
 ---
 const currentYear = new Date().getFullYear();
 
-const navLinks = [
+interface FooterLink {
+  href: string;
+  label: string;
+  external?: boolean;
+}
+
+const navLinks: FooterLink[] = [
   { href: "/", label: "Home" },
   { href: "#portfolio", label: "Portfolio" },
   { href: "#about", label: "About" },
 ];
 
-const socialLinks = [
-  { href: "https://linkedin.com/in/nakyumsong", label: "LinkedIn", icon: "linkedin" },
+const socialLinks: FooterLink[] = [
+  { href: "https://linkedin.com/in/nakyumsong", label: "LinkedIn", external: true },
 ];
 ---
 

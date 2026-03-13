@@ -12,7 +12,7 @@ interface Props {
 const {
   title = "Nakyum Song | Creative Marketer & Brand Strategist",
   description = "Portfolio of Nakyum Song - Creative Marketer and Brand Strategist building memorable brand experiences",
-  ogImage = "/og-image.jpg"
+  ogImage = "/logo.png"
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -22,10 +22,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EXY769EWYF"></script>
-    <script>
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-EXY769EWYF"></script>
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
       gtag('js', new Date());
 
       gtag('config', 'G-EXY769EWYF');
@@ -71,7 +73,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     />
 
     <!-- Structured Data -->
-    <script type="application/ld+json">
+    <script is:inline type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
@@ -83,7 +85,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         ]
       }
     </script>
-    <script type="application/ld+json">
+    <script is:inline type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",

@@ -20,7 +20,7 @@
   } else {
     const motionRoot = document.querySelector('.hero-motion');
     const hero = document.querySelector('.hero');
-    const layers = Array.from(document.querySelectorAll('.hero-motion .layer'));
+    const layers = Array.from(document.querySelectorAll<HTMLElement>('.hero-motion .layer'));
 
     if (motionRoot && hero && layers.length) {
       const quickSet = layers.map((layer) => {
@@ -35,7 +35,7 @@
       let idlePhase = 0;
       let pointerEnabled = window.innerWidth >= 768;
 
-      const updatePointer = (event) => {
+      const updatePointer = (event: PointerEvent) => {
         if (!pointerEnabled) return;
         const bounds = hero.getBoundingClientRect();
         const relX = (event.clientX - bounds.left) / bounds.width;
