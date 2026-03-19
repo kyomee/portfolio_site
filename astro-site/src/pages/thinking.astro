@@ -6,6 +6,10 @@ import Footer from '../components/layout/Footer.astro';
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const featuredPost = allPosts[0];
+const remainingPosts = allPosts.slice(1);
+const categories = [...new Set(allPosts.map(p => p.data.category))];
 ---
 
 <BaseLayout
@@ -27,25 +31,59 @@ allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
     <section class="thinking-content">
       <div class="container">
-        <div class="articles-list">
-          {allPosts.length === 0 ? (
-            <p class="empty-state">Essays coming soon.</p>
-          ) : (
-            allPosts.map((post) => (
-              <a href={`/thinking/${post.slug}/`} class="article-card">
-                <span class="article-category">{post.data.category}</span>
-                <h2 class="article-title">{post.data.title}</h2>
-                <p class="article-excerpt">{post.data.description}</p>
+        {allPosts.length === 0 ? (
+          <p class="empty-state">Essays coming soon.</p>
+        ) : (
+          <>
+            <!-- Category filter bar -->
+            <div class="filter-bar" id="filter-bar">
+              <button class="filter-btn active" data-filter="all">All</button>
+              {categories.map(cat => (
+                <button class="filter-btn" data-filter={cat}>{cat}</button>
+              ))}
+            </div>
+
+            <!-- Featured article (most recent) -->
+            {featuredPost && (
+              <a
+                href={`/thinking/${featuredPost.slug}/`}
+                class="article-card article-card--featured"
+                data-category={featuredPost.data.category}
+              >
+                <span class="article-category">{featuredPost.data.category}</span>
+                <h2 class="article-title">{featuredPost.data.title}</h2>
+                <p class="article-excerpt">{featuredPost.data.description}</p>
                 <div class="article-footer">
                   <span class="article-date">
-                    {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    {featuredPost.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                   </span>
                   <span class="read-more">Read more &raquo;</span>
                 </div>
               </a>
-            ))
-          )}
-        </div>
+            )}
+
+            <!-- Remaining articles — 2-column grid -->
+            <div class="articles-grid">
+              {remainingPosts.map(post => (
+                <a
+                  href={`/thinking/${post.slug}/`}
+                  class="article-card"
+                  data-category={post.data.category}
+                >
+                  <span class="article-category">{post.data.category}</span>
+                  <h2 class="article-title">{post.data.title}</h2>
+                  <p class="article-excerpt">{post.data.description}</p>
+                  <div class="article-footer">
+                    <span class="article-date">
+                      {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    </span>
+                    <span class="read-more">Read more &raquo;</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </>
+        )}
 
         <div class="subscribe-cta">
           <h2>Get these in your inbox</h2>
@@ -105,23 +143,70 @@ allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
     padding: var(--space-16) 0;
   }
 
-  .articles-list {
+  /* Filter bar */
+  .filter-bar {
     display: flex;
-    flex-direction: column;
-    max-width: 760px;
-    margin-inline: auto;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-8);
+  }
+
+  .filter-btn {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-btn.active,
+  .filter-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background: rgba(242, 97, 74, 0.06);
+  }
+
+  /* Card base */
+  .article-card {
+    display: block;
+    text-decoration: none;
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .article-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--color-accent);
+  }
+
+  /* Featured card */
+  .article-card--featured {
+    margin-bottom: var(--space-8);
+  }
+
+  .article-card--featured .article-title {
+    font-size: 2rem;
+  }
+
+  /* 2-column grid */
+  .articles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
     margin-bottom: var(--space-16);
   }
 
-  .article-card {
-    display: block;
-    padding: var(--space-8) 0;
-    border-bottom: 1px solid var(--color-border);
-    text-decoration: none;
-  }
-
-  .article-card:first-child {
-    border-top: 1px solid var(--color-border);
+  /* Filter hidden */
+  .article-hidden {
+    display: none !important;
   }
 
   .article-category {
@@ -146,6 +231,7 @@ allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   .article-card:hover .article-title {
     color: var(--color-accent);
   }
+
 
   .article-excerpt {
     font-size: var(--text-base);
@@ -241,12 +327,35 @@ allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
       font-size: var(--text-3xl);
     }
 
-    .article-card {
-      padding: var(--space-6) 0;
+    .article-card--featured .article-title {
+      font-size: var(--text-2xl);
     }
 
     .article-title {
       font-size: var(--text-xl);
     }
+
+    .articles-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
+
+<script>
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const articleCards = document.querySelectorAll<HTMLElement>('.article-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      articleCards.forEach(card => {
+        const match = filter === 'all' || card.dataset.category === filter;
+        card.classList.toggle('article-hidden', !match);
+      });
+    });
+  });
+</script>
