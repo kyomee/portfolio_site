@@ -17,17 +17,17 @@
     --color-text-secondary: #6b7280;
     --color-text-tertiary: #9ca3af;
 
-    /* Accent - Warm Coral */
-    --color-accent: #FF6B6B;
-    --color-accent-hover: #FF8E53;
-    --color-accent-glow: rgba(255, 107, 107, 0.3);
+    /* Accent - Coral */
+    --color-accent: #F2614A;
+    --color-accent-hover: #D94E3A;
+    --color-accent-glow: rgba(242, 97, 74, 0.3);
 
     /* Functional */
     --color-border: #e5e7eb;
     --color-border-hover: #d1d5db;
 
     /* Gradients */
-    --gradient-accent: linear-gradient(135deg, #FF6B6B, #FF8E53);
+    --gradient-accent: #F2614A;
     --gradient-glow: radial-gradient(circle, var(--color-accent-glow), transparent 70%);
 
     /* ========== Typography ========== */
@@ -98,7 +98,7 @@
     --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
     --shadow-glow: 0 0 40px var(--color-accent-glow);
     --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
-    --shadow-card-hover: 0 8px 30px rgba(255, 107, 107, 0.15);
+    --shadow-card-hover: 0 8px 30px rgba(242, 97, 74, 0.15);
 
     /* Transitions */
     --transition-fast: 150ms ease;
