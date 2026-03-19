@@ -24,6 +24,16 @@ import Footer from '../components/layout/Footer.astro';
     <section class="contact-content">
       <div class="container">
         <div class="contact-centered">
+          <div class="open-to">
+            <h2 class="open-to-heading">What I'm currently open to</h2>
+            <div class="open-to-tags">
+              <span class="open-to-tag">Brand Strategy Consulting</span>
+              <span class="open-to-tag">Fractional CMO / Marketing Lead</span>
+              <span class="open-to-tag">Speaking &amp; Workshops</span>
+              <span class="open-to-tag">Long-term Advisory</span>
+            </div>
+          </div>
+
           <div class="email-cta">
             <p class="email-intro">The best way to reach me is by email.</p>
             <a href="mailto:hello@nakyumsong.com?subject=Hello%20from%20your%20website" class="btn btn-primary btn-large">
@@ -96,6 +106,27 @@ import Footer from '../components/layout/Footer.astro';
     max-width: 500px;
     margin: 0 auto;
     text-align: center;
+  }
+
+  .open-to {
+    margin-bottom: 3rem;
+  }
+
+  .open-to-heading {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-4);
+  }
+
+  .open-to-tag {
+    display: inline-block;
+    background: #f5f5f5;
+    border-radius: 999px;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    color: #333;
+    margin: 0.25rem;
   }
 
   .email-cta {
