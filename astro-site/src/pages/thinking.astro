@@ -339,6 +339,28 @@ const categories = [...new Set(allPosts.map(p => p.data.category))];
       grid-template-columns: 1fr;
     }
   }
+
+  @media (max-width: 640px) {
+    .page-title {
+      font-size: var(--text-2xl);
+    }
+
+    .page-subtitle {
+      font-size: var(--text-base);
+    }
+
+    .article-excerpt {
+      font-size: var(--text-sm);
+    }
+
+    .subscribe-cta {
+      padding: var(--space-8);
+    }
+
+    .subscribe-cta h2 {
+      font-size: var(--text-xl);
+    }
+  }
 </style>
 
 <script>
