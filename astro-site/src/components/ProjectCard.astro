@@ -1,0 +1,201 @@
+---
+import { Image } from 'astro:assets';
+
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+  interactive?: boolean;
+  showLinkLabel?: boolean;
+}
+
+const { project, interactive = false, showLinkLabel = true } = Astro.props;
+---
+
+<a href={project.slug} class="project-card-link">
+  <article class:list={['project-card', interactive && 'project-card-interactive']} {...(interactive ? { 'data-tilt': true } : {})}>
+    <div class="card-image">
+      {project.image.kind === 'fallback' ? (
+        <div
+          class="card-text-bg"
+          style={`background: ${project.image.background}`}
+        >
+          <p class="card-text-name">{project.title}</p>
+          <p class="card-text-metric">{project.results}</p>
+        </div>
+      ) : (
+        <>
+          <Image
+            src={project.image.src}
+            alt={project.image.alt}
+            width={800}
+            height={500}
+            format="webp"
+            quality={80}
+            loading="lazy"
+          />
+          <div class="card-overlay">
+            <span class="card-results">{project.results}</span>
+          </div>
+        </>
+      )}
+    </div>
+    <div class="card-content">
+      <h3 class="card-title">{project.title}</h3>
+      <p class="card-description">{project.description}</p>
+      <div class="card-tags">
+        {project.tags.map((tag) => (
+          <span class="tag">{tag}</span>
+        ))}
+      </div>
+      {showLinkLabel && <span class="view-case-study">View Case Study &rarr;</span>}
+    </div>
+  </article>
+</a>
+
+<style>
+  .project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .project-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    box-shadow: var(--shadow-card);
+  }
+
+  .project-card-interactive {
+    transform-style: preserve-3d;
+    cursor: pointer;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--color-accent);
+  }
+
+  .project-card-interactive:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+
+  .card-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow), filter var(--transition-slow);
+  }
+
+  .card-text-bg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-6);
+    gap: var(--space-3);
+  }
+
+  .card-text-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .card-text-metric {
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    color: var(--color-accent);
+    margin: 0;
+  }
+
+  .project-card:hover .card-image img {
+    transform: scale(1.05);
+    filter: brightness(1.05);
+  }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(255, 255, 255, 0.95) 0%,
+      transparent 60%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-4);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  .project-card:hover .card-overlay {
+    opacity: 1;
+  }
+
+  .card-results {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-accent);
+  }
+
+  .card-content {
+    padding: var(--space-5);
+  }
+
+  .card-title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-2);
+  }
+
+  .card-description {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .tag {
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+  }
+
+  .view-case-study {
+    display: block;
+    margin-top: var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+  }
+
+  .project-card-link:hover .view-case-study {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
