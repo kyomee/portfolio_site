@@ -1,0 +1,36 @@
+<script>
+  import { onCLS, onINP, onLCP } from 'web-vitals';
+
+  type Gtag = (...args: unknown[]) => void;
+
+  const gtag = (window as Window & { gtag?: Gtag }).gtag;
+
+  const reportMetric = ({ name, value, delta, rating, id }: {
+    name: 'CLS' | 'INP' | 'LCP';
+    value: number;
+    delta: number;
+    rating: 'good' | 'needs-improvement' | 'poor';
+    id: string;
+  }) => {
+    if (!gtag) return;
+
+    const normalizedValue = name === 'CLS' ? Math.round(value * 1000) : Math.round(value);
+    const normalizedDelta = name === 'CLS' ? Math.round(delta * 1000) : Math.round(delta);
+
+    gtag('event', 'web_vital', {
+      event_category: 'Web Vitals',
+      metric_name: name,
+      metric_value: normalizedValue,
+      metric_delta: normalizedDelta,
+      metric_rating: rating,
+      metric_id: id,
+      page_path: window.location.pathname,
+      page_title: document.title,
+      non_interaction: true,
+    });
+  };
+
+  onCLS(reportMetric);
+  onINP(reportMetric);
+  onLCP(reportMetric);
+</script>

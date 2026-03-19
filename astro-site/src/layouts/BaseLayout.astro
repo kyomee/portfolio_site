@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import WebVitals from '../components/analytics/WebVitals.astro';
 
 interface Props {
   title?: string;
@@ -95,5 +96,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body>
     <slot />
+    <WebVitals />
   </body>
 </html>
