@@ -40,7 +40,8 @@ const projects = [
     title: "LG WING Campaign",
     description: "Global influencer marketing repositioning a dual-screen device as creator-friendly",
     tags: ["Influencer Marketing", "Product Launch", "Global Campaign"],
-    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
+    image: null,
+    brandColor: "#1E1E2E",
     results: "12M+ views, 4.5x engagement",
     slug: "/projects/lg-wing",
   },
@@ -71,7 +72,15 @@ const projects = [
             <a href={project.slug} class="project-card-link">
               <article class="project-card">
                 <div class="card-image">
-                  {typeof project.image === 'string' ? (
+                  {!project.image ? (
+                    <div
+                      class="card-text-bg"
+                      style={`background: ${project.brandColor || '#1A1A1A'}`}
+                    >
+                      <p class="card-text-name">{project.title}</p>
+                      <p class="card-text-metric">{project.results}</p>
+                    </div>
+                  ) : typeof project.image === 'string' ? (
                     <img src={project.image} alt={project.title} loading="lazy" />
                   ) : (
                     <Image
@@ -84,9 +93,11 @@ const projects = [
                       loading="lazy"
                     />
                   )}
-                  <div class="card-overlay">
-                    <span class="card-results">{project.results}</span>
-                  </div>
+                  {project.image && (
+                    <div class="card-overlay">
+                      <span class="card-results">{project.results}</span>
+                    </div>
+                  )}
                 </div>
                 <div class="card-content">
                   <h3 class="card-title">{project.title}</h3>
@@ -184,6 +195,31 @@ const projects = [
     height: 100%;
     object-fit: cover;
     transition: transform var(--transition-slow), filter var(--transition-slow);
+  }
+
+  .card-text-bg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-6);
+    gap: var(--space-3);
+  }
+
+  .card-text-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .card-text-metric {
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    color: var(--color-accent);
+    margin: 0;
   }
 
   .project-card:hover .card-image img {
