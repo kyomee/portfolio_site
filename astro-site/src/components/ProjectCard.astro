@@ -198,4 +198,15 @@ const { project, interactive = false, showLinkLabel = true } = Astro.props;
     opacity: 1;
     transform: translateY(0);
   }
+
+  @media (hover: none), (pointer: coarse) {
+    .card-overlay {
+      opacity: 1;
+    }
+
+    .view-case-study {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 </style>

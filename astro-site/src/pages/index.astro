@@ -118,6 +118,7 @@ import profilePhoto from '../assets/images/nakyum-profile.jpeg';
   .hero {
     position: relative;
     min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -488,10 +489,15 @@ import profilePhoto from '../assets/images/nakyum-profile.jpeg';
 
   /* Responsive */
   @media (max-width: 768px) {
+    .hero {
+      min-height: auto;
+    }
+
     .hero-content {
       grid-template-columns: 1fr;
       padding-right: var(--container-padding-x);
       text-align: center;
+      gap: var(--space-8);
     }
 
     .hero-left {
@@ -522,6 +528,10 @@ import profilePhoto from '../assets/images/nakyum-profile.jpeg';
 
     .hero-ctas {
       justify-content: center;
+    }
+
+    .scroll-indicator {
+      display: none;
     }
   }
 
