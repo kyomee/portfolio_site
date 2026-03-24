@@ -1,0 +1,744 @@
+<!-- MOCKUP: Archival × Neon — nakyumsong.com content -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nakyum Song — Archival × Neon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --sidebar-bg: #141414;
+    --sidebar-text: #e8e4dc;
+    --neon: #ff2d78;
+    --neon-dim: rgba(255,45,120,0.1);
+    --bg: #f0ece4;
+    --white: #faf8f4;
+    --ink: #111111;
+    --muted: rgba(17,17,17,0.45);
+    --rule: rgba(0,0,0,0.08);
+    --sidebar-w: 260px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  /* ─── SIDEBAR ─── */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: var(--sidebar-w);
+    height: 100vh;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    font-family: "IBM Plex Mono", monospace;
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 2rem;
+    z-index: 20;
+    overflow-y: auto;
+    border-right: 1px solid rgba(255,45,120,0.08);
+  }
+
+  /* Sidebar top */
+  .s-top {
+    margin-bottom: auto;
+  }
+  .s-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sidebar-text);
+    margin-bottom: 0.3rem;
+  }
+  .s-role {
+    font-size: 0.58rem;
+    color: rgba(232,228,220,0.4);
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+  }
+
+  /* Neon tag */
+  .s-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.58rem;
+    color: var(--neon);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+  }
+  .s-status::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--neon);
+    box-shadow: 0 0 6px var(--neon);
+    flex-shrink: 0;
+  }
+
+  /* Quote */
+  .s-quote {
+    font-size: 0.62rem;
+    font-style: italic;
+    color: rgba(232,228,220,0.5);
+    line-height: 1.7;
+    border-left: 2px solid var(--neon);
+    padding-left: 0.8rem;
+    margin-bottom: 3rem;
+  }
+
+  /* Nav */
+  .s-nav {
+    list-style: none;
+    margin-bottom: 2.5rem;
+  }
+  .s-nav li { border-top: 1px solid rgba(255,255,255,0.06); }
+  .s-nav li:last-child { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .s-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 0;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(232,228,220,0.45);
+    transition: color 0.15s;
+  }
+  .s-nav a:hover { color: var(--sidebar-text); }
+  .s-nav a.active { color: var(--neon); }
+  .s-nav a.active .nav-arrow { color: var(--neon); }
+  .nav-idx { font-size: 0.52rem; color: rgba(232,228,220,0.25); margin-right: 0.7rem; }
+  .nav-arrow { font-size: 0.7rem; color: transparent; transition: color 0.15s; }
+  .s-nav a:hover .nav-arrow { color: rgba(232,228,220,0.4); }
+
+  /* Sidebar footer */
+  .s-foot {
+    font-size: 0.55rem;
+    color: rgba(232,228,220,0.3);
+    line-height: 2;
+    letter-spacing: 0.05em;
+  }
+  .s-foot a { color: rgba(232,228,220,0.3); text-decoration: underline; text-underline-offset: 2px; }
+  .s-foot a:hover { color: var(--neon); }
+
+  /* ─── MAIN ─── */
+  .main {
+    margin-left: var(--sidebar-w);
+    min-height: 100vh;
+  }
+
+  /* Page meta */
+  .page-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3.5rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg);
+  }
+  .pm-id {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+  }
+  .pm-date {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.6rem;
+    color: var(--neon);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── INTRO ─── */
+  .intro {
+    padding: 5rem 3.5rem 4.5rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--white);
+  }
+  .intro-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .intro-label::before { content: '—'; color: var(--neon); }
+  .intro h1 {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 1.8rem;
+    max-width: 680px;
+  }
+  .intro h1 span {
+    color: var(--neon);
+    /* neon text glow */
+    text-shadow: 0 0 20px rgba(255,45,120,0.4);
+  }
+  .intro-sub {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #555;
+    max-width: 540px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .intro-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .intro-cta:hover { color: var(--neon); border-color: var(--neon); }
+
+  /* ─── SECTION ─── */
+  .section { border-bottom: 1px solid var(--rule); }
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.4rem 3.5rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg);
+  }
+  .sh-dash { color: var(--neon); font-family: "IBM Plex Mono", monospace; font-size: 0.75rem; }
+  .sh-num { font-family: "IBM Plex Mono", monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; }
+  .sh-title { font-family: "IBM Plex Mono", monospace; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.22em; color: var(--ink); font-weight: 500; }
+
+  /* ─── WORK ROWS ─── */
+  .work-row {
+    display: grid;
+    grid-template-columns: 150px 1fr auto;
+    align-items: start;
+    padding: 1.8rem 3.5rem;
+    border-bottom: 1px solid var(--rule);
+    border-left: 3px solid transparent;
+    background: var(--white);
+    transition: border-color 0.15s, background 0.12s;
+    gap: 2rem;
+  }
+  .work-row:hover {
+    border-left-color: var(--neon);
+    background: rgba(0,0,0,0.02);
+  }
+  .wr-date {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    padding-top: 0.2rem;
+    line-height: 1.6;
+  }
+  .wr-client {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.58rem;
+    color: var(--neon);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.45rem;
+  }
+  .wr-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+  .wr-desc {
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.65;
+    margin-bottom: 0.6rem;
+    max-width: 480px;
+  }
+  .wr-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .wr-tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    padding: 0.18rem 0.5rem;
+  }
+  /* Result badge */
+  .wr-result {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .wr-result-num {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--neon);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 12px rgba(255,45,120,0.35);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .wr-result-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.55rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  /* ─── THINKING ROWS ─── */
+  .post-row {
+    display: grid;
+    grid-template-columns: 150px 1fr auto;
+    align-items: baseline;
+    padding: 1.5rem 3.5rem;
+    border-bottom: 1px solid var(--rule);
+    border-left: 3px solid transparent;
+    background: var(--white);
+    transition: border-color 0.15s, background 0.12s;
+    gap: 2rem;
+  }
+  .post-row:hover {
+    border-left-color: var(--neon);
+    background: rgba(0,0,0,0.02);
+  }
+  .pr-date {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .pr-title {
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  .pr-tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--neon);
+    white-space: nowrap;
+    background: var(--neon-dim);
+    padding: 0.22rem 0.6rem;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  .exp-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem 3.5rem;
+    border-bottom: 1px solid var(--rule);
+    border-left: 3px solid transparent;
+    background: var(--white);
+    align-items: start;
+    transition: border-color 0.15s;
+  }
+  .exp-row:hover { border-left-color: var(--neon); }
+  .er-date {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+    line-height: 1.7;
+    padding-top: 0.2rem;
+  }
+  .er-company {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.15rem;
+    letter-spacing: -0.01em;
+  }
+  .er-role {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.62rem;
+    color: var(--neon);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.9rem;
+  }
+  .er-desc {
+    font-size: 0.83rem;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.72;
+  }
+  .er-badge {
+    display: inline-block;
+    margin-top: 0.7rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--neon);
+    background: var(--neon-dim);
+    padding: 0.2rem 0.55rem;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact {
+    padding: 5.5rem 3.5rem 7rem;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+  }
+  .contact-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: var(--neon);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .contact-label::before { content: '—'; }
+  .contact h2 {
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin-bottom: 2.5rem;
+    color: var(--sidebar-text);
+  }
+  .contact h2 em {
+    font-style: italic;
+    color: var(--neon);
+    text-shadow: 0 0 20px rgba(255,45,120,0.4);
+  }
+  .contact-email {
+    display: block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.92rem;
+    color: var(--sidebar-text);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(232,228,220,0.3);
+    margin-bottom: 0.5rem;
+    transition: color 0.15s;
+  }
+  .contact-email:hover { color: var(--neon); text-decoration-color: var(--neon); }
+  .contact-link {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.62rem;
+    color: rgba(232,228,220,0.35);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.15s;
+  }
+  .contact-link:hover { color: var(--neon); }
+
+  /* FOOTER */
+  footer {
+    padding: 1.2rem 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.55rem;
+    color: rgba(232,228,220,0.2);
+    background: var(--sidebar-bg);
+    border-top: 1px solid rgba(255,45,120,0.08);
+    letter-spacing: 0.1em;
+  }
+  footer a { color: rgba(232,228,220,0.2); }
+  footer a:hover { color: var(--neon); }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 860px) {
+    .sidebar { position: static; width: 100%; height: auto; padding: 2rem 1.5rem; }
+    .main { margin-left: 0; }
+    .page-meta, .intro, .section-head, .contact, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .work-row, .post-row { grid-template-columns: 1fr; padding: 1.3rem 1.5rem; gap: 0.4rem; }
+    .wr-result { text-align: left; }
+    .pr-tag { justify-self: start; }
+    .exp-row { grid-template-columns: 1fr; padding: 1.5rem; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── SIDEBAR ─── -->
+<aside class="sidebar">
+  <div class="s-top">
+    <div class="s-name">Nakyum Song</div>
+    <div class="s-role">Global Marketer<br>&amp; Brand Architect</div>
+    <div class="s-status">Available for work</div>
+    <blockquote class="s-quote">"Most brands don't fail because they lack creativity. They fail because, at some point, they lose clarity."</blockquote>
+  </div>
+
+  <ul class="s-nav">
+    <li>
+      <a href="#work" class="active">
+        <span><span class="nav-idx">001</span>Work</span>
+        <span class="nav-arrow">→</span>
+      </a>
+    </li>
+    <li>
+      <a href="#thinking">
+        <span><span class="nav-idx">002</span>Thinking</span>
+        <span class="nav-arrow">→</span>
+      </a>
+    </li>
+    <li>
+      <a href="#experience">
+        <span><span class="nav-idx">003</span>Experience</span>
+        <span class="nav-arrow">→</span>
+      </a>
+    </li>
+    <li>
+      <a href="#contact">
+        <span><span class="nav-idx">004</span>Contact</span>
+        <span class="nav-arrow">→</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="s-foot">
+    Singapore &amp; Korea<br>
+    <a href="mailto:nakyumsong@gmail.com">nakyumsong@gmail.com</a><br>
+    <a href="https://www.linkedin.com/in/nakyumsong" target="_blank">linkedin ↗</a>
+  </div>
+</aside>
+
+<!-- ─── MAIN ─── -->
+<div class="main">
+
+  <div class="page-meta">
+    <span class="pm-id">NS—Portfolio / Index</span>
+    <span class="pm-date">2026.03.24</span>
+  </div>
+
+  <!-- INTRO -->
+  <section class="intro" id="home">
+    <div class="intro-label">000 &nbsp; Profile</div>
+    <h1>Hi, I'm<br><span>Nakyum Song.</span></h1>
+    <p class="intro-sub">My work sits at the intersection of brand narrative and structure. I help brands articulate who they are so that every decision that follows has a clear foundation to build on.</p>
+    <a href="mailto:nakyumsong@gmail.com" class="intro-cta">Get in touch →</a>
+  </section>
+
+  <!-- WORK -->
+  <section class="section" id="work">
+    <div class="section-head">
+      <span class="sh-dash">—</span>
+      <span class="sh-num">001</span>
+      <span class="sh-title">Work</span>
+    </div>
+
+    <div class="work-row">
+      <div class="wr-date">2024.05 →<br>Present</div>
+      <div>
+        <div class="wr-client">Razer</div>
+        <div class="wr-title">Razer 20th Anniversary</div>
+        <div class="wr-desc">Global brand system unifying esports, lifestyle, and hardware campaigns across 15+ markets.</div>
+        <div class="wr-tags">
+          <span class="wr-tag">Brand Systems</span>
+          <span class="wr-tag">Global Campaign</span>
+          <span class="wr-tag">Creative Direction</span>
+        </div>
+      </div>
+      <div class="wr-result">
+        <span class="wr-result-num">15+</span>
+        <span class="wr-result-label">markets unified</span>
+      </div>
+    </div>
+
+    <div class="work-row">
+      <div class="wr-date">2022.03</div>
+      <div>
+        <div class="wr-client">KRAFTON</div>
+        <div class="wr-title">ANA Virtual Artist</div>
+        <div class="wr-desc">Launched KRAFTON's first AI-powered virtual artist with narrative-driven content strategy.</div>
+        <div class="wr-tags">
+          <span class="wr-tag">Virtual Human</span>
+          <span class="wr-tag">Content Strategy</span>
+          <span class="wr-tag">Brand Launch</span>
+        </div>
+      </div>
+      <div class="wr-result">
+        <span class="wr-result-num">5.4M</span>
+        <span class="wr-result-label">views / 50 days</span>
+      </div>
+    </div>
+
+    <div class="work-row">
+      <div class="wr-date">2021.10</div>
+      <div>
+        <div class="wr-client">KRAFTON</div>
+        <div class="wr-title">PUBG: NEW STATE Launch</div>
+        <div class="wr-desc">Global launch of AAA next-gen mobile title with full-funnel content strategy.</div>
+        <div class="wr-tags">
+          <span class="wr-tag">Gaming</span>
+          <span class="wr-tag">Global Launch</span>
+          <span class="wr-tag">Content Marketing</span>
+        </div>
+      </div>
+      <div class="wr-result">
+        <span class="wr-result-num">50M</span>
+        <span class="wr-result-label">pre-registrations</span>
+      </div>
+    </div>
+
+    <div class="work-row">
+      <div class="wr-date">2020.09</div>
+      <div>
+        <div class="wr-client">Hill &amp; Knowlton / LG</div>
+        <div class="wr-title">LG WING Campaign</div>
+        <div class="wr-desc">Global influencer marketing repositioning a dual-screen device as creator-friendly.</div>
+        <div class="wr-tags">
+          <span class="wr-tag">Influencer Marketing</span>
+          <span class="wr-tag">Product Launch</span>
+          <span class="wr-tag">21 Markets</span>
+        </div>
+      </div>
+      <div class="wr-result">
+        <span class="wr-result-num">12M</span>
+        <span class="wr-result-label">views · 4.5× eng.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- THINKING -->
+  <section class="section" id="thinking">
+    <div class="section-head">
+      <span class="sh-dash">—</span>
+      <span class="sh-num">002</span>
+      <span class="sh-title">Thinking</span>
+    </div>
+
+    <div class="post-row">
+      <div class="pr-date">2026.02.24</div>
+      <div class="pr-title">How to Use AI Tools to Build and Strengthen Your Brand Narrative</div>
+      <span class="pr-tag">AI &amp; Marketing</span>
+    </div>
+    <div class="post-row">
+      <div class="pr-date">2026.02.20</div>
+      <div class="pr-title">What Korean Branding Gets Right (And Wrong) When Going Global</div>
+      <span class="pr-tag">Brand Strategy</span>
+    </div>
+    <div class="post-row">
+      <div class="pr-date">2026.02.19</div>
+      <div class="pr-title">How Korean SMEs Can Enter the Singapore Market: A Brand-First Playbook</div>
+      <span class="pr-tag">Market Entry</span>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="section-head">
+      <span class="sh-dash">—</span>
+      <span class="sh-num">003</span>
+      <span class="sh-title">Experience</span>
+    </div>
+
+    <div class="exp-row">
+      <div class="er-date">2024.05<br>→ Present</div>
+      <div>
+        <div class="er-company">Razer</div>
+        <div class="er-role">Global Brand Manager · Singapore</div>
+        <div class="er-desc">Global esports and lifestyle campaigns. 20th Anniversary brand system across 15+ markets. Managing a distributed creative studio network.</div>
+        <span class="er-badge">Current</span>
+      </div>
+    </div>
+    <div class="exp-row">
+      <div class="er-date">2021.02<br>→ 2024.05</div>
+      <div>
+        <div class="er-company">KRAFTON</div>
+        <div class="er-role">Creative Marketing Manager · Korea</div>
+        <div class="er-desc">Launched ANA, KRAFTON's first AI-powered virtual artist. Led production for PUBG Mobile and PUBG NEW STATE. 5M+ views in 50 days.</div>
+      </div>
+    </div>
+    <div class="exp-row">
+      <div class="er-date">2019.08<br>→ 2021.02</div>
+      <div>
+        <div class="er-company">Hill &amp; Knowlton</div>
+        <div class="er-role">Account Manager · Korea</div>
+        <div class="er-desc">Global influencer strategy for LG Mobile across 21 markets. First virtual product unveiling. 30% campaign efficiency gain.</div>
+      </div>
+    </div>
+    <div class="exp-row">
+      <div class="er-date">2013.01<br>→ 2015.12</div>
+      <div>
+        <div class="er-company">SK Corporation</div>
+        <div class="er-role">Junior Consultant · Korea</div>
+        <div class="er-desc">SAP HR optimisation across six affiliates. 17% efficiency lift.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-label">004 &nbsp; Contact</div>
+    <h2>Open for consulting<br>and <em>clarity.</em></h2>
+    <a href="mailto:nakyumsong@gmail.com" class="contact-email">nakyumsong@gmail.com</a>
+    <a href="https://www.linkedin.com/in/nakyumsong" target="_blank" class="contact-link">linkedin.com/in/nakyumsong ↗</a>
+  </section>
+
+  <footer>
+    <span>© 2026 Nakyum Song</span>
+    <span>Singapore &amp; Korea</span>
+    <a href="mailto:nakyumsong@gmail.com">nakyumsong@gmail.com</a>
+  </footer>
+
+</div>
+
+<script>
+  const sections = document.querySelectorAll('section[id], .contact[id]');
+  const navLinks = document.querySelectorAll('.s-nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        navLinks.forEach(link => {
+          const active = link.getAttribute('href') === '#' + id;
+          link.classList.toggle('active', active);
+        });
+      }
+    });
+  }, { threshold: 0.25 });
+
+  sections.forEach(s => observer.observe(s));
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
