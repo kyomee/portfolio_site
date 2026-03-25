@@ -2,8 +2,15 @@
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/seo/Breadcrumbs.astro';
+import RelatedLinksSection from '../components/seo/RelatedLinksSection.astro';
+import {
+  getRelatedExpertiseForCaseStudy,
+  getRelatedPostsForCaseStudy,
+} from '../data/expertise';
 
 interface Props {
+  slug: string;
   title: string;
   company: string;
   role: string;
@@ -21,6 +28,7 @@ interface Props {
 }
 
 const {
+  slug,
   title,
   company,
   role,
@@ -35,9 +43,40 @@ const {
 } = Astro.props;
 
 const pageTitle = `${title} | Nakyum Song`;
+const relatedExpertise = getRelatedExpertiseForCaseStudy(slug);
+const relatedPosts = getRelatedPostsForCaseStudy(slug);
+const breadcrumbItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Work', href: '/work' },
+  { label: title },
+];
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: title,
+    description,
+    author: {
+      '@type': 'Person',
+      name: 'Nakyum Song',
+    },
+    about: company,
+    url: `https://nakyumsong.com/projects/${slug}/`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbItems.map((crumb, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.label,
+      item: crumb.href ? `https://nakyumsong.com${crumb.href}` : undefined,
+    })),
+  },
+];
 ---
 
-<BaseLayout title={pageTitle} description={description}>
+<BaseLayout title={pageTitle} description={description} structuredData={structuredData}>
   <div class="cs-page">
 
     <!-- Top bar -->
@@ -50,6 +89,7 @@ const pageTitle = `${title} | Nakyum Song`;
 
       <!-- Hero -->
       <div class="cs-hero">
+        <Breadcrumbs items={breadcrumbItems} />
         <div class="cs-client">{company}</div>
         <h1 class="cs-title">{title}</h1>
         <div class="cs-meta">
@@ -145,6 +185,19 @@ const pageTitle = `${title} | Nakyum Song`;
           )}
         </div>
       </div>
+
+      <RelatedLinksSection
+        eyebrow="Expertise"
+        title="Related expertise"
+        intro="These entry points connect the case study back to audience and service intent without changing the editorial presentation."
+        items={relatedExpertise}
+      />
+
+      <RelatedLinksSection
+        eyebrow="Reading"
+        title="Related essays"
+        items={relatedPosts}
+      />
 
     </main>
 
