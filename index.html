@@ -1,1301 +1,471 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brand Consulting — Nakyum Song</title>
-    <meta name="description" content="Nakyum Song is a global brand consulting strategist helping tech, gaming, and lifestyle companies build clear identity, content systems, and scalable marketing." />
-    <link rel="canonical" href="https://nakyumsong.com" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Brand Consulting — Nakyum Song" />
-    <meta property="og:description" content="Global brand consulting strategist helping tech, gaming, and lifestyle companies build clear identity, content systems, and scalable marketing." />
-    <meta property="og:url" content="https://nakyumsong.com" />
-    <meta property="og:image" content="https://nakyumsong.com/images/profile.jpg" />
-    <meta property="og:image:alt" content="Portrait of Nakyum Song" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Brand Consulting — Nakyum Song" />
-    <meta name="twitter:description" content="Global brand consulting strategist helping tech, gaming, and lifestyle companies build clear identity, content systems, and scalable marketing." />
-    <meta name="twitter:image" content="https://nakyumsong.com/images/profile.jpg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Nakyum Song",
-            "url": "https://nakyumsong.com",
-            "image": "https://nakyumsong.com/images/profile.jpg",
-            "jobTitle": "Brand Consulting Strategist",
-            "email": "mailto:nakyumsong@gmail.com",
-            "sameAs": [
-                "https://www.linkedin.com/in/nakyumsong"
-            ]
-        }
-    </script>
-    <style>
-        :root {
-            color-scheme: light;
-            --accent: #0a0a0a;
-            --accent-dark: #1f1f1f;
-            --bg: #fafafa;
-            --bg-alt: #f2f2f2;
-            --text-muted: rgba(17, 17, 17, 0.6);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: var(--bg);
-            color: #0f0f0f;
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: "Instrument Serif", Georgia, serif;
-            font-weight: 400;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        .page-shell {
-            width: min(1200px, 92vw);
-            margin: 0 auto;
-            padding-bottom: 4rem;
-        }
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 20;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1.2rem 0;
-        }
-
-        nav .brand {
-            font-size: 1.25rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 1.5rem;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        nav ul li a {
-            color: rgba(15, 15, 15, 0.7);
-            transition: color 0.2s ease;
-        }
-
-        nav ul li a:hover,
-        nav ul li a:focus {
-            color: var(--accent);
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.85rem;
-        }
-
-        .nav-toggle {
-            display: none;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            background: transparent;
-            border-radius: 999px;
-            padding: 0.5rem 1rem;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            cursor: pointer;
-        }
-
-        .nav-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            border-radius: 50%;
-            font-size: 0.85rem;
-            letter-spacing: 0.2em;
-            color: var(--accent);
-        }
-
-        .cta-link {
-            border: 1px solid rgba(15, 15, 15, 0.15);
-            padding: 0.65rem 1.35rem;
-            border-radius: 999px;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            transition: background 0.25s ease, border-color 0.25s ease;
-            color: var(--accent);
-        }
-
-        .cta-link:hover {
-            background: rgba(0, 0, 0, 0.06);
-            border-color: var(--accent);
-        }
-
-        .hero {
-            padding: 4.5rem 0 3rem;
-        }
-
-        .hero-marquee {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 600;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            overflow: hidden;
-            border-top: 1px solid rgba(0, 0, 0, 0.08);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-            padding: 1.2rem 0;
-            color: rgba(0, 0, 0, 0.65);
-            position: relative;
-        }
-
-        .hero-marquee-inner {
-            display: flex;
-            width: max-content;
-            white-space: nowrap;
-            animation: marquee 20s linear infinite;
-        }
-
-        .hero-marquee-group {
-            display: flex;
-            gap: 2rem;
-            padding-right: 2rem;
-        }
-
-        @keyframes marquee {
-            from {
-                transform: translateX(0);
-            }
-            to {
-                transform: translateX(-50%);
-            }
-        }
-
-        .hero-body {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 3rem;
-            padding-top: 3rem;
-            align-items: center;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.7rem, 5vw, 4rem);
-            line-height: 1.1;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-        }
-
-        .hero span {
-            color: var(--accent);
-        }
-
-        .hero p {
-            color: var(--accent-dark);
-            margin: 1.3rem 0 2rem;
-            font-size: 1.05rem;
-        }
-
-        .eyebrow {
-            font-size: 0.9rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-        }
-
-        .hero-cta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .hero-cta .btn,
-        .hero-cta .btn-icon {
-            min-height: 52.22px;
-            line-height: 1;
-            font-size: 0.9rem;
-            letter-spacing: 0.18em;
-        }
-
-        .btn-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            letter-spacing: 0.2em;
-            color: var(--accent);
-        }
-
-        .btn {
-            border-radius: 999px;
-            padding: 0.85rem 2rem;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            cursor: pointer;
-            transition: transform 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-primary {
-            border: none;
-            background: var(--accent);
-            color: #fff;
-            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            color: var(--accent);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
-        }
-
-        .hero-portrait {
-            display: flex;
-            justify-content: center;
-        }
-
-        .hero-portrait img {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 8px solid #fff;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .hero-portrait img,
-        .gallery-card img {
-            filter: grayscale(100%);
-        }
-
-        section {
-            margin-top: 4rem;
-            scroll-margin-top: 96px;
-        }
-
-        .section-title {
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 0.75rem;
-        }
-
-        .section-headline {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .about {
-            display: grid;
-            gap: 2rem;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        }
-
-        .about-card {
-            padding: 2.25rem;
-            border-radius: 28px;
-            background: #fff;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.08);
-        }
-
-        .about-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-        }
-
-        .about-card p {
-            color: var(--text-muted);
-        }
-
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.2rem;
-            margin-top: 2rem;
-        }
-
-        .stat {
-            padding: 1.2rem;
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            text-align: center;
-        }
-
-        .stat strong {
-            display: block;
-            font-size: 2rem;
-            color: var(--accent);
-        }
-
-        .stat span {
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            font-size: 0.75rem;
-        }
-
-        .spotlight-grid,
-        .gallery-grid,
-        .tour-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: #fff;
-            border-radius: 24px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 1.6rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-        }
-
-        .project-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem 1rem;
-            align-items: center;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.35rem 0.8rem;
-            background: #f0f0f0;
-            border-radius: 999px;
-            font-size: 0.8rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .label {
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .list-compact {
-            margin: 0.5rem 0 0;
-            padding-left: 1.2rem;
-            color: var(--text-muted);
-        }
-
-        .list-compact li {
-            margin-bottom: 0.35rem;
-        }
-
-        .project-media {
-            width: 100%;
-            height: 180px;
-            border-radius: 18px;
-            object-fit: cover;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-            margin-top: auto;
-        }
-
-        .project-links a {
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            font-size: 0.85rem;
-            color: var(--accent);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-            padding-bottom: 0.2rem;
-        }
-
-        .carousel {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .carousel-track {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            padding-bottom: 0.5rem;
-            scrollbar-width: none;
-        }
-
-        .carousel-track::-webkit-scrollbar {
-            display: none;
-        }
-
-        .carousel-item {
-            flex: 0 0 320px;
-            scroll-snap-align: start;
-        }
-
-        .carousel-controls {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 0.75rem;
-        }
-
-        .carousel button {
-            position: static;
-            transform: none;
-            border: none;
-            background: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: grid;
-            place-items: center;
-            transition: opacity 0.2s ease;
-        }
-
-        .carousel button:hover {
-            opacity: 0.85;
-        }
-
-        .project-toggle {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-            font-size: 1.1rem;
-            text-align: left;
-        }
-
-        .project-toggle span {
-            flex: 1;
-        }
-
-        .chevron {
-            transition: transform 0.2s ease;
-        }
-
-        .project-card.open .chevron {
-            transform: rotate(90deg);
-        }
-
-        .project-detail {
-            display: none;
-            border-top: 1px solid rgba(0, 0, 0, 0.06);
-            padding-top: 0.8rem;
-        }
-
-        .project-card.open .project-detail {
-            display: block;
-        }
-
-        .card {
-            background: #fff;
-            border-radius: 24px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 1.8rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            min-height: 220px;
-        }
-
-        .card h4 {
-            font-size: 1.2rem;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .experience-accordion {
-            margin-top: 2rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.08);
-        }
-
-        .experience-row {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 0;
-            font-size: 1.1rem;
-            text-align: left;
-            letter-spacing: 0.04em;
-            cursor: pointer;
-        }
-
-        .experience-row span:first-child {
-            font-weight: 600;
-        }
-
-        .toggle-icon {
-            font-size: 1.5rem;
-            transition: transform 0.2s ease;
-        }
-
-        .experience-row.active .toggle-icon {
-            transform: rotate(45deg);
-        }
-
-        .experience-panel {
-            display: none;
-            padding: 1rem 0 1.5rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-        }
-
-        .experience-panel ul {
-            margin: 1rem 0 0;
-            padding-left: 1.5rem;
-        }
-
-        .experience-panel li {
-            margin-bottom: 0.5rem;
-        }
-        .text-sm {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            letter-spacing: 0.08em;
-        }
-
-        .gallery-card {
-            padding: 0;
-            overflow: hidden;
-        }
-
-        .gallery-card img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-        }
-
-        .gallery-card div {
-            padding: 1.25rem 1.5rem;
-        }
-
-        .tour-card {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .tour-card .date {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
-            color: var(--text-muted);
-        }
-
-        .tour-card .city {
-            font-size: 1.6rem;
-            font-weight: 600;
-        }
-
-        .tour-card .venue {
-            color: var(--text-muted);
-        }
-
-        .tour-card a {
-            margin-top: auto;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            font-size: 0.85rem;
-            color: var(--accent);
-        }
-
-        .press {
-            margin-top: 2rem;
-            padding: 2rem;
-            border-radius: 28px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            background: #fff;
-        }
-
-        .press h3 {
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.4em;
-            font-size: 0.85rem;
-            font-family: "Inter", sans-serif;
-            font-weight: 600;
-        }
-
-        .press p {
-            color: var(--text-muted);
-        }
-
-        .contact {
-            margin-top: 5rem;
-            padding: 3rem;
-            border-radius: 32px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            background: #fff;
-            text-align: center;
-        }
-
-        .contact h2 {
-            margin-bottom: 1rem;
-            font-size: 2.2rem;
-        }
-
-        .contact p {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        .contact a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.1rem;
-            color: var(--accent);
-        }
-
-        footer {
-            margin-top: 4rem;
-            padding: 2rem 0 4rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        footer .socials {
-            margin: 1rem 0;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-        }
-
-        @media (max-width: 720px) {
-            nav {
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-
-            nav ul {
-                display: none;
-                width: 100%;
-                order: 3;
-            }
-
-            nav.nav-open ul {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-                padding: 1.5rem 0;
-            }
-
-            .nav-toggle {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                order: 2;
-            }
-
-            .nav-actions {
-                width: 100%;
-                justify-content: flex-start;
-                order: 4;
-            }
-
-            header {
-                position: static;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .hero-cta .btn {
-                width: 100%;
-            }
-
-            .hero-cta .btn-icon {
-                width: 100%;
-                height: auto;
-                border-radius: 999px;
-                padding: 0.85rem 2rem;
-            }
-
-            .hero-cta .btn-outline,
-            .hero-cta .btn-icon {
-                display: none;
-            }
-
-            .card,
-            .about-card {
-                padding: 1.4rem;
-            }
-
-            section {
-                scroll-margin-top: 24px;
-            }
-
-            .carousel-controls {
-                justify-content: center;
-                gap: 1rem;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .hero-marquee-inner {
-                animation: none;
-                transform: none;
-            }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nakyum Song — Global Marketer & Brand Architect</title>
+<meta name="description" content="Nakyum Song is a global marketer and brand architect helping tech, gaming, and culture brands build clear identity, content systems, and scalable marketing." />
+<link rel="canonical" href="https://nakyumsong.com" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Nakyum Song — Global Marketer & Brand Architect" />
+<meta property="og:description" content="Global marketer and brand architect helping tech, gaming, and culture brands build clear positioning, sharper stories, and systems that scale." />
+<meta property="og:url" content="https://nakyumsong.com" />
+<meta property="og:image" content="https://nakyumsong.com/images/profile.jpg" />
+<meta property="og:image:alt" content="Portrait of Nakyum Song" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Nakyum Song — Global Marketer & Brand Architect" />
+<meta name="twitter:description" content="Global marketer and brand architect helping tech, gaming, and culture brands build clear positioning, sharper stories, and systems that scale." />
+<meta name="twitter:image" content="https://nakyumsong.com/images/profile.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Nakyum Song",
+  "url": "https://nakyumsong.com",
+  "image": "https://nakyumsong.com/images/profile.jpg",
+  "jobTitle": "Global Marketer & Brand Architect",
+  "sameAs": ["https://www.linkedin.com/in/nakyumsong"]
+}
+</script>
+<style>
+  :root {
+    --sidebar-bg:   #141414;
+    --sidebar-text: #e8e4dc;
+    --accent:       #A03A5E;
+    --accent-dark:  #7D2D49;
+    --accent-dim:   rgba(160,58,94,0.08);
+    --neon:         #FF4F87;
+    --neon-dim:     rgba(255,79,135,0.10);
+    --bg:           #f0ece4;
+    --white:        #faf8f4;
+    --ink:          #111111;
+    --muted:        rgba(17,17,17,0.42);
+    --rule:         rgba(0,0,0,0.08);
+    --sidebar-w:    270px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Outfit", sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ─── SIDEBAR ─── */
+  .sidebar {
+    position: fixed; top: 0; left: 0;
+    width: var(--sidebar-w); height: 100vh;
+    background: var(--sidebar-bg); color: var(--sidebar-text);
+    font-family: "Space Mono", monospace;
+    display: flex; flex-direction: column;
+    padding: 2.5rem 2rem; z-index: 20; overflow-y: auto;
+    border-right: 1px solid rgba(255,79,135,0.18);
+  }
+  .s-top { margin-bottom: auto; }
+  .s-nav { list-style: none; margin-bottom: 2.5rem; }
+  .s-nav li { border-top: 1px solid rgba(255,255,255,0.05); }
+  .s-nav li:last-child { border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .s-nav a { display: flex; align-items: center; justify-content: space-between; padding: 0.72rem 0; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(232,228,220,0.4); transition: color 0.15s; }
+  .s-nav a:hover { color: var(--sidebar-text); }
+  .s-nav a.active { color: var(--neon); }
+  .s-nav a.active .nav-arrow { color: var(--neon); }
+  .nav-idx { font-size: 0.58rem; color: rgba(232,228,220,0.2); margin-right: 0.8rem; }
+  .nav-arrow { font-size: 0.68rem; color: transparent; transition: color 0.15s; }
+  .s-nav a:hover .nav-arrow { color: rgba(232,228,220,0.35); }
+  .s-foot { font-size: 0.62rem; color: rgba(232,228,220,0.28); line-height: 2; letter-spacing: 0.04em; }
+  .s-foot a { color: rgba(232,228,220,0.28); }
+  .s-foot a:hover { color: var(--accent); }
+
+  /* ─── MAIN ─── */
+  .main { margin-left: var(--sidebar-w); min-height: 100vh; }
+
+  .meta-bar { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 3.5rem; border-bottom: 1px solid var(--rule); background: var(--bg); }
+  .mb-left { font-family: "Space Mono", monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.1em; }
+  .mb-right { display: flex; align-items: center; gap: 0.5rem; font-family: "Space Mono", monospace; font-size: 0.62rem; color: var(--accent); letter-spacing: 0.08em; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
+  .mb-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 5px rgba(160,58,94,0.5); flex-shrink: 0; animation: blink 2s ease-in-out infinite; }
+
+  /* ─── HERO ─── */
+  .intro {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem 3.5rem;
+    background: var(--white);
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-role-line { display: flex; align-items: center; gap: 1.4rem; margin-bottom: 1.6rem; }
+  .hero-role-text { font-family: "Space Mono", monospace; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  .hero-role-rule { flex: 1; height: 1px; background: rgba(17,17,17,0.14); }
+  .intro-label { font-family: "Space Mono", monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.26em; color: var(--muted); margin-bottom: 2.4rem; display: flex; align-items: center; gap: 1rem; }
+  .intro-label::before { content: '—'; color: var(--accent); }
+  .intro h1 { font-family: "Outfit", sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 2rem; }
+  .hi-line { color: var(--ink); display: block; }
+  .name-line { color: var(--neon); display: block; }
+  .intro-sub { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 400; color: var(--ink); max-width: 600px; line-height: 1.65; margin-bottom: 2rem; }
+  .hero-meta { font-family: "Space Mono", monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 0.06em; display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.4rem; }
+  .hero-meta-sep { opacity: 0.4; }
+  .hero-links { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 2.4rem; }
+  .hero-link-btn { display: inline-flex; align-items: center; gap: 0.55rem; font-family: "Space Mono", monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.06em; transition: color 0.15s; }
+  .hero-link-btn:hover { color: var(--ink); }
+  .hero-link-icon { width: 2rem; height: 2rem; border-radius: 50%; background: rgba(17,17,17,0.07); display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; transition: background 0.15s; }
+  .hero-link-btn:hover .hero-link-icon { background: rgba(17,17,17,0.13); }
+  .intro-actions { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .btn-cta { font-family: "Space Mono", monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink); border-bottom: 1.5px solid var(--ink); padding-bottom: 2px; transition: color 0.15s, border-color 0.15s; }
+  .btn-cta:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ─── ABOUT EXPANDED ─── */
+  .about-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule); }
+  .hero-qualifier-line { font-family: "Space Mono", monospace; font-size: 0.88rem; letter-spacing: 0.04em; color: rgba(17,17,17,0.45); }
+  .hero-available { display: inline-flex; align-items: center; gap: 0.5rem; font-family: "Space Mono", monospace; font-size: 0.62rem; letter-spacing: 0.08em; color: var(--accent); }
+  .hero-available-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 5px rgba(160,58,94,0.5); flex-shrink: 0; animation: blink 2s ease-in-out infinite; }
+  .about-expanded { padding: 3rem 3.5rem 4rem; background: var(--white); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .about-exp-title { font-size: 1.05rem; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 1.4rem; }
+  .about-exp-body { font-size: 0.92rem; font-weight: 300; color: #555; line-height: 1.85; max-width: 600px; margin-bottom: 1rem; }
+
+  /* ─── SECTION SHARED ─── */
+  .section { border-bottom: 1px solid var(--rule); }
+  .section-head { display: flex; flex-direction: column; gap: 0.3rem; padding: 1.6rem 3.5rem; border-bottom: 1px solid var(--rule); background: var(--bg); }
+  .sh-top { display: flex; align-items: center; gap: 0.8rem; }
+  .sh-dash { color: var(--accent); font-family: "Space Mono", monospace; font-size: 0.75rem; }
+  .sh-num  { font-family: "Space Mono", monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 0.1em; }
+  .sh-title{ font-family: "Space Mono", monospace; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ink); font-weight: 500; }
+  .sh-sub  { font-family: "Space Mono", monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.06em; padding-left: 1.6rem; }
+
+  /* ─── EXPERIENCE ─── */
+  .exp-row { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; padding: 1.8rem 3.5rem; border-bottom: 1px solid var(--rule); border-left: 3px solid transparent; background: var(--white); align-items: start; transition: border-color 0.12s, background 0.12s; }
+  .exp-row:hover { border-left-color: var(--neon); background: var(--neon-dim); }
+  .er-period { font-family: "Space Mono", monospace; font-size: 0.62rem; color: var(--muted); line-height: 1.6; padding-top: 0.2rem; }
+  .er-company { font-size: 1.05rem; font-weight: 500; color: var(--ink); margin-bottom: 0.15rem; letter-spacing: -0.01em; }
+  .er-role { font-family: "Space Mono", monospace; font-size: 0.65rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.6rem; }
+  .er-scope { font-size: 0.85rem; font-weight: 300; color: #555; line-height: 1.7; margin-bottom: 0.25rem; }
+  .er-impact { font-size: 0.82rem; font-weight: 400; color: var(--ink); line-height: 1.6; opacity: 0.7; }
+  .er-badge { display: inline-block; margin-top: 0.6rem; font-family: "Space Mono", monospace; font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.14em; color: #22c55e; background: rgba(34,197,94,0.08); padding: 0.18rem 0.5rem; border: 1px solid rgba(34,197,94,0.22); }
+  .exp-cv-note { padding: 1.4rem 3.5rem; background: var(--white); font-family: "Space Mono", monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.05em; border-bottom: 1px solid var(--rule); }
+  .exp-cv-note a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ─── PORTFOLIO ─── */
+  .work-row { display: grid; grid-template-columns: 140px 1fr auto; align-items: start; padding: 2rem 3.5rem; border-bottom: 1px solid var(--rule); border-left: 3px solid transparent; background: var(--white); transition: border-color 0.12s, background 0.12s; gap: 2rem; }
+  .work-row:hover { border-left-color: var(--neon); background: var(--neon-dim); }
+  .wr-date { font-family: "Space Mono", monospace; font-size: 0.65rem; color: var(--muted); padding-top: 0.2rem; line-height: 1.6; }
+  .wr-client { font-family: "Space Mono", monospace; font-size: 0.62rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.4rem; }
+  .wr-title { font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.4rem; line-height: 1.3; }
+  .wr-framing { font-size: 0.84rem; font-weight: 300; color: #555; line-height: 1.65; margin-bottom: 0.7rem; max-width: 480px; }
+  .wr-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.8rem; }
+  .wr-tag { font-family: "Space Mono", monospace; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); border: 1px solid var(--rule); padding: 0.18rem 0.5rem; }
+  .wr-link { font-family: "Space Mono", monospace; font-size: 0.62rem; color: var(--accent); letter-spacing: 0.08em; border-bottom: 1px solid var(--accent-dim); padding-bottom: 1px; transition: color 0.15s; display: inline-block; }
+  .wr-link:hover { color: var(--accent-dark); }
+  .wr-result { text-align: right; flex-shrink: 0; min-width: 80px; }
+  .wr-result-num { font-family: "Space Mono", monospace; font-size: 1.5rem; font-weight: 600; color: var(--accent); line-height: 1; letter-spacing: -0.02em; display: block; margin-bottom: 0.25rem; }
+  .wr-result-label { font-family: "Space Mono", monospace; font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; }
+
+  /* ─── THINKING ─── */
+  .post-row { display: grid; grid-template-columns: 140px 1fr auto; align-items: baseline; padding: 1.5rem 3.5rem; border-bottom: 1px solid var(--rule); border-left: 3px solid transparent; background: var(--white); transition: border-color 0.12s, background 0.12s; gap: 2rem; }
+  .post-row:hover { border-left-color: var(--neon); background: var(--neon-dim); }
+  .pr-date { font-family: "Space Mono", monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.04em; }
+  .pr-title { font-size: 0.95rem; font-weight: 400; color: var(--ink); line-height: 1.4; }
+  .pr-tag { font-family: "Space Mono", monospace; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); white-space: nowrap; background: var(--accent-dim); padding: 0.22rem 0.6rem; }
+
+  /* ─── CONTACT ─── */
+  .contact { padding: 5.5rem 3.5rem 6rem; background: var(--sidebar-bg); color: var(--sidebar-text); border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .contact-label { font-family: "Space Mono", monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.26em; color: var(--accent); margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+  .contact-label::before { content: '—'; }
+  .contact h2 { font-size: clamp(1.5rem, 3.5vw, 2.4rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.9rem; color: var(--sidebar-text); max-width: 600px; }
+  .contact-support { font-size: 0.88rem; font-weight: 300; color: rgba(232,228,220,0.45); margin-bottom: 2.5rem; max-width: 440px; line-height: 1.7; }
+  .contact-actions { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .btn-accent { font-family: "Space Mono", monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; padding: 0.85rem 1.8rem; background: var(--accent); color: #fff; display: inline-block; transition: background 0.2s; cursor: pointer; border: none; }
+  .btn-accent:hover { background: var(--accent-dark); }
+  .btn-outline { font-family: "Space Mono", monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; padding: 0.85rem 1.8rem; border: 1px solid rgba(232,228,220,0.2); color: rgba(232,228,220,0.7); display: inline-block; transition: border-color 0.2s, color 0.2s; }
+  .btn-outline:hover { border-color: rgba(232,228,220,0.5); color: var(--sidebar-text); }
+
+  /* ─── FOOTER ─── */
+  footer { padding: 1.2rem 3.5rem; display: flex; justify-content: space-between; font-family: "Space Mono", monospace; font-size: 0.58rem; color: rgba(232,228,220,0.18); background: var(--sidebar-bg); letter-spacing: 0.08em; }
+  footer a { color: rgba(232,228,220,0.18); }
+  footer a:hover { color: var(--accent); }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 860px) {
+    .sidebar { position: static; width: 100%; height: auto; padding: 2rem 1.5rem; }
+    .main { margin-left: 0; }
+    .meta-bar, .intro, .about-expanded, .section-head, .work-row, .post-row, .exp-row, .exp-cv-note, .contact, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .work-row, .post-row { grid-template-columns: 1fr; }
+    .exp-row { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
-    <header>
-        <div class="page-shell">
-            <nav>
-                <a class="brand" href="#home">Nakyum Song</a>
-                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
-                <ul class="nav-links" id="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#gallery">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="nav-actions">
-                    <a class="cta-link" href="#contact">Contact</a>
-                </div>
-            </nav>
-        </div>
-    </header>
 
-    <main class="page-shell">
-        <section class="hero" id="home">
-            <div class="hero-marquee">
-                <div class="hero-marquee-inner">
-                    <div class="hero-marquee-group">
-                        <span>NAKYUM SONG</span>
-                        <span>NAKYUM SONG</span>
-                        <span>NAKYUM SONG</span>
-                        <span>NAKYUM SONG</span>
-                        <span>NAKYUM SONG</span>
-                        <span>NAKYUM SONG</span>
-                        <span>NAKYUM SONG</span>
-                        <span>NAKYUM SONG</span>
-                    </div>
-                    <div class="hero-marquee-group" aria-hidden="true">
-                        <span>NAKYUM SONG</span>
-                        <span>NAKYUM SONG</span>
-                        <span>NAKYUM SONG</span>
-                        <span>NAKYUM SONG</span>
-                        <span>NAKYUM SONG</span>
-                        <span>NAKYUM SONG</span>
-                        <span>NAKYUM SONG</span>
-                        <span>NAKYUM SONG</span>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-body">
-                <div>
-                    <p class="eyebrow">Nakyum Song</p>
-                    <h1>Brand strategist exploring narrative clarity and global growth.<br>Based in Singapore &amp; Korea.</h1>
-                    <p>
-                        I write about brand strategy, positioning, and building across markets.
-                    </p>
-                    <div class="hero-cta">
-                        <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">
-                            Let's Talk
-                        </button>
-                        <a class="btn btn-outline" href="mailto:nakyumsong@gmail.com?subject=Resume%20Request">Request Resume</a>
-                        <a class="btn-icon" href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noopener noreferrer">in</a>
-                    </div>
-                </div>
-                <div class="hero-portrait">
-                    <img src="images/profile.jpg" alt="Portrait of Nakyum Song">
-                </div>
-            </div>
-        </section>
+<!-- ─── SIDEBAR ─── -->
+<aside class="sidebar">
+  <div class="s-top">
+    <div style="margin-bottom:2.2rem;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60" width="100%" style="max-width:200px;display:block;">
+        <text font-family="'-apple-system','Helvetica Neue',Arial,sans-serif" font-size="28" font-weight="400" letter-spacing="-0.01em" fill="#f0f0f0" x="16" y="38">nakyum song</text>
+        <circle cx="212" cy="31" r="5" fill="#ff2d78"/>
+        <text font-family="'-apple-system','Helvetica Neue',Arial,sans-serif" font-size="9" font-weight="400" letter-spacing="0.24em" fill="#555555" x="16" y="54">NAKYUMSONG.COM</text>
+      </svg>
+    </div>
+    <ul class="s-nav">
+      <li><a href="#about" class="active"><span><span class="nav-idx">001</span>About</span><span class="nav-arrow">→</span></a></li>
+      <li><a href="#experience"><span><span class="nav-idx">002</span>Experience</span><span class="nav-arrow">→</span></a></li>
+      <li><a href="#work"><span><span class="nav-idx">003</span>Portfolio</span><span class="nav-arrow">→</span></a></li>
+      <li><a href="#thinking"><span><span class="nav-idx">004</span>Thinking</span><span class="nav-arrow">→</span></a></li>
+      <li><a href="#contact"><span><span class="nav-idx">005</span>Contact</span><span class="nav-arrow">→</span></a></li>
+    </ul>
+  </div>
+  <div class="s-foot">
+    Singapore / Seoul<br>
+    <a href="#" class="s-email-link">Email ↗</a><br>
+    <a href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+  </div>
+</aside>
 
-        <section class="about" id="about">
-            <div class="about-card">
-                <span class="section-title">Profile</span>
-                <h3>Brand &amp; Content Strategist</h3>
-                <p>
-                    I'm a Brand &amp; Content Strategist with 10+ years scaling brands across 15+ markets. I help companies build a clear brand foundation, craft high-performing content strategies, and create marketing systems that drive real business growth — combining brand storytelling, creative direction, and data-backed decisions.
-                </p>
-                <div class="stat-grid">
-                    <div class="stat">
-                        <strong>50M+</strong>
-                        <span>users reached</span>
-                    </div>
-                    <div class="stat">
-                        <strong>30</strong>
-                        <span>global launches</span>
-                    </div>
-                    <div class="stat">
-                        <strong>15+</strong>
-                        <span>markets</span>
-                    </div>
-                </div>
-            </div>
-            <div class="about-card">
-                <h3>Focus Areas</h3>
-                <p>
-                    • Creative direction + brand systems for tech<br />
-                    • Multi-region launch architecture + lifecycle orchestration<br />
-                    • Narrative design for executives, creators, and communities<br />
-                    • Esports, virtual humans, and culture-building initiatives
-                </p>
-                <p style="margin-top: 1rem;">
-                    <strong>How I work:</strong> Discovery → Audit → Strategy → Execution → Measurement. Every engagement starts with understanding your business context and ends with clear, measurable outcomes.
-                </p>
-            </div>
-        </section>
+<!-- ─── MAIN ─── -->
+<div class="main">
 
-        <section id="experience">
-            <p class="section-title">Experience</p>
-            <h2 class="section-headline">Proof of impact: Global brand &amp; marketing strategist with 8 years across gaming, tech, and entertainment</h2>
-            <div class="experience-accordion">
-                <button class="experience-row" data-target="exp-razer">
-                    <span>RAZER · Global Brand Manager (Singapore)</span>
-                    <span class="toggle-icon">+</span>
-                </button>
-                <div id="exp-razer" class="experience-panel">
-                    <p class="text-sm">May 2024 – Present</p>
-                    <ul>
-                        <li>Spearheading global esports and lifestyle campaigns, ensuring consistent positioning across product, digital, and creative teams.</li>
-                        <li>Developed and enforced Razer’s 20th Anniversary brand system, balancing global strategy with local nuance.</li>
-                        <li>Manage creative partners and studios to deliver premium assets and experiences at scale.</li>
-                        <li>Mentor a distributed studio network so every touchpoint—from hardware drops to live broadcasts—feels cohesive.</li>
-                    </ul>
-                </div>
+  <div class="meta-bar">
+    <span class="mb-left">Independent Portfolio · Strategy, Narrative, Direction</span>
+    <span class="mb-right"><span class="mb-dot"></span>Available for consulting</span>
+  </div>
 
-                <button class="experience-row" data-target="exp-krafton">
-                    <span>KRAFTON · Creative Marketing Manager (Korea)</span>
-                    <span class="toggle-icon">+</span>
-                </button>
-                <div id="exp-krafton" class="experience-panel">
-                    <p class="text-sm">Feb 2021 – May 2024</p>
-                    <ul>
-                        <li>Launched ANA, KRAFTON’s first virtual artist, crafting narrative, visual identity, and tone of voice.</li>
-                        <li>Achieved 5M+ views and 20K+ followers in 50 days through cross-platform content strategy.</li>
-                        <li>Oversaw production for virtual human, PUBG Mobile, and PUBG NEW STATE across social, video, and live activations.</li>
-                        <li>Partnered with internal artist teams to ensure asset quality and alignment with the brand story.</li>
-                    </ul>
-                </div>
+  <!-- 001 About -->
+  <section class="intro" id="about">
+    <div class="hero-role-line">
+      <span class="hero-role-text">Global Marketer &amp; Brand Architect</span>
+      <span class="hero-role-rule"></span>
+    </div>
+    <div class="intro-label">001 &nbsp; About</div>
+    <h1>
+      <span class="hi-line">Hi, I'm</span>
+      <span class="name-line">Nakyum Song.</span>
+    </h1>
+    <p class="intro-sub">I work at the intersection of brand strategy, creative direction, and global marketing, helping brands define sharper positioning, clearer stories, and systems that scale.</p>
+    <div class="hero-meta">
+      <span>◇ Singapore &amp; Korea</span>
+      <span class="hero-meta-sep">·</span>
+      <span>8+ years of global brand strategy</span>
+    </div>
+    <div class="hero-links">
+      <a href="#" class="hero-link-btn email-btn">
+        <span class="hero-link-icon">✉</span>
+        Email
+      </a>
+      <a href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noopener noreferrer" class="hero-link-btn">
+        <span class="hero-link-icon">↗</span>
+        LinkedIn
+      </a>
+    </div>
+    <div class="intro-actions">
+      <a href="#contact" class="btn-cta">Get in Touch →</a>
+      <a href="#work" class="btn-cta">View Portfolio →</a>
+    </div>
+  </section>
 
-                <button class="experience-row" data-target="exp-hk">
-                    <span>Hill &amp; Knowlton Strategies · Account Manager (Korea)</span>
-                    <span class="toggle-icon">+</span>
-                </button>
-                <div id="exp-hk" class="experience-panel">
-                    <p class="text-sm">Aug 2019 – Feb 2021</p>
-                    <ul>
-                        <li>Designed global influencer marketing strategies for LG Mobile across 21 markets with cultural insight.</li>
-                        <li>Produced LG Mobile’s first virtual unveiling event, setting new launch benchmarks.</li>
-                        <li>Negotiated and managed influencer partnerships, driving 30% gains in campaign efficiency.</li>
-                    </ul>
-                </div>
+  <div class="about-expanded">
+    <div class="about-header">
+      <div class="hero-qualifier-line">Global tech, gaming, and culture brands</div>
+      <div class="hero-available">
+        <span class="hero-available-dot"></span>
+        Available for consulting
+      </div>
+    </div>
+    <div class="about-exp-title">Brand clarity before brand output.</div>
+    <p class="about-exp-body">Most brands do not struggle because they lack ideas. They struggle because their message, positioning, and execution stop pointing in the same direction.</p>
+    <p class="about-exp-body">My work focuses on that alignment: shaping brand narratives, campaign systems, and strategic direction that teams can actually use across launches, markets, and content ecosystems.</p>
+  </div>
 
-                <div class="experience-row" style="cursor: default;">
-                    <span>Earlier: Marketing roles at Rotageek and University of Leeds (United Kingdom, 2017–2018)</span>
-                    <span></span>
-                </div>
+  <!-- 002 Experience -->
+  <section class="section" id="experience">
+    <div class="section-head">
+      <div class="sh-top"><span class="sh-dash">—</span><span class="sh-num">002</span><span class="sh-title">Experience</span></div>
+    </div>
 
-                <button class="experience-row" data-target="exp-sk">
-                    <span>SK Corporation · Junior Consultant (Korea)</span>
-                    <span class="toggle-icon">+</span>
-                </button>
-                <div id="exp-sk" class="experience-panel">
-                    <p class="text-sm">Jan 2013 – Dec 2015</p>
-                    <ul>
-                        <li>Supported six affiliate companies in optimizing SAP HR systems for a 17% efficiency lift.</li>
-                        <li>Delivered trainings, troubleshooting, and alignment across stakeholder teams.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+    <div class="exp-row">
+      <div class="er-period">2024 →<br>Present</div>
+      <div>
+        <div class="er-company">Razer</div>
+        <div class="er-role">Global Brand Manager · Singapore</div>
+        <div class="er-scope">Spearheading global esports and lifestyle campaigns; developed and enforced the 20th Anniversary brand system across 15+ markets. Manages creative partners and studios to deliver premium assets at scale.</div>
+        <div class="er-impact">Unified creative direction across a distributed studio network spanning four continents.</div>
+        <span class="er-badge">Current</span>
+      </div>
+    </div>
 
-        <section id="gallery">
-            <p class="section-title">Portfolio</p>
-            <h2 class="section-headline">Selected campaigns and content systems</h2>
-            <div class="carousel">
-                <div class="carousel-track">
-                    <article class="project-card carousel-item" data-project="project1">
-                        <div class="project-meta">
-                            <span class="pill">Project 1 · Razer</span>
-                            <span>Global Brand Manager | May 2024 - Present</span>
-                        </div>
-                        <img class="project-media" src="images/razer-anniversary.jpg" alt="Razer 20th Anniversary campaign visual">
-                        <button class="project-toggle" aria-expanded="false">
-                            <span>Razer 20th Anniversary Global Brand Campaign</span>
-                            <span class="chevron">›</span>
-                        </button>
-                        <div class="project-detail">
-                            <div class="label">Results</div>
-                            <ul class="list-compact">
-                                <li>Consistent global brand narrative across 15+ markets.</li>
-                                <li>Reinforced legacy while defining AI as next strategic chapter.</li>
-                                <li>Improved production efficiency and cross-functional alignment.</li>
-                            </ul>
-                            <div class="label">Objective</div>
-                            <p>Strengthen Razer’s global brand positioning for its 20th anniversary while defining the next AI-guided chapter and unifying narrative across markets.</p>
-                            <div class="label">Strategy (Brand Positioning → Legacy → Razer AI Next Chapter)</div>
-                            <ul class="list-compact">
-                                <li>Developed core positioning translating 20-year legacy into an AI-powered evolution.</li>
-                                <li>Positioned Razer AI as continuation of engineering, esports, and gamer-first heritage.</li>
-                                <li>Built cohesive global narrative: “20 years of innovation built together with our community.”</li>
-                                <li>Introduced brand governance and cross-market alignment for 15+ regions.</li>
-                            </ul>
-                            <div class="label">Execution</div>
-                            <ul class="list-compact">
-                                <li>Full-year anniversary campaign with multi-format content.</li>
-                                <li>Video series, editorial artbook, offline store branding, community activations.</li>
-                                <li>Overarching Razer AI narrative across all streams; aligned product/digital/retail teams.</li>
-                            </ul>
-                            <div class="project-links">
-                                <a href="https://www.youtube.com/watch?v=yRw2bimzDzY" target="_blank" rel="noopener noreferrer">Watch video</a>
-                            </div>
-                        </div>
-                    </article>
+    <div class="exp-row">
+      <div class="er-period">2021 →<br>2024</div>
+      <div>
+        <div class="er-company">KRAFTON</div>
+        <div class="er-role">Creative Marketing Manager · Korea</div>
+        <div class="er-scope">Launched ANA, KRAFTON's first AI-powered virtual artist — crafting narrative, visual identity, and tone of voice. Oversaw production for PUBG Mobile and PUBG NEW STATE across social, video, and live activations.</div>
+        <div class="er-impact">5.4M views in 50 days; 50M+ pre-registrations for global mobile launch.</div>
+      </div>
+    </div>
 
-                    <article class="project-card carousel-item" data-project="project2">
-                        <div class="project-meta">
-                            <span class="pill">Project 2 · Krafton</span>
-                            <span>Creative Marketing Manager | Feb 2021 - May 2024</span>
-                        </div>
-                        <img class="project-media" src="images/ana-virtual-artist.jpg" alt="ANA Virtual Artist Launch visual">
-                        <button class="project-toggle" aria-expanded="false">
-                            <span>AI Virtual Artist Launch — ANA by KRAFTON</span>
-                            <span class="chevron">›</span>
-                        </button>
-                        <div class="project-detail">
-                            <div class="label">Results</div>
-                            <ul class="list-compact">
-                                <li>5.4M+ views in 50 days; 20K+ followers.</li>
-                                <li>Positioned ANA as a credible virtual artist, not a tech demo.</li>
-                                <li>Expanded from music to gaming creator formats.</li>
-                            </ul>
-                            <div class="label">Objective</div>
-                            <p>Launch ANA as KRAFTON’s first AI-powered virtual artist, translating deep tech into human storytelling and scaling fandom in 50 days.</p>
-                            <div class="label">Strategy (Tech → Story → Entry Point → Expansion)</div>
-                            <ul class="list-compact">
-                                <li>Built identity with deep-learning, dev, and design teams; chose music as entry.</li>
-                                <li>Converted AI voice, motion capture, modeling, and Unreal rigging into user value.</li>
-                                <li>Multi-persona content for entertainment fans, tech enthusiasts, general consumers.</li>
-                                <li>Expanded into gaming and livestream formats as tech matured.</li>
-                            </ul>
-                            <div class="label">Execution</div>
-                            <ul class="list-compact">
-                                <li>Directed 50+ pieces across YouTube, Instagram, shorts, influencers, and live events.</li>
-                                <li>Music-first launch; followed with gameplay and creator-style videos.</li>
-                                <li>Balanced technical credibility with entertainment-forward PR.</li>
-                            </ul>
-                            <div class="project-links">
-                                <a href="https://www.youtube.com/watch?v=a01joCdGQWU" target="_blank" rel="noopener noreferrer">Watch debut video</a>
-                            </div>
-                        </div>
-                    </article>
+    <div class="exp-row">
+      <div class="er-period">2019 →<br>2021</div>
+      <div>
+        <div class="er-company">Hill &amp; Knowlton</div>
+        <div class="er-role">Account Manager · Korea</div>
+        <div class="er-scope">Designed global influencer marketing strategies for LG Mobile across 21 markets. Produced LG Mobile's first virtual product unveiling, setting new launch benchmarks.</div>
+        <div class="er-impact">30% campaign efficiency gain; 12M+ views with 4.5× engagement rate.</div>
+      </div>
+    </div>
 
-                    <article class="project-card carousel-item" data-project="project3">
-                        <div class="project-meta">
-                            <span class="pill">Project 3 · Krafton</span>
-                            <span>Creative Marketing Manager | Feb 2021 - May 2024</span>
-                        </div>
-                        <img class="project-media" src="images/pubg-new-state.jpg" alt="PUBG: NEW STATE Launch visual">
-                        <button class="project-toggle" aria-expanded="false">
-                            <span>PUBG: NEW STATE Global Launch Content Marketing</span>
-                            <span class="chevron">›</span>
-                        </button>
-                        <div class="project-detail">
-                            <div class="label">Results</div>
-                            <ul class="list-compact">
-                                <li>50M+ global pre-registrations; strong creator amplification.</li>
-                                <li>Improved player comprehension via simplified content.</li>
-                                <li>Strengthened content consistency across dev and marketing.</li>
-                            </ul>
-                            <div class="label">Objective</div>
-                            <p>Lead global launch of a AAA next-gen mobile title with full-funnel strategy, differentiating from PUBG Mobile.</p>
-                            <div class="label">Strategy (Testing → Differentiation → Global Content)</div>
-                            <ul class="list-compact">
-                                <li>Alpha/beta tests translated into transparent pre-launch content.</li>
-                                <li>Futuristic world, advanced movement, vehicle physics, improved combat → user messaging.</li>
-                                <li>Diversified formats: trailers, teasers, music storytelling, in-game explainers.</li>
-                                <li>Global influencer plan across US, EU, APAC.</li>
-                            </ul>
-                            <div class="label">Execution (Pre → Launch → Post)</div>
-                            <ul class="list-compact">
-                                <li>Pre: worldbuilding teasers, dev diaries, testing recaps.</li>
-                                <li>Launch: global trailers, creator-led breakdowns.</li>
-                                <li>Post: update explainers and patch-note breakdowns.</li>
-                            </ul>
-                            <div class="project-links">
-                                <a href="https://www.youtube.com/watch?v=46adWxO8a9Q" target="_blank" rel="noopener noreferrer">Watch launch trailer</a>
-                            </div>
-                        </div>
-                    </article>
+    <div class="exp-row">
+      <div class="er-period">2017 →<br>2018</div>
+      <div>
+        <div class="er-company">Rotageek / University of Leeds</div>
+        <div class="er-role">Marketing · United Kingdom</div>
+        <div class="er-scope">Early marketing roles spanning SaaS product marketing and academic brand communications.</div>
+        <div class="er-impact">Built cross-cultural communication skills across UK and European markets.</div>
+      </div>
+    </div>
 
-                    <article class="project-card carousel-item" data-project="project4">
-                        <div class="project-meta">
-                            <span class="pill">Project 4 · Krafton</span>
-                            <span>Creative Marketing Manager | Feb 2021 - May 2024</span>
-                        </div>
-                        <img class="project-media" src="images/pubg-mobile-korea.jpg" alt="PUBG Mobile Korea Content visual">
-                        <button class="project-toggle" aria-expanded="false">
-                            <span>PUBG Mobile Korea Content Strategy</span>
-                            <span class="chevron">›</span>
-                        </button>
-                        <div class="project-detail">
-                            <div class="label">Results</div>
-                            <ul class="list-compact">
-                                <li>Reduced early-stage friction for new players.</li>
-                                <li>Strengthened trust with transparent updates.</li>
-                                <li>Improved workflow efficiency by 20% while increasing output.</li>
-                            </ul>
-                            <div class="label">Objective</div>
-                            <p>Strengthen retention and reduce churn for a mature live game by turning each update into clear, value-driven content with better onboarding.</p>
-                            <div class="label">Strategy (Retention → Update Hooking → Onboarding)</div>
-                            <ul class="list-compact">
-                                <li>Identified update “hooking points” and translated them into player narratives.</li>
-                                <li>Bridged community feedback to dev improvements.</li>
-                                <li>Built onboarding and tutorial content to reduce early friction.</li>
-                            </ul>
-                            <div class="label">Execution</div>
-                            <ul class="list-compact">
-                                <li>Produced onboarding content and mechanic breakdowns.</li>
-                                <li>Shared before/after updates reflecting feedback.</li>
-                                <li>Localized events and activations to re-engage players.</li>
-                            </ul>
-                            <div class="project-links">
-                                <a href="https://www.youtube.com/watch?v=eYl7BnEa3kc" target="_blank" rel="noopener noreferrer">Watch update feature</a>
-                            </div>
-                        </div>
-                    </article>
+    <div class="exp-row">
+      <div class="er-period">2013 →<br>2015</div>
+      <div>
+        <div class="er-company">SK Corporation</div>
+        <div class="er-role">Junior Consultant · Korea</div>
+        <div class="er-scope">SAP HR system optimisation across six affiliates; training and stakeholder alignment.</div>
+        <div class="er-impact">17% efficiency lift across group operations.</div>
+      </div>
+    </div>
 
-                    <article class="project-card carousel-item" data-project="project5">
-                        <div class="project-meta">
-                            <span class="pill">Project 5 · Hill &amp; Knowlton</span>
-                            <span>Account Manager | Aug 2019 - Feb 2021</span>
-                        </div>
-                        <img class="project-media" src="images/lg-wing.jpg" alt="LG WING Launch campaign visual">
-                        <button class="project-toggle" aria-expanded="false">
-                            <span>LG WING Product Use-Case Launch Campaign</span>
-                            <span class="chevron">›</span>
-                        </button>
-                        <div class="project-detail">
-                            <div class="label">Results</div>
-                            <ul class="list-compact">
-                                <li>12M+ campaign views; 4.5x engagement vs. prior benchmarks.</li>
-                                <li>30% higher watch-through vs. traditional launch videos.</li>
-                                <li>Repositioned LG WING as practical and creator-friendly.</li>
-                            </ul>
-                            <div class="label">Objective</div>
-                            <p>Launch LG’s swivel-screen smartphone by showing daily dual-screen value, not just specs.</p>
-                            <div class="label">Strategy (Feature → Benefit → Use Case)</div>
-                            <ul class="list-compact">
-                                <li>Built use-case narrative: multitasking, creator tools, navigation, entertainment.</li>
-                                <li>Partnered with mega influencers to translate UX benefits.</li>
-                                <li>Shifted launch toward engagement-focused demonstrations.</li>
-                            </ul>
-                            <div class="label">Execution</div>
-                            <ul class="list-compact">
-                                <li>Story angles per influencer: recording/preview, navigation+media, creator mode, split-screen.</li>
-                                <li>Delivered content across YouTube, Instagram, TikTok.</li>
-                            </ul>
-                            <div class="project-links">
-                                <a href="https://www.youtube.com/watch?v=aPXTqZdQ8js" target="_blank" rel="noopener noreferrer">Campaign video 1</a>
-                                <a href="https://www.youtube.com/watch?v=Ak7IQhXnot4" target="_blank" rel="noopener noreferrer">Campaign video 2</a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="carousel-controls">
-                    <button class="prev" aria-label="Previous project">‹</button>
-                    <button class="next" aria-label="Next project">›</button>
-                </div>
-            </div>
-            <p class="text-sm" style="margin-top: 1rem;">Selected outcomes shown are directional and market-dependent.</p>
+    <div class="exp-cv-note">Full CV available on request — <a href="#" class="cv-email-link">get in touch</a></div>
+  </section>
 
-        </section>
+  <!-- 003 Portfolio -->
+  <section class="section" id="work">
+    <div class="section-head">
+      <div class="sh-top"><span class="sh-dash">—</span><span class="sh-num">003</span><span class="sh-title">Portfolio</span></div>
+      <div class="sh-sub">Brand systems, launches, and narrative-led campaigns</div>
+    </div>
 
-        <section id="services">
-            <p class="section-title">Services</p>
-            <h2 class="section-headline">Brand consulting services</h2>
-            <div class="spotlight-grid">
-                <article class="card">
-                    <h4>Brand Systems &amp; Narrative</h4>
-                    <p>Positioning, messaging, and creative direction to build a cohesive identity across product, campaigns, and executive storytelling — so teams align faster and campaigns scale globally.</p>
-                </article>
-                <article class="card">
-                    <h4>Content &amp; Campaign Architecture</h4>
-                    <p>End-to-end content strategy, editorial roadmaps, and multi-channel campaign planning — turning strategy into measurable results across launches and evergreen growth.</p>
-                </article>
-                <article class="card">
-                    <h4>Fractional Brand Leadership</h4>
-                    <p>Hands-on support as an interim/fractional CBO or brand lead — aligning marketing, product, and community teams to move faster without losing quality.</p>
-                </article>
-                <article class="card">
-                    <h4>Workshops &amp; Advisory</h4>
-                    <p>Bespoke workshops, playbooks, and advisory partnerships — helping founders and in-house teams build brand capabilities that last beyond the engagement.</p>
-                </article>
-            </div>
-        </section>
+    <div class="work-row">
+      <div class="wr-date">2024 →<br>Present</div>
+      <div>
+        <div class="wr-client">Razer</div>
+        <div class="wr-title">Razer 20th Anniversary</div>
+        <div class="wr-framing">Built a unifying brand system for a milestone campaign spanning esports, lifestyle, and hardware across 15+ markets.</div>
+        <div class="wr-tags"><span class="wr-tag">Brand Systems</span><span class="wr-tag">Global Campaign</span><span class="wr-tag">Creative Direction</span></div>
+        <a href="work/razer-anniversary.html" class="wr-link">View Case Study →</a>
+      </div>
+      <div class="wr-result"><span class="wr-result-num">15+</span><span class="wr-result-label">markets unified</span></div>
+    </div>
 
-        <section class="contact" id="contact">
-            <h2>Open collaborations</h2>
-            <p>
-                Available for global brand leadership, creative direction for launches, and bespoke studio partnerships across North America, Europe, and APAC.
-                Send context—mood boards welcome.
-            </p>
-            <a href="mailto:nakyumsong@gmail.com">nakyumsong@gmail.com</a>
-        </section>
-    </main>
+    <div class="work-row">
+      <div class="wr-date">2022</div>
+      <div>
+        <div class="wr-client">KRAFTON</div>
+        <div class="wr-title">ANA Virtual Artist</div>
+        <div class="wr-framing">Launched Korea's first AI virtual artist — defining a new content format for gaming brands.</div>
+        <div class="wr-tags"><span class="wr-tag">Virtual Human</span><span class="wr-tag">Content Strategy</span><span class="wr-tag">Brand Launch</span></div>
+        <a href="work/krafton-ana.html" class="wr-link">View Case Study →</a>
+      </div>
+      <div class="wr-result"><span class="wr-result-num">5.4M</span><span class="wr-result-label">views / 50 days</span></div>
+    </div>
 
-<footer>
-        <div class="page-shell">
-            <div>© 2025 Nakyum Song. All rights reserved.</div>
-            <div class="socials">
-                <a href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://www.substack.com" target="_blank" rel="noopener noreferrer">Substack</a>
-            </div>
-            <div>Minimal creative systems for bold tech brands.</div>
-        </div>
-</footer>
+    <div class="work-row">
+      <div class="wr-date">2021</div>
+      <div>
+        <div class="wr-client">KRAFTON</div>
+        <div class="wr-title">PUBG: NEW STATE Launch</div>
+        <div class="wr-framing">Led full-funnel strategy for a global AAA mobile launch entering 175+ countries simultaneously.</div>
+        <div class="wr-tags"><span class="wr-tag">Gaming</span><span class="wr-tag">Global Launch</span><span class="wr-tag">Content Marketing</span></div>
+        <a href="work/pubg-new-state.html" class="wr-link">View Case Study →</a>
+      </div>
+      <div class="wr-result"><span class="wr-result-num">50M</span><span class="wr-result-label">pre-registrations</span></div>
+    </div>
+
+    <div class="work-row">
+      <div class="wr-date">2020</div>
+      <div>
+        <div class="wr-client">Hill &amp; Knowlton / LG</div>
+        <div class="wr-title">LG WING Campaign</div>
+        <div class="wr-framing">Repositioned a dual-screen device as a creator tool through a 21-market influencer campaign.</div>
+        <div class="wr-tags"><span class="wr-tag">Influencer Marketing</span><span class="wr-tag">Product Launch</span><span class="wr-tag">21 Markets</span></div>
+        <a href="work/lg-wing.html" class="wr-link">View Case Study →</a>
+      </div>
+      <div class="wr-result"><span class="wr-result-num">12M</span><span class="wr-result-label">views · 4.5× eng.</span></div>
+    </div>
+  </section>
+
+  <!-- 004 Thinking -->
+  <section class="section" id="thinking">
+    <div class="section-head">
+      <div class="sh-top"><span class="sh-dash">—</span><span class="sh-num">004</span><span class="sh-title">Thinking</span></div>
+      <div class="sh-sub">Writing on brand, AI, market positioning, and cultural translation</div>
+    </div>
+    <div class="post-row">
+      <div class="pr-date">2026.02.24</div>
+      <div class="pr-title">How to Use AI Tools to Build and Strengthen Your Brand Narrative</div>
+      <span class="pr-tag">AI &amp; Marketing</span>
+    </div>
+    <div class="post-row">
+      <div class="pr-date">2026.02.20</div>
+      <div class="pr-title">What Korean Branding Gets Right (And Wrong) When Going Global</div>
+      <span class="pr-tag">Brand Strategy</span>
+    </div>
+    <div class="post-row">
+      <div class="pr-date">2026.02.19</div>
+      <div class="pr-title">How Korean SMEs Can Enter the Singapore Market: A Brand-First Playbook</div>
+      <span class="pr-tag">Market Entry</span>
+    </div>
+  </section>
+
+  <!-- 005 Contact -->
+  <section class="contact" id="contact">
+    <div class="contact-label">005 &nbsp; Contact</div>
+    <h2>Open for brand strategy, narrative consulting, and creative direction.</h2>
+    <p class="contact-support">For consulting, collaborations, and selected in-house opportunities.</p>
+    <div class="contact-actions">
+      <button class="btn-accent contact-email-btn">Get in touch →</button>
+      <a href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noopener noreferrer" class="btn-outline">LinkedIn ↗</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Nakyum Song</span>
+    <span>Singapore / Seoul</span>
+    <a href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </footer>
+</div>
+
 <script>
-    // Mobile nav toggle
-    const nav = document.querySelector('nav');
-    const navToggle = document.querySelector('.nav-toggle');
-    if (nav && navToggle) {
-        navToggle.addEventListener('click', () => {
-            const isOpen = nav.classList.toggle('nav-open');
-            navToggle.setAttribute('aria-expanded', String(isOpen));
-        });
+  // Email obfuscation
+  const emailUser = 'nakyumsong';
+  const emailDomain = 'gmail.com';
+  const emailAddress = emailUser + '@' + emailDomain;
 
-        nav.querySelectorAll('a[href^="#"]').forEach(link => {
-            link.addEventListener('click', () => {
-                if (!nav.classList.contains('nav-open')) return;
-                nav.classList.remove('nav-open');
-                navToggle.setAttribute('aria-expanded', 'false');
-            });
-        });
-    }
+  document.querySelectorAll('.email-btn, .s-email-link, .cv-email-link').forEach(el => {
+    el.href = 'mailto:' + emailAddress;
+  });
+  document.querySelector('.contact-email-btn').addEventListener('click', () => {
+    window.location.href = 'mailto:' + emailAddress;
+  });
 
-    // Experience accordion
-    document.querySelectorAll('.experience-row').forEach(button => {
-        button.addEventListener('click', () => {
-            const targetId = button.getAttribute('data-target');
-            const panel = document.getElementById(targetId);
-            const isOpen = panel.style.display === 'block';
-            document.querySelectorAll('.experience-panel').forEach(p => p.style.display = 'none');
-            document.querySelectorAll('.experience-row').forEach(btn => btn.classList.remove('active'));
-            if (!isOpen) {
-                panel.style.display = 'block';
-                button.classList.add('active');
-            }
+  // Active nav via IntersectionObserver
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.s-nav a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
         });
+      }
     });
+  }, { threshold: 0.25 });
+  sections.forEach(s => observer.observe(s));
 
-    // Portfolio toggle
-    document.querySelectorAll('.project-card').forEach(card => {
-        const toggle = card.querySelector('.project-toggle');
-        const detail = card.querySelector('.project-detail');
-        if (!toggle || !detail) return;
-        toggle.addEventListener('click', () => {
-            const isOpen = card.classList.contains('open');
-            document.querySelectorAll('.project-card').forEach(c => {
-                c.classList.remove('open');
-                const t = c.querySelector('.project-toggle');
-                if (t) t.setAttribute('aria-expanded', 'false');
-            });
-            if (!isOpen) {
-                card.classList.add('open');
-                toggle.setAttribute('aria-expanded', 'true');
-            }
-        });
+  // Smooth scroll for nav links
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
     });
-
-    // Carousel controls
-    const track = document.querySelector('.carousel-track');
-    const prevBtn = document.querySelector('.carousel .prev');
-    const nextBtn = document.querySelector('.carousel .next');
-
-    function scrollByCard(direction = 1) {
-        if (!track) return;
-        const card = track.querySelector('.carousel-item');
-        const cardWidth = card ? card.getBoundingClientRect().width + 16 : 320;
-        track.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
-    }
-
-    prevBtn?.addEventListener('click', () => scrollByCard(-1));
-    nextBtn?.addEventListener('click', () => scrollByCard(1));
+  });
 </script>
 </body>
 </html>
