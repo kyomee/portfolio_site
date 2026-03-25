@@ -1,0 +1,501 @@
+<!-- MOCKUP: Editorial / Magazine Style — nakyumsong.com content -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nakyum Song — Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --muted: #888;
+    --bg: #fff;
+    --accent: #2d4a3e;
+    --rule: rgba(0,0,0,0.1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  a { text-decoration: none; color: inherit; }
+  img { display: block; max-width: 100%; }
+
+  /* NAV */
+  header {
+    border-bottom: 1px solid var(--rule);
+    padding: 1.4rem 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(12px);
+    z-index: 10;
+  }
+  .brand {
+    font-family: "Instrument Serif", serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
+  }
+  nav { display: flex; align-items: center; gap: 2.5rem; }
+  nav a {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--ink); }
+  .nav-cta {
+    color: var(--accent) !important;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 7rem 5vw 0;
+    border-bottom: 3px solid var(--ink);
+    overflow: hidden;
+  }
+  .hero-kicker {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+  .hero-kicker::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 5rem;
+    align-items: end;
+    padding-bottom: 5rem;
+  }
+  .hero h1 {
+    font-family: "Instrument Serif", serif;
+    font-size: clamp(4.5rem, 10vw, 8.5rem);
+    font-weight: 400;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: 0.5rem;
+  }
+  .hero-quote {
+    font-family: "Instrument Serif", serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: #333;
+    border-left: 2px solid var(--accent);
+    padding-left: 1.2rem;
+  }
+  .hero-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-solid {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    padding: 0.9rem 2rem;
+    background: var(--accent);
+    color: #fff;
+    display: inline-block;
+    transition: opacity 0.2s;
+  }
+  .btn-solid:hover { opacity: 0.85; }
+  .btn-ghost {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    padding: 0.9rem 2rem;
+    border: 1px solid rgba(0,0,0,0.18);
+    color: var(--ink);
+    display: inline-block;
+    transition: background 0.2s;
+  }
+  .btn-ghost:hover { background: rgba(0,0,0,0.04); }
+
+  /* SECTION LABEL */
+  .section { padding: 6rem 5vw; border-bottom: 1px solid var(--rule); }
+  .section-label {
+    display: flex;
+    align-items: baseline;
+    gap: 1.2rem;
+    margin-bottom: 3.5rem;
+  }
+  .sec-num {
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--accent);
+  }
+  .sec-title {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    color: var(--muted);
+    font-family: "Inter", sans-serif;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* WORK */
+  .work-list { border-top: 2px solid var(--ink); }
+  .work-item {
+    display: grid;
+    grid-template-columns: 64px 1fr 200px 80px;
+    gap: 2.5rem;
+    align-items: start;
+    padding: 2.8rem 0;
+    border-bottom: 1px solid var(--rule);
+    cursor: default;
+    transition: background 0.15s;
+  }
+  .work-item:hover { background: rgba(0,0,0,0.015); margin: 0 -5vw; padding-left: 5vw; padding-right: 5vw; }
+  .work-num { font-size: 0.72rem; color: var(--muted); padding-top: 0.3rem; letter-spacing: 0.08em; }
+  .work-title {
+    font-family: "Instrument Serif", serif;
+    font-size: 1.55rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .work-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+  .work-result {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .work-tags {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    line-height: 2.1;
+  }
+  .work-year { font-size: 0.78rem; color: var(--muted); text-align: right; padding-top: 0.3rem; }
+
+  /* THINKING */
+  .thinking-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    border-top: 2px solid var(--ink);
+    padding-top: 2.5rem;
+  }
+  .post-date {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+    font-family: "Inter", sans-serif;
+  }
+  .post-title {
+    font-family: "Instrument Serif", serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.35;
+    margin-bottom: 0.8rem;
+  }
+  .post-tag {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.2rem 0.6rem;
+    display: inline-block;
+  }
+
+  /* EXPERIENCE */
+  .exp-list { border-top: 2px solid var(--ink); }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 4rem;
+    padding: 2.8rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+  .exp-company {
+    font-family: "Instrument Serif", serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+  }
+  .exp-role {
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+  .exp-desc { font-size: 0.88rem; color: #444; line-height: 1.72; }
+  .exp-period { font-size: 0.72rem; color: var(--muted); text-align: right; letter-spacing: 0.05em; padding-top: 0.3rem; }
+  .exp-badge {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+  }
+
+  /* CONTACT */
+  .contact {
+    padding: 9rem 5vw;
+    text-align: center;
+  }
+  .contact-pre {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+  .contact h2 {
+    font-family: "Instrument Serif", serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin-bottom: 3rem;
+  }
+  .contact h2 em { font-style: italic; color: var(--accent); }
+  .contact-email {
+    display: inline-block;
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .contact-email:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.8rem 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .work-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .work-year, .work-tags { display: none; }
+    .thinking-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .exp-period { text-align: left; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Nakyum Song</div>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#thinking">Thinking</a>
+    <a href="#experience">Experience</a>
+    <a href="mailto:nakyumsong@gmail.com" class="nav-cta">Get in touch</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-kicker">Global Marketer &amp; Brand Architect &nbsp;·&nbsp; Singapore &amp; Korea</div>
+  <div class="hero-grid">
+    <div>
+      <h1>Hi, I'm<br>Nakyum<br><em>Song.</em></h1>
+    </div>
+    <div class="hero-right">
+      <blockquote class="hero-quote">"Most brands don't fail because they lack creativity. They fail because, at some point, they lose clarity."</blockquote>
+      <p class="hero-desc">My work sits at the intersection of brand narrative and structure. I help brands articulate who they are so that every decision that follows has a clear foundation to build on.</p>
+      <div class="hero-cta">
+        <a href="#work" class="btn-solid">View My Work →</a>
+        <a href="mailto:nakyumsong@gmail.com" class="btn-ghost">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="section" id="work">
+  <div class="section-label">
+    <span class="sec-num">01</span>
+    <span class="sec-title">Selected Work</span>
+  </div>
+  <div class="work-list">
+    <div class="work-item">
+      <div class="work-num">001</div>
+      <div>
+        <div class="work-title">Razer 20th Anniversary</div>
+        <div class="work-desc">Global brand system unifying esports, lifestyle, and hardware campaigns</div>
+        <div class="work-result">→ Unified 15+ markets</div>
+      </div>
+      <div class="work-tags">Brand Systems<br>Global Campaign<br>Creative Direction</div>
+      <div class="work-year">Razer<br>2024</div>
+    </div>
+    <div class="work-item">
+      <div class="work-num">002</div>
+      <div>
+        <div class="work-title">ANA Virtual Artist</div>
+        <div class="work-desc">Launched KRAFTON's first AI-powered virtual artist with narrative-driven content</div>
+        <div class="work-result">→ 5.4M+ views in 50 days</div>
+      </div>
+      <div class="work-tags">Virtual Human<br>Content Strategy<br>Brand Launch</div>
+      <div class="work-year">KRAFTON<br>2022</div>
+    </div>
+    <div class="work-item">
+      <div class="work-num">003</div>
+      <div>
+        <div class="work-title">PUBG: NEW STATE Launch</div>
+        <div class="work-desc">Global launch of AAA next-gen mobile title with full-funnel strategy</div>
+        <div class="work-result">→ 50M+ pre-registrations</div>
+      </div>
+      <div class="work-tags">Gaming<br>Global Launch<br>Content Marketing</div>
+      <div class="work-year">KRAFTON<br>2021</div>
+    </div>
+    <div class="work-item">
+      <div class="work-num">004</div>
+      <div>
+        <div class="work-title">LG WING Campaign</div>
+        <div class="work-desc">Global influencer marketing repositioning a dual-screen device as creator-friendly</div>
+        <div class="work-result">→ 12M+ views, 4.5× engagement</div>
+      </div>
+      <div class="work-tags">Influencer Marketing<br>Product Launch<br>Global Campaign</div>
+      <div class="work-year">H&amp;K<br>2020</div>
+    </div>
+  </div>
+</section>
+
+<!-- THINKING -->
+<section class="section" id="thinking">
+  <div class="section-label">
+    <span class="sec-num">02</span>
+    <span class="sec-title">Thinking</span>
+  </div>
+  <div class="thinking-grid">
+    <div>
+      <div class="post-date">Feb 24, 2026</div>
+      <div class="post-title">How to Use AI Tools to Build and Strengthen Your Brand Narrative</div>
+      <span class="post-tag">AI &amp; Marketing</span>
+    </div>
+    <div>
+      <div class="post-date">Feb 20, 2026</div>
+      <div class="post-title">What Korean Branding Gets Right (And Wrong) When Going Global</div>
+      <span class="post-tag">Brand Strategy</span>
+    </div>
+    <div>
+      <div class="post-date">Feb 19, 2026</div>
+      <div class="post-title">How Korean SMEs Can Enter the Singapore Market: A Brand-First Playbook</div>
+      <span class="post-tag">Market Entry Strategy</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-label">
+    <span class="sec-num">03</span>
+    <span class="sec-title">Experience</span>
+  </div>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div>
+        <div class="exp-company">Razer</div>
+        <div class="exp-role">Global Brand Manager · Singapore</div>
+        <div class="exp-desc">Spearheading global esports and lifestyle campaigns. Developed the 20th Anniversary brand system balancing global strategy with local nuance across 15+ markets. Managing a distributed creative studio network.</div>
+        <span class="exp-badge">Current</span>
+      </div>
+      <div class="exp-period">May 2024 — Present</div>
+    </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-company">KRAFTON</div>
+        <div class="exp-role">Creative Marketing Manager · Korea</div>
+        <div class="exp-desc">Launched ANA, KRAFTON's first AI-powered virtual artist. Led production for PUBG Mobile and PUBG NEW STATE. 5M+ views in 50 days from concept to execution.</div>
+      </div>
+      <div class="exp-period">Feb 2021 — May 2024</div>
+    </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-company">Hill &amp; Knowlton</div>
+        <div class="exp-role">Account Manager · Korea</div>
+        <div class="exp-desc">Global influencer strategy for LG Mobile across 21 markets. Produced LG Mobile's first virtual unveiling event. 30% campaign efficiency gain.</div>
+      </div>
+      <div class="exp-period">Aug 2019 — Feb 2021</div>
+    </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-company">SK Corporation</div>
+        <div class="exp-role">Junior Consultant · Korea</div>
+        <div class="exp-desc">SAP HR system optimisation across six affiliate companies. 17% efficiency lift. Stakeholder training and alignment.</div>
+      </div>
+      <div class="exp-period">Jan 2013 — Dec 2015</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-pre">Let's work together</div>
+  <h2>Brand clarity<br>starts with a<br><em>conversation.</em></h2>
+  <a href="mailto:nakyumsong@gmail.com" class="contact-email">nakyumsong@gmail.com</a>
+</section>
+
+<footer>
+  <span>© 2026 Nakyum Song</span>
+  <span>Singapore &amp; Korea</span>
+  <a href="https://www.linkedin.com/in/nakyumsong" target="_blank">LinkedIn</a>
+</footer>
+
+</body>
+</html>

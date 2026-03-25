@@ -1,0 +1,503 @@
+<!-- MOCKUP: Brutalist Style — nakyumsong.com content -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nakyum Song — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #000;
+    --bg: #fff;
+    --yellow: #ffff00;
+    --muted: #555;
+    --border: 2px solid #000;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "IBM Plex Mono", monospace;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  header { border-bottom: var(--border); display: flex; align-items: stretch; }
+  .brand-block {
+    padding: 1.1rem 1.8rem;
+    border-right: var(--border);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--yellow);
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  nav { display: flex; flex: 1; }
+  nav a {
+    display: flex;
+    align-items: center;
+    padding: 1.1rem 1.6rem;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border-right: var(--border);
+    transition: background 0.1s;
+  }
+  nav a:hover { background: var(--yellow); }
+  nav .cta-nav { margin-left: auto; border-left: var(--border); border-right: none; font-weight: 600; }
+
+  /* HERO */
+  .hero { border-bottom: var(--border); }
+  .hero-top {
+    padding: 3.5rem 2.5rem 3rem;
+    border-bottom: var(--border);
+    background: #000;
+    color: #fff;
+  }
+  .hero-tag {
+    display: inline-block;
+    border: 2px solid var(--yellow);
+    padding: 0.25rem 0.7rem;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    margin-bottom: 2.5rem;
+    color: var(--yellow);
+  }
+  .hero h1 {
+    font-size: clamp(2.8rem, 9vw, 7rem);
+    font-weight: 600;
+    line-height: 0.88;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 2.5rem;
+  }
+  .hero h1 span { color: var(--yellow); }
+  .hero-quote {
+    font-size: 0.88rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.65);
+    max-width: 680px;
+    line-height: 1.6;
+    border-left: 3px solid var(--yellow);
+    padding-left: 1.2rem;
+  }
+  .hero-bottom {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .hero-cell {
+    padding: 2rem 2.5rem;
+    border-right: var(--border);
+  }
+  .hero-cell:last-child { border-right: none; }
+  .hero-cell-label {
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+  .hero-cell-val {
+    font-size: 2.2rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+  .hero-cta-row {
+    display: flex;
+    gap: 0;
+    border-top: var(--border);
+  }
+  .btn-br {
+    padding: 1.2rem 2.5rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    border-right: var(--border);
+    border-top: none;
+    border-left: none;
+    border-bottom: none;
+    background: #000;
+    color: #fff;
+    transition: background 0.1s, color 0.1s;
+  }
+  .btn-br:hover { background: var(--yellow); color: #000; }
+  .btn-br-ghost {
+    padding: 1.2rem 2.5rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    border: none;
+    background: #fff;
+    color: #000;
+    transition: background 0.1s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+  }
+  .btn-br-ghost:hover { background: var(--yellow); }
+
+  /* SECTIONS */
+  .section { border-bottom: var(--border); }
+  .section-header {
+    display: flex;
+    align-items: center;
+    padding: 0.9rem 2.5rem;
+    border-bottom: var(--border);
+    background: #f5f5f5;
+  }
+  .sec-num { font-size: 0.62rem; color: var(--muted); margin-right: 1.2rem; letter-spacing: 0.1em; }
+  .sec-title { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.28em; font-weight: 600; }
+
+  /* WORK TABLE */
+  .work-table { width: 100%; border-collapse: collapse; }
+  .work-table thead tr { border-bottom: var(--border); background: #000; color: #fff; }
+  .work-table th {
+    padding: 0.75rem 2.5rem;
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-weight: 600;
+    text-align: left;
+  }
+  .work-table tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+    transition: background 0.1s;
+    cursor: pointer;
+  }
+  .work-table tbody tr:hover { background: var(--yellow); }
+  .work-table td { padding: 1.5rem 2.5rem; font-size: 0.78rem; vertical-align: top; }
+  .td-num { color: var(--muted); font-size: 0.68rem; width: 60px; }
+  .td-title { font-weight: 600; font-size: 0.88rem; }
+  .td-sub {
+    display: block;
+    font-weight: 400;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    font-style: italic;
+  }
+  .td-result {
+    display: block;
+    font-weight: 600;
+    font-size: 0.68rem;
+    margin-top: 0.3rem;
+    color: #000;
+    letter-spacing: 0.05em;
+  }
+  .td-cat { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); white-space: nowrap; }
+  .td-year { font-size: 0.72rem; color: var(--muted); }
+  .td-arrow { font-size: 1.1rem; text-align: right; color: var(--muted); }
+  .work-table tbody tr:hover .td-arrow { color: #000; }
+
+  /* THINKING */
+  .thinking-list {}
+  .post-row {
+    display: grid;
+    grid-template-columns: 160px 1fr 200px 60px;
+    align-items: center;
+    padding: 1.4rem 2.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background 0.1s;
+    cursor: pointer;
+  }
+  .post-row:hover { background: var(--yellow); }
+  .post-date-cell { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.05em; }
+  .post-title-cell { font-size: 0.82rem; font-weight: 600; line-height: 1.3; }
+  .post-tag-cell { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); }
+  .post-arrow { font-size: 1rem; color: var(--muted); text-align: right; }
+  .post-row:hover .post-arrow { color: #000; }
+
+  /* EXPERIENCE */
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .exp-cell {
+    padding: 2.5rem 2.5rem;
+    border-right: var(--border);
+    border-bottom: var(--border);
+  }
+  .exp-cell:nth-child(even) { border-right: none; }
+  .exp-cell:nth-last-child(-n+2) { border-bottom: none; }
+  .exp-badge {
+    display: inline-block;
+    padding: 0.18rem 0.55rem;
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    background: var(--yellow);
+    margin-bottom: 0.7rem;
+  }
+  .exp-company { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.2rem; }
+  .exp-role { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+  .exp-period { font-size: 0.62rem; color: var(--muted); font-style: italic; margin-bottom: 1rem; }
+  .exp-desc { font-size: 0.75rem; color: #333; line-height: 1.65; }
+
+  /* CONTACT */
+  .contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .contact-left {
+    padding: 5rem 2.5rem;
+    border-right: var(--border);
+    background: #000;
+    color: #fff;
+  }
+  .contact-right {
+    padding: 5rem 2.5rem;
+  }
+  .contact h2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .contact h2 span { color: var(--yellow); }
+  .contact-sub { font-size: 0.75rem; color: rgba(255,255,255,0.5); font-style: italic; line-height: 1.6; }
+  .contact-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.28em; color: var(--muted); margin-bottom: 1rem; }
+  .contact-email {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .contact-desc { font-size: 0.72rem; color: var(--muted); line-height: 1.65; margin-bottom: 2rem; }
+
+  /* FOOTER */
+  footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.3rem 2.5rem;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    border-top: var(--border);
+  }
+
+  @media (max-width: 900px) {
+    nav a:not(.cta-nav) { display: none; }
+    .hero-bottom { grid-template-columns: 1fr 1fr; }
+    .hero-cell:nth-child(even) { border-right: none; }
+    .hero-cell:nth-child(n+3) { border-top: var(--border); }
+    .work-table .td-cat, .work-table .td-year { display: none; }
+    .post-row { grid-template-columns: 1fr; gap: 0.4rem; }
+    .post-tag-cell, .post-arrow { display: none; }
+    .exp-grid { grid-template-columns: 1fr; }
+    .exp-cell { border-right: none; }
+    .contact { grid-template-columns: 1fr; }
+    .contact-left { border-right: none; border-bottom: var(--border); }
+    footer { flex-direction: column; gap: 0.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand-block">N·S</div>
+  <nav>
+    <a href="#work">[01] Work</a>
+    <a href="#thinking">[02] Thinking</a>
+    <a href="#experience">[03] Experience</a>
+    <a href="mailto:nakyumsong@gmail.com" class="cta-nav">[Contact →]</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-top">
+    <div class="hero-tag">Global Marketer &amp; Brand Architect // Singapore &amp; Korea</div>
+    <h1>Hi,<br>I'm <span>Nakyum</span><br>Song.</h1>
+    <blockquote class="hero-quote">"Most brands don't fail because they lack creativity. They fail because, at some point, they lose clarity."</blockquote>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-cell">
+      <div class="hero-cell-label">Case Studies</div>
+      <div class="hero-cell-val">04</div>
+    </div>
+    <div class="hero-cell">
+      <div class="hero-cell-label">Views Reached</div>
+      <div class="hero-cell-val">50M+</div>
+    </div>
+    <div class="hero-cell">
+      <div class="hero-cell-label">Markets</div>
+      <div class="hero-cell-val">15+</div>
+    </div>
+    <div class="hero-cell">
+      <div class="hero-cell-label">Years</div>
+      <div class="hero-cell-val">10+</div>
+    </div>
+  </div>
+  <div class="hero-cta-row">
+    <a href="#work" class="btn-br">View My Work →</a>
+    <a href="mailto:nakyumsong@gmail.com" class="btn-br-ghost">Get in Touch</a>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="section" id="work">
+  <div class="section-header">
+    <span class="sec-num">[01]</span>
+    <span class="sec-title">Selected Work</span>
+  </div>
+  <table class="work-table">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Project</th>
+        <th>Category</th>
+        <th>Client</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="td-num">001</td>
+        <td class="td-title">
+          Razer 20th Anniversary
+          <span class="td-sub">Global brand system unifying esports, lifestyle, and hardware campaigns</span>
+          <span class="td-result">→ Unified 15+ markets</span>
+        </td>
+        <td class="td-cat">Brand Systems<br>Global Campaign</td>
+        <td class="td-year">Razer</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="td-num">002</td>
+        <td class="td-title">
+          ANA Virtual Artist
+          <span class="td-sub">KRAFTON's first AI-powered virtual artist with narrative-driven content</span>
+          <span class="td-result">→ 5.4M+ views in 50 days</span>
+        </td>
+        <td class="td-cat">Virtual Human<br>Brand Launch</td>
+        <td class="td-year">KRAFTON</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="td-num">003</td>
+        <td class="td-title">
+          PUBG: NEW STATE Launch
+          <span class="td-sub">Global launch of AAA next-gen mobile title with full-funnel strategy</span>
+          <span class="td-result">→ 50M+ pre-registrations</span>
+        </td>
+        <td class="td-cat">Gaming<br>Global Launch</td>
+        <td class="td-year">KRAFTON</td>
+        <td class="td-arrow">→</td>
+      </tr>
+      <tr>
+        <td class="td-num">004</td>
+        <td class="td-title">
+          LG WING Campaign
+          <span class="td-sub">Global influencer marketing repositioning a dual-screen device as creator-friendly</span>
+          <span class="td-result">→ 12M+ views, 4.5× engagement</span>
+        </td>
+        <td class="td-cat">Influencer Mktg<br>Product Launch</td>
+        <td class="td-year">H&amp;K / LG</td>
+        <td class="td-arrow">→</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- THINKING -->
+<section class="section" id="thinking">
+  <div class="section-header">
+    <span class="sec-num">[02]</span>
+    <span class="sec-title">Thinking</span>
+  </div>
+  <div class="thinking-list">
+    <div class="post-row">
+      <div class="post-date-cell">2026.02.24</div>
+      <div class="post-title-cell">How to Use AI Tools to Build and Strengthen Your Brand Narrative</div>
+      <div class="post-tag-cell">AI &amp; Marketing</div>
+      <div class="post-arrow">→</div>
+    </div>
+    <div class="post-row">
+      <div class="post-date-cell">2026.02.20</div>
+      <div class="post-title-cell">What Korean Branding Gets Right (And Wrong) When Going Global</div>
+      <div class="post-tag-cell">Brand Strategy</div>
+      <div class="post-arrow">→</div>
+    </div>
+    <div class="post-row">
+      <div class="post-date-cell">2026.02.19</div>
+      <div class="post-title-cell">How Korean SMEs Can Enter the Singapore Market: A Brand-First Playbook</div>
+      <div class="post-tag-cell">Market Entry Strategy</div>
+      <div class="post-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-header">
+    <span class="sec-num">[03]</span>
+    <span class="sec-title">Experience</span>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-cell">
+      <div class="exp-badge">Current</div>
+      <div class="exp-company">Razer</div>
+      <div class="exp-role">Global Brand Manager · Singapore</div>
+      <div class="exp-period">May 2024 — Present</div>
+      <div class="exp-desc">Global esports and lifestyle campaigns. 20th Anniversary brand system across 15+ markets. Distributed creative studio network.</div>
+    </div>
+    <div class="exp-cell">
+      <div class="exp-company">KRAFTON</div>
+      <div class="exp-role">Creative Marketing Manager · Korea</div>
+      <div class="exp-period">Feb 2021 — May 2024</div>
+      <div class="exp-desc">Built ANA, KRAFTON's first AI virtual artist identity. Led PUBG Mobile and PUBG NEW STATE production. 5M+ views in 50 days.</div>
+    </div>
+    <div class="exp-cell">
+      <div class="exp-company">Hill &amp; Knowlton</div>
+      <div class="exp-role">Account Manager · Korea</div>
+      <div class="exp-period">Aug 2019 — Feb 2021</div>
+      <div class="exp-desc">LG Mobile global influencer strategy across 21 markets. First virtual product launch event. 30% efficiency gain.</div>
+    </div>
+    <div class="exp-cell">
+      <div class="exp-company">SK Corporation</div>
+      <div class="exp-role">Junior Consultant · Korea</div>
+      <div class="exp-period">Jan 2013 — Dec 2015</div>
+      <div class="exp-desc">SAP HR optimisation across six affiliates. 17% efficiency lift. Stakeholder alignment.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <h2>Let's<br>Work<br><span>Together.</span></h2>
+    <p class="contact-sub">"My work sits at the intersection of brand narrative and structure."</p>
+  </div>
+  <div class="contact-right">
+    <div class="contact-label">Get in touch</div>
+    <a href="mailto:nakyumsong@gmail.com" class="contact-email">nakyumsong@gmail.com</a>
+    <p class="contact-desc">Open for brand consulting, strategy partnerships, and speaking engagements across tech, gaming, and lifestyle.</p>
+    <a href="mailto:nakyumsong@gmail.com" class="btn-br">Send Message →</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Nakyum Song</span>
+  <span>Singapore &amp; Korea</span>
+  <a href="https://www.linkedin.com/in/nakyumsong" target="_blank">LinkedIn →</a>
+</footer>
+
+</body>
+</html>
