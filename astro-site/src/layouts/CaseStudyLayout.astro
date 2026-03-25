@@ -1,10 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-
 import BaseLayout from './BaseLayout.astro';
-import Navigation from '../components/layout/Navigation.astro';
-import Footer from '../components/layout/Footer.astro';
 
 interface Props {
   title: string;
@@ -38,433 +35,418 @@ const {
 } = Astro.props;
 
 const pageTitle = `${title} | Nakyum Song`;
-const pageDescription = description;
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
-  <Navigation />
+<BaseLayout title={pageTitle} description={description}>
+  <div class="cs-page">
 
-  <main class="case-study">
-    <!-- Back Link -->
-    <div class="container">
-      <a href="/#portfolio" class="back-link">
-        <span class="back-arrow">&larr;</span>
-        Back to Portfolio
-      </a>
+    <!-- Top bar -->
+    <div class="cs-topbar">
+      <a href="/#work" class="cs-back">← Back to Portfolio</a>
+      <a href="/" class="cs-home-link">nakyumsong.com</a>
     </div>
 
-    <!-- Hero Section -->
-    <section class="case-hero">
-      <div class="container">
-        <span class="case-company">{company}</span>
-        <h1 class="case-title">{title}</h1>
-        <p class="case-description">{description}</p>
-        <div class="case-meta">
-          <div class="meta-item">
-            <span class="meta-label">Role</span>
-            <span class="meta-value">{role}</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Period</span>
-            <span class="meta-value">{period}</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    <main class="cs-main">
 
-    {heroImage && (
-      <section class="case-image">
-        <div class="container">
+      <!-- Hero -->
+      <div class="cs-hero">
+        <div class="cs-client">{company}</div>
+        <h1 class="cs-title">{title}</h1>
+        <div class="cs-meta">
+          <span class="cs-meta-item"><span class="cs-meta-label">Role</span>{role}</span>
+          <span class="cs-meta-sep">·</span>
+          <span class="cs-meta-item"><span class="cs-meta-label">Period</span>{period}</span>
+        </div>
+        <p class="cs-description">{description}</p>
+      </div>
+
+      {heroImage && (
+        <div class="cs-image-wrap">
           {typeof heroImage === 'string' ? (
-            <img src={heroImage} alt={title} loading="lazy" decoding="async" />
+            <img src={heroImage} alt={title} loading="lazy" decoding="async" class="cs-image" />
           ) : (
             <Image
               src={heroImage}
               alt={title}
               widths={[960, 1440]}
-              sizes="(max-width: 1200px) 100vw, 1200px"
+              sizes="(max-width: 900px) 100vw, 900px"
               format="webp"
               quality={82}
               loading="lazy"
+              class="cs-image"
             />
           )}
         </div>
-      </section>
-    )}
+      )}
 
-    <!-- Results Section -->
-    <section class="case-section">
-      <div class="container">
-        <div class="section-grid">
-          <div class="section-header">
-            <span class="section-number">01</span>
-            <h2 class="section-title">Results</h2>
-          </div>
-          <div class="section-content">
-            <ul class="results-list">
-              {results.map((result) => (
-                <li>{result}</li>
-              ))}
-            </ul>
-          </div>
+      <!-- Results bar -->
+      <div class="cs-results-bar">
+        {results.map((r) => (
+          <div class="cs-result-item">{r}</div>
+        ))}
+      </div>
+
+      <!-- Objective -->
+      <div class="cs-section">
+        <div class="cs-section-head">
+          <span class="cs-sh-dash">—</span>
+          <span class="cs-sh-num">01</span>
+          <span class="cs-sh-title">Objective</span>
+        </div>
+        <div class="cs-section-body">
+          <p class="cs-objective">{objective}</p>
         </div>
       </div>
-    </section>
 
-    <!-- Objective Section -->
-    <section class="case-section alt">
-      <div class="container">
-        <div class="section-grid">
-          <div class="section-header">
-            <span class="section-number">02</span>
-            <h2 class="section-title">Objective</h2>
-          </div>
-          <div class="section-content">
-            <p class="objective-text">{objective}</p>
-          </div>
+      <!-- Strategy -->
+      <div class="cs-section">
+        <div class="cs-section-head">
+          <span class="cs-sh-dash">—</span>
+          <span class="cs-sh-num">02</span>
+          <span class="cs-sh-title">Strategy</span>
+          <span class="cs-sh-sub">{strategy.title}</span>
+        </div>
+        <div class="cs-section-body">
+          <ul class="cs-list">
+            {strategy.points.map((p) => <li>{p}</li>)}
+          </ul>
         </div>
       </div>
-    </section>
 
-    <!-- Strategy Section -->
-    <section class="case-section">
-      <div class="container">
-        <div class="section-grid">
-          <div class="section-header">
-            <span class="section-number">03</span>
-            <h2 class="section-title">Strategy</h2>
-            <p class="strategy-subtitle">{strategy.title}</p>
-          </div>
-          <div class="section-content">
-            <ul class="strategy-list">
-              {strategy.points.map((point) => (
-                <li>{point}</li>
-              ))}
-            </ul>
-          </div>
+      <!-- Execution -->
+      <div class="cs-section">
+        <div class="cs-section-head">
+          <span class="cs-sh-dash">—</span>
+          <span class="cs-sh-num">03</span>
+          <span class="cs-sh-title">Execution</span>
+        </div>
+        <div class="cs-section-body">
+          <ul class="cs-list">
+            {execution.map((e) => <li>{e}</li>)}
+          </ul>
         </div>
       </div>
-    </section>
 
-    <!-- Execution Section -->
-    <section class="case-section alt">
-      <div class="container">
-        <div class="section-grid">
-          <div class="section-header">
-            <span class="section-number">04</span>
-            <h2 class="section-title">Execution</h2>
-          </div>
-          <div class="section-content">
-            <ul class="execution-list">
-              {execution.map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
-          </div>
+      <!-- Results detail -->
+      <div class="cs-section">
+        <div class="cs-section-head">
+          <span class="cs-sh-dash">—</span>
+          <span class="cs-sh-num">04</span>
+          <span class="cs-sh-title">Results</span>
+        </div>
+        <div class="cs-section-body">
+          <ul class="cs-list">
+            {results.map((r) => <li>{r}</li>)}
+          </ul>
+          {videoUrl && (
+            <a href={videoUrl} target="_blank" rel="noopener noreferrer" class="cs-video-link">
+              Watch Campaign Video ↗
+            </a>
+          )}
         </div>
       </div>
-    </section>
 
-    {videoUrl && (
-      <section class="case-section video-section">
-        <div class="container">
-          <div class="section-grid">
-            <div class="section-header">
-              <span class="section-number">05</span>
-              <h2 class="section-title">Watch</h2>
-            </div>
-            <div class="section-content">
-              <a href={videoUrl} target="_blank" rel="noopener noreferrer" class="video-link">
-                Watch Campaign Video
-                <span class="link-arrow">&rarr;</span>
-              </a>
-            </div>
-          </div>
+    </main>
+
+    <!-- Footer CTA -->
+    <div class="cs-footer">
+      <div class="cs-footer-inner">
+        <p class="cs-footer-label">005 &nbsp; Contact</p>
+        <h2>Open for brand strategy, narrative consulting, and creative direction.</h2>
+        <div class="cs-footer-actions">
+          <a href="/#contact" class="cs-btn-accent">Get in touch →</a>
+          <a href="/#work" class="cs-btn-outline">← Back to Portfolio</a>
         </div>
-      </section>
-    )}
-
-    <!-- CTA Section -->
-    <section class="case-cta">
-      <div class="container">
-        <h2>Interested in working together?</h2>
-        <a href="/#contact" class="btn btn-primary">
-          Let's Talk
-          <span class="btn-arrow">&rarr;</span>
-        </a>
       </div>
-    </section>
-  </main>
+      <div class="cs-footer-bar">
+        <span>© 2026 Nakyum Song</span>
+        <span>Singapore / Seoul</span>
+        <a href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
 
-  <Footer />
+  </div>
 </BaseLayout>
 
 <style>
-  .case-study {
-    padding-top: 2rem;
+  .cs-page {
     background: var(--color-bg-secondary);
     min-height: 100vh;
+    font-family: "Outfit", sans-serif;
   }
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--space-6);
-  }
-
-  /* Back Link */
-  .back-link {
-    display: inline-flex;
+  /* ─── TOP BAR ─── */
+  .cs-topbar {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: var(--space-2);
-    color: var(--color-text-secondary);
-    font-size: var(--text-sm);
-    text-decoration: none;
-    padding: var(--space-4) 0;
-    transition: color var(--transition-fast);
-  }
-
-  .back-link:hover {
-    color: var(--color-accent);
-  }
-
-  .back-arrow {
-    transition: transform var(--transition-fast);
-  }
-
-  .back-link:hover .back-arrow {
-    transform: translateX(-4px);
-  }
-
-  /* Hero */
-  .case-hero {
-    padding: var(--space-12) 0 var(--space-16);
-  }
-
-  .case-company {
-    display: inline-block;
-    font-size: var(--text-sm);
-    font-weight: var(--font-semibold);
-    color: var(--color-accent);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wide);
-    margin-bottom: var(--space-4);
-  }
-
-  .case-title {
-    font-size: var(--text-5xl);
-    line-height: var(--leading-tight);
-    margin-bottom: var(--space-6);
-    max-width: 800px;
-  }
-
-  .case-description {
-    font-size: var(--text-xl);
-    color: var(--color-text-secondary);
-    max-width: 700px;
-    line-height: var(--leading-relaxed);
-    margin-bottom: var(--space-8);
-  }
-
-  .case-meta {
-    display: flex;
-    gap: var(--space-8);
-  }
-
-  .meta-item {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-  }
-
-  .meta-label {
-    font-size: var(--text-xs);
-    color: var(--color-text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wide);
-  }
-
-  .meta-value {
-    font-size: var(--text-base);
-    color: var(--color-text-primary);
-  }
-
-  /* Hero Image */
-  .case-image {
-    padding-bottom: var(--space-16);
-  }
-
-  .case-image img {
-    width: 100%;
-    border-radius: var(--radius-xl);
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-  }
-
-  /* Sections */
-  .case-section {
-    padding: var(--space-16) 0;
-  }
-
-  .case-section.alt {
-    background: var(--color-bg-secondary);
-  }
-
-  .section-grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: var(--space-12);
-  }
-
-  .section-header {
+    padding: 1rem 3.5rem;
+    background: #141414;
+    border-bottom: 1px solid rgba(255,79,135,0.18);
     position: sticky;
-    top: 6rem;
-    align-self: start;
+    top: 0;
+    z-index: 10;
+  }
+  .cs-back {
+    font-family: "Space Mono", monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(232,228,220,0.5);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .cs-back:hover { color: var(--color-neon); }
+  .cs-home-link {
+    font-family: "Space Mono", monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    color: rgba(232,228,220,0.2);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.15s;
+  }
+  .cs-home-link:hover { color: rgba(232,228,220,0.5); }
+
+  /* ─── MAIN ─── */
+  .cs-main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 3.5rem 4rem;
   }
 
-  .section-number {
-    display: block;
-    font-size: var(--text-sm);
+  /* ─── HERO ─── */
+  .cs-hero {
+    padding: 4rem 0 2.5rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 2rem;
+  }
+  .cs-client {
+    font-family: "Space Mono", monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
     color: var(--color-accent);
-    font-weight: var(--font-medium);
-    margin-bottom: var(--space-2);
+    margin-bottom: 0.8rem;
   }
-
-  .section-title {
-    font-size: var(--text-2xl);
-    margin-bottom: var(--space-2);
+  .cs-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--color-text-primary);
+    margin-bottom: 1.4rem;
   }
-
-  .strategy-subtitle {
-    font-size: var(--text-sm);
+  .cs-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.4rem;
+  }
+  .cs-meta-item {
+    font-family: "Space Mono", monospace;
+    font-size: 0.62rem;
     color: var(--color-text-secondary);
-    margin-top: var(--space-2);
-  }
-
-  /* Content Lists */
-  .results-list,
-  .strategy-list,
-  .execution-list {
-    list-style: none;
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
+    gap: 0.2rem;
   }
-
-  .results-list li,
-  .strategy-list li,
-  .execution-list li {
-    position: relative;
-    padding-left: var(--space-6);
-    font-size: var(--text-lg);
+  .cs-meta-label {
+    font-size: 0.52rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-text-tertiary);
+  }
+  .cs-meta-sep { color: var(--color-border); }
+  .cs-description {
+    font-size: 1.05rem;
+    font-weight: 300;
     color: var(--color-text-secondary);
-    line-height: var(--leading-relaxed);
+    line-height: 1.75;
+    max-width: 640px;
   }
 
-  .results-list li::before,
-  .strategy-list li::before,
-  .execution-list li::before {
-    content: '';
+  /* ─── HERO IMAGE ─── */
+  .cs-image-wrap {
+    margin-bottom: 2.5rem;
+    border: 1px solid var(--color-border);
+  }
+  .cs-image {
+    width: 100%;
+    aspect-ratio: 16 / 7;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ─── RESULTS BAR ─── */
+  .cs-results-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-bg-primary);
+    margin-bottom: 3rem;
+  }
+  .cs-result-item {
+    padding: 1.2rem 1.6rem;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    border-right: 1px solid var(--color-border);
+  }
+  .cs-result-item:last-child { border-right: none; }
+
+  /* ─── SECTIONS ─── */
+  .cs-section {
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg-primary);
+    margin-bottom: 0;
+  }
+  .cs-section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    padding: 1.4rem 1.8rem;
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+    flex-wrap: wrap;
+  }
+  .cs-sh-dash { color: var(--color-accent); font-family: "Space Mono", monospace; font-size: 0.75rem; }
+  .cs-sh-num  { font-family: "Space Mono", monospace; font-size: 0.65rem; color: var(--color-text-secondary); letter-spacing: 0.1em; }
+  .cs-sh-title{ font-family: "Space Mono", monospace; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-primary); font-weight: 500; }
+  .cs-sh-sub  { font-family: "Space Mono", monospace; font-size: 0.6rem; color: var(--color-text-secondary); letter-spacing: 0.05em; margin-left: auto; }
+
+  .cs-section-body {
+    padding: 2rem 1.8rem;
+  }
+
+  .cs-objective {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-text-primary);
+    line-height: 1.8;
+    max-width: 640px;
+  }
+
+  .cs-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    max-width: 640px;
+  }
+  .cs-list li {
+    font-size: 0.92rem;
+    font-weight: 300;
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .cs-list li::before {
+    content: '—';
     position: absolute;
     left: 0;
-    top: 0.6em;
-    width: 8px;
-    height: 8px;
-    background: var(--color-accent);
-    border-radius: 50%;
-  }
-
-  .objective-text {
-    font-size: var(--text-xl);
-    color: var(--color-text-secondary);
-    line-height: var(--leading-relaxed);
-  }
-
-  /* Video Link */
-  .video-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--text-lg);
     color: var(--color-accent);
+    font-family: "Space Mono", monospace;
+    font-size: 0.7rem;
+  }
+
+  .cs-video-link {
+    display: inline-block;
+    margin-top: 1.4rem;
+    font-family: "Space Mono", monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-accent);
+    border-bottom: 1px solid var(--color-accent-dim);
+    padding-bottom: 1px;
     text-decoration: none;
-    transition: gap var(--transition-fast);
+    transition: color 0.15s;
   }
+  .cs-video-link:hover { color: var(--color-accent-hover); }
 
-  .video-link:hover {
-    gap: var(--space-3);
+  /* ─── FOOTER ─── */
+  .cs-footer {
+    background: #141414;
+    color: #e8e4dc;
+    margin-top: 0;
   }
-
-  /* CTA */
-  .case-cta {
-    padding: var(--space-20) 0;
-    text-align: center;
+  .cs-footer-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 4rem 3.5rem 3rem;
   }
-
-  .case-cta h2 {
-    font-size: var(--text-3xl);
-    margin-bottom: var(--space-8);
+  .cs-footer-label {
+    font-family: "Space Mono", monospace;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.26em;
+    color: var(--color-accent);
+    margin-bottom: 1.2rem;
   }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-4) var(--space-8);
-    font-size: var(--text-base);
-    font-weight: var(--font-medium);
-    border-radius: var(--radius-lg);
-    transition: all var(--transition-base);
-    cursor: pointer;
+  .cs-footer h2 {
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin-bottom: 2rem;
+    color: #e8e4dc;
+    max-width: 520px;
+  }
+  .cs-footer-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .cs-btn-accent {
+    font-family: "Space Mono", monospace;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    padding: 0.8rem 1.6rem;
+    background: var(--color-accent);
+    color: #fff;
     text-decoration: none;
+    transition: background 0.2s;
+    display: inline-block;
   }
-
-  .btn-primary {
-    background: var(--gradient-accent);
-    color: var(--color-text-primary);
-    border: none;
+  .cs-btn-accent:hover { background: var(--color-accent-hover); }
+  .cs-btn-outline {
+    font-family: "Space Mono", monospace;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    padding: 0.8rem 1.6rem;
+    border: 1px solid rgba(232,228,220,0.2);
+    color: rgba(232,228,220,0.6);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
   }
-
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-glow);
+  .cs-btn-outline:hover { border-color: rgba(232,228,220,0.5); color: #e8e4dc; }
+  .cs-footer-bar {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 1rem 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Space Mono", monospace;
+    font-size: 0.55rem;
+    color: rgba(232,228,220,0.18);
+    letter-spacing: 0.08em;
+    border-top: 1px solid rgba(255,255,255,0.05);
   }
+  .cs-footer-bar a { color: rgba(232,228,220,0.18); text-decoration: none; }
+  .cs-footer-bar a:hover { color: var(--color-accent); }
 
-  .btn-arrow {
-    transition: transform var(--transition-base);
-  }
-
-  .btn-primary:hover .btn-arrow {
-    transform: translateX(4px);
-  }
-
-  /* Responsive */
+  /* ─── MOBILE ─── */
   @media (max-width: 768px) {
-    .case-title {
-      font-size: var(--text-3xl);
-    }
-
-    .case-description {
-      font-size: var(--text-lg);
-    }
-
-    .section-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-6);
-    }
-
-    .section-header {
-      position: static;
-    }
-
-    .results-list li,
-    .strategy-list li,
-    .execution-list li {
-      font-size: var(--text-base);
-    }
-
-    .objective-text {
-      font-size: var(--text-lg);
-    }
+    .cs-topbar, .cs-main, .cs-footer-inner, .cs-footer-bar { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cs-results-bar { grid-template-columns: 1fr; }
+    .cs-result-item { border-right: none; border-bottom: 1px solid var(--color-border); }
+    .cs-result-item:last-child { border-bottom: none; }
+    .cs-sh-sub { margin-left: 0; width: 100%; }
   }
 </style>
