@@ -1,0 +1,337 @@
+<!-- MOCKUP-9A: Option A — Deeper Green + Lighter Background -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nakyum Song — 9A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --sidebar-bg:  #141414;
+    --sidebar-text:#e8e4dc;
+    --accent:      #1C4A3C;   /* deeper forest green */
+    --accent-dark: #133529;
+    --accent-dim:  rgba(28,74,60,0.10);
+    --bg:          #f5f2ec;   /* slightly brighter warm stone */
+    --white:       #ffffff;   /* pure white cards */
+    --ink:         #111111;
+    --muted:       rgba(17,17,17,0.42);
+    --rule:        rgba(0,0,0,0.10);
+    --sidebar-w:   270px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Inter", sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ─── OPTION BADGE ─── */
+  .option-badge {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+    background: #1C4A3C; color: #fff;
+    padding: 0.5rem 1rem; z-index: 999;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+
+  /* ─── SIDEBAR ─── */
+  .sidebar {
+    position: fixed; top: 0; left: 0;
+    width: var(--sidebar-w); height: 100vh;
+    background: var(--sidebar-bg); color: var(--sidebar-text);
+    font-family: "IBM Plex Mono", monospace;
+    display: flex; flex-direction: column;
+    padding: 2.5rem 2rem; z-index: 20; overflow-y: auto;
+    border-right: 1px solid rgba(28,74,60,0.15);
+  }
+  .s-top { margin-bottom: auto; }
+  .s-name { font-size: 0.95rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sidebar-text); margin-bottom: 0.4rem; }
+  .s-role { font-size: 0.72rem; color: rgba(232,228,220,0.55); letter-spacing: 0.04em; line-height: 1.5; margin-bottom: 0.4rem; }
+  .s-qualifier { font-size: 0.62rem; color: rgba(232,228,220,0.28); letter-spacing: 0.04em; line-height: 1.5; margin-bottom: 2.8rem; }
+
+  .s-nav { list-style: none; margin-bottom: 2.5rem; }
+  .s-nav li { border-top: 1px solid rgba(255,255,255,0.05); }
+  .s-nav li:last-child { border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .s-nav a { display: flex; align-items: center; justify-content: space-between; padding: 0.72rem 0; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(232,228,220,0.4); transition: color 0.15s; }
+  .s-nav a:hover { color: var(--sidebar-text); }
+  .s-nav a.active { color: var(--accent); }
+  .s-nav a.active .nav-arrow { color: var(--accent); }
+  .nav-idx { font-size: 0.58rem; color: rgba(232,228,220,0.2); margin-right: 0.8rem; }
+  .nav-arrow { font-size: 0.68rem; color: transparent; transition: color 0.15s; }
+  .s-nav a:hover .nav-arrow { color: rgba(232,228,220,0.35); }
+
+  .s-foot { font-size: 0.62rem; color: rgba(232,228,220,0.28); line-height: 2; letter-spacing: 0.04em; }
+  .s-foot a { color: rgba(232,228,220,0.28); }
+  .s-foot a:hover { color: var(--accent); }
+
+  /* ─── MAIN ─── */
+  .main { margin-left: var(--sidebar-w); min-height: 100vh; }
+
+  .meta-bar { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 3.5rem; border-bottom: 1px solid var(--rule); background: var(--bg); }
+  .mb-left { font-family: "IBM Plex Mono", monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.1em; }
+  .mb-right { display: flex; align-items: center; gap: 0.5rem; font-family: "IBM Plex Mono", monospace; font-size: 0.62rem; color: var(--accent); letter-spacing: 0.08em; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
+  .mb-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 6px rgba(28,74,60,0.7); flex-shrink: 0; animation: blink 2s ease-in-out infinite; }
+
+  .intro { padding: 4.5rem 3.5rem 0; background: var(--white); border-bottom: 1px solid var(--rule); }
+  .intro-label { font-family: "IBM Plex Mono", monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.26em; color: var(--muted); margin-bottom: 2.2rem; display: flex; align-items: center; gap: 1rem; }
+  .intro-label::before { content: '—'; color: var(--accent); }
+  .intro h1 { font-family: "Inter", sans-serif; font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 400; line-height: 1.18; letter-spacing: -0.02em; color: var(--ink); max-width: 680px; margin-bottom: 1.8rem; }
+  .intro-sub { font-size: 0.95rem; font-weight: 300; color: #555; max-width: 560px; line-height: 1.8; margin-bottom: 1.4rem; }
+  .intro-proof { font-family: "IBM Plex Mono", monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.04em; line-height: 1.7; max-width: 520px; margin-bottom: 2.2rem; padding-left: 1rem; border-left: 2px solid var(--accent); }
+  .intro-actions { display: flex; align-items: center; gap: 1.8rem; flex-wrap: wrap; padding-bottom: 3.5rem; }
+  .btn-primary { font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; padding: 0.8rem 1.8rem; background: var(--accent); color: #fff; display: inline-block; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--accent-dark); }
+  .btn-ghost { font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink); border-bottom: 1px solid rgba(17,17,17,0.25); padding-bottom: 1px; background: none; cursor: pointer; transition: color 0.15s, border-color 0.15s; }
+  .btn-ghost:hover { color: var(--accent); border-color: var(--accent); }
+
+  .about-expanded { padding: 3rem 3.5rem 4rem; background: var(--white); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .about-exp-title { font-size: 1.05rem; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 1.4rem; }
+  .about-exp-body { font-size: 0.92rem; font-weight: 300; color: #555; line-height: 1.85; max-width: 600px; margin-bottom: 1rem; }
+
+  .section { border-bottom: 1px solid var(--rule); }
+  .section-head { display: flex; flex-direction: column; gap: 0.3rem; padding: 1.6rem 3.5rem; border-bottom: 1px solid var(--rule); background: var(--bg); }
+  .sh-top { display: flex; align-items: center; gap: 0.8rem; }
+  .sh-dash { color: var(--accent); font-family: "IBM Plex Mono", monospace; font-size: 0.75rem; }
+  .sh-num  { font-family: "IBM Plex Mono", monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 0.1em; }
+  .sh-title{ font-family: "IBM Plex Mono", monospace; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ink); font-weight: 500; }
+  .sh-sub  { font-family: "IBM Plex Mono", monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.06em; padding-left: 1.6rem; }
+
+  .work-row { display: grid; grid-template-columns: 140px 1fr auto; align-items: start; padding: 2rem 3.5rem; border-bottom: 1px solid var(--rule); border-left: 3px solid transparent; background: var(--white); transition: border-color 0.15s, background 0.12s; gap: 2rem; }
+  .work-row:hover { border-left-color: var(--accent); background: rgba(28,74,60,0.03); }
+  .wr-date { font-family: "IBM Plex Mono", monospace; font-size: 0.65rem; color: var(--muted); padding-top: 0.2rem; line-height: 1.6; }
+  .wr-client { font-family: "IBM Plex Mono", monospace; font-size: 0.62rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.4rem; }
+  .wr-title { font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.4rem; line-height: 1.3; }
+  .wr-framing { font-size: 0.84rem; font-weight: 300; color: #555; line-height: 1.65; margin-bottom: 0.7rem; max-width: 480px; }
+  .wr-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .wr-tag { font-family: "IBM Plex Mono", monospace; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); border: 1px solid var(--rule); padding: 0.18rem 0.5rem; }
+  .wr-result { text-align: right; flex-shrink: 0; min-width: 80px; }
+  .wr-result-num { font-family: "IBM Plex Mono", monospace; font-size: 1.5rem; font-weight: 600; color: var(--accent); line-height: 1; letter-spacing: -0.02em; display: block; margin-bottom: 0.25rem; }
+  .wr-result-label { font-family: "IBM Plex Mono", monospace; font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; }
+
+  .post-row { display: grid; grid-template-columns: 140px 1fr auto; align-items: baseline; padding: 1.5rem 3.5rem; border-bottom: 1px solid var(--rule); border-left: 3px solid transparent; background: var(--white); transition: border-color 0.15s, background 0.12s; gap: 2rem; }
+  .post-row:hover { border-left-color: var(--accent); background: rgba(28,74,60,0.03); }
+  .pr-date { font-family: "IBM Plex Mono", monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.04em; }
+  .pr-title { font-size: 0.95rem; font-weight: 400; color: var(--ink); line-height: 1.4; }
+  .pr-tag { font-family: "IBM Plex Mono", monospace; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); white-space: nowrap; background: var(--accent-dim); padding: 0.22rem 0.6rem; }
+
+  .exp-row { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; padding: 1.8rem 3.5rem; border-bottom: 1px solid var(--rule); border-left: 3px solid transparent; background: var(--white); align-items: start; transition: border-color 0.15s, background 0.12s; }
+  .exp-row:hover { border-left-color: var(--accent); background: rgba(28,74,60,0.03); }
+  .er-period { font-family: "IBM Plex Mono", monospace; font-size: 0.62rem; color: var(--muted); line-height: 1.6; padding-top: 0.2rem; }
+  .er-company { font-size: 1.05rem; font-weight: 500; color: var(--ink); margin-bottom: 0.15rem; letter-spacing: -0.01em; }
+  .er-role { font-family: "IBM Plex Mono", monospace; font-size: 0.65rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.6rem; }
+  .er-scope { font-size: 0.85rem; font-weight: 300; color: #555; line-height: 1.7; margin-bottom: 0.25rem; }
+  .er-impact { font-size: 0.82rem; font-weight: 400; color: var(--ink); line-height: 1.6; opacity: 0.7; }
+  .er-badge { display: inline-block; margin-top: 0.6rem; font-family: "IBM Plex Mono", monospace; font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.14em; color: #22c55e; background: rgba(34,197,94,0.08); padding: 0.18rem 0.5rem; border: 1px solid rgba(34,197,94,0.22); }
+  .exp-cv-note { padding: 1.4rem 3.5rem; background: var(--white); font-family: "IBM Plex Mono", monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.05em; border-bottom: 1px solid var(--rule); }
+  .exp-cv-note a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+  .contact { padding: 5.5rem 3.5rem 6rem; background: var(--sidebar-bg); color: var(--sidebar-text); border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .contact-label { font-family: "IBM Plex Mono", monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.26em; color: var(--accent); margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+  .contact-label::before { content: '—'; }
+  .contact h2 { font-size: clamp(1.5rem, 3.5vw, 2.4rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.9rem; color: var(--sidebar-text); max-width: 600px; }
+  .contact-support { font-size: 0.88rem; font-weight: 300; color: rgba(232,228,220,0.45); margin-bottom: 2.5rem; max-width: 440px; line-height: 1.7; }
+  .contact-actions { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .btn-accent { font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; padding: 0.85rem 1.8rem; background: var(--accent); color: #fff; display: inline-block; transition: background 0.2s; }
+  .btn-accent:hover { background: var(--accent-dark); }
+  .btn-outline { font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; padding: 0.85rem 1.8rem; border: 1px solid rgba(232,228,220,0.2); color: rgba(232,228,220,0.7); display: inline-block; transition: border-color 0.2s, color 0.2s; }
+  .btn-outline:hover { border-color: rgba(232,228,220,0.5); color: var(--sidebar-text); }
+
+  footer { padding: 1.2rem 3.5rem; display: flex; justify-content: space-between; font-family: "IBM Plex Mono", monospace; font-size: 0.58rem; color: rgba(232,228,220,0.18); background: var(--sidebar-bg); letter-spacing: 0.08em; }
+  footer a { color: rgba(232,228,220,0.18); }
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 860px) {
+    .sidebar { position: static; width: 100%; height: auto; padding: 2rem 1.5rem; }
+    .main { margin-left: 0; }
+    .meta-bar, .intro, .about-expanded, .section-head, .work-row, .post-row, .exp-row, .exp-cv-note, .contact, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .work-row, .post-row { grid-template-columns: 1fr; }
+    .exp-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="option-badge">Option A — Deep Green</div>
+
+<aside class="sidebar">
+  <div class="s-top">
+    <div class="s-name">Nakyum Song</div>
+    <div class="s-role">Brand Strategist &amp; Creative Director</div>
+    <div class="s-qualifier">Global tech, gaming, and culture brands</div>
+    <ul class="s-nav">
+      <li><a href="#about" class="active"><span><span class="nav-idx">001</span>About</span><span class="nav-arrow">→</span></a></li>
+      <li><a href="#work"><span><span class="nav-idx">002</span>Work</span><span class="nav-arrow">→</span></a></li>
+      <li><a href="#thinking"><span><span class="nav-idx">003</span>Thinking</span><span class="nav-arrow">→</span></a></li>
+      <li><a href="#experience"><span><span class="nav-idx">004</span>Experience</span><span class="nav-arrow">→</span></a></li>
+      <li><a href="#contact"><span><span class="nav-idx">005</span>Contact</span><span class="nav-arrow">→</span></a></li>
+    </ul>
+  </div>
+  <div class="s-foot">
+    Singapore / Seoul<br>
+    <a href="mailto:nakyumsong@gmail.com">Email ↗</a><br>
+    <a href="https://www.linkedin.com/in/nakyumsong" target="_blank">LinkedIn ↗</a>
+  </div>
+</aside>
+
+<div class="main">
+  <div class="meta-bar">
+    <span class="mb-left">Independent Portfolio &nbsp;·&nbsp; Strategy, Narrative, Direction</span>
+    <span class="mb-right"><span class="mb-dot"></span>Available for consulting</span>
+  </div>
+
+  <section class="intro" id="about">
+    <div class="intro-label">001 &nbsp; About</div>
+    <h1>I build brand narratives that hold across markets, culture, and execution.</h1>
+    <p class="intro-sub">I work at the intersection of brand strategy, creative direction, and global marketing, helping brands define sharper positioning, clearer stories, and systems that scale.</p>
+    <p class="intro-proof">Experience across Razer, KRAFTON, Hill &amp; Knowlton, and global launches spanning gaming, tech, and lifestyle.</p>
+    <div class="intro-actions">
+      <a href="#work" class="btn-primary">View Selected Work →</a>
+      <a href="#contact" class="btn-ghost">Get in Touch →</a>
+    </div>
+  </section>
+
+  <div class="about-expanded">
+    <div class="about-exp-title">Brand clarity before brand output.</div>
+    <p class="about-exp-body">Most brands do not struggle because they lack ideas. They struggle because their message, positioning, and execution stop pointing in the same direction.</p>
+    <p class="about-exp-body">My work focuses on that alignment: shaping brand narratives, campaign systems, and strategic direction that teams can actually use across launches, markets, and content ecosystems.</p>
+  </div>
+
+  <section class="section" id="work">
+    <div class="section-head">
+      <div class="sh-top"><span class="sh-dash">—</span><span class="sh-num">002</span><span class="sh-title">Selected Work</span></div>
+      <div class="sh-sub">Brand systems, launches, and narrative-led campaigns</div>
+    </div>
+    <div class="work-row">
+      <div class="wr-date">2024 →<br>Present</div>
+      <div>
+        <div class="wr-client">Razer</div>
+        <div class="wr-title">Razer 20th Anniversary</div>
+        <div class="wr-framing">Built a unifying brand system for a milestone campaign spanning esports, lifestyle, and hardware across 15+ markets.</div>
+        <div class="wr-tags"><span class="wr-tag">Brand Systems</span><span class="wr-tag">Global Campaign</span><span class="wr-tag">Creative Direction</span></div>
+      </div>
+      <div class="wr-result"><span class="wr-result-num">15+</span><span class="wr-result-label">markets unified</span></div>
+    </div>
+    <div class="work-row">
+      <div class="wr-date">2022</div>
+      <div>
+        <div class="wr-client">KRAFTON</div>
+        <div class="wr-title">ANA Virtual Artist</div>
+        <div class="wr-framing">Launched Korea's first AI virtual artist — defining a new content format for gaming brands.</div>
+        <div class="wr-tags"><span class="wr-tag">Virtual Human</span><span class="wr-tag">Content Strategy</span><span class="wr-tag">Brand Launch</span></div>
+      </div>
+      <div class="wr-result"><span class="wr-result-num">5.4M</span><span class="wr-result-label">views / 50 days</span></div>
+    </div>
+    <div class="work-row">
+      <div class="wr-date">2021</div>
+      <div>
+        <div class="wr-client">KRAFTON</div>
+        <div class="wr-title">PUBG: NEW STATE Launch</div>
+        <div class="wr-framing">Led full-funnel strategy for a global AAA mobile launch entering 175+ countries simultaneously.</div>
+        <div class="wr-tags"><span class="wr-tag">Gaming</span><span class="wr-tag">Global Launch</span><span class="wr-tag">Content Marketing</span></div>
+      </div>
+      <div class="wr-result"><span class="wr-result-num">50M</span><span class="wr-result-label">pre-registrations</span></div>
+    </div>
+    <div class="work-row">
+      <div class="wr-date">2020</div>
+      <div>
+        <div class="wr-client">Hill &amp; Knowlton / LG</div>
+        <div class="wr-title">LG WING Campaign</div>
+        <div class="wr-framing">Repositioned a dual-screen device as a creator tool through a 21-market influencer campaign.</div>
+        <div class="wr-tags"><span class="wr-tag">Influencer Marketing</span><span class="wr-tag">Product Launch</span><span class="wr-tag">21 Markets</span></div>
+      </div>
+      <div class="wr-result"><span class="wr-result-num">12M</span><span class="wr-result-label">views · 4.5× eng.</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="thinking">
+    <div class="section-head">
+      <div class="sh-top"><span class="sh-dash">—</span><span class="sh-num">003</span><span class="sh-title">Thinking</span></div>
+      <div class="sh-sub">Writing on brand, AI, market positioning, and cultural translation</div>
+    </div>
+    <div class="post-row"><div class="pr-date">2026.02.24</div><div class="pr-title">How to Use AI Tools to Build and Strengthen Your Brand Narrative</div><span class="pr-tag">AI &amp; Marketing</span></div>
+    <div class="post-row"><div class="pr-date">2026.02.20</div><div class="pr-title">What Korean Branding Gets Right (And Wrong) When Going Global</div><span class="pr-tag">Brand Strategy</span></div>
+    <div class="post-row"><div class="pr-date">2026.02.19</div><div class="pr-title">How Korean SMEs Can Enter the Singapore Market: A Brand-First Playbook</div><span class="pr-tag">Market Entry</span></div>
+  </section>
+
+  <section class="section" id="experience">
+    <div class="section-head">
+      <div class="sh-top"><span class="sh-dash">—</span><span class="sh-num">004</span><span class="sh-title">Experience</span></div>
+    </div>
+    <div class="exp-row">
+      <div class="er-period">2024 →<br>Present</div>
+      <div>
+        <div class="er-company">Razer</div>
+        <div class="er-role">Global Brand Manager · Singapore</div>
+        <div class="er-scope">Global esports and lifestyle campaigns; 20th Anniversary brand system across 15+ markets.</div>
+        <div class="er-impact">Unified creative direction across a distributed studio network spanning four continents.</div>
+        <span class="er-badge">Current</span>
+      </div>
+    </div>
+    <div class="exp-row">
+      <div class="er-period">2021 →<br>2024</div>
+      <div>
+        <div class="er-company">KRAFTON</div>
+        <div class="er-role">Creative Marketing Manager · Korea</div>
+        <div class="er-scope">Launched ANA, Korea's first AI-powered virtual artist; led PUBG Mobile and NEW STATE content production.</div>
+        <div class="er-impact">5.4M views in 50 days; 50M+ pre-registrations for global mobile launch.</div>
+      </div>
+    </div>
+    <div class="exp-row">
+      <div class="er-period">2019 →<br>2021</div>
+      <div>
+        <div class="er-company">Hill &amp; Knowlton</div>
+        <div class="er-role">Account Manager · Korea</div>
+        <div class="er-scope">Global influencer strategy for LG Mobile across 21 markets; first virtual product unveiling.</div>
+        <div class="er-impact">30% campaign efficiency gain; 12M+ views with 4.5× engagement rate.</div>
+      </div>
+    </div>
+    <div class="exp-row">
+      <div class="er-period">2013 →<br>2015</div>
+      <div>
+        <div class="er-company">SK Corporation</div>
+        <div class="er-role">Junior Consultant · Korea</div>
+        <div class="er-scope">SAP HR system optimisation across six affiliates.</div>
+        <div class="er-impact">17% efficiency lift across group operations.</div>
+      </div>
+    </div>
+    <div class="exp-cv-note">Full CV available on request — <a href="mailto:nakyumsong@gmail.com">get in touch</a></div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="contact-label">005 &nbsp; Contact</div>
+    <h2>Open for brand strategy, narrative consulting, and creative direction.</h2>
+    <p class="contact-support">For consulting, collaborations, and selected in-house opportunities.</p>
+    <div class="contact-actions">
+      <a href="mailto:nakyumsong@gmail.com" class="btn-accent">Get in touch →</a>
+      <a href="https://www.linkedin.com/in/nakyumsong" target="_blank" class="btn-outline">LinkedIn ↗</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Nakyum Song</span>
+    <span>Singapore / Seoul</span>
+    <a href="https://www.linkedin.com/in/nakyumsong" target="_blank">LinkedIn</a>
+  </footer>
+</div>
+
+<script>
+  const sections = document.querySelectorAll('section[id], .contact[id]');
+  const navLinks = document.querySelectorAll('.s-nav a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        navLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === '#' + id); });
+      }
+    });
+  }, { threshold: 0.25 });
+  sections.forEach(s => observer.observe(s));
+  navLinks.forEach(link => { link.addEventListener('click', e => { e.preventDefault(); document.querySelector(link.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' }); }); });
+</script>
+</body>
+</html>
