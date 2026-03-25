@@ -1,6 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/seo/Breadcrumbs.astro';
+import RelatedLinksSection from '../../components/seo/RelatedLinksSection.astro';
+import {
+  getRelatedCaseStudiesForPost,
+  getRelatedExpertiseForPost,
+} from '../../data/expertise';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -12,6 +18,37 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+const relatedExpertise = getRelatedExpertiseForPost(post.slug);
+const relatedCaseStudies = getRelatedCaseStudiesForPost(post.slug);
+const breadcrumbItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Thinking', href: '/thinking' },
+  { label: post.data.title },
+];
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.data.title,
+    description: post.data.description,
+    datePublished: post.data.pubDate.toISOString(),
+    author: {
+      '@type': 'Person',
+      name: post.data.author,
+    },
+    url: `https://nakyumsong.com/thinking/${post.slug}/`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbItems.map((crumb, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.label,
+      item: crumb.href ? `https://nakyumsong.com${crumb.href}` : undefined,
+    })),
+  },
+];
 
 const formattedDate = new Date(post.data.pubDate).toLocaleDateString('en-SG', {
   year: 'numeric',
@@ -24,6 +61,8 @@ const formattedDate = new Date(post.data.pubDate).toLocaleDateString('en-SG', {
   title={`${post.data.title} | Nakyum Song`}
   description={post.data.description}
   ogImage={post.data.ogImage}
+  ogType="article"
+  structuredData={structuredData}
 >
   <div class="tp-page">
 
@@ -37,6 +76,7 @@ const formattedDate = new Date(post.data.pubDate).toLocaleDateString('en-SG', {
 
       <!-- Hero -->
       <div class="tp-hero">
+        <Breadcrumbs items={breadcrumbItems} />
         <div class="tp-category">{post.data.category}</div>
         <h1 class="tp-title">{post.data.title}</h1>
         <div class="tp-meta">
@@ -68,6 +108,19 @@ const formattedDate = new Date(post.data.pubDate).toLocaleDateString('en-SG', {
           <Content />
         </div>
       </div>
+
+      <RelatedLinksSection
+        eyebrow="Expertise"
+        title="Related expertise"
+        intro="These pages connect the essay to service and portfolio entry points without changing the editorial tone."
+        items={relatedExpertise}
+      />
+
+      <RelatedLinksSection
+        eyebrow="Proof"
+        title="Related case studies"
+        items={relatedCaseStudies}
+      />
 
     </main>
 
