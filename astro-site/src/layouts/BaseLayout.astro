@@ -6,15 +6,42 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  canonical?: string;
+  noindex?: boolean;
+  ogType?: 'website' | 'article';
+  structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
 const {
   title = "Nakyum Song | Creative Marketer & Brand Strategist",
   description = "Portfolio of Nakyum Song - Creative Marketer and Brand Strategist building memorable brand experiences",
-  ogImage = "/logo.png"
+  ogImage = "/logo.png",
+  canonical,
+  noindex = false,
+  ogType = 'website',
+  structuredData = []
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = canonical ? new URL(canonical, Astro.site) : new URL(Astro.url.pathname, Astro.site);
+const structuredDataList = Array.isArray(structuredData) ? structuredData : [structuredData];
+const baseStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nakyum Song",
+    "url": "https://nakyumsong.com",
+    "jobTitle": "Brand Strategist",
+    "sameAs": [
+      "https://linkedin.com/in/nakyumsong"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Nakyum Song",
+    "url": "https://nakyumsong.com"
+  }
+];
 ---
 
 <!DOCTYPE html>
@@ -41,6 +68,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -50,7 +78,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="alternate" type="application/rss+xml" title="Nakyum Song — Thinking" href="/rss.xml" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -72,26 +100,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     />
 
     <!-- Structured Data -->
-    <script is:inline type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Nakyum Song",
-        "url": "https://nakyumsong.com",
-        "jobTitle": "Brand Strategist",
-        "sameAs": [
-          "https://linkedin.com/in/nakyumsong"
-        ]
-      }
-    </script>
-    <script is:inline type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Nakyum Song",
-        "url": "https://nakyumsong.com"
-      }
-    </script>
+    {[...baseStructuredData, ...structuredDataList].map((schema) => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
 
   </head>
   <body>

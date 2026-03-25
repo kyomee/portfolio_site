@@ -1,0 +1,27 @@
+---
+import TaxonomyHubPage from '../../components/seo/TaxonomyHubPage.astro';
+import {
+  audiences,
+  getHubRelatedExpertise,
+  getHubRelatedCaseStudies,
+  getHubRelatedPosts,
+} from '../../data/expertise';
+
+export function getStaticPaths() {
+  return audiences.map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+---
+
+<TaxonomyHubPage
+  label="Audience"
+  pathPrefix="audiences"
+  item={item}
+  relatedExpertise={getHubRelatedExpertise('audience', item.slug)}
+  relatedCaseStudies={getHubRelatedCaseStudies('audience', item.slug)}
+  relatedPosts={getHubRelatedPosts('audience', item.slug)}
+/>

@@ -1,0 +1,307 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../layout/Navigation.astro';
+import Footer from '../layout/Footer.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import RelatedLinksSection from './RelatedLinksSection.astro';
+import type { ExpertisePage, LinkCard, TaxonomyItem } from '../../data/expertise';
+
+interface Props {
+  page: ExpertisePage;
+  audience: TaxonomyItem;
+  serviceArea: TaxonomyItem;
+  caseStudies: LinkCard[];
+  posts: LinkCard[];
+  relatedExpertise: LinkCard[];
+}
+
+const { page, audience, serviceArea, caseStudies, posts, relatedExpertise } = Astro.props;
+
+const pageUrl = `https://nakyumsong.com/expertise/${page.audienceSlug}/${page.serviceSlug}/`;
+const breadcrumbItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Expertise' },
+  { label: audience.name, href: `/audiences/${audience.slug}/` },
+  { label: serviceArea.name, href: `/service-areas/${serviceArea.slug}/` },
+];
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: page.title,
+    description: page.description,
+    serviceType: serviceArea.name,
+    areaServed: page.marketSlugs.map((marketSlug) => marketSlug),
+    audience: {
+      '@type': 'Audience',
+      audienceType: audience.name,
+    },
+    provider: {
+      '@type': 'Person',
+      name: 'Nakyum Song',
+      url: 'https://nakyumsong.com',
+    },
+    url: pageUrl,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: page.faq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbItems.map((crumb, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.label,
+      item: crumb.href ? `https://nakyumsong.com${crumb.href}` : undefined,
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title={`${page.title} | Nakyum Song`}
+  description={page.description}
+  structuredData={structuredData}
+>
+  <Navigation />
+
+  <main class="expertise-page">
+    <section class="expertise-hero">
+      <div class="container">
+        <Breadcrumbs items={breadcrumbItems} />
+        <span class="section-label">Expertise</span>
+        <h1 class="page-title">{page.title}</h1>
+        <p class="page-subtitle">{page.description}</p>
+      </div>
+    </section>
+
+    <section class="expertise-content">
+      <div class="container">
+        <div class="editorial-frame">
+          <div class="content-grid">
+            <article class="content-main">
+              <div class="intro-block">
+                <p>{page.intro}</p>
+              </div>
+
+              <section class="content-section">
+                <h2>The audience problem</h2>
+                <p>{page.audienceProblem}</p>
+              </section>
+
+              <section class="content-section">
+                <h2>How I approach this work</h2>
+                <p>{page.serviceApproach}</p>
+              </section>
+
+              <section class="faq-section">
+                <h2>Frequently asked questions</h2>
+                <div class="faq-list">
+                  {page.faq.map((item) => (
+                    <article class="faq-card">
+                      <h3>{item.question}</h3>
+                      <p>{item.answer}</p>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            </article>
+
+            <aside class="content-sidebar">
+              <div class="sidebar-card">
+                <span class="sidebar-label">Audience</span>
+                <h2>{audience.name}</h2>
+                <p>{audience.description}</p>
+                <a href={`/audiences/${audience.slug}/`} class="sidebar-link">View audience hub &rarr;</a>
+              </div>
+
+              <div class="sidebar-card">
+                <span class="sidebar-label">Service Area</span>
+                <h2>{serviceArea.name}</h2>
+                <p>{serviceArea.description}</p>
+                <a href={`/service-areas/${serviceArea.slug}/`} class="sidebar-link">View service hub &rarr;</a>
+              </div>
+
+              <div class="sidebar-card">
+                <span class="sidebar-label">Contact</span>
+                <h2>Open to advisory and consulting work</h2>
+                <p>If the challenge is about positioning, narrative, market entry, or launch framing, email is the fastest way to start.</p>
+                <a href="/contact" class="sidebar-link">Get in touch &rarr;</a>
+              </div>
+            </aside>
+          </div>
+
+          <RelatedLinksSection
+            eyebrow="Proof"
+            title="Relevant case studies"
+            intro="These projects show how the strategic problems above translate into actual launch, content, and brand work."
+            items={caseStudies}
+          />
+
+          <RelatedLinksSection
+            eyebrow="Reading"
+            title="Related essays"
+            intro="These essays expand the thinking behind the work without turning the page into a generic blog archive."
+            items={posts}
+          />
+
+          <RelatedLinksSection
+            eyebrow="Also Relevant"
+            title="Adjacent expertise"
+            items={relatedExpertise}
+          />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .expertise-page {
+    padding-top: var(--nav-height);
+  }
+
+  .expertise-hero {
+    padding: var(--space-16) 0 var(--space-8);
+    background-color: var(--color-bg-secondary);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-title {
+    font-size: var(--text-4xl);
+    margin: 0 0 var(--space-4);
+  }
+
+  .page-subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin: 0;
+    max-width: 760px;
+  }
+
+  .expertise-content {
+    padding: var(--space-16) 0;
+  }
+
+  .editorial-frame {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.9fr);
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  .content-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .intro-block,
+  .content-section,
+  .faq-section,
+  .sidebar-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+  }
+
+  .intro-block p,
+  .content-section p,
+  .faq-card p,
+  .sidebar-card p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .content-section h2,
+  .faq-section h2,
+  .sidebar-card h2 {
+    font-size: var(--text-xl);
+    margin: 0 0 var(--space-4);
+  }
+
+  .faq-list {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .faq-card {
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .faq-card:first-child {
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .faq-card h3 {
+    font-size: var(--text-lg);
+    margin: 0 0 var(--space-2);
+  }
+
+  .content-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .sidebar-label {
+    display: inline-block;
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-3);
+  }
+
+  .sidebar-link {
+    display: inline-flex;
+    margin-top: var(--space-4);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+  }
+
+  @media (max-width: 900px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .expertise-hero {
+      padding: var(--space-12) 0 var(--space-6);
+    }
+  }
+</style>

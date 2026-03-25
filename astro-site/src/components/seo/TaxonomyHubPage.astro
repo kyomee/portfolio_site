@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../layout/Navigation.astro';
+import Footer from '../layout/Footer.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import RelatedLinksSection from './RelatedLinksSection.astro';
+import type { LinkCard, TaxonomyItem } from '../../data/expertise';
+
+interface Props {
+  label: string;
+  item: TaxonomyItem;
+  pathPrefix: string;
+  relatedExpertise: LinkCard[];
+  relatedCaseStudies: LinkCard[];
+  relatedPosts: LinkCard[];
+}
+
+const { label, item, pathPrefix, relatedExpertise, relatedCaseStudies, relatedPosts } = Astro.props;
+
+const breadcrumbItems = [
+  { label: 'Home', href: '/' },
+  { label },
+  { label: item.name },
+];
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: item.title,
+    description: item.description,
+    url: `https://nakyumsong.com/${pathPrefix}/${item.slug}/`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbItems.map((crumb, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.label,
+      item: crumb.href ? `https://nakyumsong.com${crumb.href}` : undefined,
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title={`${item.name} | Nakyum Song`}
+  description={item.description}
+  structuredData={structuredData}
+>
+  <Navigation />
+
+  <main class="hub-page">
+    <section class="hub-hero">
+      <div class="container">
+        <Breadcrumbs items={breadcrumbItems} />
+        <span class="section-label">{label}</span>
+        <h1 class="page-title">{item.title}</h1>
+        <p class="page-subtitle">{item.description}</p>
+      </div>
+    </section>
+
+    <section class="hub-content">
+      <div class="container">
+        <div class="hub-intro">
+          <p>{item.intro}</p>
+        </div>
+
+        <RelatedLinksSection
+          eyebrow="Explore"
+          title={`Relevant ${label.toLowerCase()} entry points`}
+          intro="Each page below is written as a focused entry point into the work, not as a keyword variant."
+          items={relatedExpertise}
+        />
+
+        <RelatedLinksSection
+          eyebrow="Proof"
+          title="Related case studies"
+          items={relatedCaseStudies}
+        />
+
+        <RelatedLinksSection
+          eyebrow="Reading"
+          title="Related essays"
+          items={relatedPosts}
+        />
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .hub-page {
+    padding-top: var(--nav-height);
+  }
+
+  .hub-hero {
+    padding: var(--space-16) 0 var(--space-8);
+    background-color: var(--color-bg-secondary);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-title {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    margin: 0 0 var(--space-4);
+  }
+
+  .page-subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin: 0;
+    max-width: 760px;
+  }
+
+  .hub-content {
+    padding: var(--space-16) 0;
+  }
+
+  .hub-intro {
+    max-width: 780px;
+    padding: var(--space-8);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+  }
+
+  .hub-intro p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  @media (max-width: 768px) {
+    .hub-hero {
+      padding: var(--space-12) 0 var(--space-6);
+    }
+  }
+</style>

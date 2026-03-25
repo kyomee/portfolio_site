@@ -1,0 +1,56 @@
+---
+import ExpertisePageTemplate from '../../../components/seo/ExpertisePageTemplate.astro';
+import {
+  expertisePages,
+  getAudience,
+  getServiceArea,
+  getCaseStudyCards,
+  getPostCards,
+  getExpertiseCardsByPairs,
+} from '../../../data/expertise';
+
+export function getStaticPaths() {
+  return expertisePages.map((page) => ({
+    params: {
+      audience: page.audienceSlug,
+      service: page.serviceSlug,
+    },
+    props: {
+      page,
+    },
+  }));
+}
+
+const { page } = Astro.props;
+const audience = getAudience(page.audienceSlug);
+const serviceArea = getServiceArea(page.serviceSlug);
+
+if (!audience || !serviceArea) {
+  throw new Error(`Missing expertise taxonomy for ${page.audienceSlug}/${page.serviceSlug}`);
+}
+
+const caseStudies = getCaseStudyCards(page.caseStudySlugs);
+const posts = getPostCards(page.postSlugs);
+const relatedExpertise = getExpertiseCardsByPairs(
+  expertisePages
+    .filter(
+      (entry) =>
+        !(entry.audienceSlug === page.audienceSlug && entry.serviceSlug === page.serviceSlug) &&
+        (entry.audienceSlug === page.audienceSlug || entry.serviceSlug === page.serviceSlug)
+    )
+    .slice(0, 3)
+    .map((entry) => ({
+      audienceSlug: entry.audienceSlug,
+      serviceSlug: entry.serviceSlug,
+    }))
+);
+---
+
+<ExpertisePageTemplate
+  page={page}
+  audience={audience}
+  serviceArea={serviceArea}
+  caseStudies={caseStudies}
+  posts={posts}
+  relatedExpertise={relatedExpertise}
+/>
