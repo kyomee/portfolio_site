@@ -54,7 +54,7 @@
     margin-bottom: auto;
   }
   .s-name {
-    font-size: 0.78rem;
+    font-size: 1rem;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -62,23 +62,27 @@
     margin-bottom: 0.3rem;
   }
   .s-role {
-    font-size: 0.58rem;
+    font-size: 0.75rem;
     color: rgba(232,228,220,0.4);
     letter-spacing: 0.08em;
     line-height: 1.6;
     margin-bottom: 3rem;
   }
 
-  /* Neon tag */
+  /* Status tag */
   .s-status {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.58rem;
-    color: var(--neon);
-    letter-spacing: 0.14em;
+    font-size: 0.68rem;
+    color: rgba(232,228,220,0.6);
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 2.5rem;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
   }
   .s-status::before {
     content: '';
@@ -86,14 +90,15 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--neon);
-    box-shadow: 0 0 6px var(--neon);
+    background: #22c55e;
+    box-shadow: 0 0 6px #22c55e;
     flex-shrink: 0;
+    animation: blink 1.4s ease-in-out infinite;
   }
 
   /* Quote */
   .s-quote {
-    font-size: 0.62rem;
+    font-size: 0.72rem;
     font-style: italic;
     color: rgba(232,228,220,0.5);
     line-height: 1.7;
@@ -113,9 +118,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.65rem 0;
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
+    padding: 0.7rem 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: rgba(232,228,220,0.45);
     transition: color 0.15s;
@@ -123,13 +128,13 @@
   .s-nav a:hover { color: var(--sidebar-text); }
   .s-nav a.active { color: var(--neon); }
   .s-nav a.active .nav-arrow { color: var(--neon); }
-  .nav-idx { font-size: 0.52rem; color: rgba(232,228,220,0.25); margin-right: 0.7rem; }
+  .nav-idx { font-size: 0.62rem; color: rgba(232,228,220,0.25); margin-right: 0.7rem; }
   .nav-arrow { font-size: 0.7rem; color: transparent; transition: color 0.15s; }
   .s-nav a:hover .nav-arrow { color: rgba(232,228,220,0.4); }
 
   /* Sidebar footer */
   .s-foot {
-    font-size: 0.55rem;
+    font-size: 0.65rem;
     color: rgba(232,228,220,0.3);
     line-height: 2;
     letter-spacing: 0.05em;
@@ -160,7 +165,7 @@
   }
   .pm-date {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     color: var(--neon);
     letter-spacing: 0.1em;
   }
@@ -173,7 +178,7 @@
   }
   .intro-label {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.62rem;
+    font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.28em;
     color: var(--muted);
@@ -198,21 +203,73 @@
     /* neon text glow */
     text-shadow: 0 0 20px rgba(255,45,120,0.4);
   }
-  .intro-sub {
-    font-size: 0.9rem;
+  .intro-tagline {
+    font-size: clamp(1rem, 2vw, 1.25rem);
     font-weight: 300;
-    color: #555;
-    max-width: 540px;
-    line-height: 1.8;
+    color: #444;
+    max-width: 580px;
+    line-height: 1.65;
+    margin-bottom: 2.2rem;
+    letter-spacing: -0.01em;
+  }
+  .intro-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     margin-bottom: 2.5rem;
   }
+  .intro-meta-location {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    flex-wrap: wrap;
+  }
+  .intro-meta-location .meta-pin {
+    opacity: 0.5;
+    font-size: 0.75rem;
+  }
+  .intro-meta-location .meta-sep {
+    opacity: 0.3;
+    margin: 0 0.2rem;
+  }
+  .intro-meta-links {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .meta-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .meta-link-btn:hover { color: var(--ink); }
+  .meta-icon-circle {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(17,17,17,0.08);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+    transition: background 0.15s;
+  }
+  .meta-link-btn:hover .meta-icon-circle { background: rgba(17,17,17,0.14); }
   .intro-cta {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--ink);
     border-bottom: 1px solid var(--ink);
@@ -220,6 +277,86 @@
     transition: color 0.15s, border-color 0.15s;
   }
   .intro-cta:hover { color: var(--neon); border-color: var(--neon); }
+  .intro-actions { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .intro-cta--ghost {
+    background: none;
+    cursor: pointer;
+    font-family: "IBM Plex Mono", monospace;
+  }
+  .intro-cta--ghost:hover { color: var(--neon); border-color: var(--neon); }
+
+  /* ─── ABOUT PANEL ─── */
+  .about-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 40;
+  }
+  .about-overlay.open { display: block; }
+  .about-panel {
+    position: fixed;
+    top: 0; right: 0;
+    width: min(600px, 90vw);
+    height: 100vh;
+    background: var(--white);
+    z-index: 50;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    border-left: 1px solid var(--rule);
+  }
+  .about-panel.open { transform: translateX(0); }
+  .about-close {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 1.2rem 2.5rem;
+    border-bottom: 1px solid var(--rule);
+    width: 100%;
+    text-align: left;
+    transition: color 0.15s;
+  }
+  .about-close:hover { color: var(--neon); }
+  .about-panel-inner { padding: 3rem 2.5rem 4rem; }
+  .about-panel-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .about-panel-label::before { content: '—'; color: var(--neon); }
+  .about-panel-title {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+  .about-panel-body {
+    font-size: 0.92rem;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.85;
+    margin-bottom: 1.2rem;
+    max-width: 480px;
+  }
+  .about-panel-links { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 2.5rem; }
 
   /* ─── SECTION ─── */
   .section { border-bottom: 1px solid var(--rule); }
@@ -232,8 +369,8 @@
     background: var(--bg);
   }
   .sh-dash { color: var(--neon); font-family: "IBM Plex Mono", monospace; font-size: 0.75rem; }
-  .sh-num { font-family: "IBM Plex Mono", monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; }
-  .sh-title { font-family: "IBM Plex Mono", monospace; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.22em; color: var(--ink); font-weight: 500; }
+  .sh-num { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; }
+  .sh-title { font-family: "IBM Plex Mono", monospace; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink); font-weight: 500; }
 
   /* ─── WORK ROWS ─── */
   .work-row {
@@ -253,14 +390,14 @@
   }
   .wr-date {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.65rem;
+    font-size: 0.72rem;
     color: var(--muted);
     padding-top: 0.2rem;
     line-height: 1.6;
   }
   .wr-client {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.58rem;
+    font-size: 0.68rem;
     color: var(--neon);
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -274,7 +411,7 @@
     line-height: 1.3;
   }
   .wr-desc {
-    font-size: 0.78rem;
+    font-size: 0.88rem;
     font-weight: 300;
     color: #555;
     line-height: 1.65;
@@ -284,7 +421,7 @@
   .wr-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
   .wr-tag {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.55rem;
+    font-size: 0.63rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: var(--muted);
@@ -309,7 +446,7 @@
   }
   .wr-result-label {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.55rem;
+    font-size: 0.63rem;
     color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -334,19 +471,19 @@
   }
   .pr-date {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.62rem;
+    font-size: 0.72rem;
     color: var(--muted);
     letter-spacing: 0.05em;
   }
   .pr-title {
-    font-size: 0.92rem;
+    font-size: 1rem;
     font-weight: 400;
     color: var(--ink);
     line-height: 1.4;
   }
   .pr-tag {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.55rem;
+    font-size: 0.63rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: var(--neon);
@@ -355,57 +492,124 @@
     padding: 0.22rem 0.6rem;
   }
 
-  /* ─── EXPERIENCE ─── */
+  /* ─── EXPERIENCE (Cumbreras-style) ─── */
+  @keyframes dotPulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255,45,120,0.6), 0 0 8px rgba(255,45,120,0.4); }
+    50%       { opacity: 0.7; box-shadow: 0 0 0 6px rgba(255,45,120,0), 0 0 16px rgba(255,45,120,0.2); }
+  }
+  @keyframes shimmer {
+    0%   { transform: translateX(-100%); opacity: 0; }
+    40%  { opacity: 0.06; }
+    100% { transform: translateX(100%); opacity: 0; }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .exp-timeline {
+    padding: 0 3.5rem;
+    position: relative;
+    background: var(--white);
+  }
+  .exp-timeline::before {
+    content: '';
+    position: absolute;
+    left: calc(3.5rem + 7px);
+    top: 0; bottom: 0;
+    width: 1px;
+    background: rgba(255,45,120,0.2);
+  }
+
   .exp-row {
     display: grid;
-    grid-template-columns: 150px 1fr;
-    gap: 2.5rem;
-    padding: 2.5rem 3.5rem;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    padding: 2rem 0 2rem 2.8rem;
     border-bottom: 1px solid var(--rule);
-    border-left: 3px solid transparent;
-    background: var(--white);
-    align-items: start;
-    transition: border-color 0.15s;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
   }
-  .exp-row:hover { border-left-color: var(--neon); }
-  .er-date {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.62rem;
-    color: var(--muted);
-    line-height: 1.7;
-    padding-top: 0.2rem;
+  .exp-row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%; transform: translateY(-50%);
+    width: 15px; height: 15px;
+    border-radius: 50%;
+    background: var(--neon);
+    animation: dotPulse 2.8s ease-in-out infinite;
   }
+  .exp-row::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.03), transparent);
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  .exp-row:hover { background: rgba(0,0,0,0.02); }
+  .exp-row:hover::after { animation: shimmer 0.7s ease forwards; }
+
+  .er-body { display: flex; flex-direction: column; gap: 0.25rem; }
   .er-company {
-    font-size: 1.15rem;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
     font-weight: 500;
     color: var(--ink);
-    margin-bottom: 0.15rem;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
   }
   .er-role {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.62rem;
+    font-size: 0.74rem;
     color: var(--neon);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 0.9rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.4rem;
   }
   .er-desc {
-    font-size: 0.83rem;
+    font-size: 0.92rem;
     font-weight: 300;
-    color: #555;
-    line-height: 1.72;
+    color: #666;
+    line-height: 1.7;
+    max-width: 480px;
+  }
+  .er-date {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-align: right;
+    align-self: center;
+    white-space: nowrap;
+    letter-spacing: 0.05em;
   }
   .er-badge {
     display: inline-block;
-    margin-top: 0.7rem;
+    margin-top: 0.5rem;
+    align-self: flex-start;
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.55rem;
+    font-size: 0.48rem;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
+    color: #22c55e;
+    background: rgba(34,197,94,0.08);
+    padding: 0.18rem 0.5rem;
+    border: 1px solid rgba(34,197,94,0.2);
+  }
+  .exp-cv-note {
+    padding: 1.4rem 0 1.4rem 2.8rem;
+    background: var(--white);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--rule);
+  }
+  .exp-cv-note a {
     color: var(--neon);
-    background: var(--neon-dim);
-    padding: 0.2rem 0.55rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   /* ─── CONTACT ─── */
@@ -495,32 +699,38 @@
   <div class="s-top">
     <div class="s-name">Nakyum Song</div>
     <div class="s-role">Global Marketer<br>&amp; Brand Architect</div>
-    <div class="s-status">Available for work</div>
+    <div class="s-status">Based in Singapore and Korea</div>
     <blockquote class="s-quote">"Most brands don't fail because they lack creativity. They fail because, at some point, they lose clarity."</blockquote>
   </div>
 
   <ul class="s-nav">
     <li>
-      <a href="#work" class="active">
-        <span><span class="nav-idx">001</span>Work</span>
-        <span class="nav-arrow">→</span>
-      </a>
-    </li>
-    <li>
-      <a href="#thinking">
-        <span><span class="nav-idx">002</span>Thinking</span>
+      <a href="#about" class="active">
+        <span><span class="nav-idx">001</span>About</span>
         <span class="nav-arrow">→</span>
       </a>
     </li>
     <li>
       <a href="#experience">
-        <span><span class="nav-idx">003</span>Experience</span>
+        <span><span class="nav-idx">002</span>Experience</span>
+        <span class="nav-arrow">→</span>
+      </a>
+    </li>
+    <li>
+      <a href="#work">
+        <span><span class="nav-idx">003</span>Portfolio</span>
+        <span class="nav-arrow">→</span>
+      </a>
+    </li>
+    <li>
+      <a href="#thinking">
+        <span><span class="nav-idx">004</span>Thinking</span>
         <span class="nav-arrow">→</span>
       </a>
     </li>
     <li>
       <a href="#contact">
-        <span><span class="nav-idx">004</span>Contact</span>
+        <span><span class="nav-idx">005</span>Contact</span>
         <span class="nav-arrow">→</span>
       </a>
     </li>
@@ -528,8 +738,8 @@
 
   <div class="s-foot">
     Singapore &amp; Korea<br>
-    <a href="mailto:nakyumsong@gmail.com">nakyumsong@gmail.com</a><br>
-    <a href="https://www.linkedin.com/in/nakyumsong" target="_blank">linkedin ↗</a>
+    <a href="mailto:nakyumsong@gmail.com">Email ↗</a><br>
+    <a href="https://www.linkedin.com/in/nakyumsong" target="_blank">LinkedIn ↗</a>
   </div>
 </aside>
 
@@ -537,24 +747,109 @@
 <div class="main">
 
   <div class="page-meta">
-    <span class="pm-id">NS—Portfolio / Index</span>
-    <span class="pm-date">2026.03.24</span>
+    <span></span>
+    <span class="pm-date" id="live-date"></span>
   </div>
 
-  <!-- INTRO -->
-  <section class="intro" id="home">
-    <div class="intro-label">000 &nbsp; Profile</div>
+  <!-- ABOUT -->
+  <section class="intro" id="about">
+    <div class="intro-label">001 &nbsp; About</div>
     <h1>Hi, I'm<br><span>Nakyum Song.</span></h1>
-    <p class="intro-sub">My work sits at the intersection of brand narrative and structure. I help brands articulate who they are so that every decision that follows has a clear foundation to build on.</p>
-    <a href="mailto:nakyumsong@gmail.com" class="intro-cta">Get in touch →</a>
+    <p class="intro-tagline">8 years building brand systems for global gaming and tech companies — the kind that hold across markets, products, and culture.</p>
+    <div class="intro-meta">
+      <div class="intro-meta-location">
+        <span class="meta-pin">⊙</span>
+        Singapore &amp; Korea
+        <span class="meta-sep">↗</span>
+        8+ years of global brand strategy
+      </div>
+      <div class="intro-meta-links">
+        <a class="meta-link-btn" href="mailto:nakyumsong@gmail.com">
+          <span class="meta-icon-circle">✉</span>Email
+        </a>
+        <a class="meta-link-btn" href="https://www.linkedin.com/in/nakyumsong" target="_blank">
+          <span class="meta-icon-circle">↗</span>LinkedIn
+        </a>
+      </div>
+    </div>
+    <div class="intro-actions">
+      <a href="mailto:nakyumsong@gmail.com" class="intro-cta">Get in touch →</a>
+      <button class="intro-cta intro-cta--ghost" onclick="openAbout()">More about me →</button>
+    </div>
   </section>
 
-  <!-- WORK -->
+  <!-- ABOUT PANEL -->
+  <div class="about-overlay" id="about-overlay" onclick="closeAbout()"></div>
+  <div class="about-panel" id="about-panel">
+    <button class="about-close" onclick="closeAbout()">✕ Close</button>
+    <div class="about-panel-inner">
+      <div class="about-panel-label">001 &nbsp; About</div>
+      <h2 class="about-panel-title">Brand &amp; Narrative Architect</h2>
+      <p class="about-panel-body">Brands don't fail because they lack creativity. They fail because, at some point, they lose clarity.</p>
+      <p class="about-panel-body">I work at the intersection of brand narrative and structure — helping organisations clarify who they are, so every decision that follows has a foundation to build on.</p>
+      <p class="about-panel-body">Across roles at Razer, KRAFTON, and Hill &amp; Knowlton, I've seen the same root issue: misalignment. Teams generate constant activity and content, but without a coherent brand narrative to anchor them, it scatters.</p>
+      <p class="about-panel-body">As AI accelerates content production, the value shifts to human judgment — to defining meaning, understanding context, and knowing what a brand should and shouldn't say. That's the work I do.</p>
+      <div class="about-panel-links">
+        <a href="mailto:nakyumsong@gmail.com" class="intro-cta">Let's talk →</a>
+        <a href="#work" class="intro-cta intro-cta--ghost" onclick="closeAbout()">View my work →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="section-head">
+      <span class="sh-dash">—</span>
+      <span class="sh-num">002</span>
+      <span class="sh-title">Experience</span>
+    </div>
+
+    <div class="exp-timeline">
+      <div class="exp-row">
+        <div class="er-body">
+          <div class="er-company">Razer</div>
+          <div class="er-role">Global Brand Manager · Singapore</div>
+          <div class="er-desc">Built the global brand system for Razer's 20th Anniversary, unifying esports, lifestyle, and hardware campaigns across 15+ markets.</div>
+          <span class="er-badge">Current</span>
+        </div>
+        <div class="er-date">2024 →<br>Now</div>
+      </div>
+      <div class="exp-row">
+        <div class="er-body">
+          <div class="er-company">KRAFTON</div>
+          <div class="er-role">Creative Marketing Manager · Korea</div>
+          <div class="er-desc">Launched ANA, Korea's first AI-powered virtual artist. Led content production for PUBG Mobile and PUBG NEW STATE — 5.4M views in 50 days.</div>
+        </div>
+        <div class="er-date">2021 →<br>2024</div>
+      </div>
+      <div class="exp-row">
+        <div class="er-body">
+          <div class="er-company">Hill &amp; Knowlton</div>
+          <div class="er-role">Account Manager · Korea</div>
+          <div class="er-desc">Global influencer strategy for LG Mobile across 21 markets. First virtual product unveiling. 30% campaign efficiency gain.</div>
+        </div>
+        <div class="er-date">2019 →<br>2021</div>
+      </div>
+      <div class="exp-row">
+        <div class="er-body">
+          <div class="er-company">SK Corporation</div>
+          <div class="er-role">Junior Consultant · Korea</div>
+          <div class="er-desc">SAP HR optimisation across six affiliates. 17% efficiency lift.</div>
+        </div>
+        <div class="er-date">2013 →<br>2015</div>
+      </div>
+      <div class="exp-cv-note">
+        Full CV available on request — <a href="mailto:nakyumsong@gmail.com">get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
   <section class="section" id="work">
     <div class="section-head">
       <span class="sh-dash">—</span>
-      <span class="sh-num">001</span>
-      <span class="sh-title">Work</span>
+      <span class="sh-num">003</span>
+      <span class="sh-title">Portfolio</span>
     </div>
 
     <div class="work-row">
@@ -634,7 +929,7 @@
   <section class="section" id="thinking">
     <div class="section-head">
       <span class="sh-dash">—</span>
-      <span class="sh-num">002</span>
+      <span class="sh-num">004</span>
       <span class="sh-title">Thinking</span>
     </div>
 
@@ -655,61 +950,17 @@
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
-  <section class="section" id="experience">
-    <div class="section-head">
-      <span class="sh-dash">—</span>
-      <span class="sh-num">003</span>
-      <span class="sh-title">Experience</span>
-    </div>
-
-    <div class="exp-row">
-      <div class="er-date">2024.05<br>→ Present</div>
-      <div>
-        <div class="er-company">Razer</div>
-        <div class="er-role">Global Brand Manager · Singapore</div>
-        <div class="er-desc">Global esports and lifestyle campaigns. 20th Anniversary brand system across 15+ markets. Managing a distributed creative studio network.</div>
-        <span class="er-badge">Current</span>
-      </div>
-    </div>
-    <div class="exp-row">
-      <div class="er-date">2021.02<br>→ 2024.05</div>
-      <div>
-        <div class="er-company">KRAFTON</div>
-        <div class="er-role">Creative Marketing Manager · Korea</div>
-        <div class="er-desc">Launched ANA, KRAFTON's first AI-powered virtual artist. Led production for PUBG Mobile and PUBG NEW STATE. 5M+ views in 50 days.</div>
-      </div>
-    </div>
-    <div class="exp-row">
-      <div class="er-date">2019.08<br>→ 2021.02</div>
-      <div>
-        <div class="er-company">Hill &amp; Knowlton</div>
-        <div class="er-role">Account Manager · Korea</div>
-        <div class="er-desc">Global influencer strategy for LG Mobile across 21 markets. First virtual product unveiling. 30% campaign efficiency gain.</div>
-      </div>
-    </div>
-    <div class="exp-row">
-      <div class="er-date">2013.01<br>→ 2015.12</div>
-      <div>
-        <div class="er-company">SK Corporation</div>
-        <div class="er-role">Junior Consultant · Korea</div>
-        <div class="er-desc">SAP HR optimisation across six affiliates. 17% efficiency lift.</div>
-      </div>
-    </div>
-  </section>
-
   <!-- CONTACT -->
   <section class="contact" id="contact">
-    <div class="contact-label">004 &nbsp; Contact</div>
+    <div class="contact-label">005 &nbsp; Contact</div>
     <h2>Open for consulting<br>and <em>clarity.</em></h2>
-    <a href="mailto:nakyumsong@gmail.com" class="contact-email">nakyumsong@gmail.com</a>
+    <a href="mailto:nakyumsong@gmail.com" class="contact-email">Get in touch →</a>
     <a href="https://www.linkedin.com/in/nakyumsong" target="_blank" class="contact-link">linkedin.com/in/nakyumsong ↗</a>
   </section>
 
   <footer>
     <span>© 2026 Nakyum Song</span>
-    <span>Singapore &amp; Korea</span>
-    <a href="mailto:nakyumsong@gmail.com">nakyumsong@gmail.com</a>
+    <a href="mailto:nakyumsong@gmail.com">Contact</a>
   </footer>
 
 </div>
@@ -738,6 +989,24 @@
       document.querySelector(link.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
     });
   });
+
+  // About panel
+  function openAbout() {
+    document.getElementById('about-overlay').classList.add('open');
+    document.getElementById('about-panel').classList.add('open');
+  }
+  function closeAbout() {
+    document.getElementById('about-overlay').classList.remove('open');
+    document.getElementById('about-panel').classList.remove('open');
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAbout(); });
+
+  // Live date
+  const d = new Date();
+  document.getElementById('live-date').textContent =
+    d.getFullYear() + '.' +
+    String(d.getMonth() + 1).padStart(2, '0') + '.' +
+    String(d.getDate()).padStart(2, '0');
 </script>
 
 </body>
