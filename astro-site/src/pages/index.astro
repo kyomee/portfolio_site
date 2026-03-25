@@ -41,16 +41,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <!-- 001 About -->
     <section class="intro" id="about">
-      <div class="hero-role-line">
-        <span class="hero-role-text">Global Marketer &amp; Brand Architect</span>
-        <span class="hero-role-rule"></span>
-      </div>
-      <div class="intro-label">001 &nbsp; About</div>
       <h1>
-        <span class="hi-line">Hi, I'm</span>
         <span class="name-line">Nakyum Song.</span>
       </h1>
-      <p class="intro-sub">I work at the intersection of brand strategy, creative direction, and global marketing, helping brands define sharper positioning, clearer stories, and systems that scale.</p>
+      <div class="hero-subtitle">Global Brand Strategist &amp; Marketing Leader</div>
       <div class="hero-meta">
         <span>◇ Singapore &amp; Korea</span>
         <span class="hero-meta-sep">·</span>
@@ -80,7 +74,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Available for consulting
         </div>
       </div>
-      <div class="about-exp-title">Hi, I'm<br>Nakyum Song.</div>
+      <div class="intro-label">001 &nbsp; About</div>
+      <div class="about-exp-title">Nakyum Song.</div>
       <p class="about-exp-body">I work at the intersection of brand strategy, creative direction, and global marketing, helping brands define sharper positioning, clearer narratives, and systems that scale across markets.</p>
       <p class="about-exp-body">Over the past 8+ years, I've worked across global tech, gaming, and culture brands, leading campaigns, launches, and brand systems that operate across regions, teams, and platforms.</p>
       <p class="about-exp-body">My focus is on alignment, ensuring that brand, creative, and execution point in the same direction. From defining positioning to building campaign systems, I aim to create work that is not only compelling, but usable at scale.</p>
@@ -289,14 +284,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     background: var(--color-bg-primary);
     border-bottom: 1px solid var(--color-border);
   }
-  .hero-role-line { display: flex; align-items: center; gap: 1.4rem; margin-bottom: 1.6rem; }
-  .hero-role-text { font-family: "Space Mono", monospace; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-secondary); white-space: nowrap; }
-  .hero-role-rule { flex: 1; height: 1px; background: rgba(17,17,17,0.14); }
-  .intro-label { font-family: "Space Mono", monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.26em; color: var(--color-text-secondary); margin-bottom: 2.4rem; display: flex; align-items: center; gap: 1rem; }
+  .intro-label { font-family: "Space Mono", monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.26em; color: var(--color-text-secondary); margin-bottom: 2rem; margin-top: 1.6rem; display: flex; align-items: center; gap: 1rem; }
   .intro-label::before { content: '—'; color: var(--color-accent); }
-  .intro h1 { font-family: "Outfit", sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 2rem; }
-  .hi-line { color: var(--color-text-primary); display: block; }
+  .intro h1 { font-family: "Outfit", sans-serif; font-size: clamp(3.6rem, 8vw, 6.5rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1rem; }
   .name-line { color: var(--color-neon); display: block; }
+  .hero-subtitle { font-family: "Space Mono", monospace; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 2rem; }
   .intro-sub { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 400; color: var(--color-text-primary); max-width: 600px; line-height: 1.65; margin-bottom: 2rem; }
   .hero-meta { font-family: "Space Mono", monospace; font-size: 0.68rem; color: var(--color-text-secondary); letter-spacing: 0.06em; display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.4rem; }
   .hero-meta-sep { opacity: 0.4; }
