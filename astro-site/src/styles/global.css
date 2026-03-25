@@ -7,33 +7,37 @@
 @layer base {
   :root {
     /* ========== Colors ========== */
-    /* Primary - Light theme */
-    --color-bg-primary: #ffffff;
-    --color-bg-secondary: #fafafa;
-    --color-bg-tertiary: #f5f5f5;
+    --color-bg-primary: #faf8f4;
+    --color-bg-secondary: #f0ece4;
+    --color-bg-tertiary: #e8e4dc;
+    --color-sidebar-bg: #141414;
+    --color-sidebar-text: #e8e4dc;
 
     /* Text */
-    --color-text-primary: #1a1a1a;
-    --color-text-secondary: #6b7280;
-    --color-text-tertiary: #9ca3af;
+    --color-text-primary: #111111;
+    --color-text-secondary: rgba(17,17,17,0.55);
+    --color-text-tertiary: rgba(17,17,17,0.35);
 
-    /* Accent - Coral */
-    --color-accent: #F2614A;
-    --color-accent-hover: #D94E3A;
-    --color-accent-glow: rgba(242, 97, 74, 0.3);
+    /* Accent - Dusty Magenta */
+    --color-accent: #A03A5E;
+    --color-accent-hover: #7D2D49;
+    --color-accent-dim: rgba(160,58,94,0.08);
+    --color-accent-glow: rgba(160,58,94,0.3);
+    --color-neon: #FF4F87;
+    --color-neon-dim: rgba(255,79,135,0.10);
 
     /* Functional */
-    --color-border: #e5e7eb;
-    --color-border-hover: #d1d5db;
+    --color-border: rgba(0,0,0,0.08);
+    --color-border-hover: rgba(0,0,0,0.14);
 
     /* Gradients */
-    --gradient-accent: #F2614A;
+    --gradient-accent: #A03A5E;
     --gradient-glow: radial-gradient(circle, var(--color-accent-glow), transparent 70%);
 
     /* ========== Typography ========== */
-    --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
 
     /* Font Sizes - Fluid */
     --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);

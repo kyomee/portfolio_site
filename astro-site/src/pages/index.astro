@@ -1,586 +1,423 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Navigation from '../components/layout/Navigation.astro';
-import Footer from '../components/layout/Footer.astro';
-import ScrollReveal from '../components/interactive/ScrollReveal.astro';
-import Subscribe from '../components/sections/Subscribe.astro';
-import { Image } from 'astro:assets';
-import profilePhoto from '../assets/images/nakyum-profile.jpeg';
+import WebVitals from '../components/analytics/WebVitals.astro';
 ---
 
-<BaseLayout>
-  <Navigation />
-  <ScrollReveal />
-
-  <main>
-    <!-- Hero Section -->
-    <section id="hero" class="hero section">
-
-      <div class="container hero-content">
-        <div class="hero-right" data-reveal="1">
-          <div class="hero-photo">
-            <Image
-              src={profilePhoto}
-              alt="Nakyum Song"
-              width={600}
-              height={800}
-              format="webp"
-              quality={85}
-              loading="eager"
-              fetchpriority="high"
-            />
-          </div>
-        </div>
-
-        <div class="hero-left">
-          <div class="hero-narrative">
-            <p class="hero-greeting">Hi, I'm</p>
-            <h1 class="hero-name">Nakyum Song</h1>
-            <p class="hero-title">Global marketer and brand architect</p>
-            <p class="hero-tagline">
-              Based in Singapore &amp; Korea.
-            </p>
-          </div>
-
-          <div class="hero-ctas">
-            <a href="/work" class="btn btn-primary">
-              View My Work
-              <span class="btn-arrow">&rarr;</span>
-            </a>
-            <a href="/contact" class="btn btn-secondary">
-              Get in Touch
-            </a>
-          </div>
-        </div>
-
-        <div class="scroll-indicator" aria-hidden="true">
-          <span class="scroll-line"></span>
-        </div>
+<BaseLayout
+  title="Nakyum Song — Global Marketer & Brand Architect"
+  description="Global marketer and brand architect helping tech, gaming, and culture brands build clear positioning, sharper stories, and systems that scale."
+>
+  <!-- ─── SIDEBAR ─── -->
+  <aside class="sidebar">
+    <div class="s-top">
+      <div class="s-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60" width="100%" style="max-width:200px;display:block;">
+          <text font-family="'-apple-system','Helvetica Neue',Arial,sans-serif" font-size="28" font-weight="400" letter-spacing="-0.01em" fill="#f0f0f0" x="16" y="38">nakyum song</text>
+          <circle cx="212" cy="31" r="5" fill="#ff2d78"/>
+          <text font-family="'-apple-system','Helvetica Neue',Arial,sans-serif" font-size="9" font-weight="400" letter-spacing="0.24em" fill="#555555" x="16" y="54">NAKYUMSONG.COM</text>
+        </svg>
       </div>
-    </section>
+      <ul class="s-nav">
+        <li><a href="#about" class="s-nav-link active"><span><span class="nav-idx">001</span>About</span><span class="nav-arrow">→</span></a></li>
+        <li><a href="#experience" class="s-nav-link"><span><span class="nav-idx">002</span>Experience</span><span class="nav-arrow">→</span></a></li>
+        <li><a href="#work" class="s-nav-link"><span><span class="nav-idx">003</span>Portfolio</span><span class="nav-arrow">→</span></a></li>
+        <li><a href="#thinking" class="s-nav-link"><span><span class="nav-idx">004</span>Thinking</span><span class="nav-arrow">→</span></a></li>
+        <li><a href="#contact" class="s-nav-link"><span><span class="nav-idx">005</span>Contact</span><span class="nav-arrow">→</span></a></li>
+      </ul>
+    </div>
+    <div class="s-foot">
+      Singapore / Seoul<br>
+      <a href="#" class="s-email">Email ↗</a><br>
+      <a href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+    </div>
+  </aside>
 
-    <!-- Brands Logo Bar -->
-    <section class="logo-bar" data-reveal>
-      <div class="logo-bar-inner">
-        <p class="logo-bar-label">Brands I've Worked With</p>
-        <div class="logo-bar-brands">
-          <span class="brand-name">Razer</span>
-          <span class="brand-name">KRAFTON</span>
-          <span class="brand-name">ANA</span>
-          <span class="brand-name">PUBG</span>
-          <span class="brand-name">LG</span>
-        </div>
+  <!-- ─── MAIN ─── -->
+  <div class="main-content">
+
+    <div class="meta-bar">
+      <span class="mb-left">Independent Portfolio · Strategy, Narrative, Direction</span>
+      <span class="mb-right"><span class="mb-dot"></span>Available for consulting</span>
+    </div>
+
+    <!-- 001 About -->
+    <section class="intro" id="about">
+      <div class="hero-role-line">
+        <span class="hero-role-text">Global Marketer &amp; Brand Architect</span>
+        <span class="hero-role-rule"></span>
       </div>
-    </section>
-
-    <!-- About Preview -->
-    <section class="about-preview section" data-reveal>
-      <div class="container">
-        <div class="preview-content">
-          <p class="preview-highlight">
-            Most brands don't fail because they lack creativity.<br />
-            They fail because, at some point, they lose clarity.
-          </p>
-          <p class="preview-text">
-            My work sits at the intersection of brand narrative and structure. I help brands articulate who they are so that every decision that follows has a clear foundation to build on.
-          </p>
-          <a href="/about" class="preview-link">
-            Read more about me &rarr;
-          </a>
-        </div>
+      <div class="intro-label">001 &nbsp; About</div>
+      <h1>
+        <span class="hi-line">Hi, I'm</span>
+        <span class="name-line">Nakyum Song.</span>
+      </h1>
+      <p class="intro-sub">I work at the intersection of brand strategy, creative direction, and global marketing, helping brands define sharper positioning, clearer stories, and systems that scale.</p>
+      <div class="hero-meta">
+        <span>◇ Singapore &amp; Korea</span>
+        <span class="hero-meta-sep">·</span>
+        <span>8+ years of global brand strategy</span>
       </div>
-    </section>
-
-    <!-- Featured Work Preview -->
-    <section class="work-preview section" data-reveal>
-      <div class="container">
-        <span class="section-label">Selected Work</span>
-        <h2 class="section-title">Case Studies</h2>
-        <p class="section-subtitle">
-          Case studies from gaming, tech, and lifestyle brands
-        </p>
-        <a href="/work" class="btn btn-secondary">
-          View All Work &rarr;
+      <div class="hero-links">
+        <a href="#" class="hero-link-btn s-email">
+          <span class="hero-link-icon">✉</span>
+          Email
+        </a>
+        <a href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noopener noreferrer" class="hero-link-btn">
+          <span class="hero-link-icon">↗</span>
+          LinkedIn
         </a>
       </div>
+      <div class="intro-actions">
+        <a href="#contact" class="btn-cta">Get in Touch →</a>
+        <a href="#work" class="btn-cta">View Portfolio →</a>
+      </div>
     </section>
 
-    <div data-reveal>
-      <Subscribe />
+    <div class="about-expanded">
+      <div class="about-header">
+        <div class="hero-qualifier-line">Global tech, gaming, and culture brands</div>
+        <div class="hero-available">
+          <span class="hero-available-dot"></span>
+          Available for consulting
+        </div>
+      </div>
+      <div class="about-exp-title">Brand clarity before brand output.</div>
+      <p class="about-exp-body">Most brands do not struggle because they lack ideas. They struggle because their message, positioning, and execution stop pointing in the same direction.</p>
+      <p class="about-exp-body">My work focuses on that alignment: shaping brand narratives, campaign systems, and strategic direction that teams can actually use across launches, markets, and content ecosystems.</p>
     </div>
-  </main>
 
-  <Footer />
+    <!-- 002 Experience -->
+    <section class="section" id="experience">
+      <div class="section-head">
+        <div class="sh-top"><span class="sh-dash">—</span><span class="sh-num">002</span><span class="sh-title">Experience</span></div>
+      </div>
+
+      <div class="exp-row">
+        <div class="er-period">2024 →<br>Present</div>
+        <div>
+          <div class="er-company">Razer</div>
+          <div class="er-role">Global Brand Manager · Singapore</div>
+          <div class="er-scope">Spearheading global esports and lifestyle campaigns; developed and enforced the 20th Anniversary brand system across 15+ markets. Manages creative partners and studios to deliver premium assets at scale.</div>
+          <div class="er-impact">Unified creative direction across a distributed studio network spanning four continents.</div>
+          <span class="er-badge">Current</span>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="er-period">2021 →<br>2024</div>
+        <div>
+          <div class="er-company">KRAFTON</div>
+          <div class="er-role">Creative Marketing Manager · Korea</div>
+          <div class="er-scope">Launched ANA, KRAFTON's first AI-powered virtual artist — crafting narrative, visual identity, and tone of voice. Oversaw production for PUBG Mobile and PUBG NEW STATE across social, video, and live activations.</div>
+          <div class="er-impact">5.4M views in 50 days; 50M+ pre-registrations for global mobile launch.</div>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="er-period">2019 →<br>2021</div>
+        <div>
+          <div class="er-company">Hill &amp; Knowlton</div>
+          <div class="er-role">Account Manager · Korea</div>
+          <div class="er-scope">Designed global influencer marketing strategies for LG Mobile across 21 markets. Produced LG Mobile's first virtual product unveiling, setting new launch benchmarks.</div>
+          <div class="er-impact">30% campaign efficiency gain; 12M+ views with 4.5× engagement rate.</div>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="er-period">2017 →<br>2018</div>
+        <div>
+          <div class="er-company">Rotageek / University of Leeds</div>
+          <div class="er-role">Marketing · United Kingdom</div>
+          <div class="er-scope">Early marketing roles spanning SaaS product marketing and academic brand communications.</div>
+          <div class="er-impact">Built cross-cultural communication skills across UK and European markets.</div>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="er-period">2013 →<br>2015</div>
+        <div>
+          <div class="er-company">SK Corporation</div>
+          <div class="er-role">Junior Consultant · Korea</div>
+          <div class="er-scope">SAP HR system optimisation across six affiliates; training and stakeholder alignment.</div>
+          <div class="er-impact">17% efficiency lift across group operations.</div>
+        </div>
+      </div>
+
+      <div class="exp-cv-note">Full CV available on request — <a href="#" class="s-email">get in touch</a></div>
+    </section>
+
+    <!-- 003 Portfolio -->
+    <section class="section" id="work">
+      <div class="section-head">
+        <div class="sh-top"><span class="sh-dash">—</span><span class="sh-num">003</span><span class="sh-title">Portfolio</span></div>
+        <div class="sh-sub">Brand systems, launches, and narrative-led campaigns</div>
+      </div>
+
+      <div class="work-row">
+        <div class="wr-date">2024 →<br>Present</div>
+        <div>
+          <div class="wr-client">Razer</div>
+          <div class="wr-title">Razer 20th Anniversary</div>
+          <div class="wr-framing">Built a unifying brand system for a milestone campaign spanning esports, lifestyle, and hardware across 15+ markets.</div>
+          <div class="wr-tags"><span class="wr-tag">Brand Systems</span><span class="wr-tag">Global Campaign</span><span class="wr-tag">Creative Direction</span></div>
+          <a href="/projects/razer-anniversary" class="wr-link">View Case Study →</a>
+        </div>
+        <div class="wr-result"><span class="wr-result-num">15+</span><span class="wr-result-label">markets unified</span></div>
+      </div>
+
+      <div class="work-row">
+        <div class="wr-date">2022</div>
+        <div>
+          <div class="wr-client">KRAFTON</div>
+          <div class="wr-title">ANA Virtual Artist</div>
+          <div class="wr-framing">Launched Korea's first AI virtual artist — defining a new content format for gaming brands.</div>
+          <div class="wr-tags"><span class="wr-tag">Virtual Human</span><span class="wr-tag">Content Strategy</span><span class="wr-tag">Brand Launch</span></div>
+          <a href="/projects/ana-virtual-artist" class="wr-link">View Case Study →</a>
+        </div>
+        <div class="wr-result"><span class="wr-result-num">5.4M</span><span class="wr-result-label">views / 50 days</span></div>
+      </div>
+
+      <div class="work-row">
+        <div class="wr-date">2021</div>
+        <div>
+          <div class="wr-client">KRAFTON</div>
+          <div class="wr-title">PUBG: NEW STATE Launch</div>
+          <div class="wr-framing">Led full-funnel strategy for a global AAA mobile launch entering 175+ countries simultaneously.</div>
+          <div class="wr-tags"><span class="wr-tag">Gaming</span><span class="wr-tag">Global Launch</span><span class="wr-tag">Content Marketing</span></div>
+          <a href="/projects/pubg-new-state" class="wr-link">View Case Study →</a>
+        </div>
+        <div class="wr-result"><span class="wr-result-num">50M</span><span class="wr-result-label">pre-registrations</span></div>
+      </div>
+
+      <div class="work-row">
+        <div class="wr-date">2020</div>
+        <div>
+          <div class="wr-client">Hill &amp; Knowlton / LG</div>
+          <div class="wr-title">LG WING Campaign</div>
+          <div class="wr-framing">Repositioned a dual-screen device as a creator tool through a 21-market influencer campaign.</div>
+          <div class="wr-tags"><span class="wr-tag">Influencer Marketing</span><span class="wr-tag">Product Launch</span><span class="wr-tag">21 Markets</span></div>
+          <a href="/projects/lg-wing" class="wr-link">View Case Study →</a>
+        </div>
+        <div class="wr-result"><span class="wr-result-num">12M</span><span class="wr-result-label">views · 4.5× eng.</span></div>
+      </div>
+    </section>
+
+    <!-- 004 Thinking -->
+    <section class="section" id="thinking">
+      <div class="section-head">
+        <div class="sh-top"><span class="sh-dash">—</span><span class="sh-num">004</span><span class="sh-title">Thinking</span></div>
+        <div class="sh-sub">Writing on brand, AI, market positioning, and cultural translation</div>
+      </div>
+      <a href="/thinking/ai-tools-brand-narrative" class="post-row">
+        <div class="pr-date">2026.02.24</div>
+        <div class="pr-title">How to Use AI Tools to Build and Strengthen Your Brand Narrative</div>
+        <span class="pr-tag">AI &amp; Marketing</span>
+      </a>
+      <a href="/thinking/korean-branding-global-market-strategy" class="post-row">
+        <div class="pr-date">2026.02.20</div>
+        <div class="pr-title">What Korean Branding Gets Right (And Wrong) When Going Global</div>
+        <span class="pr-tag">Brand Strategy</span>
+      </a>
+      <a href="/thinking/korean-sme-singapore-market-entry" class="post-row">
+        <div class="pr-date">2026.02.19</div>
+        <div class="pr-title">How Korean SMEs Can Enter the Singapore Market: A Brand-First Playbook</div>
+        <span class="pr-tag">Market Entry</span>
+      </a>
+    </section>
+
+    <!-- 005 Contact -->
+    <section class="contact-section" id="contact">
+      <div class="contact-label">005 &nbsp; Contact</div>
+      <h2>Open for brand strategy, narrative consulting, and creative direction.</h2>
+      <p class="contact-support">For consulting, collaborations, and selected in-house opportunities.</p>
+      <div class="contact-actions">
+        <button class="btn-accent s-email-btn">Get in touch →</button>
+        <a href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noopener noreferrer" class="btn-outline">LinkedIn ↗</a>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <span>© 2026 Nakyum Song</span>
+      <span>Singapore / Seoul</span>
+      <a href="https://www.linkedin.com/in/nakyumsong" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </footer>
+  </div>
 </BaseLayout>
 
 <style>
-  /* Hero Section */
-  .hero {
-    position: relative;
+  /* ─── SIDEBAR ─── */
+  .sidebar {
+    position: fixed; top: 0; left: 0;
+    width: 270px; height: 100vh;
+    background: #141414; color: #e8e4dc;
+    font-family: "Space Mono", monospace;
+    display: flex; flex-direction: column;
+    padding: 2.5rem 2rem; z-index: 20; overflow-y: auto;
+    border-right: 1px solid rgba(255,79,135,0.18);
+  }
+  .s-top { flex: 1; }
+  .s-logo { margin-bottom: 2.2rem; }
+  .s-nav { list-style: none; margin-bottom: 2.5rem; }
+  .s-nav li { border-top: 1px solid rgba(255,255,255,0.05); }
+  .s-nav li:last-child { border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .s-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 0.72rem 0; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(232,228,220,0.4); transition: color 0.15s; text-decoration: none; }
+  .s-nav-link:hover { color: #e8e4dc; }
+  .s-nav-link.active { color: var(--color-neon); }
+  .s-nav-link.active .nav-arrow { color: var(--color-neon); }
+  .nav-idx { font-size: 0.58rem; color: rgba(232,228,220,0.2); margin-right: 0.8rem; }
+  .nav-arrow { font-size: 0.68rem; color: transparent; transition: color 0.15s; }
+  .s-nav-link:hover .nav-arrow { color: rgba(232,228,220,0.35); }
+  .s-foot { font-size: 0.62rem; color: rgba(232,228,220,0.28); line-height: 2; letter-spacing: 0.04em; }
+  .s-foot a { color: rgba(232,228,220,0.28); text-decoration: none; }
+  .s-foot a:hover { color: var(--color-accent); }
+
+  /* ─── MAIN ─── */
+  .main-content { margin-left: 270px; min-height: 100vh; }
+
+  .meta-bar { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 3.5rem; border-bottom: 1px solid var(--color-border); background: var(--color-bg-secondary); }
+  .mb-left { font-family: "Space Mono", monospace; font-size: 0.62rem; color: var(--color-text-secondary); letter-spacing: 0.1em; }
+  .mb-right { display: flex; align-items: center; gap: 0.5rem; font-family: "Space Mono", monospace; font-size: 0.62rem; color: var(--color-accent); letter-spacing: 0.08em; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
+  .mb-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 5px var(--color-accent-glow); flex-shrink: 0; animation: blink 2s ease-in-out infinite; }
+
+  /* ─── HERO ─── */
+  .intro {
     min-height: 100vh;
-    min-height: 100svh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background-color: var(--color-bg-primary);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem 3.5rem;
+    background: var(--color-bg-primary);
+    border-bottom: 1px solid var(--color-border);
   }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: 1fr 44vw;
-    align-items: stretch;
-    gap: 0;
-    max-width: 100%;
-    padding-right: 0;
-    text-align: left;
-  }
-
-  .hero-left {
-    grid-column: 1;
-    order: 1;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-8);
-    align-self: center;
-    padding-right: var(--space-16);
-  }
-
-  .hero-right {
-    grid-column: 2;
-    order: 2;
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    height: 100vh;
-    overflow: hidden;
-    align-self: stretch;
-  }
-
-  .hero-photo {
-    width: 100%;
-    height: 100%;
-  }
-
-  .hero-photo img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: top center;
-    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 10%, black 25%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 10%, black 25%);
-  }
-
-  .hero-narrative {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-  }
-
-  .hero-greeting {
-    font-size: 1rem;
-    font-weight: 300;
-    color: #888;
-    margin: 0;
-  }
-
-  .hero-name {
-    font-family: var(--font-heading);
-    font-size: clamp(3rem, 4vw + 2rem, 6rem);
-    font-weight: var(--font-bold);
-    color: var(--color-text-primary);
-    margin: 0;
-    letter-spacing: var(--tracking-tight);
-  }
-
-  .hero-title {
-    font-size: var(--text-lg);
-    font-weight: var(--font-medium);
-    color: var(--color-accent);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wide);
-    margin: 0;
-    margin-top: var(--space-2);
-  }
-
-  .hero-tagline {
-    font-size: var(--text-xl);
-    font-weight: var(--font-medium);
-    color: var(--color-text-primary);
-    margin: 0;
-    margin-top: var(--space-6);
-    line-height: var(--leading-snug);
-  }
-
-  .hero-intro {
-    font-size: var(--text-lg);
-    font-weight: var(--font-medium);
-    color: var(--color-text-primary);
-    margin: 0;
-    margin-top: var(--space-4);
-  }
-
-  .hero-topics {
-    font-size: var(--text-lg);
-    color: var(--color-text-secondary);
-    line-height: var(--leading-relaxed);
-    margin: 0;
-  }
-
-  .hero-description {
-    font-size: var(--text-lg);
-    color: var(--color-text-tertiary);
-    font-style: italic;
-    margin: 0;
-  }
-
-  .hero-role {
-    font-size: var(--text-base);
-    color: var(--color-text-secondary);
-    margin: 0;
-    margin-top: var(--space-4);
-  }
-
-  .hero-ctas {
-    display: flex;
-    gap: var(--space-4);
-  }
-
-  .scroll-indicator {
-    grid-column: 1 / -1;
-  }
-
-  /* Buttons */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-4) var(--space-6);
-    font-size: var(--text-base);
-    font-weight: var(--font-medium);
-    border-radius: var(--radius-lg);
-    transition: all var(--transition-base);
-    cursor: pointer;
-    text-decoration: none;
-  }
-
-  .btn-primary {
-    background: var(--gradient-accent);
-    color: #ffffff;
-    border: none;
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-glow);
-  }
-
-  .btn-arrow {
-    transition: transform var(--transition-base);
-  }
-
-  .btn-primary:hover .btn-arrow {
-    transform: translateX(4px);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--color-text-primary);
-    border: 1px solid var(--color-border);
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-  }
-
-  /* Scroll Indicator */
-  .scroll-indicator {
-    position: absolute;
-    bottom: var(--space-8);
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .scroll-line {
-    width: 2px;
-    height: 32px;
-    background: linear-gradient(to bottom, var(--color-accent), transparent);
-    border-radius: var(--radius-full);
-    animation: scrollPulse 2s ease-in-out infinite;
-  }
-
-  @keyframes scrollPulse {
-    0%, 100% {
-      opacity: 1;
-      transform: scaleY(1);
-    }
-    50% {
-      opacity: 0.5;
-      transform: scaleY(0.8);
-    }
-  }
-
-  /* Hero entrance animations */
-  @keyframes heroFadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-greeting {
-    animation: heroFadeUp 0.6s ease forwards;
-    animation-delay: 0.1s;
-    opacity: 0;
-  }
-
-  .hero-name {
-    animation: heroFadeUp 0.6s ease forwards;
-    animation-delay: 0.25s;
-    opacity: 0;
-  }
-
-  .hero-title {
-    animation: heroFadeUp 0.6s ease forwards;
-    animation-delay: 0.4s;
-    opacity: 0;
-  }
-
-  .hero-tagline {
-    animation: heroFadeUp 0.6s ease forwards;
-    animation-delay: 0.55s;
-    opacity: 0;
-  }
-
-  .hero-ctas {
-    animation: heroFadeUp 0.6s ease forwards;
-    animation-delay: 0.7s;
-    opacity: 0;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero-greeting,
-    .hero-name,
-    .hero-title,
-    .hero-tagline,
-    .hero-ctas {
-      animation: none;
-      opacity: 1;
-    }
-  }
-
-  /* Text utilities */
-  .text-secondary {
-    color: var(--color-text-secondary);
-  }
-
-  /* Logo Bar */
-  .logo-bar {
-    border-top: 1px solid #eeeeee;
-    border-bottom: 1px solid #eeeeee;
-    padding: var(--space-10) 0;
-  }
-
-  .logo-bar-inner {
-    max-width: 900px;
-    margin-inline: auto;
-    padding-inline: var(--container-padding-x);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-6);
-  }
-
-  .logo-bar-label {
-    font-size: 0.75rem;
-    font-weight: var(--font-medium);
-    color: #999;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin: 0;
-  }
-
-  .logo-bar-brands {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-6) var(--space-10);
-  }
-
-  .brand-name {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #cccccc;
-    transition: color 0.2s ease;
-    cursor: default;
-  }
-
-  .brand-name:hover {
-    color: #1a1a1a;
-  }
-
-  /* About Preview */
-  .about-preview {
-    background-color: var(--color-bg-secondary);
-  }
-
-  .preview-content {
-    max-width: 680px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .preview-highlight {
-    font-size: var(--text-xl);
-    font-weight: var(--font-medium);
-    color: var(--color-text-primary);
-    line-height: var(--leading-snug);
-    margin: 0 0 var(--space-6);
-  }
-
-  .preview-text {
-    font-size: var(--text-lg);
-    color: var(--color-text-secondary);
-    line-height: var(--leading-relaxed);
-    margin: 0 0 var(--space-6);
-  }
-
-  .preview-link {
-    font-size: var(--text-base);
-    font-weight: var(--font-medium);
-    color: var(--color-accent);
-    text-decoration: none;
-    transition: opacity var(--transition-fast);
-  }
-
-  .preview-link:hover {
-    opacity: 0.8;
-  }
-
-  /* Work Preview */
-  .work-preview {
-    text-align: center;
-  }
-
-  .section-label {
-    display: inline-block;
-    font-size: var(--text-sm);
-    font-weight: var(--font-medium);
-    color: var(--color-accent);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wide);
-    margin-bottom: var(--space-4);
-  }
-
-  .section-title {
-    font-size: var(--text-4xl);
-    margin-bottom: var(--space-4);
-  }
-
-  .section-subtitle {
-    font-size: var(--text-lg);
-    color: var(--color-text-secondary);
-    margin-bottom: var(--space-8);
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .hero {
-      min-height: auto;
-    }
-
-    .hero-content {
-      grid-template-columns: 1fr;
-      padding-right: var(--container-padding-x);
-      text-align: center;
-      gap: var(--space-8);
-    }
-
-    .hero-left {
-      order: 2;
-      padding-right: 0;
-      align-self: auto;
-    }
-
-    .hero-right {
-      order: 1;
-      height: auto;
-      overflow: visible;
-      justify-content: center;
-    }
-
-    .hero-photo {
-      max-width: 240px;
-      height: auto;
-      margin-inline: auto;
-    }
-
-    .hero-photo img {
-      height: auto;
-      object-fit: cover;
-      mask-image: none;
-      -webkit-mask-image: none;
-    }
-
-    .hero-ctas {
-      justify-content: center;
-    }
-
-    .scroll-indicator {
-      display: none;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .hero-narrative {
-      gap: var(--space-3);
-    }
-
-    .hero-title {
-      font-size: var(--text-base);
-    }
-
-    .hero-tagline {
-      font-size: var(--text-lg);
-    }
-
-    .hero-intro,
-    .hero-topics,
-    .hero-description {
-      font-size: var(--text-base);
-    }
-
-    .hero-role {
-      font-size: var(--text-sm);
-    }
-
-    .hero-name {
-      font-size: 2.5rem;
-    }
-
-    .hero-ctas {
-      flex-direction: column;
-      width: 100%;
-      margin-top: var(--space-6);
-    }
-
-    .btn {
-      width: 100%;
-      justify-content: center;
-    }
-  }
-
-  @media (max-width: 375px) {
-    .logo-bar-brands {
-      gap: var(--space-4) var(--space-6);
-    }
-
-    .brand-name {
-      font-size: 1rem;
-    }
+  .hero-role-line { display: flex; align-items: center; gap: 1.4rem; margin-bottom: 1.6rem; }
+  .hero-role-text { font-family: "Space Mono", monospace; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-secondary); white-space: nowrap; }
+  .hero-role-rule { flex: 1; height: 1px; background: rgba(17,17,17,0.14); }
+  .intro-label { font-family: "Space Mono", monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.26em; color: var(--color-text-secondary); margin-bottom: 2.4rem; display: flex; align-items: center; gap: 1rem; }
+  .intro-label::before { content: '—'; color: var(--color-accent); }
+  .intro h1 { font-family: "Outfit", sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 2rem; }
+  .hi-line { color: var(--color-text-primary); display: block; }
+  .name-line { color: var(--color-neon); display: block; }
+  .intro-sub { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 400; color: var(--color-text-primary); max-width: 600px; line-height: 1.65; margin-bottom: 2rem; }
+  .hero-meta { font-family: "Space Mono", monospace; font-size: 0.68rem; color: var(--color-text-secondary); letter-spacing: 0.06em; display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.4rem; }
+  .hero-meta-sep { opacity: 0.4; }
+  .hero-links { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 2.4rem; }
+  .hero-link-btn { display: inline-flex; align-items: center; gap: 0.55rem; font-family: "Space Mono", monospace; font-size: 0.65rem; color: var(--color-text-secondary); letter-spacing: 0.06em; transition: color 0.15s; text-decoration: none; }
+  .hero-link-btn:hover { color: var(--color-text-primary); }
+  .hero-link-icon { width: 2rem; height: 2rem; border-radius: 50%; background: rgba(17,17,17,0.07); display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; transition: background 0.15s; }
+  .hero-link-btn:hover .hero-link-icon { background: rgba(17,17,17,0.13); }
+  .intro-actions { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .btn-cta { font-family: "Space Mono", monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-text-primary); border-bottom: 1.5px solid var(--color-text-primary); padding-bottom: 2px; transition: color 0.15s, border-color 0.15s; text-decoration: none; }
+  .btn-cta:hover { color: var(--color-accent); border-color: var(--color-accent); }
+
+  /* ─── ABOUT EXPANDED ─── */
+  .about-expanded { padding: 3rem 3.5rem 4rem; background: var(--color-bg-primary); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+  .about-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--color-border); }
+  .hero-qualifier-line { font-family: "Space Mono", monospace; font-size: 0.88rem; letter-spacing: 0.04em; color: rgba(17,17,17,0.45); }
+  .hero-available { display: inline-flex; align-items: center; gap: 0.5rem; font-family: "Space Mono", monospace; font-size: 0.62rem; letter-spacing: 0.08em; color: var(--color-accent); }
+  .hero-available-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 5px var(--color-accent-glow); flex-shrink: 0; animation: blink 2s ease-in-out infinite; }
+  .about-exp-title { font-size: 1.05rem; font-weight: 500; color: var(--color-text-primary); letter-spacing: -0.01em; margin-bottom: 1.4rem; }
+  .about-exp-body { font-size: 0.92rem; font-weight: 300; color: #555; line-height: 1.85; max-width: 600px; margin-bottom: 1rem; }
+
+  /* ─── SECTION SHARED ─── */
+  .section { border-bottom: 1px solid var(--color-border); }
+  .section-head { display: flex; flex-direction: column; gap: 0.3rem; padding: 1.6rem 3.5rem; border-bottom: 1px solid var(--color-border); background: var(--color-bg-secondary); }
+  .sh-top { display: flex; align-items: center; gap: 0.8rem; }
+  .sh-dash { color: var(--color-accent); font-family: "Space Mono", monospace; font-size: 0.75rem; }
+  .sh-num  { font-family: "Space Mono", monospace; font-size: 0.68rem; color: var(--color-text-secondary); letter-spacing: 0.1em; }
+  .sh-title{ font-family: "Space Mono", monospace; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-primary); font-weight: 500; }
+  .sh-sub  { font-family: "Space Mono", monospace; font-size: 0.62rem; color: var(--color-text-secondary); letter-spacing: 0.06em; padding-left: 1.6rem; }
+
+  /* ─── EXPERIENCE ─── */
+  .exp-row { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; padding: 1.8rem 3.5rem; border-bottom: 1px solid var(--color-border); border-left: 3px solid transparent; background: var(--color-bg-primary); align-items: start; transition: border-color 0.12s, background 0.12s; }
+  .exp-row:hover { border-left-color: var(--color-neon); background: var(--color-neon-dim); }
+  .er-period { font-family: "Space Mono", monospace; font-size: 0.62rem; color: var(--color-text-secondary); line-height: 1.6; padding-top: 0.2rem; }
+  .er-company { font-size: 1.05rem; font-weight: 500; color: var(--color-text-primary); margin-bottom: 0.15rem; letter-spacing: -0.01em; }
+  .er-role { font-family: "Space Mono", monospace; font-size: 0.65rem; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.6rem; }
+  .er-scope { font-size: 0.85rem; font-weight: 300; color: #555; line-height: 1.7; margin-bottom: 0.25rem; }
+  .er-impact { font-size: 0.82rem; font-weight: 400; color: var(--color-text-primary); line-height: 1.6; opacity: 0.7; }
+  .er-badge { display: inline-block; margin-top: 0.6rem; font-family: "Space Mono", monospace; font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.14em; color: #22c55e; background: rgba(34,197,94,0.08); padding: 0.18rem 0.5rem; border: 1px solid rgba(34,197,94,0.22); }
+  .exp-cv-note { padding: 1.4rem 3.5rem; background: var(--color-bg-primary); font-family: "Space Mono", monospace; font-size: 0.62rem; color: var(--color-text-secondary); letter-spacing: 0.05em; border-bottom: 1px solid var(--color-border); }
+  .exp-cv-note a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ─── PORTFOLIO ─── */
+  .work-row { display: grid; grid-template-columns: 140px 1fr auto; align-items: start; padding: 2rem 3.5rem; border-bottom: 1px solid var(--color-border); border-left: 3px solid transparent; background: var(--color-bg-primary); transition: border-color 0.12s, background 0.12s; gap: 2rem; }
+  .work-row:hover { border-left-color: var(--color-neon); background: var(--color-neon-dim); }
+  .wr-date { font-family: "Space Mono", monospace; font-size: 0.65rem; color: var(--color-text-secondary); padding-top: 0.2rem; line-height: 1.6; }
+  .wr-client { font-family: "Space Mono", monospace; font-size: 0.62rem; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.4rem; }
+  .wr-title { font-size: 1rem; font-weight: 500; color: var(--color-text-primary); margin-bottom: 0.4rem; line-height: 1.3; }
+  .wr-framing { font-size: 0.84rem; font-weight: 300; color: #555; line-height: 1.65; margin-bottom: 0.7rem; max-width: 480px; }
+  .wr-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.8rem; }
+  .wr-tag { font-family: "Space Mono", monospace; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-secondary); border: 1px solid var(--color-border); padding: 0.18rem 0.5rem; }
+  .wr-link { font-family: "Space Mono", monospace; font-size: 0.62rem; color: var(--color-accent); letter-spacing: 0.08em; border-bottom: 1px solid var(--color-accent-dim); padding-bottom: 1px; transition: color 0.15s; display: inline-block; text-decoration: none; }
+  .wr-link:hover { color: var(--color-accent-hover); }
+  .wr-result { text-align: right; flex-shrink: 0; min-width: 80px; }
+  .wr-result-num { font-family: "Space Mono", monospace; font-size: 1.5rem; font-weight: 600; color: var(--color-accent); line-height: 1; letter-spacing: -0.02em; display: block; margin-bottom: 0.25rem; }
+  .wr-result-label { font-family: "Space Mono", monospace; font-size: 0.58rem; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; }
+
+  /* ─── THINKING ─── */
+  .post-row { display: grid; grid-template-columns: 140px 1fr auto; align-items: baseline; padding: 1.5rem 3.5rem; border-bottom: 1px solid var(--color-border); border-left: 3px solid transparent; background: var(--color-bg-primary); transition: border-color 0.12s, background 0.12s; gap: 2rem; text-decoration: none; }
+  .post-row:hover { border-left-color: var(--color-neon); background: var(--color-neon-dim); }
+  .pr-date { font-family: "Space Mono", monospace; font-size: 0.65rem; color: var(--color-text-secondary); letter-spacing: 0.04em; }
+  .pr-title { font-size: 0.95rem; font-weight: 400; color: var(--color-text-primary); line-height: 1.4; }
+  .pr-tag { font-family: "Space Mono", monospace; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); white-space: nowrap; background: var(--color-accent-dim); padding: 0.22rem 0.6rem; }
+
+  /* ─── CONTACT ─── */
+  .contact-section { padding: 5.5rem 3.5rem 6rem; background: #141414; color: #e8e4dc; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .contact-label { font-family: "Space Mono", monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.26em; color: var(--color-accent); margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+  .contact-label::before { content: '—'; }
+  .contact-section h2 { font-size: clamp(1.5rem, 3.5vw, 2.4rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.9rem; color: #e8e4dc; max-width: 600px; }
+  .contact-support { font-size: 0.88rem; font-weight: 300; color: rgba(232,228,220,0.45); margin-bottom: 2.5rem; max-width: 440px; line-height: 1.7; }
+  .contact-actions { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .btn-accent { font-family: "Space Mono", monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; padding: 0.85rem 1.8rem; background: var(--color-accent); color: #fff; display: inline-block; transition: background 0.2s; cursor: pointer; border: none; }
+  .btn-accent:hover { background: var(--color-accent-hover); }
+  .btn-outline { font-family: "Space Mono", monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; padding: 0.85rem 1.8rem; border: 1px solid rgba(232,228,220,0.2); color: rgba(232,228,220,0.7); display: inline-block; transition: border-color 0.2s, color 0.2s; text-decoration: none; }
+  .btn-outline:hover { border-color: rgba(232,228,220,0.5); color: #e8e4dc; }
+
+  /* ─── FOOTER ─── */
+  .site-footer { padding: 1.2rem 3.5rem; display: flex; justify-content: space-between; font-family: "Space Mono", monospace; font-size: 0.58rem; color: rgba(232,228,220,0.18); background: #141414; letter-spacing: 0.08em; }
+  .site-footer a { color: rgba(232,228,220,0.18); text-decoration: none; }
+  .site-footer a:hover { color: var(--color-accent); }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 860px) {
+    .sidebar { position: static; width: 100%; height: auto; padding: 2rem 1.5rem; }
+    .main-content { margin-left: 0; }
+    .meta-bar, .intro, .about-expanded, .section-head, .work-row, .post-row, .exp-row, .exp-cv-note, .contact-section, .site-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .work-row, .post-row { grid-template-columns: 1fr; }
+    .exp-row { grid-template-columns: 1fr; }
   }
 </style>
+
+<script>
+  // Email obfuscation
+  const email = ['nakyumsong', '@', 'gmail.com'].join('');
+  document.querySelectorAll('.s-email').forEach((el: Element) => {
+    (el as HTMLAnchorElement).href = 'mailto:' + email;
+  });
+  document.querySelectorAll('.s-email-btn').forEach((el: Element) => {
+    el.addEventListener('click', () => { window.location.href = 'mailto:' + email; });
+  });
+
+  // Active nav via IntersectionObserver
+  const sections = document.querySelectorAll<HTMLElement>('section[id]');
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>('.s-nav-link');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { threshold: 0.25 });
+  sections.forEach(s => observer.observe(s));
+
+  // Smooth scroll
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href') || '');
+      target?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
