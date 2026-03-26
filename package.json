@@ -2,7 +2,7 @@
   "scripts": {
     "build": "npm --prefix astro-site run build",
     "check": "npm --prefix astro-site run check",
-    "deploy": "npm --prefix astro-site run build && ./node_modules/.bin/wrangler pages deploy astro-site/dist --project-name portfolio-site --commit-dirty=true"
+    "deploy": "./node_modules/.bin/wrangler pages deploy . --project-name portfolio-site --commit-dirty=true"
   },
   "dependencies": {
     "wrangler": "^4.60.0"
