@@ -351,8 +351,8 @@ const structuredData = [
   }
 
   /* ─── CAROUSEL ─── */
-  .cs-carousel { position: relative; margin-bottom: 2.5rem; }
-  .cs-car-track { display: flex; overflow: hidden; }
+  .cs-carousel { position: relative; margin-bottom: 2.5rem; overflow: hidden; }
+  .cs-car-track { display: flex; }
   .cs-car-slide { flex: 0 0 100%; margin: 0; }
   .cs-car-slide img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--color-border); }
   .cs-car-slide figcaption { font-family: "Space Mono", monospace; font-size: 0.58rem; color: var(--color-text-tertiary); margin-top: 0.5rem; letter-spacing: 0.06em; }
@@ -542,20 +542,29 @@ document.querySelectorAll('.cs-carousel').forEach(car => {
   const slides = car.querySelectorAll('.cs-car-slide');
   const dotsWrap = car.querySelector('.cs-car-dots') as HTMLElement;
   let cur = 0;
+
   slides.forEach((_, i) => {
     const d = document.createElement('button');
     d.className = 'cs-car-dot' + (i === 0 ? ' active' : '');
     d.setAttribute('aria-label', `Go to slide ${i + 1}`);
-    d.addEventListener('click', () => go(i));
+    d.addEventListener('click', () => { go(i); resetTimer(); });
     dotsWrap.appendChild(d);
   });
+
   function go(n: number) {
     cur = (n + slides.length) % slides.length;
-    track.style.transform = `translateX(-${cur * 100}%)`;
-    track.style.transition = 'transform 0.35s ease';
+    track.style.transition = 'transform 0.45s ease';
+    track.style.transform = `translateX(${-cur * car.offsetWidth}px)`;
     car.querySelectorAll('.cs-car-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
   }
-  (car.querySelector('.cs-car-prev') as HTMLElement).addEventListener('click', () => go(cur - 1));
-  (car.querySelector('.cs-car-next') as HTMLElement).addEventListener('click', () => go(cur + 1));
+
+  (car.querySelector('.cs-car-prev') as HTMLElement).addEventListener('click', () => { go(cur - 1); resetTimer(); });
+  (car.querySelector('.cs-car-next') as HTMLElement).addEventListener('click', () => { go(cur + 1); resetTimer(); });
+
+  let timer = setInterval(() => go(cur + 1), 4000);
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => go(cur + 1), 4000);
+  }
 });
 </script>
