@@ -49,6 +49,20 @@
   .cs-link-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
   .cs-ext-link { font-family: "Space Mono", monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); border-bottom: 1px solid var(--accent-dim); padding-bottom: 1px; transition: color 0.15s; }
   .cs-ext-link:hover { color: var(--accent-dark); }
+
+  /* Carousel */
+  .cs-carousel { position: relative; margin-bottom: 3rem; }
+  .cs-car-track { display: flex; overflow: hidden; }
+  .cs-car-slide { flex: 0 0 100%; margin: 0; }
+  .cs-car-slide img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--rule); }
+  .cs-car-slide figcaption { font-family: "Space Mono", monospace; font-size: 0.58rem; color: var(--muted); margin-top: 0.5rem; letter-spacing: 0.06em; }
+  .cs-car-btn { position: absolute; top: calc(50% - 1rem); background: var(--white); border: 1px solid var(--rule); color: var(--ink); width: 2rem; height: 2rem; cursor: pointer; font-size: 1rem; z-index: 1; display: flex; align-items: center; justify-content: center; transition: border-color 0.15s; }
+  .cs-car-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .cs-car-prev { left: 0.5rem; }
+  .cs-car-next { right: 0.5rem; }
+  .cs-car-dots { display: flex; gap: 0.4rem; justify-content: center; margin-top: 0.75rem; }
+  .cs-car-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--rule); border: none; cursor: pointer; padding: 0; transition: background 0.15s; }
+  .cs-car-dot.active { background: var(--accent); }
 </style>
 </head>
 <body>
@@ -69,6 +83,26 @@
     <div class="cs-stat"><span class="cs-stat-num">15+</span><span class="cs-stat-label">markets unified</span></div>
     <div class="cs-stat"><span class="cs-stat-num">20 yrs</span><span class="cs-stat-label">legacy reframed</span></div>
     <div class="cs-stat"><span class="cs-stat-num">↑</span><span class="cs-stat-label">cross-functional alignment</span></div>
+  </div>
+
+  <div class="cs-carousel" aria-label="Campaign images">
+    <button class="cs-car-btn cs-car-prev" aria-label="Previous">&#8592;</button>
+    <div class="cs-car-track">
+      <figure class="cs-car-slide">
+        <img src="../images/cases/razer/01.jpg" alt="Campaign image 1" loading="lazy" />
+        <figcaption>Caption 1</figcaption>
+      </figure>
+      <figure class="cs-car-slide">
+        <img src="../images/cases/razer/02.jpg" alt="Campaign image 2" loading="lazy" />
+        <figcaption>Caption 2</figcaption>
+      </figure>
+      <figure class="cs-car-slide">
+        <img src="../images/cases/razer/03.jpg" alt="Campaign image 3" loading="lazy" />
+        <figcaption>Caption 3</figcaption>
+      </figure>
+    </div>
+    <button class="cs-car-btn cs-car-next" aria-label="Next">&#8594;</button>
+    <div class="cs-car-dots"></div>
   </div>
 
   <div class="cs-section">
@@ -115,5 +149,28 @@
   </div>
 
 </div>
+<script>
+document.querySelectorAll('.cs-carousel').forEach(car => {
+  const track = car.querySelector('.cs-car-track');
+  const slides = car.querySelectorAll('.cs-car-slide');
+  const dotsWrap = car.querySelector('.cs-car-dots');
+  let cur = 0;
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'cs-car-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    d.addEventListener('click', () => go(i));
+    dotsWrap.appendChild(d);
+  });
+  function go(n) {
+    cur = (n + slides.length) % slides.length;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    track.style.transition = 'transform 0.35s ease';
+    car.querySelectorAll('.cs-car-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+  }
+  car.querySelector('.cs-car-prev').addEventListener('click', () => go(cur - 1));
+  car.querySelector('.cs-car-next').addEventListener('click', () => go(cur + 1));
+});
+</script>
 </body>
 </html>
