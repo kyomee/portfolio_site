@@ -73,13 +73,15 @@ const navLinks: NavLink[] = [
     left: 0;
     right: 0;
     z-index: 100;
+    background: #141414;
+    border-bottom: 1px solid rgba(255,79,135,0.18);
     transition: all 0.3s ease;
   }
 
   .nav-header.scrolled {
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(20,20,20,0.95);
     backdrop-filter: blur(var(--blur-md));
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.05);
   }
 
   .nav {
@@ -90,15 +92,15 @@ const navLinks: NavLink[] = [
   }
 
   .nav-logo {
-    font-family: var(--font-heading);
+    font-family: "Space Mono", monospace;
     font-size: var(--text-lg);
     font-weight: var(--font-semibold);
-    color: var(--color-text-primary);
+    color: #e8e4dc;
     letter-spacing: var(--tracking-tight);
   }
 
   .nav-logo:hover {
-    color: var(--color-accent);
+    color: var(--color-neon);
   }
 
   .nav-links {
@@ -113,7 +115,7 @@ const navLinks: NavLink[] = [
   .nav-link {
     font-size: var(--text-sm);
     font-weight: var(--font-medium);
-    color: var(--color-text-secondary);
+    color: rgba(232,228,220,0.5);
     transition: color var(--transition-fast);
     position: relative;
   }
@@ -130,7 +132,7 @@ const navLinks: NavLink[] = [
   }
 
   .nav-link:hover {
-    color: var(--color-text-primary);
+    color: #e8e4dc;
   }
 
   .nav-link:hover::after {
@@ -153,7 +155,7 @@ const navLinks: NavLink[] = [
     display: block;
     width: 24px;
     height: 2px;
-    background: var(--color-text-primary);
+    background: #e8e4dc;
     position: relative;
     transition: background var(--transition-fast);
   }
@@ -165,7 +167,7 @@ const navLinks: NavLink[] = [
     left: 0;
     width: 24px;
     height: 2px;
-    background: var(--color-text-primary);
+    background: #e8e4dc;
     transition: transform var(--transition-base);
   }
 
@@ -197,7 +199,7 @@ const navLinks: NavLink[] = [
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--color-bg-primary);
+    background: #141414;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -223,13 +225,13 @@ const navLinks: NavLink[] = [
     display: block;
     font-size: var(--text-3xl);
     font-weight: var(--font-semibold);
-    color: var(--color-text-primary);
+    color: #e8e4dc;
     padding: var(--space-4) 0;
     transition: color var(--transition-fast);
   }
 
   .nav-mobile-link:hover {
-    color: var(--color-accent);
+    color: var(--color-neon);
   }
 
   /* Responsive */
