@@ -1,7 +1,2 @@
-/work /#work 301
-/about / 301
-/contact / 301
-/thinking / 301
-/services / 301
-/posts / 301
-/posts/* / 301
+/posts /thinking 301
+/posts/* /thinking/:splat 301

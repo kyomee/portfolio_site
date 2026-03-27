@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/layout/Navigation.astro';
+import Footer from '../../components/layout/Footer.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { projects } from '../../data/projects';
+---
+
+<BaseLayout
+  title="Work | Nakyum Song"
+  description="Case studies from global brand campaigns in gaming, tech, and lifestyle."
+>
+  <Navigation />
+
+  <main class="work-page">
+    <section class="work-hero">
+      <div class="container">
+        <span class="section-label">Case Studies</span>
+        <h1 class="page-title">Selected Work</h1>
+        <p class="page-subtitle">
+          Case studies from gaming, tech, and lifestyle brands
+        </p>
+      </div>
+    </section>
+
+    <section class="work-content">
+      <div class="container">
+        <div class="projects-grid">
+          {projects.map((project) => (
+            <ProjectCard project={project} />
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .work-page {
+    padding-top: var(--nav-height);
+  }
+
+  .work-hero {
+    padding: var(--space-16) 0 var(--space-8);
+    background-color: var(--color-bg-secondary);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-title {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-4);
+  }
+
+  .page-subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .work-content {
+    padding: var(--space-16) 0;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
