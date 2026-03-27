@@ -24,8 +24,15 @@ interface Props {
     title: string;
     points: string[];
   };
+  strategyBody?: string[];
   execution: string[];
+  executionBody?: string[];
+  resultsDetail?: {
+    quantitative: string[];
+    qualitative: string[];
+  };
   videoUrl?: string;
+  ctaHeading?: string;
 }
 
 const {
@@ -40,8 +47,12 @@ const {
   results,
   objective,
   strategy,
+  strategyBody,
   execution,
-  videoUrl
+  executionBody,
+  resultsDetail,
+  videoUrl,
+  ctaHeading
 } = Astro.props;
 
 const pageTitle = `${title} | Nakyum Song`;
@@ -162,12 +173,16 @@ const structuredData = [
           <span class="cs-sh-dash">—</span>
           <span class="cs-sh-num">02</span>
           <span class="cs-sh-title">Strategy</span>
-          <span class="cs-sh-sub">{strategy.title}</span>
+          {!strategyBody && <span class="cs-sh-sub">{strategy.title}</span>}
         </div>
         <div class="cs-section-body">
-          <ul class="cs-list">
-            {strategy.points.map((p) => <li>{p}</li>)}
-          </ul>
+          {strategyBody ? (
+            strategyBody.map((p) => <p class="cs-body-para">{p}</p>)
+          ) : (
+            <ul class="cs-list">
+              {strategy.points.map((p) => <li>{p}</li>)}
+            </ul>
+          )}
         </div>
       </div>
 
@@ -179,9 +194,13 @@ const structuredData = [
           <span class="cs-sh-title">Execution</span>
         </div>
         <div class="cs-section-body">
-          <ul class="cs-list">
-            {execution.map((e) => <li>{e}</li>)}
-          </ul>
+          {executionBody ? (
+            executionBody.map((p) => <p class="cs-body-para">{p}</p>)
+          ) : (
+            <ul class="cs-list">
+              {execution.map((e) => <li>{e}</li>)}
+            </ul>
+          )}
         </div>
       </div>
 
@@ -193,16 +212,32 @@ const structuredData = [
           <span class="cs-sh-title">Results</span>
         </div>
         <div class="cs-section-body">
-          <ul class="cs-list">
-            {results.map((r) => <li>{r}</li>)}
-          </ul>
-          {videoUrl && (
-            <a href={videoUrl} target="_blank" rel="noopener noreferrer" class="cs-video-link">
-              Watch Campaign Video ↗
-            </a>
+          {resultsDetail ? (
+            <>
+              <p class="cs-results-sub-label">Quantitative</p>
+              <ul class="cs-list cs-list-spaced">
+                {resultsDetail.quantitative.map((r) => <li>{r}</li>)}
+              </ul>
+              <p class="cs-results-sub-label cs-results-sub-label--qual">Qualitative</p>
+              <ul class="cs-list cs-list-spaced">
+                {resultsDetail.qualitative.map((r) => <li>{r}</li>)}
+              </ul>
+            </>
+          ) : (
+            <ul class="cs-list">
+              {results.map((r) => <li>{r}</li>)}
+            </ul>
           )}
         </div>
       </div>
+
+      {videoUrl && (
+        <div class="cs-video-cta">
+          <a href={videoUrl} target="_blank" rel="noopener noreferrer" class="cs-video-btn">
+            Watch Campaign Video ↗
+          </a>
+        </div>
+      )}
 
       <RelatedLinksSection
         eyebrow="Expertise"
@@ -223,7 +258,7 @@ const structuredData = [
     <div class="cs-footer">
       <div class="cs-footer-inner">
         <p class="cs-footer-label">005 &nbsp; Contact</p>
-        <h2>Open for brand strategy, narrative consulting, and creative direction.</h2>
+        <h2>{ctaHeading ?? "Open for brand strategy, narrative consulting, and creative direction."}</h2>
         <div class="cs-footer-actions">
           <a href="/#contact" class="cs-btn-accent">Get in touch →</a>
           <a href="/#work" class="cs-btn-outline">← Back to Portfolio</a>
@@ -441,20 +476,50 @@ const structuredData = [
     font-size: 0.7rem;
   }
 
-  .cs-video-link {
-    display: inline-block;
-    margin-top: 1.4rem;
+  .cs-body-para {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    max-width: 640px;
+    margin-bottom: 1.2rem;
+  }
+  .cs-body-para:last-child { margin-bottom: 0; }
+
+  .cs-results-sub-label {
     font-family: "Space Mono", monospace;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-text-tertiary);
+    margin-bottom: 0.75rem;
+  }
+  .cs-results-sub-label--qual { margin-top: 2rem; }
+
+  .cs-list-spaced { margin-bottom: 0; }
+
+  .cs-video-cta {
+    padding: 2rem 0 0;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+  .cs-video-btn {
+    display: inline-block;
+    font-family: "Space Mono", monospace;
+    font-size: 0.68rem;
     text-transform: uppercase;
     letter-spacing: 0.14em;
+    padding: 0.9rem 2rem;
+    border: 1px solid var(--color-accent);
     color: var(--color-accent);
-    border-bottom: 1px solid var(--color-accent-dim);
-    padding-bottom: 1px;
     text-decoration: none;
-    transition: color 0.15s;
+    transition: background 0.2s, color 0.2s;
   }
-  .cs-video-link:hover { color: var(--color-accent-hover); }
+  .cs-video-btn:hover {
+    background: var(--color-accent);
+    color: #fff;
+  }
 
   /* ─── FOOTER ─── */
   .cs-footer {
