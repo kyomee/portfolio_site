@@ -24,6 +24,7 @@ const { eyebrow, title, intro, items } = Astro.props;
           <h3>{item.title}</h3>
           <p>{item.description}</p>
           {item.meta && <span class="related-card-meta">{item.meta}</span>}
+          <span class="related-card-arrow">→</span>
         </a>
       ))}
     </div>
@@ -103,6 +104,19 @@ const { eyebrow, title, intro, items } = Astro.props;
   .related-card-meta {
     font-size: var(--text-sm);
     color: var(--color-text-tertiary);
+  }
+
+  .related-card-arrow {
+    display: block;
+    margin-top: var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .related-card:hover .related-card-arrow {
+    color: var(--color-accent);
+    transform: translateX(4px);
   }
 
   @media (max-width: 900px) {
