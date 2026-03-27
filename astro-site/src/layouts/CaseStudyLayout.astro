@@ -20,6 +20,7 @@ interface Props {
   images?: { src: string; caption?: string }[];
   results: string[];
   objective: string;
+  objectiveBody?: string[];
   strategy: {
     title: string;
     points: string[];
@@ -46,6 +47,7 @@ const {
   images,
   results,
   objective,
+  objectiveBody,
   strategy,
   strategyBody,
   execution,
@@ -163,7 +165,11 @@ const structuredData = [
           <span class="cs-sh-title">Objective</span>
         </div>
         <div class="cs-section-body">
-          <p class="cs-objective">{objective}</p>
+          {objectiveBody ? (
+            objectiveBody.map((p) => <p class="cs-objective">{p}</p>)
+          ) : (
+            <p class="cs-objective">{objective}</p>
+          )}
         </div>
       </div>
 
@@ -449,7 +455,9 @@ const structuredData = [
     color: var(--color-text-primary);
     line-height: 1.8;
     max-width: 640px;
+    margin-bottom: 1.2rem;
   }
+  .cs-objective:last-child { margin-bottom: 0; }
 
   .cs-list {
     list-style: none;
