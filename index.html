@@ -148,9 +148,12 @@
   .exp-cv-note a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 
   /* ─── PORTFOLIO ─── */
-  .work-row { display: grid; grid-template-columns: 140px 1fr auto; align-items: start; padding: 2rem 3.5rem; border-bottom: 1px solid var(--rule); border-left: 3px solid transparent; background: var(--white); transition: border-color 0.12s, background 0.12s; gap: 2rem; }
+  .work-row { display: grid; grid-template-columns: 220px 1fr auto; align-items: start; padding: 2rem 3.5rem; border-bottom: 1px solid var(--rule); border-left: 3px solid transparent; background: var(--white); transition: border-color 0.12s, background 0.12s; gap: 2rem; }
   .work-row:hover { border-left-color: var(--neon); background: var(--neon-dim); }
-  .wr-date { font-family: "Space Mono", monospace; font-size: 0.65rem; color: var(--muted); padding-top: 0.2rem; line-height: 1.6; }
+  .wr-thumb { overflow: hidden; }
+  .wr-thumb img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; transition: transform 0.4s ease; }
+  .work-row:hover .wr-thumb img { transform: scale(1.04); }
+  .wr-date { font-family: "Space Mono", monospace; font-size: 0.62rem; color: var(--muted); margin-bottom: 0.4rem; line-height: 1.6; }
   .wr-client { font-family: "Space Mono", monospace; font-size: 0.62rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.4rem; }
   .wr-title { font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.4rem; line-height: 1.3; }
   .wr-framing { font-size: 0.84rem; font-weight: 300; color: #555; line-height: 1.65; margin-bottom: 0.7rem; max-width: 480px; }
@@ -231,6 +234,7 @@
     .intro { min-height: auto; padding: 3rem 1.5rem 3.5rem; }
     .about-expanded, .section-head, .work-row, .post-row, .exp-row, .exp-cv-note, .contact, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
     .work-row, .post-row { grid-template-columns: 1fr; }
+    .wr-thumb { width: 100%; margin-bottom: 0.5rem; }
     .exp-row { grid-template-columns: 1fr; }
     .wr-result { text-align: left; padding-top: 0.5rem; }
 
@@ -421,8 +425,9 @@
     </div>
 
     <div class="work-row">
-      <div class="wr-date">2024 →<br>Present</div>
+      <div class="wr-thumb"><img src="images/cases/razer/razer-20th-anniversary-monochrome-desktop.webp" alt="Razer 20th Anniversary" loading="lazy" /></div>
       <div>
+        <div class="wr-date">2024 → Present</div>
         <div class="wr-client">Razer</div>
         <div class="wr-title">Razer 20th Anniversary</div>
         <div class="wr-framing">Built a unifying brand system for a milestone campaign spanning esports, lifestyle, and hardware across 15+ markets.</div>
@@ -433,8 +438,9 @@
     </div>
 
     <div class="work-row">
-      <div class="wr-date">2022</div>
+      <div class="wr-thumb"><img src="images/cases/krafton-ana/ana-main.jpg" alt="ANA Virtual Artist" loading="lazy" /></div>
       <div>
+        <div class="wr-date">2022</div>
         <div class="wr-client">KRAFTON</div>
         <div class="wr-title">ANA Virtual Artist</div>
         <div class="wr-framing">Launched Korea's first AI virtual artist — defining a new content format for gaming brands.</div>
@@ -445,8 +451,9 @@
     </div>
 
     <div class="work-row">
-      <div class="wr-date">2021</div>
+      <div class="wr-thumb"><img src="images/cases/pubg-new-state/pubg-newstate-main.jpg" alt="PUBG: NEW STATE Launch" loading="lazy" /></div>
       <div>
+        <div class="wr-date">2021</div>
         <div class="wr-client">KRAFTON</div>
         <div class="wr-title">PUBG: NEW STATE Launch</div>
         <div class="wr-framing">Led full-funnel strategy for a global AAA mobile launch entering 175+ countries simultaneously.</div>
@@ -457,8 +464,9 @@
     </div>
 
     <div class="work-row">
-      <div class="wr-date">2020</div>
+      <div class="wr-thumb"><img src="images/cases/lg-wing/lg-wing-main.webp" alt="LG WING Campaign" loading="lazy" /></div>
       <div>
+        <div class="wr-date">2020</div>
         <div class="wr-client">Hill &amp; Knowlton / LG</div>
         <div class="wr-title">LG WING Campaign</div>
         <div class="wr-framing">Repositioned a dual-screen device as a creator tool through a 21-market influencer campaign.</div>
