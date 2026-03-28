@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "rm -rf astro-site/dist && mkdir -p astro-site/dist && cp index.html astro-site/dist/ && cp -r work astro-site/dist/ && cp -r images astro-site/dist/ && cp robots.txt sitemap.xml CNAME _redirects astro-site/dist/",
+    "build": "npm --prefix astro-site run build",
     "check": "npm --prefix astro-site run check",
     "deploy": "./node_modules/.bin/wrangler pages deploy . --project-name portfolio-site --branch main --commit-dirty=true"
   },
