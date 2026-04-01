@@ -171,6 +171,9 @@
   .pr-date { font-family: "Space Mono", monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.04em; }
   .pr-title { font-size: 0.95rem; font-weight: 400; color: var(--ink); line-height: 1.4; }
   .pr-tag { font-family: "Space Mono", monospace; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); white-space: nowrap; background: var(--accent-dim); padding: 0.22rem 0.6rem; }
+  .post-cat { display: flex; align-items: center; gap: 1rem; padding: 1.2rem 3.5rem 0.6rem; border-bottom: 1px solid var(--rule); }
+  .post-cat-dash { color: var(--muted); }
+  .post-cat-label { font-family: "Space Mono", monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--muted); }
 
   /* ─── CONTACT ─── */
   .contact { padding: 5.5rem 3.5rem 6rem; background: var(--sidebar-bg); color: var(--sidebar-text); border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -232,7 +235,7 @@
     .meta-bar { display: none; }
     .hero-role-rule { display: none; }
     .intro { min-height: auto; padding: 3rem 1.5rem 3.5rem; }
-    .about-expanded, .section-head, .work-row, .post-row, .exp-row, .exp-cv-note, .contact, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .about-expanded, .section-head, .work-row, .post-row, .post-cat, .exp-row, .exp-cv-note, .contact, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
     .work-row, .post-row { grid-template-columns: 1fr; }
     .wr-thumb { width: 100%; margin-bottom: 0.5rem; }
     .exp-row { grid-template-columns: 1fr; }
@@ -483,6 +486,7 @@
       <div class="sh-top"><span class="sh-dash">—</span><span class="sh-num">004</span><span class="sh-title">Thinking</span></div>
       <div class="sh-sub">Writing on brand, AI, market positioning, and cultural translation</div>
     </div>
+    <div class="post-cat"><span class="post-cat-dash">—</span><span class="post-cat-label">Work</span></div>
     <a class="post-row" href="/thinking/ai-tools-brand-narrative/">
       <div class="pr-date">2026.02.24</div>
       <div class="pr-title">How to Use AI Tools to Build and Strengthen Your Brand Narrative</div>
@@ -497,6 +501,12 @@
       <div class="pr-date">2026.02.19</div>
       <div class="pr-title">How Korean SMEs Can Enter the Singapore Market: A Brand-First Playbook</div>
       <span class="pr-tag">Market Entry</span>
+    </a>
+    <div class="post-cat"><span class="post-cat-dash">—</span><span class="post-cat-label">Life</span></div>
+    <a class="post-row" href="/thinking/living-in-singapore-two-years/">
+      <div class="pr-date">2026.04.01</div>
+      <div class="pr-title">Living in Singapore for Two Years: What It Actually Does to You</div>
+      <span class="pr-tag">Living</span>
     </a>
   </section>
 
